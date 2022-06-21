@@ -1,10 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+// import Hero from "../components/home/hero";
+import ForMen from "../components/home/forMen";
+import ForFemale from "../components/home/forFemale";
+import ForKids from "../components/home/forKids";
+import ProvideQuality from "../components/home/provideQuality";
+import NewsLetter from "../components/home/newsLetter";
+import Message from "../components/home/message";
+import ManageCookies from "../components/home/manageCookies";
+import Footer from "../components/home/footer";
+import Collections from "../components/home/collections";
 
 const Home: NextPage = () => {
 	return (
@@ -15,38 +20,28 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<nav>
+			{/* <nav>
 				<Link href="/about">
 					<a>About</a>
 				</Link>
-			</nav>
+			</nav> */}
 
 			<main>
-				<h1>Home Page</h1>
+				{/* <Hero /> */}
+				<ForFemale />
+				<ForMen />
+				<ForKids />
+				<ProvideQuality />
+				<Collections />
+				<NewsLetter />
+				<Message />
+				<Footer />
+				<ManageCookies />
 			</main>
 
-			<footer>
+			{/* <footer>
 				<p>Footer</p>
-			</footer>
-
-			<Container maxWidth="lg">
-				<Box
-					sx={{
-						my: 5,
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<Typography component="h1" color="primary">
-						Material UI v5 with Next.js in TypeScript
-					</Typography>
-					<Typography component="h2" color="secondary">
-						Boilerplate for building faster.
-					</Typography>
-				</Box>
-			</Container>
+			</footer> */}
 		</div>
 	);
 };

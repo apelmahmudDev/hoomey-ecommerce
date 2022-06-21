@@ -1,15 +1,15 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import theme from "../theme/lightTheme";
 import createEmotionCache from "../theme/createEmotionCache";
 import { Children } from "react";
+import { appTheme } from "../theme/theme";
 
 export default class MyDocument extends Document {
 	public render(): JSX.Element {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta name="theme-color" content={theme.palette.primary.main} />
+					<meta name="theme-color" content={appTheme.palette.primary.main} />
 					<link rel="shortcut icon" href="/static/favicon.ico" />
 					<link
 						rel="stylesheet"
