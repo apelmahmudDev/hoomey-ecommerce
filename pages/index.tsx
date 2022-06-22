@@ -10,7 +10,7 @@ import Message from "../components/home/message";
 import ManageCookies from "../components/home/manageCookies";
 import Footer from "../components/home/footer";
 import Collections from "../components/home/collections";
-import Hero from "../components/home/hero";
+import LatestProducts from "../components/home/latestProducts";
 
 const Home: NextPage = () => {
 	return (
@@ -32,6 +32,7 @@ const Home: NextPage = () => {
 				<ForFemale />
 				<ForMen />
 				<ForKids />
+				<LatestProducts />
 				<ProvideQuality />
 				<Collections />
 				<NewsLetter />

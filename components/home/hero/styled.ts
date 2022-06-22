@@ -1,19 +1,41 @@
 import { makeStyles } from "@mui/styles";
-export const useStyles = makeStyles((theme) => ({
+import { Theme } from "@mui/system";
+
+export const useStyles = makeStyles((theme: Theme) => ({
 	mySwiper: {
-		height: "100vh",
-		// paddingTop: 40,
-		paddingBottom: 40,
+		height: 597,
+		maxHeight: 597,
 		"& .swiper-pagination": {
+			"& .swiper-pagination-bullet": {
+				background: "#fff",
+				opacity: 1,
+				height: 10,
+				width: 10,
+			},
 			"& .swiper-pagination-bullet-active": {
-				background: "#fe9c22",
+				background: "#E2BC82",
 			},
 		},
 	},
+	content: {
+		textAlign: "center",
+		position: "absolute",
+		top: "50%",
+		left: "50%",
+		transform: "translate(-50%,-50%)",
 
-	heroAvatar: {
-		width: "100% !important",
-		height: "100% !important",
-		borderRadius: "0 !important",
+		"& .MuiButton-root, & .MuiTypography-root": {
+			textTransform: "uppercase",
+		},
+
+		"& .MuiTypography-root": {
+			fontSize: 30,
+			color: "#FFFFFF",
+		},
+
+		"& .MuiButton-root": {
+			marginTop: theme.spacing(3),
+			padding: theme.spacing(1, 3),
+		},
 	},
 }));

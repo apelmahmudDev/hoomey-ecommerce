@@ -1,29 +1,10 @@
 import { FC } from "react";
-import { Box } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import { useStyles } from "./styled";
-import Image, { StaticImageData } from "next/image";
-import CuteYoungGirl from "../../../assets/images/hero/cute-youn-girl.png";
-
-// heroData
-const heroData: {
-	image: string | StaticImageData;
-	title: string;
-}[] = [
-	{
-		image: CuteYoungGirl,
-		title: "Brown realistic sofa with decorative cushions",
-	},
-	{
-		image: CuteYoungGirl,
-		title: "Two-seater gray sofa with two cushions",
-	},
-	{
-		image: CuteYoungGirl,
-		title: "Discover the new you",
-	},
-];
+import Image from "next/image";
+import { heroData } from "./data";
 
 const Hero: FC = () => {
 	const classes = useStyles();
@@ -31,6 +12,7 @@ const Hero: FC = () => {
 	return (
 		<Box mb={8}>
 			<Swiper
+				className={classes.mySwiper}
 				modules={[Pagination, Autoplay]}
 				pagination={{
 					clickable: true,
@@ -39,12 +21,15 @@ const Hero: FC = () => {
 					delay: 5000,
 					disableOnInteraction: false,
 				}}
-				className={classes.mySwiper}
 			>
-				{heroData.map((item, idx) => (
+				{heroData.map((data, idx) => (
 					<SwiperSlide key={idx}>
 						<Box sx={{ width: "100%", height: "100%", position: "relative" }}>
-							<Image alt="hero" src={item.image} layout="fill" objectFit="cover" />
+							<Image src={data.image} alt="hero-banner" layout="fill" objectFit="cover" />
+						</Box>
+						<Box className={classes.content}>
+							<Typography variant="h5">{data.title}</Typography>
+							<Button variant="contained">Shop Now</Button>
 						</Box>
 					</SwiperSlide>
 				))}
