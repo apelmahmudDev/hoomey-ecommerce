@@ -23,16 +23,7 @@ const Hero: FC = () => {
 			>
 				{heroData.map((item, idx) => (
 					<SwiperSlide key={idx} style={{ height: "100vh" }}>
-						<Avatar
-							sx={{
-								width: "100% !important",
-								height: "100% !important",
-								borderRadius: "0 !important",
-							}}
-							className={classes.heroAvatar}
-							src={item.image}
-							alt="image of hero"
-						/>
+						<Avatar className={classes.heroAvatar} src={item.image} alt="image of hero" />
 					</SwiperSlide>
 				))}
 			</Swiper>
