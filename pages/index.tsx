@@ -10,6 +10,7 @@ import Message from "../components/home/message";
 import ManageCookies from "../components/home/manageCookies";
 import Footer from "../components/home/footer";
 import Collections from "../components/home/collections";
+import Hero from "../components/home/hero";
 
 const Home: NextPage = () => {
 	return (
