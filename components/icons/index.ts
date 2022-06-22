@@ -1,3 +1,4 @@
+export { default as NavLogoSvg } from "./NavLogo";
 export { default as LogoSvg } from "./Logo";
 export { default as FacebookSvg } from "./Facebook";
 export { default as InstagramSvg } from "./Instagram";

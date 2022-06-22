@@ -39,5 +39,7 @@ module.exports = {
 
 		"jest/expect-expect": "off",
 		"@rushstack/typedef-var": "off",
+		"react/jsx-no-bind": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
 	},
 };

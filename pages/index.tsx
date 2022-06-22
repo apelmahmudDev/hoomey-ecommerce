@@ -11,6 +11,7 @@ import ManageCookies from "../components/home/manageCookies";
 import Footer from "../components/home/footer";
 import Collections from "../components/home/collections";
 import LatestProducts from "../components/home/latestProducts";
+import Navbar from "../components/common/navbar";
 
 const Home: NextPage = () => {
 	return (
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
 			</nav> */}
 
 			<main>
+				<Navbar />
 				<Hero />
 				<ForFemale />
 				<ForMen />

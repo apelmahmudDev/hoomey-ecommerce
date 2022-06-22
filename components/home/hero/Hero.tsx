@@ -28,7 +28,9 @@ const Hero: FC = () => {
 							<Image src={data.image} alt="hero-banner" layout="fill" objectFit="cover" />
 						</Box>
 						<Box className={classes.content}>
-							<Typography variant="h5">{data.title}</Typography>
+							<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
+								{data.title}
+							</Typography>
 							<Button variant="contained">Shop Now</Button>
 						</Box>
 					</SwiperSlide>

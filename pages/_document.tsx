@@ -11,10 +11,23 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta name="theme-color" content={appTheme.palette.primary.main} />
 					<link rel="shortcut icon" href="/static/favicon.ico" />
+
+					{/* fonts start */}
+
+					<link href="http://fonts.cdnfonts.com/css/sedan" rel="stylesheet" />
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&family=Oswald:wght@300;400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap"
+						rel="stylesheet"
+					/>
+
+					{/* fonts end */}
+
 					{(this.props as any).emotionStyleTags}
 				</Head>
 				<body>
