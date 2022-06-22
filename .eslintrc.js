@@ -38,5 +38,6 @@ module.exports = {
 		],
 
 		"jest/expect-expect": "off",
+		"@rushstack/typedef-var": "off",
 	},
 };

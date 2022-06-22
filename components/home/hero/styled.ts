@@ -1,9 +1,8 @@
-/* eslint-disable @rushstack/typedef-var */
 import { makeStyles } from "@mui/styles";
-
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
 	mySwiper: {
-		paddingTop: 40,
+		height: "100vh",
+		// paddingTop: 40,
 		paddingBottom: 40,
 		"& .swiper-pagination": {
 			"& .swiper-pagination-bullet-active": {

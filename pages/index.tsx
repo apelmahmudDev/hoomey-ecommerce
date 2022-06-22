@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-// import Hero from "../components/home/hero";
+import Hero from "../components/home/hero";
 import ForMen from "../components/home/forMen";
 import ForFemale from "../components/home/forFemale";
 import ForKids from "../components/home/forKids";
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
 			</nav> */}
 
 			<main>
-				{/* <Hero /> */}
+				<Hero />
 				<ForFemale />
 				<ForMen />
 				<ForKids />

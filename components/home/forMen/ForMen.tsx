@@ -8,8 +8,8 @@ const ForMen: FC = () => {
 	return (
 		<Box my={8}>
 			<Container maxWidth="lg">
-				<Grid container spacing={4}>
-					<Grid item xs={12} md={6}>
+				<Grid container spacing={4} alignItems="center">
+					<Grid item xs={12} md={5}>
 						<Typography sx={{ mb: 3 }} variant="h5">
 							Wearables & Accessories For Men
 						</Typography>
@@ -24,8 +24,10 @@ const ForMen: FC = () => {
 							Shop For Men
 						</Button>
 					</Grid>
-					<Grid item xs={12} md={6}>
-						<Image quality="85" src={ManImg} alt={"Man Image"} height={420} width={420} layout="fixed" />
+					<Grid item xs={12} md={7}>
+						<Box sx={{ width: "100%", height: 650, position: "relative" }}>
+							<Image alt="Mountains" src={ManImg} layout="fill" objectFit="contain" />
+						</Box>
 					</Grid>
 				</Grid>
 			</Container>

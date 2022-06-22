@@ -1,18 +1,20 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FC } from "react";
 import Image from "next/image";
-import ManImg from "../../../assets/images/man.png";
+import KidsImg from "../../../assets/images/kids.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const ForKids: FC = () => {
 	return (
 		<Box my={8}>
 			<Container maxWidth="lg">
-				<Grid container spacing={4}>
-					<Grid item xs={12} md={6}>
-						<Image quality="85" src={ManImg} alt={"Man Image"} height={420} width={420} layout="fixed" />
+				<Grid container spacing={4} alignItems="center">
+					<Grid item xs={12} md={7}>
+						<Box sx={{ width: "100%", height: 458, position: "relative" }}>
+							<Image alt="Mountains" src={KidsImg} layout="fill" objectFit="contain" />
+						</Box>
 					</Grid>
-					<Grid item xs={12} md={6}>
+					<Grid item xs={12} md={5}>
 						<Typography sx={{ mb: 3 }} variant="h5">
 							Wearables & Accessories For Kids
 						</Typography>
