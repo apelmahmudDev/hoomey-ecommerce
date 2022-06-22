@@ -11,7 +11,6 @@ import { productData } from "./data";
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import "swiper/css/pagination";
 
 const LatestProducts: FC = () => {
 	const classes = useStyles();

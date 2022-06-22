@@ -2,41 +2,23 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { Theme } from "@mui/material/styles";
 
 const theme: Theme = createTheme({
-	// typography: {
-	// 	fontFamily: ["Roboto", "Titillium Web", "sans-serif"].join(","),
-	// 	h1: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// 	h2: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// 	h3: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// 	h4: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// 	h5: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// 	h6: {
-	// 		fontFamily: "Titillium Web",
-	// 	},
-	// },
+	typography: {
+		fontFamily: ["Roboto", "Poppins", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
+	},
 	palette: {
 		mode: "light",
 		primary: {
-			main: "#fe9c22",
-			light: "#feb054",
-			dark: "#f08e10",
+			main: "#E2BC82",
+			light: "#E8BD83",
 		},
 		secondary: {
-			main: "#f1f0ff",
-			light: "#f6f7fb",
+			main: "#292929",
+			light: "#282828",
+			dark: "#1F1F1F",
 		},
 		text: {
-			primary: "#333333",
-			secondary: "#5f6368",
+			primary: "#292929",
+			secondary: "#939393",
 		},
 	},
 });
@@ -48,6 +30,24 @@ export let appTheme: Theme = createTheme(theme, {
 				root: {
 					textTransform: "capitalize",
 					borderRadius: 0,
+				},
+			},
+		},
+		MuiFilledInput: {
+			styleOverrides: {
+				root: {
+					border: `1px solid ${theme.palette.primary.main}`,
+					backgroundColor: "#fff",
+					borderRadius: 0,
+					"&:hover:not(.Mui-disabled):before": {
+						borderBottom: 0,
+					},
+					"&::before": {
+						borderBottom: 0,
+					},
+					"&::after": {
+						borderBottom: 0,
+					},
 				},
 			},
 		},
@@ -79,24 +79,6 @@ export let appTheme: Theme = createTheme(theme, {
 		// 		},
 		// 	},
 		// },
-		MuiFilledInput: {
-			styleOverrides: {
-				root: {
-					border: `1px solid ${theme.palette.primary.main}`,
-					backgroundColor: "#fff",
-					borderRadius: 0,
-					"&:hover:not(.Mui-disabled):before": {
-						borderBottom: 0,
-					},
-					"&::before": {
-						borderBottom: 0,
-					},
-					"&::after": {
-						borderBottom: 0,
-					},
-				},
-			},
-		},
 	},
 });
 appTheme = responsiveFontSizes(appTheme);
