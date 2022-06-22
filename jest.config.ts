@@ -1,5 +1,3 @@
-/* eslint-disable @rushstack/typedef-var */
-
 import nextJest from "next/jest";
 
 // Sync object

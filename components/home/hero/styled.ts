@@ -1,4 +1,3 @@
-/* eslint-disable @rushstack/typedef-var */
 import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles(() => ({
