@@ -1,12 +1,20 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 
 const ProvideQuality: FC = () => {
 	return (
-		<Box my={8}>
+		<Box my={9.1}>
 			<Container maxWidth="lg">
-				<Box sx={{ background: "#292929", p: 8, textAlign: "center" }}>
-					<Typography sx={{ fontSize: 40, color: "#fff" }}>We Provide Quality With Perfection</Typography>
+				<Box
+					sx={{
+						background: (theme: Theme) => theme.palette.secondary.main,
+						padding: (theme: Theme) => theme.spacing(10, 0),
+						textAlign: "center",
+					}}
+				>
+					<Typography variant="h4" sx={{ color: "#fff", fontFamily: "Sedan", letterSpacing: "0.22em" }}>
+						We Provide Quality With Perfection
+					</Typography>
 				</Box>
 			</Container>
 		</Box>

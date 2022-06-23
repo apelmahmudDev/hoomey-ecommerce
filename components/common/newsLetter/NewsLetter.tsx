@@ -1,19 +1,27 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { FC } from "react";
+import { useStyles } from "./styled";
 
 const NewsLetter: FC = () => {
+	const classes = useStyles();
+
 	return (
-		<Box my={8}>
-			<Box sx={{ background: "#E8BD83", p: 8, textAlign: "center" }}>
+		<Box my={9.1}>
+			<Box sx={{ background: "#E8BD83", py: 7, px: 0, textAlign: "center" }}>
 				<Container maxWidth="sm">
-					<Typography sx={{ fontSize: 24, color: "#292929" }}>SUBSCRIBE</Typography>
-					<Typography sx={{ mt: 1, mb: 2 }} variant="body2">
+					<Typography variant="h5" sx={{ fontFamily: "Oswald", textTransform: "uppercase" }}>
+						SUBSCRIBE
+					</Typography>
+					<Typography
+						sx={{ fontFamily: "Lato", letterSpacing: "0.04em", fontSize: 12, mt: 2, mb: 2.5 }}
+						variant="body2"
+					>
 						Sign up to get the latest on sales, new releases and more
 					</Typography>
 					<Box component="form">
 						<Box sx={{ display: "flex", justifyContent: "center" }}>
 							<TextField
-								sx={{ flex: 1 }}
+								className={classes.textField}
 								size="small"
 								id="filled-basic"
 								label="E-mail address"
@@ -21,11 +29,7 @@ const NewsLetter: FC = () => {
 								type="email"
 								required
 							/>
-							<Button
-								sx={{ boxShadow: 0, borderRadius: 0, "&:hover": { boxShadow: 0 } }}
-								type="submit"
-								variant="contained"
-							>
+							<Button className={classes.button} type="submit" variant="contained" color="secondary">
 								REGISTER
 							</Button>
 						</Box>

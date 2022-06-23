@@ -1,12 +1,15 @@
-import { Box, Container, Typography } from "@mui/material";
 import { FC } from "react";
+import { Box, Container, Typography } from "@mui/material";
 
-const Message: FC = () => {
+const Commitment: FC = () => {
 	return (
-		<Box my={8}>
+		<Box my={9.1}>
 			<Container maxWidth="lg">
 				<Box sx={{ textAlign: "center" }}>
-					<Typography sx={{ fontSize: 12 }}>
+					<Typography
+						color="common.black"
+						sx={{ fontSize: 12, fontFamily: "Lato", fontStyle: "italic", letterSpacing: "0.04em" }}
+					>
 						Your number one source for all exquisite products. We're dedicated to providing you the best of
 						high quality products, with a focus on dependability, customer service and affordable prices.
 					</Typography>
@@ -16,4 +19,4 @@ const Message: FC = () => {
 	);
 };
 
-export default Message;
+export default Commitment;

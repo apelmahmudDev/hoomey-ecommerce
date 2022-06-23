@@ -5,13 +5,15 @@ import ForMen from "../components/home/forMen";
 import ForFemale from "../components/home/forFemale";
 import ForKids from "../components/home/forKids";
 import ProvideQuality from "../components/home/provideQuality";
-import NewsLetter from "../components/home/newsLetter";
-import Message from "../components/home/message";
-import ManageCookies from "../components/home/manageCookies";
-import Footer from "../components/home/footer";
 import Collections from "../components/home/collections";
 import LatestProducts from "../components/home/latestProducts";
+
+// commons
 import Navbar from "../components/common/navbar";
+import NewsLetter from "../components/common/newsLetter";
+import Footer from "../components/common/footer";
+import ManageCookies from "../components/common/manageCookies";
+import Commitment from "../components/common/Commitment";
 
 const Home: NextPage = () => {
 	return (
@@ -35,7 +37,7 @@ const Home: NextPage = () => {
 				<ProvideQuality />
 				<Collections />
 				<NewsLetter />
-				<Message />
+				<Commitment />
 			</main>
 
 			<footer>
