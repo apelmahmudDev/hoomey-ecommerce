@@ -3,7 +3,7 @@ import { Theme } from "@mui/material/styles";
 
 const theme: Theme = createTheme({
 	typography: {
-		fontFamily: ["Roboto", "Poppins", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
+		fontFamily: ["Roboto", "Poppins", "Euclid Circular A", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
 	},
 	palette: {
 		mode: "light",

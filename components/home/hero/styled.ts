@@ -17,6 +17,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 			},
 		},
 	},
+
 	content: {
 		textAlign: "center",
 		position: "absolute",
@@ -31,11 +32,17 @@ export const useStyles = makeStyles((theme: Theme) => ({
 		"& .MuiTypography-root": {
 			fontSize: 30,
 			color: "#FFFFFF",
+			letterSpacing: "0.22em",
 		},
 
 		"& .MuiButton-root": {
-			marginTop: theme.spacing(3),
-			padding: theme.spacing(1, 3),
+			fontSize: 14,
+			marginTop: 30,
+			borderRadius: 2,
+			padding: theme.spacing(1.3, 3),
+			fontFamily: "Poppins",
+			fontWeight: 400,
+			letterSpacing: "0.3em",
 		},
 	},
 }));
