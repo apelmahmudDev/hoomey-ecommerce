@@ -22,14 +22,11 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			{/* <nav>
-				<Link href="/about">
-					<a>About</a>
-				</Link>
-			</nav> */}
+			<nav>
+				<Navbar />
+			</nav>
 
 			<main>
-				<Navbar />
 				<Hero />
 				<ForFemale />
 				<ForMen />
@@ -39,13 +36,12 @@ const Home: NextPage = () => {
 				<Collections />
 				<NewsLetter />
 				<Message />
-				<Footer />
-				<ManageCookies />
 			</main>
 
-			{/* <footer>
-				<p>Footer</p>
-			</footer> */}
+			<footer>
+				<Footer />
+				<ManageCookies />
+			</footer>
 		</div>
 	);
 };
