@@ -1,14 +1,9 @@
-import { StaticImageData } from "next/image";
 import WhiteCottonSweatshirtImg from "../../../assets/images/latest_products/white_cotton_sweatshirt.png";
 import BlackCottonSweatshirtImg from "../../../assets/images/latest_products/tshirt.png";
+import { IProduct } from "../../../types/product";
 
 // heroData
-export const productData: {
-	image: string | StaticImageData;
-	name: string;
-	price: number;
-	discount: number;
-}[] = [
+export const productData: IProduct[] = [
 	{
 		image: WhiteCottonSweatshirtImg,
 		name: "White Cotton Sweatshirt",
