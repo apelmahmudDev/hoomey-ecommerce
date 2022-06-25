@@ -2,12 +2,9 @@ import { ICollection } from "../../../types/collection";
 import { IMAGES } from "../../../uiElements";
 
 export const itemData: ICollection[] = [
-	{ image: IMAGES.WomenImg, content: "Women" },
-	{ image: IMAGES.MenImg, content: "Men" },
-	{ image: IMAGES.KidsImg, content: "Kids" },
-	{ image: IMAGES.BabyCareImg, content: "Baby Care" },
-	{ image: IMAGES.PetsImg, content: "Pets" },
-	{ image: IMAGES.HealthAndBeautyImg, content: "Health & Beauty" },
-	{ image: IMAGES.ElectronicsImg, content: "Electronics" },
-	{ image: IMAGES.JewelryImg, content: "Jewelry" },
+	{ image: IMAGES.Electronics1Img, content: "Trending" },
+	{ image: IMAGES.Electronics2Img, content: "Discounts" },
+	{ image: IMAGES.Electronics3Img, content: "Clothing" },
+	{ image: IMAGES.Electronics4Img, content: "Systems" },
+	{ image: IMAGES.Electronics5Img, content: "Beauty products" },
 ];

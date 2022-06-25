@@ -24,7 +24,7 @@ const ForFemale: FC = () => {
 					<Grid item xs={12} md={5}>
 						<Heading text="Wearables & Accessories For Woman" />
 						<Typography sx={{ fontSize: 12 }} color="text.secondary">
-							Our women's collection has crucial seasonal pieces to refresh your wardrobe. We have
+							Our women&apos;s collection has crucial seasonal pieces to refresh your wardrobe. We have
 							everything you need, from sophisticated casual jumpsuits, dresses, and heels to swim and
 							beachwear for your next vacation. Tops in seasonal stripes and vivid prints, as well as
 							jeans in a variety of sizes, are available. Complete your ensemble with a variety of purses,

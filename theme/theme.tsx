@@ -34,6 +34,7 @@ export let appTheme: Theme = createTheme(theme, {
 		MuiButton: {
 			styleOverrides: {
 				root: {
+					fontFamily: "Poppins",
 					textTransform: "capitalize",
 					borderRadius: 0,
 				},
@@ -72,19 +73,19 @@ export let appTheme: Theme = createTheme(theme, {
 		// 		},
 		// 	},
 		// },
-		// MuiDrawer: {
-		// 	styleOverrides: {
-		// 		root: {
-		// 			"& .MuiDrawer-paper": {
-		// 				minWidth: 345,
-		// 				[theme.breakpoints.down(367)]: {
-		// 					width: "100%",
-		// 					minWidth: "100%",
-		// 				},
-		// 			},
-		// 		},
-		// 	},
-		// },
+		MuiDrawer: {
+			styleOverrides: {
+				root: {
+					"& .MuiDrawer-paper": {
+						maxWidth: 345,
+						[theme.breakpoints.down(367)]: {
+							width: "100%",
+							maxWidth: "100%",
+						},
+					},
+				},
+			},
+		},
 	},
 });
 appTheme = responsiveFontSizes(appTheme);

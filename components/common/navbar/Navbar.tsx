@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
+import CartDetails from "./CartDetails";
 
 // select
 import FormControl from "@mui/material/FormControl";
@@ -20,6 +21,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // icons
 import { FavoriteBorderIcon, PersonOutlineIcon, SearchIcon } from "../../../uiElements/icons";
+import AppDrawer from "../AppDrawer";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -30,12 +32,17 @@ const menuItems = [
 	{ currency: "EUR", value: 6 },
 	{ currency: "JPY", value: 7 },
 ];
-const pages = ["Men", "Women", "Kids"];
+const pages = [
+	{ name: "Men", link: "/men" },
+	{ name: "Women", link: "/women" },
+	{ name: "Kids", link: "/kids" },
+];
 // const settings = ["Profile", "Account"];
 
 const Navbar: FC = () => {
 	const classes = useStyles();
 
+	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	// const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -58,6 +65,11 @@ const Navbar: FC = () => {
 
 	const handleCurrencyChange = (event: SelectChangeEvent) => {
 		setCurrency(event.target.value as string);
+	};
+
+	// cart drawer view
+	const toggleCartDrawer = (open: boolean) => {
+		setIsCartDrawerOpen(open);
 	};
 
 	return (
@@ -96,9 +108,11 @@ const Navbar: FC = () => {
 								}}
 							>
 								{pages.map((page) => (
-									<MenuItem key={page} onClick={handleCloseNavMenu}>
-										<Typography textAlign="center">{page}</Typography>
-									</MenuItem>
+									<Link href={page.link} key={page.name}>
+										<MenuItem onClick={handleCloseNavMenu}>
+											<Typography textAlign="center">{page.name}</Typography>
+										</MenuItem>
+									</Link>
 								))}
 							</Menu>
 						</Box>
@@ -106,7 +120,7 @@ const Navbar: FC = () => {
 						{/* menu for large device */}
 						<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 							{pages.map((page) => (
-								<Link href="/" key={page}>
+								<Link href={page.link} key={page.name}>
 									<Button
 										onClick={handleCloseNavMenu}
 										sx={{
@@ -116,7 +130,7 @@ const Navbar: FC = () => {
 											display: "block",
 										}}
 									>
-										{page}
+										{page.name}
 									</Button>
 								</Link>
 							))}
@@ -161,7 +175,7 @@ const Navbar: FC = () => {
 										</Select>
 									</FormControl>
 								</Box>
-								<CartButton badgeContent={0} onClick={() => alert("Add card drawer here...🙂")} />
+								<CartButton badgeContent={0} onClick={() => toggleCartDrawer(true)} />
 							</Box>
 
 							{/* settings for small device */}
@@ -197,6 +211,9 @@ const Navbar: FC = () => {
 				</Container>
 			</AppBar>
 			<Toolbar />
+			<AppDrawer isDrawerOpen={isCartDrawerOpen} toggleDrawer={toggleCartDrawer}>
+				<CartDetails />
+			</AppDrawer>
 		</>
 	);
 };

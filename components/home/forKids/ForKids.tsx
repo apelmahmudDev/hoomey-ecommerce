@@ -23,7 +23,7 @@ const ForKids: FC = () => {
 					<Grid item xs={12} md={5}>
 						<Heading text="Wearables & Accessories For Kids" />
 						<Typography sx={{ fontSize: 12 }} color="text.secondary">
-							Our kids' apparel collection was created with him in mind, so he may look stylish and
+							Our kid&apos;s apparel collection was created with him in mind, so he may look stylish and
 							comfortable at all times. Refresh his wardrobe with the latest trends, from essential jeans,
 							hoodies, and t-shirts for playtime to suits and shirts for more formal events. Shorts and
 							swimwear are essentials for your next vacation, while our footwear and accessories properly

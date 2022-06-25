@@ -14,8 +14,8 @@ const ForMen: FC = () => {
 					<Grid item xs={12} md={5}>
 						<Heading text="Wearables & Accessories For Men" />
 						<Typography sx={{ fontSize: 12 }} color="text.secondary">
-							Whatever the weather brings this season, we've got a variety of trendy outfits for you to
-							choose from. We have everything you need, from casual tops, t-shirts, and jeans for lazy
+							Whatever the weather brings this season, we&apos;ve got a variety of trendy outfits for you
+							to choose from. We have everything you need, from casual tops, t-shirts, and jeans for lazy
 							days to shorts and swimsuits for your next vacation. Our clothing may simply be matched with
 							our newest trainers to change up your gym style. Stock up on essentials like undergarments
 							in a variety of styles, or relax in our comfortable loungewear.
