@@ -1,9 +1,10 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { FC } from "react";
 import Image from "next/image";
-import ManImg from "../../../assets/images/man.png";
+
 import Heading from "../../ui/Heading";
 import ShopForButton from "../../ui/ShopForButton";
+import { IMAGES } from "../../../uiElements";
 
 const ForMen: FC = () => {
 	return (
@@ -24,7 +25,7 @@ const ForMen: FC = () => {
 						{/* </Link> */}
 					</Grid>
 					<Grid item xs={12} md={7}>
-						<Image src={ManImg} alt={"Female"} height={650} objectFit="cover" layout="responsive" />
+						<Image src={IMAGES.ManImg} alt={"Female"} height={650} objectFit="cover" layout="responsive" />
 					</Grid>
 				</Grid>
 			</Container>

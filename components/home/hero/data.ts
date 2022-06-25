@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import CuteYoungGirl from "../../../assets/images/hero/cute-youn-girl.png";
+import { IMAGES } from "../../../uiElements";
 
 // heroData
 export const heroData: {
@@ -7,15 +7,15 @@ export const heroData: {
 	title: string;
 }[] = [
 	{
-		image: CuteYoungGirl,
+		image: IMAGES.CuteYoungGirlImg,
 		title: "Discover the new you",
 	},
 	{
-		image: CuteYoungGirl,
+		image: IMAGES.CuteYoungGirlImg,
 		title: "Discover the new you",
 	},
 	{
-		image: CuteYoungGirl,
+		image: IMAGES.CuteYoungGirlImg,
 		title: "Discover the new you",
 	},
 ];

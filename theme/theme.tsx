@@ -4,6 +4,12 @@ import { Theme } from "@mui/material/styles";
 const theme: Theme = createTheme({
 	typography: {
 		fontFamily: ["Roboto", "Poppins", "Euclid Circular A", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
+		body1: {
+			fontFamily: "Poppins",
+		},
+		body2: {
+			fontFamily: "Poppins",
+		},
 	},
 	palette: {
 		mode: "light",

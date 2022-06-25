@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+
+// home components
 import Hero from "../components/home/hero";
 import ForMen from "../components/home/forMen";
 import ForFemale from "../components/home/forFemale";
@@ -8,7 +10,7 @@ import ProvideQuality from "../components/home/provideQuality";
 import Collections from "../components/home/collections";
 import LatestProducts from "../components/home/latestProducts";
 
-// commons
+// common components
 import Navbar from "../components/common/navbar";
 import NewsLetter from "../components/common/newsLetter";
 import Footer from "../components/common/footer";

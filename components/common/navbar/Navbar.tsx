@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
-import { Box, Divider, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { useStyles } from "./styled";
-
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -11,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
 
@@ -19,11 +19,17 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // icons
-import SearchIcon from "@mui/icons-material/Search";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { FavoriteBorderIcon, PersonOutlineIcon, SearchIcon } from "../../../uiElements/icons";
 
+const menuItems = [
+	{ currency: "USD", value: 1 },
+	{ currency: "SAR", value: 2 },
+	{ currency: "CAD", value: 3 },
+	{ currency: "AUD", value: 4 },
+	{ currency: "GBP", value: 5 },
+	{ currency: "EUR", value: 6 },
+	{ currency: "JPY", value: 7 },
+];
 const pages = ["Men", "Women", "Kids"];
 // const settings = ["Profile", "Account"];
 
@@ -48,10 +54,10 @@ const Navbar: FC = () => {
 	// 	setAnchorElUser(null);
 	// };
 
-	const [age, setAge] = useState("10");
+	const [currency, setCurrency] = useState("1");
 
-	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string);
+	const handleCurrencyChange = (event: SelectChangeEvent) => {
+		setCurrency(event.target.value as string);
 	};
 
 	return (
@@ -125,7 +131,7 @@ const Navbar: FC = () => {
 
 						{/* right side menu */}
 						<Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
-							<Box sx={{ display: "flex", gap: 2, mr: 2 }}>
+							<Box sx={{ display: "flex", gap: 2 }}>
 								<IconButton color="primary" size="small">
 									<SearchIcon />
 								</IconButton>
@@ -140,54 +146,22 @@ const Navbar: FC = () => {
 										<Select
 											labelId="demo-simple-select-label"
 											id="demo-simple-select"
-											value={age}
-											onChange={handleChange}
+											value={currency}
+											onChange={handleCurrencyChange}
 										>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={10}>
-												USD
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={20}>
-												SAR
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={30}>
-												CAD
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={40}>
-												AUD
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={50}>
-												GBP
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={60}>
-												EUR
-											</MenuItem>
-											<MenuItem sx={{ fontFamily: "Euclid Circular A" }} value={70}>
-												JPY
-											</MenuItem>
+											{menuItems.map((item) => (
+												<MenuItem
+													key={item.value}
+													sx={{ fontFamily: "Euclid Circular A" }}
+													value={item.value}
+												>
+													{item.currency}
+												</MenuItem>
+											))}
 										</Select>
 									</FormControl>
 								</Box>
-								<Box sx={{ minWidth: 90, bgcolor: "#E2BC82" }}>
-									<Stack
-										className={classes.cartButton}
-										direction="row"
-										divider={<Divider orientation="vertical" flexItem />}
-										spacing={2}
-										component={Button}
-										variant="contained"
-									>
-										<Box sx={{ display: "flex", alignItems: "center" }}>
-											<ShoppingBagOutlinedIcon />
-											<Typography sx={{ fontFamily: "Euclid Circular A" }}>Cart</Typography>
-										</Box>
-										<Typography
-											sx={{ fontFamily: "Euclid Circular A" }}
-											className={classes.cartBtnBadge}
-										>
-											1
-										</Typography>
-									</Stack>
-								</Box>
+								<CartButton badgeContent={0} onClick={() => alert("Add card drawer here...🙂")} />
 							</Box>
 
 							{/* settings for small device */}

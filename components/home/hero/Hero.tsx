@@ -10,7 +10,7 @@ const Hero: FC = () => {
 	const classes = useStyles();
 
 	return (
-		<Box mb={8}>
+		<Box mb={9.1}>
 			<Swiper
 				className={classes.mySwiper}
 				modules={[Pagination, Autoplay]}

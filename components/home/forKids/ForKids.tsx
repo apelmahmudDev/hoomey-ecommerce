@@ -1,9 +1,10 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { FC } from "react";
 import Image from "next/image";
-import KidsImg from "../../../assets/images/kids.png";
+
 import Heading from "../../ui/Heading";
 import ShopForButton from "../../ui/ShopForButton";
+import { IMAGES } from "../../../uiElements";
 
 const ForKids: FC = () => {
 	return (
@@ -11,7 +12,13 @@ const ForKids: FC = () => {
 			<Container maxWidth="lg">
 				<Grid container spacing={5} alignItems="center">
 					<Grid item xs={12} md={7}>
-						<Image src={KidsImg} alt={"Female"} height={458} objectFit="cover" layout="responsive" />
+						<Image
+							src={IMAGES.KidsSowImg}
+							alt={"Female"}
+							height={458}
+							objectFit="cover"
+							layout="responsive"
+						/>
 					</Grid>
 					<Grid item xs={12} md={5}>
 						<Heading text="Wearables & Accessories For Kids" />

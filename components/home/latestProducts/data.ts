@@ -1,35 +1,33 @@
-import WhiteCottonSweatshirtImg from "../../../assets/images/latest_products/white_cotton_sweatshirt.png";
-import BlackCottonSweatshirtImg from "../../../assets/images/latest_products/tshirt.png";
 import { IProduct } from "../../../types/product";
+import { IMAGES } from "../../../uiElements";
 
-// heroData
 export const productData: IProduct[] = [
 	{
-		image: WhiteCottonSweatshirtImg,
+		image: IMAGES.WhiteTshirtImg,
 		name: "White Cotton Sweatshirt",
 		price: 25,
 		discount: 50,
 	},
 	{
-		image: BlackCottonSweatshirtImg,
+		image: IMAGES.BlackTshirtImg,
 		name: "Black Cotton Sweatshirt ",
 		price: 25,
 		discount: 50,
 	},
 	{
-		image: WhiteCottonSweatshirtImg,
+		image: IMAGES.WhiteTshirtImg,
 		name: "White Cotton Sweatshirt",
 		price: 50,
 		discount: 90,
 	},
 	{
-		image: BlackCottonSweatshirtImg,
+		image: IMAGES.BlackTshirtImg,
 		name: "Black Cotton Sweatshirt ",
 		price: 50,
 		discount: 25,
 	},
 	{
-		image: WhiteCottonSweatshirtImg,
+		image: IMAGES.WhiteTshirtImg,
 		name: "White Cotton Sweatshirt",
 		price: 50,
 		discount: 90,
