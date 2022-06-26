@@ -7,12 +7,18 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 
-import { CartDivider, ProductCircularColor } from "../../styledComponents";
+import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
 import { useStyles } from "./styled";
 import { IMAGES } from "../../../uiElements";
 
 // icons
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon, FavoriteBorderIcon } from "../../../uiElements/icons";
+
+const styles = {
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+};
 
 const CartDetails: FC = () => {
 	const classes = useStyles();
@@ -30,22 +36,14 @@ const CartDetails: FC = () => {
 			<Box sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
 				<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={65} width={47} objectFit="cover" />
 				<Box>
-					<Box
-						sx={{
-							mb: 0.6,
-							display: "flex",
-							alignItems: "center",
-							gap: 2,
-							justifyContent: "space-between",
-						}}
-					>
+					<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
 						<Typography variant="body2" sx={{ fontWeight: 600 }}>
 							White Cotton Sweatshirt
 						</Typography>
-						<Typography sx={{ fontSize: 12, fontWeight: 500 }}>${"50.00"}</Typography>
+						<SmallText>${"50.00"}</SmallText>
 					</Box>
 					<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
-						<Typography sx={{ flex: 1, fontSize: 12, fontWeight: 500 }}>Quantity</Typography>
+						<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
 						<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
 							<IconButton sx={{ color: "common.white", padding: 0 }}>
 								<ArrowLeftIcon />
@@ -58,27 +56,14 @@ const CartDetails: FC = () => {
 							</IconButton>
 						</Box>
 					</Box>
-					<Box sx={{ mb: 0.6, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-						<Typography sx={{ fontSize: 12, fontWeight: 500 }}>Color</Typography>
+					<Box sx={{ mb: 0.6, ...styles }}>
+						<SmallText>Color</SmallText>
 						<ProductCircularColor color="#EBEBEB" />
 					</Box>
-					<Box
-						sx={{
-							mb: 0.6,
-							mr: -1,
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-						}}
-					>
-						<Typography sx={{ fontSize: 12, fontWeight: 500 }}>Size</Typography>
+					<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
+						<SmallText>Size</SmallText>
 						<Box>
-							<FormControl
-								className={classes.formControl}
-								fullWidth
-								sx={{ "& .MuiOutlinedInput-root": { color: "#fff" } }}
-								variant="standard"
-							>
+							<FormControl className={classes.formControl} fullWidth variant="standard">
 								<Select
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
@@ -98,7 +83,7 @@ const CartDetails: FC = () => {
 			</Box>
 			<CartDivider sx={{ mt: 6 }} />
 
-			{/* similar products view area*/}
+			{/* similar products view area - slider*/}
 			<Box mt={2.5}>
 				<Typography variant="body2" sx={{ mb: 2.5, fontWeight: 600, textAlign: "center" }}>
 					Similar Products
@@ -120,8 +105,8 @@ const CartDetails: FC = () => {
 							<Box
 								sx={{
 									display: "flex",
-									alignItems: "flex-start",
 									gap: 2,
+									alignItems: "flex-start",
 									justifyContent: "space-between",
 								}}
 							>
@@ -133,29 +118,13 @@ const CartDetails: FC = () => {
 									objectFit="cover"
 								/>
 								<Box>
-									<Box
-										sx={{
-											mb: 0.6,
-											display: "flex",
-											alignItems: "center",
-											gap: 2,
-											justifyContent: "space-between",
-										}}
-									>
+									<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
 										<Typography variant="body2" sx={{ fontWeight: 600 }}>
 											White Cotton Sweatshirt
 										</Typography>
-										<Typography sx={{ fontSize: 12, fontWeight: 500 }}>${"50.00"}</Typography>
+										<SmallText>${"50.00"}</SmallText>
 									</Box>
-									<Box
-										sx={{
-											mb: 0.6,
-											display: "flex",
-											alignItems: "center",
-											gap: 2,
-											justifyContent: "space-between",
-										}}
-									>
+									<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
 										<Box component="span" className={classes.rating}>
 											<Rating name="read-only" value={4} readOnly />
 											<Typography>(45)</Typography>

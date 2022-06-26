@@ -2,6 +2,22 @@ import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/system";
 
 export const useStyles = makeStyles((theme: Theme) => ({
+	banner: {
+		position: "relative",
+		width: "100%",
+		height: "100%",
+		"&::after": {
+			content: "''",
+			position: "absolute",
+			top: 0,
+			left: 0,
+			height: "100%",
+			width: "100%",
+			opacity: 0.3,
+			// backgroundImage: "linear-gradient(180deg, rgba(41, 41, 41, 0) 0%, #292929 100%)",
+			background: "#000000",
+		},
+	},
 	content: {
 		textAlign: "center",
 		position: "absolute",

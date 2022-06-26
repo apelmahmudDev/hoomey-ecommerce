@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 				color: theme.palette.common.white,
 			},
 		},
-
+		"& .MuiOutlinedInput-root": { color: "#fff" },
 		"& .MuiInput-root::before, & .MuiInput-root::after": {
 			borderBottom: 0,
 		},

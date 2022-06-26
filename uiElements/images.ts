@@ -111,7 +111,11 @@ import Gym5Img from "../assets/images/collections/gym-and-sports/gym5.png";
 import Gym6Img from "../assets/images/collections/gym-and-sports/gym6.png";
 import Gym7Img from "../assets/images/collections/gym-and-sports/gym7.png";
 
+// others
+import MenClothingHeroImg from "../assets/images/men-clothing.png";
+
 export const IMAGES = {
+	MenClothingHeroImg,
 	GymHeroHeroImg,
 	GardenHeroImg,
 	Gym1Img,
