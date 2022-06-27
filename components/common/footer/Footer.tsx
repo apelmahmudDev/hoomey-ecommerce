@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Image from "next/image";
 import {
 	Box,
 	Container,
@@ -12,9 +13,10 @@ import {
 	Typography,
 } from "@mui/material";
 import Flag from "../../../assets/images/flag.png";
-
+import ManageCookies from "../manageCookies";
 import Title from "./Title";
 import Link from "../../ui/Link";
+import { useStyles } from "./styled";
 
 // icons
 import {
@@ -28,8 +30,6 @@ import {
 	VisaSvg,
 	WhatsappSvg,
 } from "../../icons";
-import { useStyles } from "./styled";
-import Image from "next/image";
 
 // links
 export const links = [
@@ -52,103 +52,106 @@ const Footer: FC = () => {
 	};
 
 	return (
-		<Box mt={9.1} sx={{ background: "#292929", pt: 5.5, pb: 3.5, color: "#fff" }}>
-			<Container maxWidth="lg">
-				<Grid container spacing={4}>
-					<Grid item xs={12} md={4}>
-						<LogoSvg />
-						<Typography sx={{ mt: 2, fontSize: 12, fontFamily: "Lato", letterSpacing: "0.03em" }}>
-							We're working to turn our passion into a booming online store. We hope you enjoy our
-							products as much as we enjoy offering them to you. If you have any questions or comments,
-							please don't hesitate to contact us.
-						</Typography>
+		<>
+			<Box mt={9.1} sx={{ background: "#292929", pt: 5.5, pb: 3.5, color: "#fff" }}>
+				<Container maxWidth="lg">
+					<Grid container spacing={4}>
+						<Grid item xs={12} md={4}>
+							<LogoSvg />
+							<Typography sx={{ mt: 2, fontSize: 12, fontFamily: "Lato", letterSpacing: "0.03em" }}>
+								We&apos;re working to turn our passion into a booming online store. We hope you enjoy
+								our products as much as we enjoy offering them to you. If you have any questions or
+								comments, please don&apos;t hesitate to contact us.
+							</Typography>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Title content="Useful Links" />
+							<Box
+								sx={{
+									mt: 3.5,
+									display: "flex",
+									flexWrap: "wrap",
+									gap: 2,
+									"& > a": {
+										fontSize: 13,
+										whiteSpace: "nowrap",
+										fontFamily: "Lato",
+										letterSpacing: "0.01em",
+									},
+								}}
+							>
+								{links.map((link) => (
+									<Link key={link.name} href={link.link}>
+										{link.name}
+									</Link>
+								))}
+							</Box>
+						</Grid>
+						<Grid item xs={12} md={2}>
+							<Title content="Language" />
+							<Box sx={{ minWidth: 94, mt: 3.5 }}>
+								<FormControl className={classes.languageSelect} size="small">
+									<Select
+										labelId="demo-simple-select-label"
+										id="demo-simple-select"
+										value={language}
+										onChange={handleChange}
+										startAdornment={
+											<InputAdornment position="start">
+												<Image src={Flag} height={26} width={36} />
+											</InputAdornment>
+										}
+									>
+										<MenuItem sx={{ fontFamily: "Poppins" }} value={10}>
+											English
+										</MenuItem>
+										<MenuItem sx={{ fontFamily: "Poppins" }} value={20}>
+											Hindi
+										</MenuItem>
+										<MenuItem sx={{ fontFamily: "Poppins" }} value={30}>
+											Bangla
+										</MenuItem>
+									</Select>
+								</FormControl>
+							</Box>
+						</Grid>
 					</Grid>
-					<Grid item xs={12} md={6}>
-						<Title content="Useful Links" />
-						<Box
-							sx={{
-								mt: 3.5,
-								display: "flex",
-								flexWrap: "wrap",
-								gap: 2,
-								"& > a": {
-									fontSize: 13,
-									whiteSpace: "nowrap",
-									fontFamily: "Lato",
-									letterSpacing: "0.01em",
-								},
-							}}
-						>
-							{links.map((link) => (
-								<Link key={link.name} href={link.link}>
-									{link.name}
+				</Container>
+				<Divider sx={{ mt: 5.5, mb: 3, backgroundColor: "#DCDCDC" }} />
+				<Container maxWidth="lg">
+					<Grid container spacing={2}>
+						<Grid item xs={12} md={6}>
+							<Box sx={{ display: "flex", gap: 3 }}>
+								<Link href="/">
+									<FacebookSvg />
 								</Link>
-							))}
-						</Box>
+								<Link href="/">
+									<PinterestSvg />
+								</Link>
+								<Link href="/">
+									<InstagramSvg />
+								</Link>
+								<Link href="/">
+									<WhatsappSvg />
+								</Link>
+							</Box>
+							<Typography sx={{ mt: 1.5, fontFamily: "Oswald", letterSpacing: "0.1em", fontWeight: 300 }}>
+								&copy; {new Date().getFullYear()} Hoomey.
+							</Typography>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Box sx={{ display: "flex", gap: 1 }}>
+								<VisaSvg />
+								<MasterCardSvg />
+								<IpaySvg />
+								<PSvg />
+							</Box>
+						</Grid>
 					</Grid>
-					<Grid item xs={12} md={2}>
-						<Title content="Language" />
-						<Box sx={{ minWidth: 94, mt: 3.5 }}>
-							<FormControl className={classes.languageSelect} size="small">
-								<Select
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
-									value={language}
-									onChange={handleChange}
-									startAdornment={
-										<InputAdornment position="start">
-											<Image src={Flag} height={26} width={36} />
-										</InputAdornment>
-									}
-								>
-									<MenuItem sx={{ fontFamily: "Poppins" }} value={10}>
-										English
-									</MenuItem>
-									<MenuItem sx={{ fontFamily: "Poppins" }} value={20}>
-										Hindi
-									</MenuItem>
-									<MenuItem sx={{ fontFamily: "Poppins" }} value={30}>
-										Bangla
-									</MenuItem>
-								</Select>
-							</FormControl>
-						</Box>
-					</Grid>
-				</Grid>
-			</Container>
-			<Divider sx={{ mt: 5.5, mb: 3, backgroundColor: "#DCDCDC" }} />
-			<Container maxWidth="lg">
-				<Grid container spacing={2}>
-					<Grid item xs={12} md={6}>
-						<Box sx={{ display: "flex", gap: 3 }}>
-							<Link href="/">
-								<FacebookSvg />
-							</Link>
-							<Link href="/">
-								<PinterestSvg />
-							</Link>
-							<Link href="/">
-								<InstagramSvg />
-							</Link>
-							<Link href="/">
-								<WhatsappSvg />
-							</Link>
-						</Box>
-						<Typography sx={{ mt: 1.5, fontFamily: "Oswald", letterSpacing: "0.1em", fontWeight: 300 }}>
-							&copy; {new Date().getFullYear()} Hoomey.
-						</Typography>
-					</Grid>
-					<Grid item xs={12} md={6}>
-						<Box sx={{ display: "flex", gap: 1 }}>
-							<VisaSvg />
-							<MasterCardSvg />
-							<IpaySvg />
-							<PSvg />
-						</Box>
-					</Grid>
-				</Grid>
-			</Container>
-		</Box>
+				</Container>
+			</Box>
+			<ManageCookies />
+		</>
 	);
 };
 

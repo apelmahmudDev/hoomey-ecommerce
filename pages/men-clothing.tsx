@@ -1,17 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-
-// components
-import Banner from "../components/menClothing/banner";
-import Collections from "../components/menClothing/clothing";
-
-// common components
-import Navbar from "../components/common/navbar";
-import AppBreadcrumb from "../components/common/AppBreadcrumb";
-import NewsLetter from "../components/common/newsLetter";
-import Footer from "../components/common/footer";
-import ManageCookies from "../components/common/manageCookies";
-import Commitment from "../components/common/Commitment";
+import { Banner, Clothing } from "../components/menClothing";
+import Layout from "../components/common/Layout";
 
 const MenClothing: NextPage = () => {
 	return (
@@ -22,22 +12,10 @@ const MenClothing: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<nav>
-				<Navbar />
-			</nav>
-
-			<main>
-				<AppBreadcrumb />
+			<Layout>
 				<Banner />
-				<Collections />
-				<NewsLetter />
-				<Commitment />
-			</main>
-
-			<footer>
-				<Footer />
-				<ManageCookies />
-			</footer>
+				<Clothing />
+			</Layout>
 		</div>
 	);
 };

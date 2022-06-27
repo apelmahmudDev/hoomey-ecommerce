@@ -113,8 +113,14 @@ import Gym7Img from "../assets/images/collections/gym-and-sports/gym7.png";
 
 // others
 import MenClothingHeroImg from "../assets/images/men-clothing.png";
+import Justify1 from "../assets/images/justify/justify-product1.png";
+import Justify2 from "../assets/images/justify/justify-product2.png";
+import Justify3 from "../assets/images/justify/justify-product3.png";
 
 export const IMAGES = {
+	Justify1,
+	Justify2,
+	Justify3,
 	MenClothingHeroImg,
 	GymHeroHeroImg,
 	GardenHeroImg,

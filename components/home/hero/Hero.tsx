@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper";
+import { Pagination, Autoplay, Lazy } from "swiper";
 import { useStyles } from "./styled";
 import Image from "next/image";
 import { heroData } from "./data";
@@ -13,7 +13,8 @@ const Hero: FC = () => {
 		<Box mb={9.1}>
 			<Swiper
 				className={classes.mySwiper}
-				modules={[Pagination, Autoplay]}
+				modules={[Pagination, Autoplay, Lazy]}
+				lazy={true}
 				pagination={{
 					clickable: true,
 				}}
@@ -25,7 +26,13 @@ const Hero: FC = () => {
 				{heroData.map((data, idx) => (
 					<SwiperSlide key={idx}>
 						<Box sx={{ width: "100%", height: "100%", position: "relative" }}>
-							<Image src={data.image} alt="hero-banner" layout="fill" objectFit="cover" />
+							<Image
+								src={data.image}
+								alt="hero-banner"
+								layout="fill"
+								objectFit="cover"
+								className="swiper-lazy"
+							/>
 						</Box>
 						<Box className={classes.content}>
 							<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>

@@ -32,4 +32,10 @@ export const productData: IProduct[] = [
 		price: 50,
 		discount: 90,
 	},
+	{
+		image: IMAGES.BlackTshirtImg,
+		name: "Black Cotton Sweatshirt ",
+		price: 50,
+		discount: 25,
+	},
 ];

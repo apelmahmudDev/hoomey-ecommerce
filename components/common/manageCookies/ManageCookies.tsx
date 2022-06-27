@@ -43,7 +43,7 @@ const ManageCookies: FC = () => {
 								fontSize: 10,
 							}}
 						>
-							Accept Cookies
+							Manage Cookies
 						</Button>
 					</Box>
 				</Box>

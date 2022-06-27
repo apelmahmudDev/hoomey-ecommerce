@@ -6,25 +6,33 @@ import { productData } from "./data";
 
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Pagination, Lazy } from "swiper";
 
 const LatestProducts: FC = () => {
 	const classes = useStyles();
 
 	return (
 		<Box my={9.1}>
-			<Container maxWidth="lg">
+			<Container maxWidth="xl">
 				<Typography sx={{ fontFamily: "Poppins", mb: 2.6 }} variant="h6" textAlign="center">
 					Latest Products
 				</Typography>
 				<Swiper
 					className={classes.mySwiper}
-					slidesPerView={3}
-					spaceBetween={30}
+					slidesPerView={4}
+					spaceBetween={12}
 					pagination={{
 						clickable: true,
 					}}
-					modules={[Pagination]}
+					lazy={true}
+					modules={[Lazy, Pagination]}
+					breakpoints={{
+						0: { slidesPerView: 1 },
+						350: { slidesPerView: 2 },
+						// 600: { slidesPerView: 2 },
+						900: { slidesPerView: 3 },
+						1200: { slidesPerView: 4 },
+					}}
 				>
 					{productData.map((product, idx) => (
 						<SwiperSlide key={idx}>

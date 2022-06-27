@@ -10,10 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
-import CartDetails from "./CartDetails";
 
 // select
 import FormControl from "@mui/material/FormControl";

@@ -19,6 +19,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
 	},
 
 	content: {
+		width: "100%",
+		paddingLeft: 8,
+		paddingRight: 8,
 		textAlign: "center",
 		position: "absolute",
 		top: "50%",

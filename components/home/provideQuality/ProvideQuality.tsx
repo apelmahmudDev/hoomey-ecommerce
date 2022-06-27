@@ -8,7 +8,7 @@ const ProvideQuality: FC = () => {
 				<Box
 					sx={{
 						background: (theme: Theme) => theme.palette.secondary.main,
-						padding: (theme: Theme) => theme.spacing(10, 0),
+						padding: (theme: Theme) => theme.spacing(10, 1),
 						textAlign: "center",
 					}}
 				>

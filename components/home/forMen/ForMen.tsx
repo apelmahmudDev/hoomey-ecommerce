@@ -11,7 +11,7 @@ const ForMen: FC = () => {
 		<Box my={9.1}>
 			<Container maxWidth="lg">
 				<Grid container spacing={5} alignItems="center">
-					<Grid item xs={12} md={5}>
+					<Grid item xs={12} md={5} sx={{ order: { xs: 2, md: 1 } }}>
 						<Heading text="Wearables & Accessories For Men" />
 						<Typography sx={{ fontSize: 12 }} color="text.secondary">
 							Whatever the weather brings this season, we&apos;ve got a variety of trendy outfits for you
@@ -24,7 +24,7 @@ const ForMen: FC = () => {
 						<ShopForButton btnText="Shop For Men" />
 						{/* </Link> */}
 					</Grid>
-					<Grid item xs={12} md={7}>
+					<Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
 						<Image src={IMAGES.ManImg} alt={"Female"} height={650} objectFit="cover" layout="responsive" />
 					</Grid>
 				</Grid>

@@ -1,5 +1,6 @@
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/lazy";
 import "swiper/css/pagination";
 
 import type { AppProps } from "next/app";

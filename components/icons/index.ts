@@ -1,10 +1,10 @@
+export { default as MasterCardSvg } from "./MasterCard";
+export { default as PinterestSvg } from "./Pinterest";
+export { default as InstagramSvg } from "./Instagram";
+export { default as FacebookSvg } from "./Facebook";
+export { default as WhatsappSvg } from "./Whatsapp";
 export { default as NavLogoSvg } from "./NavLogo";
 export { default as LogoSvg } from "./Logo";
-export { default as FacebookSvg } from "./Facebook";
-export { default as InstagramSvg } from "./Instagram";
 export { default as IpaySvg } from "./Ipay";
-export { default as MasterCardSvg } from "./MasterCard";
-export { default as PSvg } from "./P";
-export { default as PinterestSvg } from "./Pinterest";
 export { default as VisaSvg } from "./Visa";
-export { default as WhatsappSvg } from "./Whatsapp";
+export { default as PSvg } from "./P";
