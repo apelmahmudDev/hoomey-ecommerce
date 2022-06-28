@@ -9,3 +9,4 @@ export { default as Navbar } from "./Navbar";
 export { default as NewsLetter } from "./NewsLetter";
 export { default as ProductCard } from "./ProductCard";
 export { default as Layout } from "./Layout";
+export { default as ProductSizeSelect } from "./ProductSizeSelect";

@@ -1,9 +1,7 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { Box, Typography, IconButton, Rating, Button } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 
@@ -12,7 +10,9 @@ import { useStyles } from "./styled";
 import { IMAGES } from "../../../uiElements";
 
 // icons
-import { ArrowLeftIcon, ArrowRightIcon, CloseIcon, FavoriteBorderIcon } from "../../../uiElements/icons";
+import { CloseIcon, FavoriteBorderIcon } from "../../../uiElements/icons";
+import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
+import ProductSizeSelect from "../ProductSizeSelect";
 
 const styles = {
 	display: "flex",
@@ -22,11 +22,13 @@ const styles = {
 
 const CartDetails: FC = () => {
 	const classes = useStyles();
-	const [age, setAge] = useState("10");
+	const [size, setSize] = useState("10");
 
-	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string);
+	const handleSizeChange = (event: SelectChangeEvent) => {
+		setSize(event.target.value as string);
 	};
+	console.log(size);
+
 	return (
 		<Box sx={{ position: "relative" }}>
 			<IconButton size="small" sx={{ position: "absolute", right: 0, color: "common.white" }}>
@@ -45,15 +47,11 @@ const CartDetails: FC = () => {
 					<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
 						<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
 						<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
-							<IconButton sx={{ color: "common.white", padding: 0 }}>
-								<ArrowLeftIcon />
-							</IconButton>
+							<ArrowLeftIconButton color="#fff" onClick={() => console.log("decrement")} />
 							<Typography variant="body2" fontWeight="500">
 								1
 							</Typography>
-							<IconButton sx={{ color: "common.white", padding: 0 }}>
-								<ArrowRightIcon />
-							</IconButton>
+							<ArrowRightIconButton color="#fff" onClick={() => console.log("increment")} />
 						</Box>
 					</Box>
 					<Box sx={{ mb: 0.6, ...styles }}>
@@ -63,20 +61,13 @@ const CartDetails: FC = () => {
 					<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 						<SmallText>Size</SmallText>
 						<Box>
-							<FormControl className={classes.formControl} fullWidth variant="standard">
-								<Select
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
-									value={age}
-									onChange={handleChange}
-								>
-									<MenuItem value={10}>S</MenuItem>
-									<MenuItem value={20}>M</MenuItem>
-									<MenuItem value={30}>L</MenuItem>
-									<MenuItem value={40}>XL</MenuItem>
-									<MenuItem value={50}>XXL</MenuItem>
-								</Select>
-							</FormControl>
+							<ProductSizeSelect
+								value={size}
+								handleSizeChange={handleSizeChange}
+								iconColor="#fff"
+								outerFontColor="#fff"
+								outerFontSize={12}
+							/>
 						</Box>
 					</Box>
 				</Box>

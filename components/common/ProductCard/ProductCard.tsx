@@ -6,6 +6,7 @@ import { Box, Stack, Typography, Divider, Rating, Card, CardContent, IconButton 
 import { IProduct } from "../../../types/product";
 import { COLORS } from "../../../theme/colors";
 import { FavoriteBorderIcon, ShoppingBagOutlinedIcon } from "../../../uiElements/icons";
+import { PriceTypography } from "../../ui";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
 	const classes = useStyles();
@@ -41,9 +42,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
 			<CardContent>
 				<Typography component="div">{product.name}</Typography>
-				<Typography variant="body2" color="primary" sx={{ my: 0.5, fontSize: 12 }}>
-					<del className={classes.del}>${product.discount.toFixed(2)}</del> ${product.price.toFixed(2)}
-				</Typography>
+				<PriceTypography discount={product.discount} price={product.price} fontSize={12} />
 				<Box component="span" sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
 					<Rating name="read-only" value={4} readOnly size="small" />
 					<Typography sx={{ fontSize: 12 }}>(45)</Typography>

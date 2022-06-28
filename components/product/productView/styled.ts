@@ -14,9 +14,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 		borderRadius: 30,
 		padding: "2px 8px",
 	},
-	del: {
-		color: "#757575",
-	},
+
 	viewTop: {
 		display: "flex",
 		alignItems: "flex-start",
@@ -46,23 +44,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
 				fontSize: 12,
 				color: COLORS.GRANITE_GREY,
 			},
-		},
-	},
-
-	formControl: {
-		"& .MuiInput-root": {
-			// color: theme.palette.common.white,
-			fontSize: 10,
-			"& .MuiSvgIcon-root": {
-				color: COLORS.GRANITE_GREY,
-			},
-		},
-		"& .MuiOutlinedInput-root": { color: "#fff" },
-		"& .MuiInput-root::before, & .MuiInput-root::after": {
-			borderBottom: 0,
-		},
-		"& .css-bcbryb-MuiInputBase-root-MuiInput-root-MuiSelect-root:hover:not(.Mui-disabled):before": {
-			borderBottom: 0,
 		},
 	},
 

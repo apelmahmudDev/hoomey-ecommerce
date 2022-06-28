@@ -27,14 +27,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
 				height: "100%",
 				width: "100%",
 				zIndex: 5,
-				opacity: 0.5,
-				// background: "#000000",
-				backgroundImage: "linear-gradient(180deg, rgba(41, 41, 41, 0) 0%, #292929 100%)",
+				opacity: 0.3,
+				background: "#000000",
+				// backgroundImage: "linear-gradient(180deg, rgba(41, 41, 41, 0) 0%, #292929 100%)",
 			},
 		},
-	},
-	del: {
-		color: "#757575",
 	},
 	discountChip: {
 		position: "absolute",

@@ -1,6 +1,5 @@
 import {
 	Box,
-	IconButton,
 	Button,
 	Card,
 	Container,
@@ -10,9 +9,6 @@ import {
 	AccordionSummary,
 	AccordionDetails,
 	Paper,
-	FormControl,
-	MenuItem,
-	Select,
 	SelectChangeEvent,
 	Stack,
 	CardActionArea,
@@ -23,11 +19,12 @@ import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { useStyles } from "./styled";
 import { SyntheticEvent, useState } from "react";
-import { AddIcon, ArrowLeftIcon, ArrowRightIcon } from "../../../uiElements/icons";
+import { AddIcon } from "../../../uiElements/icons";
 import { FlexStack, ProductCircularColor } from "../../styledComponents";
 import { FacebookSvg, InstagramSvg, PinterestSvg, WhatsappSvg } from "../../icons";
-import { Link } from "../../ui";
+import { ArrowLeftIconButton, Link, ArrowRightIconButton, PriceTypography } from "../../ui";
 import { data } from "./data";
+import { ProductSizeSelect } from "../../common";
 
 const ProductView = () => {
 	const classes = useStyles();
@@ -37,11 +34,13 @@ const ProductView = () => {
 		setExpanded(isExpanded ? panel : false);
 	};
 
-	const [age, setAge] = useState("10");
+	const [size, setSize] = useState("10");
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string);
+		setSize(event.target.value as string);
 	};
+
+	// console.log(size);
 
 	return (
 		<Box mb={9.1}>
@@ -87,13 +86,7 @@ const ProductView = () => {
 								<Typography variant="h6" sx={{ fontFamily: "Poppins" }}>
 									White Cotton Sweatshirt{" "}
 								</Typography>
-								<Typography color="primary" sx={{ fontWeight: 500 }}>
-									<del className={classes.del}>${(90).toFixed(2)}</del> ${(500).toFixed(2)}
-								</Typography>
-								{/* <Box component="span" sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
-									<Rating name="read-only" value={4} readOnly size="small" />
-									<Typography sx={{ fontSize: 12 }}>(45)</Typography>
-								</Box> */}
+								<PriceTypography discount={90} price={500} />
 							</Box>
 							<Button color="secondary" className={classes.chartBtn}>
 								Size Chart
@@ -174,20 +167,11 @@ const ProductView = () => {
 								</FlexStack>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Size</Typography>
-									<FormControl className={classes.formControl} variant="standard">
-										<Select
-											labelId="demo-simple-select-label"
-											id="demo-simple-select"
-											value={age}
-											onChange={handleSizeChange}
-										>
-											<MenuItem value={10}>S</MenuItem>
-											<MenuItem value={20}>M</MenuItem>
-											<MenuItem value={30}>L</MenuItem>
-											<MenuItem value={40}>XL</MenuItem>
-											<MenuItem value={50}>XXL</MenuItem>
-										</Select>
-									</FormControl>
+									<ProductSizeSelect
+										value={size}
+										handleSizeChange={handleSizeChange}
+										outerFontSize={10}
+									/>
 								</FlexStack>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Quantity</Typography>
@@ -199,15 +183,11 @@ const ProductView = () => {
 											minWidth: 80,
 										}}
 									>
-										<IconButton sx={{ color: COLORS.GRANITE_GREY, padding: 0 }}>
-											<ArrowLeftIcon />
-										</IconButton>
+										<ArrowLeftIconButton onClick={() => console.log("decrement")} />
 										<Typography variant="body2" fontWeight="500">
 											1
 										</Typography>
-										<IconButton sx={{ color: COLORS.GRANITE_GREY, padding: 0 }}>
-											<ArrowRightIcon />
-										</IconButton>
+										<ArrowRightIconButton onClick={() => console.log("increment")} />
 									</Box>
 								</FlexStack>
 								<Button color="secondary" variant="contained" fullWidth>
