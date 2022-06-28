@@ -3,7 +3,6 @@ import AppBreadcrumb from "../AppBreadcrumb";
 import Commitment from "../Commitment";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import NewsLetter from "../NewsLetter";
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
@@ -15,7 +14,7 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 			<main>
 				<AppBreadcrumb />
 				{children}
-				<NewsLetter />
+				{/* newslatter */}
 				<Commitment />
 			</main>
 
