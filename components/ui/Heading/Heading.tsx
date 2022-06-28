@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 const Heading = ({
 	text,
 	variant,
+	textAlign,
 	mb,
 }: {
 	text: string;
@@ -22,11 +23,18 @@ const Heading = ({
 		| "overline"
 		| "inherit"
 		| undefined;
+	textAlign?: string;
 	mb?: string | number;
 }) => {
 	return (
 		<Typography
-			sx={{ mb: mb || 3, fontFamily: "Poppins", fontWeight: 500, color: "000000" }}
+			sx={{
+				mb: mb || 3,
+				fontFamily: "Poppins",
+				fontWeight: 500,
+				color: "000000",
+				textAlign: textAlign || "left",
+			}}
 			variant={variant || "h4"}
 		>
 			{text}

@@ -7,8 +7,11 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
+import StarIcon from "@mui/icons-material/Star";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export {
+	StarIcon,
 	SearchIcon,
 	PersonOutlineIcon,
 	FavoriteBorderIcon,
@@ -18,4 +21,5 @@ export {
 	ArrowLeftIcon,
 	CloseIcon,
 	AddIcon,
+	ThumbUpIcon,
 };

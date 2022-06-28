@@ -1,5 +1,12 @@
+import { ArrowSlider } from "../../common";
+import { productData } from "./data";
+
 const AlsoLikeProducts = () => {
-	return <div>AlsoLikeProducts</div>;
+	return (
+		<>
+			<ArrowSlider headingText="You may also like" productArr={productData} />
+		</>
+	);
 };
 
 export default AlsoLikeProducts;

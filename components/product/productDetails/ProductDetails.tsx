@@ -9,9 +9,8 @@ const ProductDetails = () => {
 	return (
 		<SectionBox>
 			<Container maxWidth="lg">
-				<Box sx={{ textAlign: "center" }}>
-					<Heading text="Long Description" variant="h6" />
-				</Box>
+				<Heading text="Long Description" variant="h6" textAlign="center" />
+
 				<SectionBox>
 					<Grid container spacing={6} alignItems="center">
 						{/* product description */}

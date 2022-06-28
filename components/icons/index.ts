@@ -4,6 +4,7 @@ export { default as InstagramSvg } from "./Instagram";
 export { default as FacebookSvg } from "./Facebook";
 export { default as WhatsappSvg } from "./Whatsapp";
 export { default as NavLogoSvg } from "./NavLogo";
+export { default as HintsSvg } from "./Hints";
 export { default as LogoSvg } from "./Logo";
 export { default as IpaySvg } from "./Ipay";
 export { default as VisaSvg } from "./Visa";

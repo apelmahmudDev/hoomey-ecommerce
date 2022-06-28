@@ -5,3 +5,5 @@ export { default as ShopForButton } from "./ShopForButton";
 export { default as PriceTypography } from "./PriceTypography";
 export { default as ArrowLeftIconButton } from "./ArrowLeftIconButton";
 export { default as ArrowRightIconButton } from "./ArrowRightIconButton";
+export { default as HintsHeading } from "./HintsHeading";
+export { default as CircularProgressbarWithCount } from "./CircularProgressbarWithCount";
