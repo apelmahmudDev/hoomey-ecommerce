@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import AppBreadcrumb from "../AppBreadcrumb";
 import Commitment from "../Commitment";
-import Footer from "../Footer";
+import Footer from "../footer";
 import Navbar from "../Navbar";
 import NewsLetter from "../NewsLetter";
 
