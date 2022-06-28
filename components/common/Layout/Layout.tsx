@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import AppBreadcrumb from "../AppBreadcrumb";
 import Commitment from "../Commitment";
 import Footer from "../footer";
-import Navbar from "../Navbar";
+import Navbar from "../navbar";
 import NewsLetter from "../NewsLetter";
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
