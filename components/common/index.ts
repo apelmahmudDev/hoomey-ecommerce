@@ -6,3 +6,5 @@ export { default as ProductCard } from "./ProductCard";
 export { default as Layout } from "./Layout";
 export { default as ProductSizeSelect } from "./ProductSizeSelect";
 export { default as ArrowSlider } from "./ArrowSlider";
+export { default as Footer } from "./footer";
+export { default as Navbar } from "./footer";

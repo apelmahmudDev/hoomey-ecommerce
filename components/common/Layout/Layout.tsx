@@ -3,7 +3,7 @@ import AppBreadcrumb from "../AppBreadcrumb";
 import Commitment from "../Commitment";
 import Footer from "../footer";
 import Navbar from "../navbar";
-import NewsLetter from "../NewsLetter";
+import NewsLetter from "../newsLetter";
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
