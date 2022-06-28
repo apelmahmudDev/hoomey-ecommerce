@@ -1,5 +1,9 @@
 import React, { FC } from "react";
-import { Navbar, AppBreadcrumb, NewsLetter, Commitment, Footer } from "../index";
+import AppBreadcrumb from "../AppBreadcrumb";
+import Commitment from "../Commitment";
+import Footer from "../Footer";
+import Navbar from "../Navbar";
+import NewsLetter from "../NewsLetter";
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (

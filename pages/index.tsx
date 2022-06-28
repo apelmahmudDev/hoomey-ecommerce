@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
+import Commitment from "../components/common/Commitment";
+import Footer from "../components/common/Footer";
+import Navbar from "../components/common/Navbar";
+import NewsLetter from "../components/common/NewsLetter";
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
 
 const Home: NextPage = () => {
