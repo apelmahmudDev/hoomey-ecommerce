@@ -8,7 +8,7 @@ import {
 	ProductView,
 	RatingsAndReviews,
 	RelatedProducts,
-	FloatingAdvertise,
+	// FloatingAdvertise,
 } from "../components/product";
 
 // common components - layout
@@ -29,7 +29,7 @@ const Product: NextPage = () => {
 				<RatingsAndReviews />
 				<RelatedProducts />
 				<AlsoLikeProducts />
-				<FloatingAdvertise />
+				{/* <FloatingAdvertise /> */}
 			</Layout>
 		</div>
 	);
