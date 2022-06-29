@@ -6,3 +6,4 @@ export { default as SmallText } from "./SmallText";
 export { default as ViewMoreButton } from "./ViewMoreButton";
 export { default as FlexStack } from "./FlexStack";
 export { default as SectionBox } from "./SectionBox";
+export { default as BorderLinearProgress } from "./BorderLinearProgress";
