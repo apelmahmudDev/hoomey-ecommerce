@@ -1,4 +1,4 @@
-export { default as AppAvatar } from "./AppAvatar";
+export { default as AppAvatar } from "./Avatar";
 export { default as ProductCircularColor } from "./ProductCircularColor";
 export { default as CloseButton } from "./CloseButton";
 export { default as CartDivider } from "./CartDivider";
@@ -7,3 +7,4 @@ export { default as ViewMoreButton } from "./ViewMoreButton";
 export { default as FlexStack } from "./FlexStack";
 export { default as SectionBox } from "./SectionBox";
 export { default as BorderLinearProgress } from "./BorderLinearProgress";
+export { default as Avatar } from "./Avatar";

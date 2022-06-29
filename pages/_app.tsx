@@ -2,6 +2,7 @@
 import "swiper/css";
 import "swiper/css/lazy";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 
 import type { AppProps } from "next/app";
