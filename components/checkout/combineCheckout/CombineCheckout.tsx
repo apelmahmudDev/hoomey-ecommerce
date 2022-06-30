@@ -7,10 +7,10 @@ const CombineCheckout = () => {
 		<Box mb={9.1}>
 			<Container>
 				<Grid container spacing={5}>
-					<Grid item xs={12} sm={8}>
+					<Grid item xs={12} sm={6} md={8}>
 						<Billingdetails />
 					</Grid>
-					<Grid item xs={12} sm={4}>
+					<Grid item xs={12} sm={6} md={4}>
 						<ShoppingCart />
 					</Grid>
 				</Grid>
