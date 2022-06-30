@@ -1,10 +1,10 @@
-import { ArrowSlider } from "../../common";
+import { ProductArrowSlider } from "../../common";
 import { productData } from "./data";
 
 const RelatedProducts = () => {
 	return (
 		<>
-			<ArrowSlider headingText="Related Products" productArr={productData} />
+			<ProductArrowSlider headingText="Related Products" productArr={productData} />
 		</>
 	);
 };

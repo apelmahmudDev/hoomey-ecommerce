@@ -17,7 +17,7 @@ interface IProps {
 	productArr: IProduct[];
 }
 
-const ArrowSlider: FC<IProps> = ({ headingText, productArr }) => {
+const ProductArrowSlider: FC<IProps> = ({ headingText, productArr }) => {
 	const classes = useStyles();
 
 	return (
@@ -52,4 +52,4 @@ const ArrowSlider: FC<IProps> = ({ headingText, productArr }) => {
 	);
 };
 
-export default ArrowSlider;
+export default ProductArrowSlider;
