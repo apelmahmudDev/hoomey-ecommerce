@@ -17,3 +17,6 @@ export { default as MasterCardForCartSvg } from "./MasterCardForCart";
 export { default as VisaForCartSvg } from "./VisaForCart";
 export { default as OPaySvg } from "./OPay";
 export { default as WhiteLockSvg } from "./WhiteLock";
+export { default as MailSvg } from "./Mail";
+export { default as LockForInputSvg } from "./LockForInput";
+export { default as PersonSvg } from "./Person";
