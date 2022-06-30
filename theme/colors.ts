@@ -4,4 +4,5 @@ export const COLORS = {
 	SONIC_SILVER: "#727376",
 	PRODUCT_CARD_BG: "#E5E5E5",
 	BORDER: "#D9D9D9",
+	OFF_WHITE: "#FAFAFA",
 };

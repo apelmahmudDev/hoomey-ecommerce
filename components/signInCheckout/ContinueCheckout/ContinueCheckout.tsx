@@ -1,7 +1,6 @@
 import { Box, Button, Container, Grid, TextField, Typography, InputAdornment } from "@mui/material";
 import { AppDivider, HeadingText } from "../../styledComponents";
 import { LockForInputSvg, MailSvg } from "../../icons";
-import { useStyles } from "./styled";
 import { styled } from "@mui/styles";
 import { COLORS } from "../../../theme/colors";
 import NewCustomerSignUp from "./NewCustomerSignUp";
@@ -15,7 +14,6 @@ export const Label = styled(Typography)({
 export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#FAFAFA" } };
 
 const ContinueCheckout = () => {
-	const classes = useStyles();
 	return (
 		<Box mb={9.1}>
 			<Container>
@@ -40,7 +38,6 @@ const ContinueCheckout = () => {
 								<Box component="div" sx={{ my: 2.5 }}>
 									<Label>Email address</Label>
 									<TextField
-										className={classes.textField}
 										type="email"
 										required
 										fullWidth
@@ -56,7 +53,6 @@ const ContinueCheckout = () => {
 								<Box component="div" sx={{ my: 2.5 }}>
 									<Label>Password</Label>
 									<TextField
-										className={classes.textField}
 										type="password"
 										required
 										fullWidth

@@ -10,3 +10,5 @@ export { default as Footer } from "./footer";
 export { default as Navbar } from "./navbar";
 export { default as Commitment } from "./Commitment";
 export { default as NewsLetter } from "./newsLetter";
+export { default as SecuredByNorton } from "./SecuredByNorton";
+export { default as PaymentSystemView } from "./PaymentSystemView";

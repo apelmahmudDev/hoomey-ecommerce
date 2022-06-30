@@ -14,6 +14,7 @@ import {
 	OPaySvg,
 	WhiteLockSvg,
 } from "../../icons";
+import { PaymentSystemView, SecuredByNorton } from "../../common";
 
 const SmallText = styled(Typography)({
 	fontSize: 10,
@@ -50,21 +51,8 @@ const CartTotals = () => {
 					</Typography>
 				</Box>
 			</Box>
-			<Box sx={{ my: 3, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 1.2 }}>
-				<LockSvg />
-				<Typography sx={{ fontSize: 12, fontWeight: 500 }}>Guaranteed safe & secure checkout with</Typography>
-				<NortonSvg />
-			</Box>
-			<Box sx={{ my: 3, display: "flex", alignItems: "center", justifyContent: "space-around", gap: 1.2 }}>
-				<MasterCardForCartSvg />
-				<VisaForCartSvg />
-				<PaypalSvg />
-				<UnionPaySvg />
-				<OPaySvg />
-			</Box>
-			<Typography sx={{ fontSize: 10, color: "#808080", my: 2.5 }}>
-				Your card details would be securely saved for faster payments. Your CVV will not be stored
-			</Typography>
+			<SecuredByNorton />
+			<PaymentSystemView />
 			<Button fullWidth variant="contained" color="secondary" endIcon={<WhiteLockSvg />}>
 				Proceed to checkout
 			</Button>
