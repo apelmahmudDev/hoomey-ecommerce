@@ -4,11 +4,13 @@ import { Theme } from "@mui/system";
 export const useStyles = makeStyles((theme: Theme) => ({
 	latestProductCard: {
 		position: "relative",
-		boxShadow: "none",
+		background: "none !important",
+		boxShadow: "none !important",
 		borderRadius: 0,
 		"& .MuiCardContent-root": {
-			padding: 0,
-			paddingTop: 10,
+			background: "#fff !important",
+			padding: "0 !important",
+			paddingTop: "10px !important",
 		},
 		"& .MuiTypography-root": {
 			fontFamily: "Poppins",
@@ -16,7 +18,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 		},
 
 		"&:hover $hoverView": {
-			display: "flex",
+			display: "flex !important",
 		},
 		"&:hover": {
 			"&::before": {
@@ -46,9 +48,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
 	},
 
 	hoverView: {
-		display: "none",
-		zIndex: 5,
 		position: "absolute",
+		display: "none !important",
+		zIndex: 5,
 		bottom: 32,
 		left: 0,
 		right: 0,
