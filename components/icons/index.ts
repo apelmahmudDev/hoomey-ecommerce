@@ -20,3 +20,5 @@ export { default as WhiteLockSvg } from "./WhiteLock";
 export { default as MailSvg } from "./Mail";
 export { default as LockForInputSvg } from "./LockForInput";
 export { default as PersonSvg } from "./Person";
+export { default as CashOnDeliverySvg } from "./CashOnDelivery";
+export { default as PayWithCardSvg } from "./PayWithCard";

@@ -1,13 +1,27 @@
-import { Typography, Box, SelectChangeEvent, Button, FormControlLabel, Checkbox, IconButton } from "@mui/material";
+import {
+	Typography,
+	Box,
+	SelectChangeEvent,
+	Button,
+	Checkbox,
+	IconButton,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+	FormControl,
+	TextField,
+	InputAdornment,
+} from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
 import { PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
-import { WhiteLockSvg } from "../../icons";
+import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg } from "../../icons";
+
 import { ProductCircularColor, SmallText } from "../../styledComponents";
-import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
+import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
 
 // styles
 const styles = {
@@ -112,6 +126,65 @@ const ShoppingCart = () => {
 			</Box>
 			<SecuredByNorton />
 			<PaymentSystemView />
+
+			{/* payment way */}
+			<Box sx={{ border: "1px solid #E9E9E9", p: 1.5 }}>
+				<FormControl>
+					<RadioGroup
+						aria-labelledby="demo-radio-buttons-group-label"
+						defaultValue="cash_on_delivery"
+						name="radio-buttons-group"
+					>
+						<FormControlLabel
+							value="cash_on_delivery"
+							control={<Radio />}
+							label={
+								<Box sx={{ display: "flex", gap: 1.3 }}>
+									<CashOnDeliverySvg />
+									<Typography sx={{ fontSize: 10, color: COLORS.GRANITE_GREY }}>
+										Cash on Delivery
+									</Typography>
+								</Box>
+							}
+						/>
+						<FormControlLabel
+							value="pay_with_card"
+							control={<Radio />}
+							label={
+								<Box sx={{ display: "flex", gap: 1.3 }}>
+									<PayWithCardSvg />
+									<Typography sx={{ fontSize: 10, color: COLORS.GRANITE_GREY }}>
+										Cash on Delivery
+									</Typography>
+								</Box>
+							}
+						/>
+					</RadioGroup>
+					<TextField
+						required
+						fullWidth
+						size="small"
+						inputMode="numeric"
+						sx={{ borderRadius: 0 }}
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
+										<VisaSvg />
+										<MasterCardSvg />
+									</Box>
+								</InputAdornment>
+							),
+						}}
+					/>
+					<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
+						<TextField required size="small" placeholder="MM" />
+						<TextField required size="small" placeholder="YYYY" />
+						<TextField required size="small" placeholder="CVV" />
+					</Box>
+				</FormControl>
+			</Box>
+
 			<FormControlLabel
 				sx={{ mb: 2.5, "& .MuiTypography-root": { fontSize: 10 } }}
 				control={<Checkbox size="small" />}
@@ -122,9 +195,9 @@ const ShoppingCart = () => {
 					</Typography>
 				}
 			/>
-			<Button fullWidth variant="contained" color="secondary" endIcon={<WhiteLockSvg />}>
+			<EndIconButton onClick={() => console.log("checkout working")} endIcon={<WhiteLockSvg />}>
 				Checkout
-			</Button>
+			</EndIconButton>
 		</div>
 	);
 };

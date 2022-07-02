@@ -58,6 +58,13 @@ export let appTheme: Theme = createTheme(theme, {
 				},
 			},
 		},
+		MuiFormControl: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0,
+				},
+			},
+		},
 		// MuiDialog: {
 		// 	styleOverrides: {
 		// 		root: {

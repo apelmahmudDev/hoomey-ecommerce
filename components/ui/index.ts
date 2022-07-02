@@ -7,3 +7,4 @@ export { default as ArrowLeftIconButton } from "./ArrowLeftIconButton";
 export { default as ArrowRightIconButton } from "./ArrowRightIconButton";
 export { default as HintsHeading } from "./HintsHeading";
 export { default as CircularProgressbarWithCount } from "./CircularProgressbarWithCount";
+export { default as EndIconButton } from "./EndIconButton";

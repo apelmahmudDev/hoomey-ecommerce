@@ -9,8 +9,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import StarIcon from "@mui/icons-material/Star";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export {
+	ExpandMoreIcon,
+	LocationOnIcon,
 	StarIcon,
 	SearchIcon,
 	PersonOutlineIcon,
