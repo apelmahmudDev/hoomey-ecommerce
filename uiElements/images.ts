@@ -116,8 +116,12 @@ import MenClothingHeroImg from "../assets/images/men-clothing.png";
 import Justify1 from "../assets/images/justify/justify-product1.png";
 import Justify2 from "../assets/images/justify/justify-product2.png";
 import Justify3 from "../assets/images/justify/justify-product3.png";
+import AboutBanner from "../assets/images/young-handsome.png";
+import ContactBanner from "../assets/images/contact-banner.png";
 
 export const IMAGES = {
+	ContactBanner,
+	AboutBanner,
 	Justify1,
 	Justify2,
 	Justify3,
