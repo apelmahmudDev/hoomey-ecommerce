@@ -111,6 +111,10 @@ import Gym5Img from "../assets/images/collections/gym-and-sports/gym5.png";
 import Gym6Img from "../assets/images/collections/gym-and-sports/gym6.png";
 import Gym7Img from "../assets/images/collections/gym-and-sports/gym7.png";
 
+// blogs
+import BlogBanner1 from "../assets/images/blogs/banner1.png";
+import BlogBanner2 from "../assets/images/blogs/banner2.png";
+
 // others
 import MenClothingHeroImg from "../assets/images/men-clothing.png";
 import Justify1 from "../assets/images/justify/justify-product1.png";
@@ -121,6 +125,8 @@ import ContactBanner from "../assets/images/contact-banner.png";
 import FAQSBanner from "../assets/images/faqs-banner.png";
 
 export const IMAGES = {
+	BlogBanner1,
+	BlogBanner2,
 	FAQSBanner,
 	ContactBanner,
 	AboutBanner,
