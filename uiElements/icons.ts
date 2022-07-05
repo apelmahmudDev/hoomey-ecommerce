@@ -12,8 +12,10 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import CircleIcon from "@mui/icons-material/Circle";
 
 export {
+	CircleIcon,
 	ArrowRightAltIcon,
 	ExpandMoreIcon,
 	LocationOnIcon,

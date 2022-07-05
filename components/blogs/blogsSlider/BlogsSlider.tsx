@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { sliderData } from "./data";
 import { ArrowRightAltIcon } from "../../../uiElements/icons";
+import { Link } from "../../ui";
 
 const BlogsSlider: FC = () => {
 	const classes = useStyles();
@@ -48,14 +49,16 @@ const BlogsSlider: FC = () => {
 							{item.subTitle}
 						</Typography>
 						<Typography color="text.secondary">{item.desc}</Typography>
-						<Button
-							sx={{ mt: 2.5, minWidth: 181, justifyContent: "space-between" }}
-							color="secondary"
-							variant="contained"
-							endIcon={<ArrowRightAltIcon />}
-						>
-							Read More
-						</Button>
+						<Link href="/blogs/1">
+							<Button
+								sx={{ mt: 2.5, minWidth: 181, justifyContent: "space-between" }}
+								color="secondary"
+								variant="contained"
+								endIcon={<ArrowRightAltIcon />}
+							>
+								Read More
+							</Button>
+						</Link>
 					</Box>
 				</SwiperSlide>
 			))}

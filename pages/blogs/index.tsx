@@ -1,8 +1,8 @@
 import { Container, Typography, Box } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { BlogsSlider } from "../components/blogs";
-import { Layout } from "../components/common";
+import { BlogsSlider } from "../../components/blogs";
+import { Layout } from "../../components/common";
 
 const Blogs: NextPage = () => {
 	return (
