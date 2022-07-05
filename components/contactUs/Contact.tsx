@@ -1,9 +1,9 @@
 import { Box, Container, Typography, TextField as MuiTextField, Paper, Button, Grid } from "@mui/material";
 import Image from "next/image";
 import { IMAGES } from "../../uiElements";
-import { useStyles } from "./styled";
 import { styled } from "@mui/styles";
 import { COLORS } from "../../theme/colors";
+import { useGlobalJSStyles } from "../../styles/styled";
 
 export const Label = styled(Typography)({
 	marginBottom: "13px",
@@ -20,16 +20,16 @@ const TextField = styled(MuiTextField)({
 });
 
 const Contact = () => {
-	const classes = useStyles();
+	const classes = useGlobalJSStyles();
 	return (
 		<Box mb={9.1}>
 			<Container>
 				{/* banner */}
 				<Box sx={{ height: 343, position: "relative" }}>
-					<Box className={classes.banner}>
+					<Box className={classes.darkBanner}>
 						<Image src={IMAGES.ContactBanner} alt="banner-hero" layout="fill" objectFit="cover" />
 					</Box>
-					<Box className={classes.content}>
+					<Box className={classes.darkBannerContent}>
 						<Typography variant="h3" gutterBottom sx={{ fontWeight: 600 }}>
 							Contact Us
 						</Typography>

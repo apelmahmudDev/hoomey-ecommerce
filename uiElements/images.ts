@@ -118,8 +118,10 @@ import Justify2 from "../assets/images/justify/justify-product2.png";
 import Justify3 from "../assets/images/justify/justify-product3.png";
 import AboutBanner from "../assets/images/young-handsome.png";
 import ContactBanner from "../assets/images/contact-banner.png";
+import FAQSBanner from "../assets/images/faqs-banner.png";
 
 export const IMAGES = {
+	FAQSBanner,
 	ContactBanner,
 	AboutBanner,
 	Justify1,
