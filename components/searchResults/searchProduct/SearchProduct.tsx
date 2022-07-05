@@ -16,6 +16,8 @@ import { FC, useState } from "react";
 import { CloseIcon } from "../../../uiElements/icons";
 import { ProductCard } from "../../common";
 import { FiltersSvg } from "../../icons";
+// import { EmptyBox } from "../../styledComponents";
+// import { Link } from "../../ui";
 import { productData } from "./data";
 
 const SearchProduct: FC = () => {
@@ -31,6 +33,20 @@ const SearchProduct: FC = () => {
 
 	return (
 		<Box mb={9.1}>
+			{/* search empty */}
+
+			{/* <Container maxWidth="lg">
+				<EmptyBox my={4}>
+					<Typography>
+						Your search <span style={{ fontWeight: "500" }}>&quot;Sweatshirts&quot;</span> didn&apos;t match
+						any results.{" "}
+						<span style={{ color: "#E2BC82", textDecoration: "underline" }}>
+							<Link href="/">Look at other items in our store</Link>
+						</span>
+					</Typography>
+				</EmptyBox>
+			</Container> */}
+
 			<Container maxWidth="xl">
 				<Box mb={4}>
 					<Grid container spacing={5}>

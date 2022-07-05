@@ -13,6 +13,7 @@ import {
 import { FC, useState } from "react";
 import { ProductCard } from "../../common";
 import { FiltersSvg } from "../../icons";
+// import { EmptyBox } from "../../styledComponents";
 import { productData } from "./data";
 
 const FavoritesProduct: FC = () => {
@@ -24,6 +25,13 @@ const FavoritesProduct: FC = () => {
 
 	return (
 		<Box mb={9.1}>
+			{/* favorites empty */}
+			{/* <Container maxWidth="lg">
+				<EmptyBox my={4}>
+					<Typography>Their is no item in your Favorites</Typography>
+				</EmptyBox>
+			</Container> */}
+
 			<Container maxWidth="xl">
 				<Box mb={4}>
 					<Grid container spacing={5}>
