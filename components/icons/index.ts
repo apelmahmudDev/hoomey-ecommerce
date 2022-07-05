@@ -22,3 +22,4 @@ export { default as LockForInputSvg } from "./LockForInput";
 export { default as PersonSvg } from "./Person";
 export { default as CashOnDeliverySvg } from "./CashOnDelivery";
 export { default as PayWithCardSvg } from "./PayWithCard";
+export { default as FiltersSvg } from "./Filters";

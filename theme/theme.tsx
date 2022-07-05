@@ -46,6 +46,8 @@ export let appTheme: Theme = createTheme(theme, {
 					border: `1px solid ${theme.palette.primary.main}`,
 					backgroundColor: "#fff",
 					borderRadius: 0,
+					// color: theme.palette.secondary.main,
+					// opacity: 0.8,
 					"&:hover:not(.Mui-disabled):before": {
 						borderBottom: 0,
 					},
@@ -58,10 +60,13 @@ export let appTheme: Theme = createTheme(theme, {
 				},
 			},
 		},
-		MuiFormControl: {
+		MuiOutlinedInput: {
 			styleOverrides: {
 				root: {
+					// height: 50, // it's overwrite all height small, large , medium - should avoid here
 					borderRadius: 0,
+					color: theme.palette.secondary.main,
+					opacity: 0.8,
 				},
 			},
 		},
@@ -80,6 +85,23 @@ export let appTheme: Theme = createTheme(theme, {
 		// 		},
 		// 	},
 		// },
+		MuiList: {
+			styleOverrides: {
+				root: {
+					paddingTop: 0,
+					paddingBottom: 0,
+				},
+			},
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					border: "1px solid #ABABAB !important",
+					color: theme.palette.secondary.main,
+					opacity: 0.8,
+				},
+			},
+		},
 		MuiDrawer: {
 			styleOverrides: {
 				root: {
