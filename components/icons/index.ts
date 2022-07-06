@@ -23,3 +23,5 @@ export { default as PersonSvg } from "./Person";
 export { default as CashOnDeliverySvg } from "./CashOnDelivery";
 export { default as PayWithCardSvg } from "./PayWithCard";
 export { default as FiltersSvg } from "./Filters";
+export { default as AccountSettings } from "./AccountSettings";
+export { default as EyeClose } from "./EyeClose";
