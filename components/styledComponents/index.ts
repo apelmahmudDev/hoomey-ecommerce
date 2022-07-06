@@ -12,3 +12,4 @@ export { default as HeadingText } from "./HeadingText";
 export { default as AppDivider } from "./AppDivider";
 export { default as CartText } from "./CartText";
 export { default as EmptyBox } from "./EmptyBox";
+export { default as StatusText } from "./StatusText";
