@@ -1,9 +1,8 @@
 import { Box, Button, OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import { useState } from "react";
-import ChangePass from "../../icons/ChangePass";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
-import { EyeClose } from "../../icons";
+import { EyeCloseSvg, ChangePassSvg } from "../../icons";
 
 interface State {
 	currentPassword: string;
@@ -38,7 +37,7 @@ const ChangePassword = () => {
 		return (
 			<InputAdornment position="end">
 				<IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-					{values.showPassword ? <Visibility /> : <EyeClose />}
+					{values.showPassword ? <Visibility /> : <EyeCloseSvg />}
 				</IconButton>
 			</InputAdornment>
 		);
@@ -47,7 +46,7 @@ const ChangePassword = () => {
 	return (
 		<Box>
 			<TitleFlexStack>
-				<ChangePass />
+				<ChangePassSvg />
 				<TitleText>Change Password</TitleText>
 			</TitleFlexStack>
 			<SettingsDivider />

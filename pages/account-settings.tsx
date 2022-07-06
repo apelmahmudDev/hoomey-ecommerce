@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ChangePassword, MyAccount } from "../components/accountSettings";
+import { ChangePassword, MyAccount, AddressBook } from "../components/accountSettings";
 import { Layout } from "../components/common";
 
 import {
@@ -31,7 +31,6 @@ const AccountSettings: NextPage = () => {
 			</Head>
 
 			<Layout>
-				{/* <MyAccount /> */}
 				{/* account & settings */}
 				<Container>
 					<Typography sx={{ mb: 6 }} variant="h6" textAlign="center">
@@ -75,7 +74,8 @@ const AccountSettings: NextPage = () => {
 						{/* body content */}
 						<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
 							{/* <MyAccount /> */}
-							<ChangePassword />
+							{/* <ChangePassword /> */}
+							<AddressBook />
 						</Box>
 					</Box>
 				</Container>
