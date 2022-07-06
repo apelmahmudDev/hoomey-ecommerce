@@ -17,6 +17,14 @@ const TitleFlexStack = styled("div")({
 	gap: "20px",
 });
 
+const FlexStack = styled("div")({
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+	gap: "20px",
+	margin: "10px 0",
+});
+
 const TitleText = styled(Typography)(({ theme }) => ({
 	fontSize: "18px",
 	fontWeight: "600",
@@ -25,4 +33,4 @@ const TitleText = styled(Typography)(({ theme }) => ({
 	},
 }));
 
-export { SettingsDivider, Label, TitleFlexStack, TitleText };
+export { SettingsDivider, Label, TitleFlexStack, FlexStack, TitleText };
