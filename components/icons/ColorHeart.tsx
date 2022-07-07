@@ -1,4 +1,4 @@
-const ColorHeart = ({ height = 28, width = 32 }: { height?: number | string; width?: number | string }) => {
+const ColorHeart = ({ height = 27, width = 32 }: { height?: number | string; width?: number | string }) => {
 	return (
 		<svg width={width} height={height} viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#clip0_1303_3817)">
@@ -13,7 +13,7 @@ const ColorHeart = ({ height = 28, width = 32 }: { height?: number | string; wid
 			</g>
 			<defs>
 				<clipPath id="clip0_1303_3817">
-					<rect width={width} height={height} fill="white" />
+					<rect width="32" height="27" fill="white" />
 				</clipPath>
 			</defs>
 		</svg>

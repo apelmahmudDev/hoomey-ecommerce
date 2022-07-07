@@ -123,8 +123,10 @@ import Justify3 from "../assets/images/justify/justify-product3.png";
 import AboutBanner from "../assets/images/young-handsome.png";
 import ContactBanner from "../assets/images/contact-banner.png";
 import FAQSBanner from "../assets/images/faqs-banner.png";
+import AvatarImg from "../assets/images/avatar.png";
 
 export const IMAGES = {
+	AvatarImg,
 	BlogBanner1,
 	BlogBanner2,
 	FAQSBanner,
