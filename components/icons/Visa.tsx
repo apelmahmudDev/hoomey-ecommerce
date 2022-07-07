@@ -1,8 +1,6 @@
-import { FC } from "react";
-
-const Visa: FC = ({ ...props }) => {
+const Visa = ({ width = 29, height = 18 }: { width?: number | string; height?: number | string }) => {
 	return (
-		<svg width="29" height="18" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<svg width={width} height={height} viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect
 				x="0.25"
 				y="0.25"

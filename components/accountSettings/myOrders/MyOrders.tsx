@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { IMAGES } from "../../../uiElements";
-import { ColorShoppingBag } from "../../icons";
+import { ColorShoppingBagSvg } from "../../icons";
 import { StatusText } from "../../styledComponents";
 import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 
@@ -9,7 +9,7 @@ const MyOrders = () => {
 	return (
 		<Box>
 			<TitleFlexStack>
-				<ColorShoppingBag />
+				<ColorShoppingBagSvg />
 				<TitleText>My Orders</TitleText>
 			</TitleFlexStack>
 
@@ -20,7 +20,9 @@ const MyOrders = () => {
 					key={idx}
 					sx={{ display: "flex", gap: 2.5, bgcolor: "common.white", width: "100%", p: 2.5, my: 2.5 }}
 				>
-					<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={185} width={134} />
+					<Box sx={{ position: "relative", width: 200 }}>
+						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={185} width={134} />
+					</Box>
 
 					<Box width="100%">
 						<FlexStack>

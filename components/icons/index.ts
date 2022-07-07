@@ -29,4 +29,6 @@ export { default as AddressBookSvg } from "./AddressBook";
 export { default as ChangePassSvg } from "./ChangePass";
 export { default as EditSvg } from "./Edit";
 export { default as DeleteSvg } from "./Delete";
-export { default as ColorShoppingBag } from "./ColorShoppingBag";
+export { default as ColorShoppingBagSvg } from "./ColorShoppingBag";
+export { default as ColorHeartSvg } from "./ColorHeart";
+export { default as PaymentMethodsSvg } from "./PaymentMethods";

@@ -1,8 +1,6 @@
-import { FC } from "react";
-
-const MasterCard: FC = ({ ...props }) => {
+const MasterCard = ({ height = 18, width = 29 }: { height?: number | string; width?: number | string }) => {
 	return (
-		<svg width="29" height="18" viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<svg height={height} width={width} viewBox="0 0 29 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect
 				x="0.25"
 				y="0.25"

@@ -1,6 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ChangePassword, MyAccount, AddressBook, MyOrders } from "../components/accountSettings";
+import {
+	ChangePassword,
+	MyAccount,
+	AddressBook,
+	MyOrders,
+	MyWishlist,
+	PaymentMethods,
+} from "../components/accountSettings";
 import { Layout } from "../components/common";
 
 import {
@@ -76,7 +83,9 @@ const AccountSettings: NextPage = () => {
 							{/* <MyAccount /> */}
 							{/* <ChangePassword /> */}
 							{/* <AddressBook /> */}
-							<MyOrders />
+							{/* <MyOrders /> */}
+							{/* <MyWishlist /> */}
+							<PaymentMethods />
 						</Box>
 					</Box>
 				</Container>
