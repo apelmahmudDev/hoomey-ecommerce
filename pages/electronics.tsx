@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { Layout } from "../components/common";
 import { Banner, Collections } from "../components/electronics";
-import Layout from "../components/common/Layout";
 
 const Electronics: NextPage = () => {
 	return (

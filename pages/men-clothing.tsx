@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { Layout } from "../components/common";
 import { Banner, Clothing } from "../components/menClothing";
-import Layout from "../components/common/Layout";
 
 const MenClothing: NextPage = () => {
 	return (

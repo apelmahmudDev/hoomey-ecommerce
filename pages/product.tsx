@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { Layout } from "../components/common";
 
 // components
 import {
@@ -10,9 +11,6 @@ import {
 	RelatedProducts,
 	FloatingAdvertise,
 } from "../components/product";
-
-// common components - layout
-import Layout from "../components/common/Layout";
 
 const Product: NextPage = () => {
 	return (
