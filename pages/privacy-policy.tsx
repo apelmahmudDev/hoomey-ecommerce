@@ -21,7 +21,7 @@ const PrivacyPolicy: NextPage = () => {
 						<Typography variant="h6" fontWeight="medium" textAlign="center">
 							Privacy Policy
 						</Typography>
-						<Typography sx={{ color: COLORS.GRANITE_GREY }} sx={{ my: 2.5 }}>
+						<Typography sx={{ color: COLORS.GRANITE_GREY, my: 2.5 }}>
 							{`This Privacy Policy describes how hoomey.myshopify.com (the “Site” or “we”) collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site.`}
 						</Typography>
 
