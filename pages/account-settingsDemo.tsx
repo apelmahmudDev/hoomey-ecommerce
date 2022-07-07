@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import {
-	ChangePassword,
-	MyAccount,
-	AddressBook,
-	MyOrders,
-	MyWishlist,
+	// ChangePassword,
+	// MyAccount,
+	// AddressBook,
+	// MyOrders,
+	// MyWishlist,
 	PaymentMethods,
 } from "../components/accountSettings";
 import { Layout } from "../components/common";
@@ -23,10 +23,33 @@ import {
 	ListItemText,
 } from "@mui/material";
 
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import {
+	AccountSettingsSvg,
+	AddressBookSvg,
+	ChangePassSvg,
+	ColorHeartSvg,
+	ColorShoppingBagSvg,
+	PaymentMethodsSvg,
+} from "../components/icons";
 
 const drawerWidth = 340;
+
+const menus = [
+	{ link: "/account-settings", name: "Account Settings", icon: <AccountSettingsSvg width={22} height={28} /> },
+	{
+		link: "/account-settings/change-password",
+		name: "Change Password",
+		icon: <ChangePassSvg width={22} height={28} />,
+	},
+	{ link: "/account-settings/address-book", name: "Address Book", icon: <AddressBookSvg width={22} height={28} /> },
+	{ link: "/account-settings/my-orders", name: "My Orders", icon: <ColorShoppingBagSvg width={22} height={28} /> },
+	{ link: "/account-settings/my-whishlist", name: "My Wishlist", icon: <ColorHeartSvg width={25} height={20} /> },
+	{
+		link: "/account-settings/payment-methods",
+		name: "Payment Methods",
+		icon: <PaymentMethodsSvg width={22} height={28} />,
+	},
+];
 
 const AccountSettings: NextPage = () => {
 	return (
@@ -59,20 +82,11 @@ const AccountSettings: NextPage = () => {
 						>
 							<Divider />
 							<List>
-								{[
-									"Account Settings ",
-									"Change Password",
-									"Address Book",
-									"My Orders",
-									"My Wishlist",
-									"Payment Methods",
-								].map((text, index) => (
-									<ListItem key={text} disablePadding>
+								{menus.map((menu) => (
+									<ListItem key={menu.name} disablePadding>
 										<ListItemButton>
-											<ListItemIcon>
-												{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-											</ListItemIcon>
-											<ListItemText primary={text} />
+											<ListItemIcon>{menu.icon}</ListItemIcon>
+											<ListItemText primary={menu.name} />
 										</ListItemButton>
 									</ListItem>
 								))}
