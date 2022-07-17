@@ -1,0 +1,50 @@
+import { Box, Divider, Paper, Typography } from "@mui/material";
+import { ErrorSvg, InfoSvg, SuccessSvg } from "../../icons";
+
+const success = { title: `Yay! Everything worked!`, desc: `Congrats on the internet loading your request.` };
+const error = { title: `Uh oh, something went wrong`, desc: `Sorry! their was a problem with your request.` };
+const info = { title: `Did you know?`, desc: `Here’s something that you might like to know.` };
+
+const Toastify = ({ severity }: { severity: "success" | "info" | "error" }) => {
+	return (
+		<Box>
+			<Box m={5}>
+				<Paper
+					sx={{
+						minHeight: 100,
+						maxWidth: 400,
+						display: "flex",
+						alignItems: "center",
+						p: 1,
+						borderRadius: 0,
+						boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
+					}}
+				>
+					<Divider
+						orientation="vertical"
+						flexItem
+						sx={{ width: "5px", borderColor: "#FFBC59", bgcolor: "#FFBC59" }}
+					/>
+
+					<Box sx={{ display: "flex", gap: 2.5, pl: 1.25 }}>
+						{severity === "success" ? <SuccessSvg /> : severity === "info" ? <InfoSvg /> : <ErrorSvg />}
+						<div>
+							<Typography variant="body2" fontWeight="500">
+								{severity === "success"
+									? success.title
+									: severity === "info"
+									? info.title
+									: error.title}
+							</Typography>
+							<Typography sx={{ mt: 0.5, fontSize: 12, color: "#666666" }}>
+								{severity === "success" ? success.desc : severity === "info" ? info.desc : error.desc}
+							</Typography>
+						</div>
+					</Box>
+				</Paper>
+			</Box>
+		</Box>
+	);
+};
+
+export default Toastify;

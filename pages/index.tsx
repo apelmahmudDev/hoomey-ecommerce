@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
-import { Commitment, CookiePopup, ErrorPopup, Footer, Navbar, NewsLetter, NewsLetterPopup } from "../components/common";
+import { Commitment, Footer, Navbar, NewsLetter, NewsLetterPopup } from "../components/common";
 
 const Home: NextPage = () => {
 	return (
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 			<nav>
 				<Navbar />
 			</nav>
-			<ErrorPopup />
+			{/* <Toastify severity="info" /> - kept here for testing purpose */}
 
 			<main>
 				<Hero />
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 			</footer>
 
 			{/* popup & others section area*/}
-			{/* <NewsLetterPopup /> */}
+			<NewsLetterPopup />
 			{/* <CookiePopup /> */}
 		</div>
 	);
