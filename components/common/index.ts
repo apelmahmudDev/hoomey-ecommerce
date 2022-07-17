@@ -14,3 +14,4 @@ export { default as NewsLetter } from "./newsLetter";
 export { default as SecuredByNorton } from "./SecuredByNorton";
 export { default as PaymentSystemView } from "./PaymentSystemView";
 export { default as NewsLetterPopup } from "./NewsLetterPopup";
+export { default as CookiePopup } from "./CookiePopup";
