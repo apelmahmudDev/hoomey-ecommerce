@@ -124,8 +124,10 @@ import AboutBanner from "../assets/images/young-handsome.png";
 import ContactBanner from "../assets/images/contact-banner.png";
 import FAQSBanner from "../assets/images/faqs-banner.png";
 import AvatarImg from "../assets/images/avatar.png";
+import PopupImg from "../assets/images/popup-shirt.png";
 
 export const IMAGES = {
+	PopupImg,
 	AvatarImg,
 	BlogBanner1,
 	BlogBanner2,
