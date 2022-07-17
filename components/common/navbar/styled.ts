@@ -57,4 +57,27 @@ export const useStyles = makeStyles((theme) => ({
 			width: 15,
 		},
 	},
+
+	// hover menu
+	dropdown: {
+		position: "relative",
+		dislplay: "inline-block",
+
+		"&:hover": {
+			"& .dropdownContent": {
+				display: "block",
+			},
+		},
+
+		"& .dropdownContent": {
+			minWidth: 982,
+			// minWidth: "100%",
+			display: "none",
+			position: "absolute",
+			background: "#fff",
+
+			boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+			zIndex: 1,
+		},
+	},
 }));

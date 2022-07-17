@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import { useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,6 +14,7 @@ import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
+import Tooltip from "@mui/material/Tooltip";
 
 // select
 import FormControl from "@mui/material/FormControl";
@@ -22,6 +23,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 // icons
 import { FavoriteBorderIcon, PersonOutlineIcon, SearchIcon } from "../../../uiElements/icons";
 import AppDrawer from "../AppDrawer";
+import HoverMenu from "./HoverMenu";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -33,7 +35,6 @@ const menuItems = [
 	{ currency: "JPY", value: 7 },
 ];
 const pages = [
-	{ name: "Men", link: "/men" },
 	{ name: "Women", link: "/women" },
 	{ name: "Kids", link: "/kids" },
 ];
@@ -119,6 +120,23 @@ const Navbar: FC = () => {
 
 						{/* menu for large device */}
 						<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+							{/* hover menu*/}
+							<Box component="span" className={classes.dropdown}>
+								<Button
+									sx={{
+										fontFamily: "Euclid Circular A",
+										color: "#727376",
+										my: 2,
+										display: "block",
+									}}
+								>
+									Men
+								</Button>
+								<Box className="dropdownContent">
+									<HoverMenu />
+								</Box>
+							</Box>
+
 							{pages.map((page) => (
 								<Link href={page.link} key={page.name}>
 									<Button

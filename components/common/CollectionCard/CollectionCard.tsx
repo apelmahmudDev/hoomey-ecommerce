@@ -11,7 +11,7 @@ const CollectionCard = ({ item }: { item: ICollection }) => {
 	const classes = useStyles();
 
 	return (
-		<Card sx={{ width: "100%", borderRadius: 0, boxShadow: 0 }}>
+		<Card sx={{ width: "100%", height: "auto", borderRadius: 0, boxShadow: 0 }}>
 			<CardActionArea>
 				<Box className={classes.gradientBg}>
 					<Image
