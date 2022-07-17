@@ -15,3 +15,4 @@ export { default as SecuredByNorton } from "./SecuredByNorton";
 export { default as PaymentSystemView } from "./PaymentSystemView";
 export { default as NewsLetterPopup } from "./NewsLetterPopup";
 export { default as CookiePopup } from "./CookiePopup";
+export { default as ErrorPopup } from "./ErrorPopup";

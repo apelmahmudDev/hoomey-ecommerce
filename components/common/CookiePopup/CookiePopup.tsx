@@ -1,9 +1,8 @@
 import { FC, useState } from "react";
-import { Box, Button, Divider, IconButton, Typography, Switch, DialogActions } from "@mui/material";
+import { Box, Button, Divider, Typography, Switch, DialogActions } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { CloseIcon } from "../../../uiElements/icons";
 import { COLORS } from "../../../theme/colors";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
@@ -24,19 +23,6 @@ const CookiePopup: FC = () => {
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 700 } }}
 		>
 			<DialogContent>
-				<IconButton
-					size="small"
-					aria-label="close"
-					onClick={handleClose}
-					sx={{
-						position: "absolute",
-						right: 8,
-						top: 8,
-					}}
-				>
-					<CloseIcon />
-				</IconButton>
-
 				<Typography textAlign="center" variant="h6" fontFamily="Poppins">
 					Manage Cookie Consent
 				</Typography>
