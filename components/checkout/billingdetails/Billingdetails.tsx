@@ -1,5 +1,5 @@
 import { Typography, Box, TextField as MuiTextField, Grid, Checkbox, FormControlLabel } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 
 export const Label = styled(Typography)({
 	marginBottom: "5px",

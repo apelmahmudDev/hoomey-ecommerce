@@ -32,3 +32,6 @@ export { default as DeleteSvg } from "./Delete";
 export { default as ColorShoppingBagSvg } from "./ColorShoppingBag";
 export { default as ColorHeartSvg } from "./ColorHeart";
 export { default as PaymentMethodsSvg } from "./PaymentMethods";
+export { default as FavoriteFillSvg } from "./FavoriteFill";
+export { default as FavoriteOutlineSvg } from "./FavoriteOutline";
+export { default as BagSvg } from "./Bag";

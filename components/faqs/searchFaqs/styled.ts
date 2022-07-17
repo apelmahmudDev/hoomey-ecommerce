@@ -1,8 +1,7 @@
-import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { COLORS } from "../../../theme/colors";
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useStyles = makeStyles((theme) => ({
 	textField: {
 		flex: 1,
 		background: theme.palette.common.white,

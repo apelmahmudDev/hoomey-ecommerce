@@ -1,7 +1,7 @@
 import { Box, Button, Container, Grid, TextField, Typography, InputAdornment } from "@mui/material";
 import { AppDivider, HeadingText } from "../../styledComponents";
 import { LockForInputSvg, MailSvg } from "../../icons";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
 import NewCustomerSignUp from "./NewCustomerSignUp";
 

@@ -1,7 +1,7 @@
 import { Box, Container, Typography, TextField as MuiTextField, Paper, Button, Grid } from "@mui/material";
 import Image from "next/image";
 import { IMAGES } from "../../uiElements";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { COLORS } from "../../theme/colors";
 import { useGlobalJSStyles } from "../../styles/styled";
 

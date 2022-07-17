@@ -5,8 +5,8 @@ import { Box, Stack, Typography, Divider, Rating, Card, CardContent, IconButton 
 // types
 import { IProduct } from "../../../types/product";
 import { COLORS } from "../../../theme/colors";
-import { FavoriteBorderIcon, ShoppingBagOutlinedIcon } from "../../../uiElements/icons";
 import { PriceTypography } from "../../ui";
+import { BagSvg, FavoriteOutlineSvg } from "../../icons";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
 	const classes = useStyles();
@@ -32,10 +32,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 					spacing={2}
 				>
 					<IconButton color="primary" size="large" aria-label="add-to-favorite">
-						<FavoriteBorderIcon />
+						<FavoriteOutlineSvg />
+						{/* <FavoriteFillSvg /> */}
 					</IconButton>
 					<IconButton color="primary" size="large" aria-label="add-to-cart">
-						<ShoppingBagOutlinedIcon />
+						<BagSvg />
 					</IconButton>
 				</Stack>
 			</Box>

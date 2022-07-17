@@ -1,6 +1,6 @@
 // import { Avatar as MuiAvatar } from "@mui/material";
 import { Box } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { COLORS } from "../../theme/colors";
 
 const EmptyBox = styled(Box)({

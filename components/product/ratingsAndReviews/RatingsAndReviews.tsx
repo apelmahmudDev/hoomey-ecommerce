@@ -1,3 +1,4 @@
+import { useSliderStyles } from "./sliderStyled";
 import { Box, Button, Container, Divider, Grid, Rating, Typography } from "@mui/material";
 import { useState } from "react";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
@@ -12,8 +13,7 @@ import RatingsText from "./styledComponent/RatingsText";
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Lazy, Autoplay, Navigation } from "swiper";
-import { useStyles } from "./styled";
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -41,13 +41,16 @@ const StarViewProgress = ({
 };
 
 const RatingsAndReviews = () => {
-	const classes = useStyles();
+	const props: { itemLength: number } = { itemLength: sliderData.length };
+	const classes = useSliderStyles(props);
+
 	const [ratings, setRatings] = useState<number | null>(0);
 
 	// for swiper slieder
 	const pagination = {
 		clickable: true,
-		renderBullet: function (index: any, className: any) {
+
+		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + (index + 1) + "</span>";
 		},
 	};

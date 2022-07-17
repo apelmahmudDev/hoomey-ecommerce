@@ -1,4 +1,4 @@
-import { Box, Container, Theme, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { FC } from "react";
 
 const ProvideQuality: FC = () => {
@@ -7,8 +7,8 @@ const ProvideQuality: FC = () => {
 			<Container maxWidth="lg">
 				<Box
 					sx={{
-						background: (theme: Theme) => theme.palette.secondary.main,
-						padding: (theme: Theme) => theme.spacing(10, 1),
+						background: (theme) => theme.palette.secondary.main,
+						padding: (theme) => theme.spacing(10, 1),
 						textAlign: "center",
 					}}
 				>

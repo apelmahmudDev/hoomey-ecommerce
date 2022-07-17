@@ -1,7 +1,11 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { Theme } from "@mui/material/styles";
 
-const theme: Theme = createTheme({
+declare module "@mui/styles/defaultTheme" {
+	interface DefaultTheme extends Theme {}
+}
+
+const theme = createTheme({
 	typography: {
 		fontFamily: ["Roboto", "Poppins", "Euclid Circular A", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
 		body1: {
@@ -29,7 +33,7 @@ const theme: Theme = createTheme({
 	},
 });
 
-export let appTheme: Theme = createTheme(theme, {
+export let appTheme = createTheme(theme, {
 	components: {
 		MuiButton: {
 			styleOverrides: {

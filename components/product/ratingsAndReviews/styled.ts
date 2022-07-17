@@ -1,8 +1,7 @@
 import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useStyles = makeStyles((theme) => ({
 	root: {
 		margin: "30px 0",
 		display: "flex",
@@ -42,47 +41,37 @@ export const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 
-	mySwiper: {
-		height: "100%",
-		width: "100%",
-		paddingBottom: 50,
-		"& .swiper-button-next": {
-			top: "100%",
-			marginTop: "-44px",
-			width: "88%",
-			"&::after": {
-				color: "#292929",
-				fontSize: 18,
-				fontWeight: 700,
-			},
-		},
-		"& .swiper-button-prev": {
-			top: "100%",
-			marginTop: "-44px",
-			width: "88%",
-			"&::after": {
-				color: "#292929",
-				fontSize: 18,
-				fontWeight: 700,
-			},
-		},
-		"& .swiper-pagination": {
-			postion: "relative",
-			"& .swiper-pagination-bullet": {
-				postion: "relative",
-				background: "#fff",
-				height: 20,
-				width: 20,
-				opacity: 0.5,
-			},
-			"& .swiper-pagination-bullet-active": {
-				background: "#fff",
-				border: "none",
-				height: 20,
-				width: 20,
-				fontWeight: 500,
-				opacity: 1,
-			},
-		},
-	},
+	// mySwiper: (props: { itemLength: number }) => ({
+	// 	height: "100%",
+	// 	width: "100%",
+	// 	paddingBottom: 50,
+	// 	"& .swiper-button-prev, & .swiper-button-next": {
+	// 		top: "100%",
+	// 		marginTop: "-43px",
+	// 		width: `calc(100% - 40px * ${props.itemLength})`,
+	// 		"&::after": {
+	// 			color: "#292929",
+	// 			fontSize: 18,
+	// 			fontWeight: 700,
+	// 		},
+	// 	},
+	// 	"& .swiper-pagination": {
+	// 		postion: "relative",
+	// 		"& .swiper-pagination-bullet": {
+	// 			postion: "relative",
+	// 			background: "#fff",
+	// 			height: 20,
+	// 			width: 20,
+	// 			opacity: 0.5,
+	// 		},
+	// 		"& .swiper-pagination-bullet-active": {
+	// 			background: "#fff",
+	// 			border: "none",
+	// 			height: 20,
+	// 			width: 20,
+	// 			fontWeight: 500,
+	// 			opacity: 1,
+	// 		},
+	// 	},
+	// }),
 }));

@@ -11,7 +11,7 @@ import {
 	TextField,
 	Button,
 } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { HeadingText } from "../../styledComponents";
 import { COLORS } from "../../../theme/colors";
 import { useStyles } from "./styled";

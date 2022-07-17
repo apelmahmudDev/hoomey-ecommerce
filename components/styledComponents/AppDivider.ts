@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { COLORS } from "../../theme/colors";
 
 const AppDivider = styled(Divider)({

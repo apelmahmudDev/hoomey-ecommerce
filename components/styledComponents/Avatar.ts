@@ -1,5 +1,5 @@
 // import { Avatar as MuiAvatar } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import Image from "next/image";
 
 const Avatar = styled(Image)({

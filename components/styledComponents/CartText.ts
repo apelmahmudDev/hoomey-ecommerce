@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 import { COLORS } from "../../theme/colors";
 
 const CartText = styled(Typography)(({ color, fs }: { fs?: number | string; color?: string }) => ({

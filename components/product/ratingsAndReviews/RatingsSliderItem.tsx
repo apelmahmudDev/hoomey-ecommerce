@@ -12,6 +12,7 @@ interface IProps {
 
 const RatingsSliderItem = ({ comment }: IProps) => {
 	const classes = useStyles();
+
 	return (
 		<Box className={classes.root}>
 			<Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>

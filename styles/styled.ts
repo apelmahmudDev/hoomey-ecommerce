@@ -1,7 +1,6 @@
 import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/system";
 
-export const useGlobalJSStyles = makeStyles((theme: Theme) => ({
+export const useGlobalJSStyles = makeStyles((theme) => ({
 	darkBanner: {
 		position: "relative",
 		width: "100%",

@@ -1,8 +1,7 @@
 import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useStyles = makeStyles(() => ({
 	discountChip: {
 		position: "absolute",
 		top: 20,

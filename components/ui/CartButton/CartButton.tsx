@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import { ShoppingBagOutlinedIcon } from "../../../uiElements/icons";
+import { BagSvg } from "../../icons";
 import { useStyles } from "./styled";
 
 const CartButton = ({ onClick, badgeContent = 1 }: { onClick: () => void; badgeContent: string | number }) => {
@@ -8,8 +8,8 @@ const CartButton = ({ onClick, badgeContent = 1 }: { onClick: () => void; badgeC
 	return (
 		<Button onClick={onClick} sx={{ bgcolor: "#E2BC82" }} className={classes.cartButton}>
 			<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
-				<Box sx={{ display: "flex", alignItems: "center" }}>
-					<ShoppingBagOutlinedIcon />
+				<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+					<BagSvg color="#fff" width={14} height={16} />
 					<Typography sx={{ fontFamily: "Euclid Circular A" }}>Cart</Typography>
 				</Box>
 				<Typography sx={{ fontFamily: "Euclid Circular A" }} className={classes.cartBtnBadge}>

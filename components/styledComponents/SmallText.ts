@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from "@mui/system";
 
 const SmallText = styled(Typography)({
 	fontSize: 12,
