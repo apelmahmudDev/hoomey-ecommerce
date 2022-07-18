@@ -14,7 +14,7 @@ const styles = {
 	alignItems: "center",
 	gap: 1,
 	p: 0.5,
-	border: `1px solid ${COLORS.BORDER}`,
+	border: `1px solid ${COLORS.BORDER[0]}`,
 };
 
 export default function FloatingAdvertise() {

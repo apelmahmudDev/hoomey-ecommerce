@@ -27,7 +27,7 @@ const RatingsSliderItem = ({ comment }: IProps) => {
 					sx={{
 						p: 2.5,
 						background: (theme: Theme) => theme.palette.common.white,
-						border: `1px solid ${COLORS.BORDER}`,
+						border: `1px solid ${COLORS.BORDER[0]}`,
 					}}
 				>
 					<Rating name="read-only" value={comment.stars} readOnly />

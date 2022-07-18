@@ -10,3 +10,4 @@ export { default as EndIconButton } from "./EndIconButton";
 export { default as BulletListItem } from "./BulletListItem";
 export { default as PriceTypography } from "./PriceTypography";
 export { default as CloseIconButton } from "./CloseIconButton";
+export { default as AuthIconButton } from "./AuthIconButton";
