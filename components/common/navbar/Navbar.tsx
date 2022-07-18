@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import { useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,7 +14,7 @@ import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 
 // select
 import FormControl from "@mui/material/FormControl";

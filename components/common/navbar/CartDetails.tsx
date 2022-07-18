@@ -30,48 +30,50 @@ const CartDetails: FC = () => {
 	console.log(size);
 
 	return (
-		<Box sx={{ position: "relative" }}>
+		<Box sx={{ position: "relative", display: "flex", flexDirection: "column", minHeight: `calc(100vh - 64px)` }}>
 			<IconButton size="small" sx={{ position: "absolute", right: 0, color: "common.white" }}>
 				<CloseIcon fontSize="small" />
 			</IconButton>
 
-			<Box sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
-				<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={65} width={47} objectFit="cover" />
-				<Box>
-					<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
-						<Typography variant="body2" sx={{ fontWeight: 600 }}>
-							White Cotton Sweatshirt
-						</Typography>
-						<SmallText>${"50.00"}</SmallText>
-					</Box>
-					<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
-						<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
-						<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
-							<ArrowLeftIconButton color="#fff" onClick={() => console.log("decrement")} />
-							<Typography variant="body2" fontWeight="500">
-								1
+			{[...Array(1)].map((item, idx) => (
+				<Box key={idx} sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
+					<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={65} width={47} objectFit="cover" />
+					<Box>
+						<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
+							<Typography variant="body2" sx={{ fontWeight: 600 }}>
+								White Cotton Sweatshirt
 							</Typography>
-							<ArrowRightIconButton color="#fff" onClick={() => console.log("increment")} />
+							<SmallText>${"50.00"}</SmallText>
 						</Box>
-					</Box>
-					<Box sx={{ mb: 0.6, ...styles }}>
-						<SmallText>Color</SmallText>
-						<ProductCircularColor color="#EBEBEB" />
-					</Box>
-					<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
-						<SmallText>Size</SmallText>
-						<Box>
-							<ProductSizeSelect
-								value={size}
-								handleSizeChange={handleSizeChange}
-								iconColor="#fff"
-								outerFontColor="#fff"
-								outerFontSize={12}
-							/>
+						<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
+							<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
+							<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
+								<ArrowLeftIconButton color="#fff" onClick={() => console.log("decrement")} />
+								<Typography variant="body2" fontWeight="500">
+									1
+								</Typography>
+								<ArrowRightIconButton color="#fff" onClick={() => console.log("increment")} />
+							</Box>
+						</Box>
+						<Box sx={{ mb: 0.6, ...styles }}>
+							<SmallText>Color</SmallText>
+							<ProductCircularColor color="#EBEBEB" />
+						</Box>
+						<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
+							<SmallText>Size</SmallText>
+							<Box>
+								<ProductSizeSelect
+									value={size}
+									handleSizeChange={handleSizeChange}
+									iconColor="#fff"
+									outerFontColor="#fff"
+									outerFontSize={12}
+								/>
+							</Box>
 						</Box>
 					</Box>
 				</Box>
-			</Box>
+			))}
 			<CartDivider sx={{ mt: 6 }} />
 
 			{/* similar products view area - slider*/}
@@ -132,6 +134,28 @@ const CartDetails: FC = () => {
 						</SwiperSlide>
 					))}
 				</Swiper>
+			</Box>
+
+			<Box sx={{ mt: "auto", pt: 5 }}>
+				<CartDivider />
+				<Box sx={{ my: 1.25, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+					<Typography variant="body2" fontWeight="500">
+						Subtotal
+					</Typography>
+					<Typography fontWeight="500" fontSize={12}>
+						${(50).toFixed(2)}
+					</Typography>
+				</Box>
+				<CartDivider />
+
+				<Box sx={{ mt: 3, "& .MuiButton-root": { my: 1.25 } }}>
+					<Button variant="outlined" fullWidth>
+						View Cart
+					</Button>
+					<Button variant="contained" fullWidth>
+						Checkout
+					</Button>
+				</Box>
 			</Box>
 		</Box>
 	);
