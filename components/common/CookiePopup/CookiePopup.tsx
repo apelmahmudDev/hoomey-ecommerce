@@ -8,16 +8,16 @@ import { COLORS } from "../../../theme/colors";
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const CookiePopup: FC = () => {
-	const [isNewsLetterOpen, setIsNewsLetterOpen] = useState(true);
+	const [isCookieOpen, setIsCookieOpen] = useState(true);
 
-	const handleClose = () => {
-		setIsNewsLetterOpen(false);
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsCookieOpen(boolean);
 	};
 
 	return (
 		<Dialog
-			open={isNewsLetterOpen}
-			onClose={handleClose}
+			open={isCookieOpen}
+			onClose={() => handleTogglePopup(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 700 } }}
@@ -43,10 +43,22 @@ const CookiePopup: FC = () => {
 				</Box>
 			</DialogContent>
 			<DialogActions>
-				<Button color="secondary" variant="contained" onClick={handleClose} fullWidth size="large">
+				<Button
+					color="secondary"
+					variant="contained"
+					onClick={() => handleTogglePopup(false)}
+					fullWidth
+					size="large"
+				>
 					Accept All Cookies
 				</Button>
-				<Button color="secondary" variant="outlined" onClick={handleClose} fullWidth size="large">
+				<Button
+					color="secondary"
+					variant="outlined"
+					onClick={() => handleTogglePopup(false)}
+					fullWidth
+					size="large"
+				>
 					Save Preferences
 				</Button>
 			</DialogActions>

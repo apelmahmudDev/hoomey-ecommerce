@@ -1,41 +1,30 @@
 import { FC, useState } from "react";
 import Image from "next/image";
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { IMAGES } from "../../../uiElements";
 import Logo from "../../icons/Logo";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { CloseIcon } from "../../../uiElements/icons";
+import { CloseIconButton } from "../../ui";
 
 const NewsLetterPopup: FC = () => {
 	const [isNewsLetterOpen, setIsNewsLetterOpen] = useState(true);
 
-	const handleClose = () => {
-		setIsNewsLetterOpen(false);
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsNewsLetterOpen(boolean);
 	};
 
 	return (
 		<Dialog
 			open={isNewsLetterOpen}
-			onClose={handleClose}
+			onClose={() => handleTogglePopup(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 720 } }}
 		>
 			<DialogContent sx={{ p: 0 }}>
-				<IconButton
-					size="small"
-					aria-label="close"
-					onClick={handleClose}
-					sx={{
-						position: "absolute",
-						right: 8,
-						top: 8,
-					}}
-				>
-					<CloseIcon />
-				</IconButton>
+				<CloseIconButton onClick={() => handleTogglePopup(false)} />
 
 				<Box sx={{ display: "flex" }}>
 					<Box
