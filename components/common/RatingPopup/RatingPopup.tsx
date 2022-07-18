@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Box, Divider, Rating, Typography } from "@mui/material";
+import { Box, DialogActions, Divider, Typography, Button } from "@mui/material";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -7,26 +7,64 @@ import StepLabel from "@mui/material/StepLabel";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { CloseIconButton } from "../../ui";
+import Ratings from "./Ratings";
+import ProductImage from "./ProductImage";
+import Comment from "./Comment";
+import Details from "./Details";
 
 const steps = ["Rating", "Product image", "Comment", "Your Details"];
 
-const styles = {
-	my: 1.25,
-	height: 50,
-	width: "100%",
-	maxWidth: 400,
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	border: "1px solid #292929",
+const RatingTitle = () => {
+	return (
+		<Typography fontWeight={600} variant="h6" textAlign="center">
+			How would you rate this item?
+		</Typography>
+	);
+};
+const ProductImgTitle = () => {
+	return (
+		<Typography fontWeight={600} variant="h6" textAlign="center">
+			Show it off
+		</Typography>
+	);
+};
+const CommentTitle = () => {
+	return (
+		<Typography fontWeight={600} variant="h6" textAlign="center">
+			Tell us more!
+		</Typography>
+	);
+};
+const DetailsTitle = () => {
+	return (
+		<Typography fontWeight={600} variant="h6" textAlign="center">
+			About you
+		</Typography>
+	);
 };
 
 const RatingPopup: FC = () => {
-	const [value, setValue] = useState<number | null>(5);
+	const [activeStep, setActiveStep] = useState(4);
 	const [isRatingOpen, setIsRatingOpen] = useState(true);
 
 	const handleTogglePopup = (boolean: boolean) => {
 		setIsRatingOpen(boolean);
+	};
+
+	const handleActiveStepBack = () => {
+		switch (activeStep) {
+			case 2:
+				setActiveStep(1);
+				break;
+			case 3:
+				setActiveStep(2);
+				break;
+			case 4:
+				setActiveStep(3);
+				break;
+			default:
+				break;
+		}
 	};
 
 	return (
@@ -41,14 +79,17 @@ const RatingPopup: FC = () => {
 				<CloseIconButton onClick={() => handleTogglePopup(false)} />
 
 				<Box>
-					<Typography fontWeight={600} variant="h6" textAlign="center">
-						How would you rate this item?
-					</Typography>
+					{/* title of rating popup */}
+					{activeStep <= 1 && <RatingTitle />}
+					{activeStep === 2 && <ProductImgTitle />}
+					{activeStep === 3 && <CommentTitle />}
+					{activeStep === 4 && <DetailsTitle />}
+
 					<Divider sx={{ my: 3, bgcolor: "1px solid #C4C4C4" }} />
 
 					{/* stepper */}
 					<Box sx={{ width: "100%" }}>
-						<Stepper activeStep={1} alternativeLabel>
+						<Stepper activeStep={activeStep} alternativeLabel>
 							{steps.map((label) => (
 								<Step key={label}>
 									<StepLabel sx={{ whiteSpace: "nowrap" }}>{label}</StepLabel>
@@ -57,32 +98,23 @@ const RatingPopup: FC = () => {
 						</Stepper>
 					</Box>
 
-					{/* ratings */}
+					{/*body content rating  popup */}
 					<Box mt={5} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-						<Box sx={{ ...styles }}>
-							<Rating
-								name="simple-controlled"
-								value={value}
-								onChange={(event, newValue) => {
-									setValue(newValue);
-								}}
-							/>
-						</Box>
-						<Box sx={{ ...styles }}>
-							<Rating name="simple-controlled" value={4} />
-						</Box>
-						<Box sx={{ ...styles }}>
-							<Rating name="simple-controlled" value={3} />
-						</Box>
-						<Box sx={{ ...styles }}>
-							<Rating name="simple-controlled" value={2} />
-						</Box>
-						<Box sx={{ ...styles }}>
-							<Rating name="simple-controlled" value={1} />
-						</Box>
+						{activeStep <= 1 && <Ratings />}
+						{activeStep === 2 && <ProductImage />}
+						{activeStep === 3 && <Comment />}
+						{activeStep === 4 && <Details />}
 					</Box>
 				</Box>
 			</DialogContent>
+			{activeStep <= 1 ? null : (
+				<DialogActions sx={{ justifyContent: "space-between" }}>
+					<Button color="secondary" onClick={handleActiveStepBack}>
+						Back
+					</Button>
+					<Button color="secondary">Skip</Button>
+				</DialogActions>
+			)}
 		</Dialog>
 	);
 };
