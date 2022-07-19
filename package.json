@@ -24,7 +24,7 @@
 		"semantic-release": "semantic-release --branches publish",
 		"publish:np": "np --branch=master --message=\"chore: :bookmark: Publish v%s tag\"",
 		"publish:np:false": "np --branch=master --message=\"chore: :bookmark: Publish v%s tag\" --publish=false",
-		"check:yarn": "if command -v check-npm-yarn > /dev/null; then check-npm-yarn; fi"
+		"check:yarn": "if command -v check-npm-yarn > /dev/null; then check-npm-yarn; fi",
 		"heroku-postbuild": "npm run dev"
 	},
 	"dependencies": {
