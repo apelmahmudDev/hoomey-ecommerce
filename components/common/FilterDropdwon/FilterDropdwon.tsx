@@ -2,19 +2,20 @@ import { Paper, Box, Button, Divider, Typography } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import LinearProgress, { LinearProgressProps } from "@mui/material/LinearProgress";
+import Slider from "@mui/material/Slider";
+import { useState } from "react";
 
-function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
-	return (
-		<Box sx={{ display: "flex", alignItems: "center" }}>
-			<Box sx={{ width: "100%", mr: 1 }}>
-				<LinearProgress variant="determinate" {...props} />
-			</Box>
-		</Box>
-	);
+function valuetext(value: number) {
+	return `${value}`;
 }
 
 const FilterDropdwon = () => {
+	const [rangeValue, setRangeValue] = useState<number[]>([0, 1000]);
+
+	const handleRangeChange = (event: Event, newValue: number | number[]) => {
+		setRangeValue(newValue as number[]);
+	};
+
 	return (
 		<Box m={5}>
 			<Paper sx={{ maxWidth: 308, boxShadow: 0, borderRadius: 0, p: 2.5, border: "1px solid #ABABAB" }}>
@@ -44,9 +45,20 @@ const FilterDropdwon = () => {
 						<Typography variant="subtitle1" sx={{ mb: 0.5 }}>
 							$0 - $1500
 						</Typography>
-						<LinearProgressWithLabel value={50} />
+
+						<Slider
+							min={0}
+							step={1}
+							max={1500}
+							value={rangeValue}
+							onChange={handleRangeChange}
+							valueLabelDisplay="auto"
+							getAriaValueText={valuetext}
+							getAriaLabel={() => "Price range"}
+						/>
+
 						<Box sx={{ mt: 0.5, display: "flex", justifyContent: "space-between" }}>
-							<Typography variant="subtitle1">$0</Typography>
+							<Typography variant="subtitle1">${rangeValue[1]}</Typography>
 							<Typography variant="subtitle1">$1500</Typography>
 						</Box>
 					</Box>
