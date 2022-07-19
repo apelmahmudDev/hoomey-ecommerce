@@ -1,15 +1,5 @@
 import { FC, ReactNode, useState } from "react";
-import {
-	Box,
-	Button,
-	Checkbox,
-	Divider,
-	FormControlLabel,
-	IconButton,
-	InputAdornment,
-	TextField,
-	Typography,
-} from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, IconButton, InputAdornment, TextField } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -25,7 +15,15 @@ import {
 	PersonFillSvg,
 } from "../../../icons";
 import { Label } from "../../../styledComponents";
-import { StyedTextField, StyledBox } from "../styledComponents";
+import {
+	AuthDevider,
+	AuthFooterTitle,
+	AuthSubtitle,
+	AuthTitle,
+	StyedTextField,
+	StyledBox,
+	StyledFooterBox,
+} from "../styledComponents";
 
 interface State {
 	currentPassword: string;
@@ -41,7 +39,7 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 	);
 };
 
-const SignUpPopup: FC = () => {
+const SignUp: FC = () => {
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
 	const handleTogglePopup = (boolean: boolean) => {
@@ -91,15 +89,11 @@ const SignUpPopup: FC = () => {
 			<DialogContent sx={{ py: 3, px: 5 }}>
 				<CloseIconButton onClick={() => handleTogglePopup(false)} />
 				<Box>
-					<Typography variant="h6" fontWeight={600} textAlign="center">
-						Sign Up
-					</Typography>
-
-					<Divider sx={{ bgcolor: "#C4C4C4", my: 5 }} />
-
-					<Typography variant="h6" fontWeight={500} sx={{ color: "#666666" }}>
+					<AuthTitle>Sign Up</AuthTitle>
+					<AuthDevider />
+					<AuthSubtitle>
 						Registering makes checkout fast and easy and saves your order information in your account.
-					</Typography>
+					</AuthSubtitle>
 
 					{/* sign up with social account */}
 					<Box my={4}>
@@ -187,14 +181,14 @@ const SignUpPopup: FC = () => {
 							Sign Up
 						</Button>
 					</Box>
-					<Box sx={{ mt: 2.5, display: "flex", alignItems: "center", justifyContent: "center" }}>
-						<Typography sx={{ fontWeight: 600, fontSize: 18 }}>Already have an account?</Typography>{" "}
+					<StyledFooterBox>
+						<AuthFooterTitle>Already have an account?</AuthFooterTitle>{" "}
 						<Button sx={{ fontSize: 18 }}>Sign In</Button>
-					</Box>
+					</StyledFooterBox>
 				</Box>
 			</DialogContent>
 		</Dialog>
 	);
 };
 
-export default SignUpPopup;
+export default SignUp;
