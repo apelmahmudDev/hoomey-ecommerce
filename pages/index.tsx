@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
 import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
-import { PasswordChange } from "../components/common/AuthPopup";
+import { ForgetPassword, PasswordChange } from "../components/common/AuthPopup";
 
 const Home: NextPage = () => {
 	return (
@@ -37,7 +37,8 @@ const Home: NextPage = () => {
 			{/* <RatingPopup /> */}
 			{/* <SignUp /> */}
 			{/* <SignIn /> */}
-			<PasswordChange />
+			{/* <PasswordChange /> */}
+			<ForgetPassword />
 		</div>
 	);
 };
