@@ -10,18 +10,19 @@ interface IProps {
 const AuthIconButton = ({ onClick, icon, btnText }: IProps) => {
 	return (
 		<Button
-			sx={{
-				my: 2,
-				gap: { xs: 2, sm: 3, md: 5 },
-				fontSize: { xs: 14, sm: 22 },
-				border: `1px solid ${COLORS.BORDER[1]}`,
-			}}
 			fullWidth
 			color="secondary"
 			onClick={onClick}
-			variant="outlined"
+			sx={{
+				my: 2,
+				fontSize: { xs: 14, sm: 22 },
+				fontWeight: 400,
+				justifyContent: "flex-start",
+				gap: { xs: 5, sm: 10, md: 20 },
+				border: `1px solid ${COLORS.BORDER[1]}`,
+			}}
 		>
-			<Box sx={{ mt: 1.2 }}>{icon}</Box>
+			<Box sx={{ mt: 1.2, pl: { xs: 1, sm: 4 } }}>{icon}</Box>
 			{btnText}
 		</Button>
 	);

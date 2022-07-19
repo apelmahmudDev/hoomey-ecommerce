@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import {
 	Box,
 	Button,
@@ -25,12 +25,21 @@ import {
 	PersonFillSvg,
 } from "../../../icons";
 import { Label } from "../../../styledComponents";
+import { StyedTextField, StyledBox } from "../styledComponents";
 
 interface State {
 	currentPassword: string;
 	newPassword: string;
 	showPassword: boolean;
 }
+
+const FieldIcon = ({ icon }: { icon: ReactNode }) => {
+	return (
+		<InputAdornment position="start" sx={{ "& svg": { background: "#292929" } }}>
+			{icon}
+		</InputAdornment>
+	);
+};
 
 const SignUpPopup: FC = () => {
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
@@ -103,52 +112,29 @@ const SignUpPopup: FC = () => {
 
 					{/* sign up with email and password */}
 					<Box component="form" autoComplete="off">
-						<Box my={2.5}>
+						<StyledBox>
 							<Label fontSize={18}>First Name</Label>
-							<TextField
+							<StyedTextField
 								required
-								fullWidth
-								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<PersonFillSvg />
-										</InputAdornment>
-									),
-								}}
+								InputProps={{ startAdornment: <FieldIcon icon={<PersonFillSvg />} /> }}
 							/>
-						</Box>
-						<Box my={2.5}>
+						</StyledBox>
+						<StyledBox>
 							<Label fontSize={18}>Last Name</Label>
-							<TextField
+							<StyedTextField
 								required
-								fullWidth
-								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<PersonFillSvg />
-										</InputAdornment>
-									),
-								}}
+								InputProps={{ startAdornment: <FieldIcon icon={<PersonFillSvg />} /> }}
 							/>
-						</Box>
-						<Box my={2.5}>
+						</StyledBox>
+						<StyledBox>
 							<Label fontSize={18}>Email Address *</Label>
-							<TextField
+							<StyedTextField
 								required
-								fullWidth
-								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<MailFillSvg />
-										</InputAdornment>
-									),
-								}}
+								type="email"
+								InputProps={{ startAdornment: <FieldIcon icon={<MailFillSvg />} /> }}
 							/>
-						</Box>
-						<Box my={2.5}>
+						</StyledBox>
+						<StyledBox>
 							<Label fontSize={18}>Current Password</Label>
 							<TextField
 								fullWidth
@@ -157,11 +143,7 @@ const SignUpPopup: FC = () => {
 								onChange={handleChange("currentPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<LockFillSvg />
-										</InputAdornment>
-									),
+									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
 										<InputAdornment position="start">
 											<InputAdornmentEl />
@@ -169,8 +151,8 @@ const SignUpPopup: FC = () => {
 									),
 								}}
 							/>
-						</Box>
-						<Box my={2.5}>
+						</StyledBox>
+						<StyledBox>
 							<Label fontSize={18}>Confirm Password *</Label>
 							<TextField
 								fullWidth
@@ -179,11 +161,7 @@ const SignUpPopup: FC = () => {
 								onChange={handleChange("currentPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<LockFillSvg />
-										</InputAdornment>
-									),
+									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
 										<InputAdornment position="start">
 											<InputAdornmentEl />
@@ -191,7 +169,7 @@ const SignUpPopup: FC = () => {
 									),
 								}}
 							/>
-						</Box>
+						</StyledBox>
 
 						<FormControlLabel
 							sx={{ mb: 2.5 }}
@@ -209,7 +187,7 @@ const SignUpPopup: FC = () => {
 							Sign Up
 						</Button>
 					</Box>
-					<Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+					<Box sx={{ mt: 2.5, display: "flex", alignItems: "center", justifyContent: "center" }}>
 						<Typography sx={{ fontWeight: 600, fontSize: 18 }}>Already have an account?</Typography>{" "}
 						<Button sx={{ fontSize: 18 }}>Sign In</Button>
 					</Box>
