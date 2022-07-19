@@ -18,3 +18,5 @@ export { default as CookiePopup } from "./CookiePopup";
 export { default as Toastify } from "./Toastify";
 export { default as RatingPopup } from "./RatingPopup";
 export { default as TrackOrder } from "./TrackOrder";
+export { default as SeachFilter } from "./SeachFilter";
+export { default as FilterDropdwon } from "./FilterDropdwon";
