@@ -42,5 +42,5 @@ export { default as FacebookCircleSvg } from "./FacebookCircle";
 export { default as GoogleCircleSvg } from "./GoogleCircle";
 export { default as ApplesSvg } from "./Apples";
 export { default as PersonFillSvg } from "./PersonFill";
-export { default as LockFillSvg } from "./lockFill";
+export { default as LockFillSvg } from "./LockFill";
 export { default as MailFillSvg } from "./MailFill";
