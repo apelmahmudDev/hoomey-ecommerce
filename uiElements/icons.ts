@@ -12,8 +12,12 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import CircleIcon from "@mui/icons-material/Circle";
+import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
+import NorthWestIcon from "@mui/icons-material/NorthWest";
 
 export {
+	NorthWestIcon,
+	SettingsBackupRestoreIcon,
 	CircleIcon,
 	ArrowRightAltIcon,
 	ExpandMoreIcon,
