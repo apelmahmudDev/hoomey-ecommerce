@@ -7,7 +7,7 @@ const NewsLetter: FC = () => {
 
 	return (
 		<Box my={9.1}>
-			<Box sx={{ background: "#E8BD83", py: 7, px: 0, textAlign: "center" }}>
+			<Box className={classes.root} sx={{ background: "#E8BD83", py: 7, px: 0, textAlign: "center" }}>
 				<Container maxWidth="sm">
 					<Typography variant="h5" sx={{ fontFamily: "Oswald", textTransform: "uppercase" }}>
 						SUBSCRIBE
@@ -21,7 +21,7 @@ const NewsLetter: FC = () => {
 					<Box component="form">
 						<Box sx={{ display: "flex", justifyContent: "center" }}>
 							<TextField
-								className={classes.textField}
+								className="text-field"
 								size="small"
 								id="filled-basic"
 								label="E-mail address"
@@ -29,7 +29,7 @@ const NewsLetter: FC = () => {
 								type="email"
 								required
 							/>
-							<Button className={classes.button} type="submit" variant="contained" color="secondary">
+							<Button className="button" type="submit" variant="contained" color="secondary">
 								REGISTER
 							</Button>
 						</Box>
