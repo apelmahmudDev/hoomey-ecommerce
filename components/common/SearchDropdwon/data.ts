@@ -26,10 +26,4 @@ export const productData: IProduct[] = [
 		price: 50,
 		discount: 25,
 	},
-	{
-		image: IMAGES.WhiteTshirtImg,
-		name: "White Cotton Sweatshirt",
-		price: 50,
-		discount: 90,
-	},
 ];

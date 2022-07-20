@@ -66,8 +66,8 @@ const SearchDropdwon = () => {
 					<Box>
 						<SearchTitle>Products</SearchTitle>
 						<Grid container spacing={3}>
-							{productData.map((product) => (
-								<Grid key={product.name} item>
+							{productData.map((product, idx) => (
+								<Grid key={idx} item xs={6} md={3}>
 									<ProductCard product={product} />
 								</Grid>
 							))}
