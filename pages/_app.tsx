@@ -1,10 +1,3 @@
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/lazy";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "react-circular-progressbar/dist/styles.css";
-
 import type { AppProps } from "next/app";
 import { ReactElement } from "react";
 import Head from "next/head";
@@ -12,10 +5,16 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
-
 import createEmotionCache from "../theme/createEmotionCache";
-import "../styles/globals.css";
 import { appTheme } from "../theme/theme";
+
+import "../styles/globals.css";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "react-circular-progressbar/dist/styles.css";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
