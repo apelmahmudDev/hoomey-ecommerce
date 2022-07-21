@@ -5,7 +5,8 @@ import Image from "next/image";
 import Heading from "../../ui/Heading";
 import ShopForButton from "../../ui/ShopForButton";
 import { IMAGES } from "../../../uiElements";
-// import Link from "../../ui/Link";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
+import Link from "../../ui/Link";
 
 const ForFemale: FC = () => {
 	return (
@@ -30,9 +31,9 @@ const ForFemale: FC = () => {
 							jeans in a variety of sizes, are available. Complete your ensemble with a variety of purses,
 							shoes, and accessories.
 						</Typography>
-						{/* <Link href="/"> */}
-						<ShopForButton btnText="Shop For Woman" />
-						{/* </Link> */}
+						<Link href={ROUTING_TREE.WOMEN}>
+							<ShopForButton btnText="Shop For Woman" />
+						</Link>
 					</Grid>
 				</Grid>
 			</Container>

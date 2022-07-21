@@ -10,7 +10,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Backdrop from "@mui/material/Backdrop";
 import Dialog from "@mui/material/Dialog";
 import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
@@ -28,6 +27,7 @@ import { FavoriteBorderIcon, PersonOutlineIcon, SearchIcon } from "../../../uiEl
 import AppDrawer from "../AppDrawer";
 import HoverMenu from "./HoverMenu";
 import SearchDropdwon from "../SearchDropdwon";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -182,9 +182,11 @@ const Navbar: FC = () => {
 								<IconButton color="primary" size="small">
 									<PersonOutlineIcon />
 								</IconButton>
-								<IconButton color="primary" size="small">
-									<FavoriteBorderIcon />
-								</IconButton>
+								<Link href={ROUTING_TREE.FAVOURITES}>
+									<IconButton color="primary" size="small">
+										<FavoriteBorderIcon />
+									</IconButton>
+								</Link>
 								<Box sx={{ minWidth: 90 }}>
 									<FormControl className={classes.currencySelect} fullWidth size="small">
 										<Select

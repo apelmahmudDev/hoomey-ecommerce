@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import Image from "next/image";
 import { Box, Typography, IconButton, Rating, Button } from "@mui/material";
@@ -13,6 +14,7 @@ import { IMAGES } from "../../../uiElements";
 import { CloseIcon, FavoriteBorderIcon } from "../../../uiElements/icons";
 import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 import ProductSizeSelect from "../ProductSizeSelect";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const styles = {
 	display: "flex",
@@ -21,6 +23,7 @@ const styles = {
 };
 
 const CartDetails: FC = () => {
+	const router = useRouter();
 	const classes = useStyles();
 	const [size, setSize] = useState("10");
 
@@ -149,10 +152,10 @@ const CartDetails: FC = () => {
 				<CartDivider />
 
 				<Box sx={{ mt: 3, "& .MuiButton-root": { my: 1.25 } }}>
-					<Button variant="outlined" fullWidth>
+					<Button variant="outlined" fullWidth onClick={() => router.push(ROUTING_TREE.CART)}>
 						View Cart
 					</Button>
-					<Button variant="contained" fullWidth>
+					<Button variant="contained" fullWidth onClick={() => router.push(ROUTING_TREE.CHECKOUT)}>
 						Checkout
 					</Button>
 				</Box>

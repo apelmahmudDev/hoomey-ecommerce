@@ -5,6 +5,8 @@ import Image from "next/image";
 import Heading from "../../ui/Heading";
 import ShopForButton from "../../ui/ShopForButton";
 import { IMAGES } from "../../../uiElements";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
+import { Link } from "../../ui";
 
 const ForKids: FC = () => {
 	return (
@@ -29,9 +31,9 @@ const ForKids: FC = () => {
 							swimwear are essentials for your next vacation, while our footwear and accessories properly
 							complete his ensemble.
 						</Typography>
-						{/* <Link href="/"> */}
-						<ShopForButton btnText="Shop For Kids" />
-						{/* </Link> */}
+						<Link href={ROUTING_TREE.KIDS}>
+							<ShopForButton btnText="Shop For Kids" />
+						</Link>
 					</Grid>
 				</Grid>
 			</Container>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Heading from "../../ui/Heading";
 import ShopForButton from "../../ui/ShopForButton";
 import { IMAGES } from "../../../uiElements";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
+import { Link } from "../../ui";
 
 const ForMen: FC = () => {
 	return (
@@ -20,9 +22,9 @@ const ForMen: FC = () => {
 							our newest trainers to change up your gym style. Stock up on essentials like undergarments
 							in a variety of styles, or relax in our comfortable loungewear.
 						</Typography>
-						{/* <Link href="/"> */}
-						<ShopForButton btnText="Shop For Men" />
-						{/* </Link> */}
+						<Link href={ROUTING_TREE.MEN}>
+							<ShopForButton btnText="Shop For Men" />
+						</Link>
 					</Grid>
 					<Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
 						<Image src={IMAGES.ManImg} alt={"Female"} height={650} objectFit="cover" layout="responsive" />
