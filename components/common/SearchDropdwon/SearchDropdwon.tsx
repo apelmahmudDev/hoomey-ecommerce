@@ -18,9 +18,15 @@ const SearchDropdwon = () => {
 	}, [searchValue]);
 
 	return (
-		<Box mx={5}>
+		<>
 			<Box component="form">
-				<Box sx={{ display: "flex", justifyContent: "center" }}>
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						"& .MuiFormControl-root": { bgcolor: "common.white" },
+					}}
+				>
 					<TextField
 						required
 						fullWidth
@@ -79,7 +85,7 @@ const SearchDropdwon = () => {
 					</Box>
 				</Paper>
 			</Box>
-		</Box>
+		</>
 	);
 };
 

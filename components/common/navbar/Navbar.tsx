@@ -10,10 +10,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Backdrop from "@mui/material/Backdrop";
+import Dialog from "@mui/material/Dialog";
 import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
 import { NavLogoSvg } from "../../icons";
 import Link from "../../ui/Link";
+
 // import Tooltip from "@mui/material/Tooltip";
 
 // select
@@ -24,6 +27,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FavoriteBorderIcon, PersonOutlineIcon, SearchIcon } from "../../../uiElements/icons";
 import AppDrawer from "../AppDrawer";
 import HoverMenu from "./HoverMenu";
+import SearchDropdwon from "../SearchDropdwon";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -43,6 +47,8 @@ const pages = [
 const Navbar: FC = () => {
 	const classes = useStyles();
 
+	const [currency, setCurrency] = useState("1");
+	const [isOpenSearch, setIsOpenSearch] = useState(false);
 	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	// const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -62,8 +68,6 @@ const Navbar: FC = () => {
 	// 	setAnchorElUser(null);
 	// };
 
-	const [currency, setCurrency] = useState("1");
-
 	const handleCurrencyChange = (event: SelectChangeEvent) => {
 		setCurrency(event.target.value as string);
 	};
@@ -71,6 +75,14 @@ const Navbar: FC = () => {
 	// cart drawer view
 	const toggleCartDrawer = (open: boolean) => {
 		setIsCartDrawerOpen(open);
+	};
+
+	// handle search
+	const handleSearchClose = () => {
+		setIsOpenSearch(false);
+	};
+	const handleSearchToggle = () => {
+		setIsOpenSearch(!isOpenSearch);
 	};
 
 	return (
@@ -164,7 +176,7 @@ const Navbar: FC = () => {
 						{/* right side menu */}
 						<Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
 							<Box sx={{ display: "flex", gap: 2 }}>
-								<IconButton color="primary" size="small">
+								<IconButton onClick={handleSearchToggle} color="primary" size="small">
 									<SearchIcon />
 								</IconButton>
 								<IconButton color="primary" size="small">
@@ -232,6 +244,29 @@ const Navbar: FC = () => {
 			<AppDrawer isDrawerOpen={isCartDrawerOpen} toggleDrawer={toggleCartDrawer}>
 				<CartDetails />
 			</AppDrawer>
+			<Box
+				sx={{
+					"& .MuiBackdrop-root": {
+						width: "100%",
+						pt: 10,
+						alignItems: "flex-start",
+					},
+				}}
+			>
+				<Dialog
+					maxWidth="lg"
+					sx={{
+						"& .MuiDialog-container": { pt: 10, alignItems: "flex-start" },
+						"& .MuiPaper-root": { width: "100%", boxShadow: 0 },
+					}}
+					open={isOpenSearch}
+					onClose={handleSearchClose}
+					aria-labelledby="alert-dialog-title"
+					aria-describedby="alert-dialog-description"
+				>
+					<SearchDropdwon />
+				</Dialog>
+			</Box>
 		</>
 	);
 };

@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
-import { Commitment, Footer, Navbar, NewsLetter, RatingPopup, SearchDropdwon } from "../components/common";
+import { Commitment, Footer, Navbar, NewsLetter, RatingPopup } from "../components/common";
 
 const Home: NextPage = () => {
 	return (
@@ -21,8 +21,6 @@ const Home: NextPage = () => {
 				<ForFemale />
 				<ForMen />
 				<ForKids />
-				{/* for temporary use - SearchDropdwon*/}
-				<SearchDropdwon />
 				<LatestProducts />
 				<ProvideQuality />
 				<Collections />
