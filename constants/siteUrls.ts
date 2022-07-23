@@ -16,4 +16,7 @@ export const ROUTING_TREE = {
 		MY_WISHLIST: "/my-wishlist",
 		PAYMENT_METHODS: "/payment-methods",
 	},
+
+	PRIVACY_POLICY: "privacy-policy",
+	TERMS_OF_SERVICE: "terms-of-service",
 };

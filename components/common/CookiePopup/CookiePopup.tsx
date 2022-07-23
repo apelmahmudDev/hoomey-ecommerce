@@ -4,6 +4,8 @@ import { Box, Button, Divider, Typography, Switch, DialogActions } from "@mui/ma
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { COLORS } from "../../../theme/colors";
+import { Link } from "../../ui";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -30,7 +32,14 @@ const CookiePopup: FC = () => {
 
 				<Typography textAlign="center" fontWeight="medium" sx={{ color: COLORS.GRANITE_GREY }}>
 					We use cookies to optimize our website and our services. For our policies, please visit our{" "}
-					<Button>Privacy Policy</Button> or <Button>Terms of Service</Button> page.
+					<Link href={ROUTING_TREE.PRIVACY_POLICY}>
+						<Button>Privacy Policy</Button>
+					</Link>
+					or{" "}
+					<Link href={ROUTING_TREE.TERMS_OF_SERVICE}>
+						<Button>Terms of Service</Button>
+					</Link>{" "}
+					page.
 				</Typography>
 
 				<Box sx={{ my: 2.25, display: "flex", alignItems: "center", justifyContent: "space-between" }}>

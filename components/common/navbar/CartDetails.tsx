@@ -26,11 +26,23 @@ const CartDetails: FC = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	const [size, setSize] = useState("10");
+	const [quantity, setQuantity] = useState(1);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
 	console.log(size);
+
+	const handleQuantityIncrementClick = () => {
+		setQuantity(quantity + 1);
+	};
+	const handleQuantityDecrementClick = () => {
+		if (quantity > 1) {
+			setQuantity(quantity - 1);
+		} else {
+			return;
+		}
+	};
 
 	return (
 		<Box sx={{ position: "relative", display: "flex", flexDirection: "column", minHeight: `calc(100vh - 64px)` }}>
@@ -51,11 +63,11 @@ const CartDetails: FC = () => {
 						<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
 							<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
 							<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
-								<ArrowLeftIconButton color="#fff" onClick={() => console.log("decrement")} />
+								<ArrowLeftIconButton color="#fff" onClick={handleQuantityDecrementClick} />
 								<Typography variant="body2" fontWeight="500">
-									1
+									{quantity}
 								</Typography>
-								<ArrowRightIconButton color="#fff" onClick={() => console.log("increment")} />
+								<ArrowRightIconButton color="#fff" onClick={handleQuantityIncrementClick} />
 							</Box>
 						</Box>
 						<Box sx={{ mb: 0.6, ...styles }}>

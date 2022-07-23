@@ -106,10 +106,7 @@ const Footer: FC = () => {
 											English
 										</MenuItem>
 										<MenuItem sx={{ fontFamily: "Poppins" }} value={20}>
-											Hindi
-										</MenuItem>
-										<MenuItem sx={{ fontFamily: "Poppins" }} value={30}>
-											Bangla
+											Arabic
 										</MenuItem>
 									</Select>
 								</FormControl>
