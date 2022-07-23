@@ -19,8 +19,10 @@ import { AddressBookSvg, EditSvg, DeleteSvg } from "../../icons";
 import { Popup } from "../../common";
 import { useState } from "react";
 import { PopupDivider } from "../../styledComponents";
+import EditAddress from "./EditAddress";
 
 const AddressBook = () => {
+	const [isEditOpen, setIsEditOpen] = useState(false);
 	const [isAddNewOpen, setIsAddNewOpen] = useState(false);
 	const [country, setCountry] = useState("United States");
 
@@ -28,7 +30,11 @@ const AddressBook = () => {
 		setIsAddNewOpen(boolean);
 	};
 
-	// handleCountryChange
+	const handleEditTogglePopup = (boolean: boolean) => {
+		setIsEditOpen(boolean);
+	};
+
+	// handle country change
 	const handleCountryChange = (event: SelectChangeEvent) => {
 		setCountry(event.target.value as string);
 	};
@@ -64,7 +70,7 @@ const AddressBook = () => {
 						{/* action on right corner */}
 						<Box sx={{ position: "absolute", top: 20, right: 20 }}>
 							<Box>
-								<IconButton>
+								<IconButton onClick={() => handleEditTogglePopup(true)}>
 									<EditSvg />
 								</IconButton>
 							</Box>
@@ -88,7 +94,7 @@ const AddressBook = () => {
 						{/* action on right corner */}
 						<Box sx={{ position: "absolute", top: 20, right: 20 }}>
 							<Box>
-								<IconButton>
+								<IconButton onClick={() => handleEditTogglePopup(true)}>
 									<EditSvg />
 								</IconButton>
 							</Box>
@@ -120,6 +126,7 @@ const AddressBook = () => {
 							<Label>Country / Region</Label>
 							<FormControl fullWidth>
 								<Select
+									size="small"
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
 									value={country}
@@ -133,17 +140,28 @@ const AddressBook = () => {
 						</Box>
 						<Box my={2}>
 							<Label>Street Address</Label>
-							<TextField sx={{ mb: 2 }} required placeholder="House number and street name" fullWidth />
-							<TextField required placeholder="Apartment, suit, unit, etc (optional)" fullWidth />
+							<TextField
+								size="small"
+								sx={{ mb: 2 }}
+								required
+								placeholder="House number and street name"
+								fullWidth
+							/>
+							<TextField
+								size="small"
+								required
+								placeholder="Apartment, suit, unit, etc (optional)"
+								fullWidth
+							/>
 						</Box>
 
 						<Box my={2}>
 							<Label>Town / City</Label>
-							<TextField required placeholder="City or Town Name" fullWidth />
+							<TextField size="small" required placeholder="City or Town Name" fullWidth />
 						</Box>
-						<Box my={2}>
+						<Box>
 							<Label>State</Label>
-							<TextField required placeholder="State name" fullWidth />
+							<TextField size="small" required placeholder="State name" fullWidth />
 						</Box>
 					</Box>
 				</DialogContent>
@@ -166,7 +184,11 @@ const AddressBook = () => {
 					</Button>
 				</DialogActions>
 			</Popup>
+
 			{/* Popup -> edit */}
+			<Popup isOpen={isEditOpen} handleTogglePopup={handleEditTogglePopup}>
+				<EditAddress handleTogglePopup={handleEditTogglePopup} />
+			</Popup>
 		</Box>
 	);
 };
