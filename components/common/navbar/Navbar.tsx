@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
-import { Box } from "@mui/material";
-import { useStyles } from "./styled";
+import { Box, ListItemIcon } from "@mui/material";
+import { paperPropsStyles, useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Dialog from "@mui/material/Dialog";
 import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
-import { NavLogoSvg } from "../../icons";
+import { DarkBagSvg, DarkPersonSvg, NavLogoSvg, OpenSvg, TrackSvg } from "../../icons";
 import Link from "../../ui/Link";
 
 // import Tooltip from "@mui/material/Tooltip";
@@ -46,6 +46,8 @@ const pages = [
 
 const Navbar: FC = () => {
 	const classes = useStyles();
+
+	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState(null);
 
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -83,6 +85,17 @@ const Navbar: FC = () => {
 	};
 	const handleSearchToggle = () => {
 		setIsOpenSearch(!isOpenSearch);
+	};
+
+	// handle user dropdown
+	const isUserDropdownOpen = Boolean(anchorElUserDropdown);
+
+	const handleUserDropdownClick = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorElUserDropdown(event.currentTarget);
+	};
+
+	const handleUserDropdownClose = () => {
+		setAnchorElUserDropdown(null);
 	};
 
 	return (
@@ -179,9 +192,76 @@ const Navbar: FC = () => {
 								<IconButton onClick={handleSearchToggle} color="primary" size="small">
 									<SearchIcon />
 								</IconButton>
-								<IconButton color="primary" size="small">
+
+								{/* <IconButton color="primary" size="small">
+									<PersonOutlineIcon />
+								</IconButton> */}
+
+								<IconButton
+									onClick={handleUserDropdownClick}
+									color="primary"
+									size="small"
+									aria-controls={isUserDropdownOpen ? "settings-menu" : undefined}
+									aria-haspopup="true"
+									aria-expanded={isUserDropdownOpen ? "true" : undefined}
+								>
 									<PersonOutlineIcon />
 								</IconButton>
+
+								{/* user dropdown menu */}
+								<Menu
+									anchorEl={anchorElUserDropdown}
+									id="settings-menu"
+									open={isUserDropdownOpen}
+									onClose={handleUserDropdownClose}
+									PaperProps={{
+										elevation: 0,
+										sx: { ...paperPropsStyles },
+									}}
+									transformOrigin={{
+										horizontal: "right",
+										vertical: "top",
+									}}
+									anchorOrigin={{
+										horizontal: "right",
+										vertical: "bottom",
+									}}
+								>
+									<MenuItem>
+										<Link href={ROUTING_TREE.ACCOUNT_SETTINGS.ROOT}>
+											<ListItemIcon>
+												<DarkPersonSvg />
+											</ListItemIcon>
+											My Profile
+										</Link>
+									</MenuItem>
+									<MenuItem>
+										<Link
+											href={
+												ROUTING_TREE.ACCOUNT_SETTINGS.ROOT +
+												ROUTING_TREE.ACCOUNT_SETTINGS.MY_ORDERS
+											}
+										>
+											<ListItemIcon>
+												<DarkBagSvg />
+											</ListItemIcon>
+											My Orders
+										</Link>
+									</MenuItem>
+									<MenuItem>
+										<ListItemIcon>
+											<TrackSvg />
+										</ListItemIcon>
+										Track Order
+									</MenuItem>
+									<MenuItem>
+										<ListItemIcon>
+											<OpenSvg />
+										</ListItemIcon>
+										Sign Out
+									</MenuItem>
+								</Menu>
+
 								<Link href={ROUTING_TREE.FAVOURITES}>
 									<IconButton color="primary" size="small">
 										<FavoriteBorderIcon />

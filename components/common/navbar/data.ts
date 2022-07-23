@@ -1,14 +1,17 @@
 import { ICollection } from "../../../types/collection";
 import { IMAGES } from "../../../uiElements";
 
-export const itemData: ICollection[] = [
-	{ image: IMAGES.Men1Img, content: "Trending" },
-	{ image: IMAGES.Men2Img, content: "Discounts" },
-	{ image: IMAGES.Men3Img, content: "Clothing" },
-	// { image: IMAGES.Men6Img, content: "Shoes" },
-	// { image: IMAGES.Men7Img, content: "Shoes" },
-	// { image: IMAGES.Men8Img, content: "Accessories" },
-	// { image: IMAGES.Men9Img, content: "Perumes" },
-	// { image: IMAGES.Men10Img, content: "Face & Body" },
-	// { image: IMAGES.Men11Img, content: "Gym" },
+interface ItemData extends ICollection {
+	link: string;
+}
+
+export const itemData: ItemData[] = [
+	{ link: "/women", image: IMAGES.WomenImg, content: "Women" },
+	{ link: "/men", image: IMAGES.MenImg, content: "Men" },
+	{ link: "/kids", image: IMAGES.KidsImg, content: "Kids" },
+	{ link: "/baby", image: IMAGES.BabyCareImg, content: "Baby Care" },
+	{ link: "/pets", image: IMAGES.PetsImg, content: "Pets" },
+	{ link: "/health-and-beauty", image: IMAGES.HealthAndBeautyImg, content: "Health & Beauty" },
+	{ link: "/electronics", image: IMAGES.ElectronicsImg, content: "Electronics" },
+	{ link: "/jewelry", image: IMAGES.JewelryImg, content: "Jewelry" },
 ];

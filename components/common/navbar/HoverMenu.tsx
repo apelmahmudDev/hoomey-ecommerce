@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { FC } from "react";
 import { SmallText } from "../../styledComponents";
 import { Link } from "../../ui";
@@ -40,10 +40,16 @@ const HoverMenu: FC = () => {
 				<Typography variant="body2" whiteSpace="nowrap" fontFamily="Sedan">
 					Trending Categories
 				</Typography>
-				<Box sx={{ mt: 1.25, display: "flex", gap: 2 }}>
-					{itemData.map((item, idx) => (
-						<CollectionCard key={idx} item={item} />
-					))}
+				<Box sx={{ mt: 1.25, height: 240, overflowY: "scroll" }}>
+					<Grid container spacing={2}>
+						{itemData.map((item, idx) => (
+							<Grid key={idx} item xs={6} sm={4} md={3}>
+								<Link href={item.link}>
+									<CollectionCard key={idx} item={item} />
+								</Link>
+							</Grid>
+						))}
+					</Grid>
 				</Box>
 			</Box>
 		</Paper>
