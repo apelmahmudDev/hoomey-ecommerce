@@ -85,6 +85,9 @@ export let appTheme = createTheme(theme, {
 						// "& .MuiDialogContent-root": {
 						// 	padding: theme.spacing(2),
 						// },
+						"& .MuiDialogActions-root": {
+							padding: theme.spacing(2.5, 3),
+						},
 					},
 				},
 			},

@@ -8,6 +8,7 @@ export { default as FlexStack } from "./FlexStack";
 export { default as SectionBox } from "./SectionBox";
 export { default as BorderLinearProgress } from "./BorderLinearProgress";
 export { default as Avatar } from "./Avatar";
+export { default as PopupDivider } from "./PopupDivider";
 export { default as HeadingText } from "./HeadingText";
 export { default as AppDivider } from "./AppDivider";
 export { default as CartText } from "./CartText";
