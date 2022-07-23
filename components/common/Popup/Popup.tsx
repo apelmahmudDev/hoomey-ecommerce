@@ -30,12 +30,12 @@ const DialogClose = (props: DialogCloseProps) => {
 const Popup = ({
 	children,
 	isOpen,
-	isNeddCloseBtn,
+	isNeedCloseBtn,
 	handleTogglePopup,
 }: {
 	children: ReactNode;
 	isOpen: boolean;
-	isNeddCloseBtn?: boolean;
+	isNeedCloseBtn?: boolean;
 	handleTogglePopup: (toggle: boolean) => void;
 }) => {
 	return (
@@ -46,7 +46,7 @@ const Popup = ({
 			aria-describedby="alert-dialog-description"
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 700 } }}
 		>
-			{isNeddCloseBtn && <DialogClose onClick={() => handleTogglePopup(false)} />}
+			{isNeedCloseBtn && <DialogClose onClick={() => handleTogglePopup(false)} />}
 
 			{/* you can pass children with wrap following component */}
 

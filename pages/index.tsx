@@ -40,6 +40,7 @@ const Home: NextPage = () => {
 			{/* <ForgetPassword /> */}
 			{/* <TrackOrder /> */}
 			{/* <FilterDropdwon /> */}
+			{/* <PaymentPopup /> */}
 		</div>
 	);
 };
