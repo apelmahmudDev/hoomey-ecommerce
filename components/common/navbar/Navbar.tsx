@@ -47,12 +47,11 @@ const pages = [
 const Navbar: FC = () => {
 	const classes = useStyles();
 
-	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState(null);
-
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
 	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState<null | HTMLElement>(null);
 	// const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
