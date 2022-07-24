@@ -6,7 +6,7 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 
-import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
+import { AppTooltip, CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
 import { useStyles } from "./styled";
 import { IMAGES } from "../../../uiElements";
 
@@ -15,6 +15,7 @@ import { CloseIcon, FavoriteBorderIcon } from "../../../uiElements/icons";
 import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 import ProductSizeSelect from "../ProductSizeSelect";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
+import ColorPalette from "../ColorPalette";
 
 const styles = {
 	display: "flex",
@@ -72,7 +73,9 @@ const CartDetails: FC = () => {
 						</Box>
 						<Box sx={{ mb: 0.6, ...styles }}>
 							<SmallText>Color</SmallText>
-							<ProductCircularColor color="#EBEBEB" />
+							<AppTooltip title={<ColorPalette />}>
+								<ProductCircularColor color="#EBEBEB" />
+							</AppTooltip>
 						</Box>
 						<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 							<SmallText>Size</SmallText>

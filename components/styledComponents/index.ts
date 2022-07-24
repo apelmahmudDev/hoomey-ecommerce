@@ -14,4 +14,5 @@ export { default as AppDivider } from "./AppDivider";
 export { default as CartText } from "./CartText";
 export { default as EmptyBox } from "./EmptyBox";
 export { default as StatusText } from "./StatusText";
+export { default as AppTooltip } from "./AppTooltip";
 export { default as Label } from "./Label";
