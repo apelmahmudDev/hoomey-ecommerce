@@ -1,4 +1,3 @@
-import { FC, useState } from "react";
 import { Box, Button, Divider, Typography, Switch, DialogActions } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
@@ -9,17 +8,16 @@ import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-const CookiePopup: FC = () => {
-	const [isCookieOpen, setIsCookieOpen] = useState(true);
+interface IProps {
+	isOpen: boolean;
+	handleToggle: (isToggle: boolean) => void;
+}
 
-	const handleTogglePopup = (boolean: boolean) => {
-		setIsCookieOpen(boolean);
-	};
-
+const CookiePopup = ({ isOpen, handleToggle }: IProps) => {
 	return (
 		<Dialog
-			open={isCookieOpen}
-			onClose={() => handleTogglePopup(false)}
+			open={isOpen}
+			onClose={() => handleToggle(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 700 } }}
@@ -55,19 +53,13 @@ const CookiePopup: FC = () => {
 				<Button
 					color="secondary"
 					variant="contained"
-					onClick={() => handleTogglePopup(false)}
+					onClick={() => handleToggle(false)}
 					fullWidth
 					size="large"
 				>
 					Accept All Cookies
 				</Button>
-				<Button
-					color="secondary"
-					variant="outlined"
-					onClick={() => handleTogglePopup(false)}
-					fullWidth
-					size="large"
-				>
+				<Button color="secondary" variant="outlined" onClick={() => handleToggle(false)} fullWidth size="large">
 					Save Preferences
 				</Button>
 			</DialogActions>

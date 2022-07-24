@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
-import { Commitment, CookiePopup, Footer, Navbar, NewsLetter } from "../components/common";
+import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
 
 const Home: NextPage = () => {
 	return (
@@ -32,7 +32,6 @@ const Home: NextPage = () => {
 			</footer>
 			{/* popup & others section area*/}
 			{/* <NewsLetterPopup /> */}
-			<CookiePopup />
 			{/* <RatingPopup /> */}
 			{/* <SignUp /> */}
 			{/* <SignIn /> */}
@@ -41,6 +40,7 @@ const Home: NextPage = () => {
 			{/* <TrackOrder /> */}
 			{/* <FilterDropdwon /> */}
 			{/* <PaymentPopup /> */}
+			{/* <CTAPopup /> */}
 		</div>
 	);
 };

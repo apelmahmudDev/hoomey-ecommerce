@@ -1,6 +1,7 @@
 export { default as Popup } from "./Popup";
 export { default as Navbar } from "./navbar";
 export { default as Footer } from "./footer";
+export { default as CTAPopup } from "./CTAPopup";
 export { default as Toastify } from "./Toastify";
 export { default as AppDrawer } from "./AppDrawer";
 export { default as AppBanner } from "./AppBanner";

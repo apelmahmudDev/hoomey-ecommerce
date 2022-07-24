@@ -1,7 +1,14 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import { FC } from "react";
+import { FC, useState } from "react";
+import CookiePopup from "../CookiePopup";
 
 const ManageCookies: FC = () => {
+	const [isCookieOpen, setIsCookieOpen] = useState(false);
+
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsCookieOpen(boolean);
+	};
+
 	return (
 		<Box sx={{ background: "#1F1F1F", py: 1.8 }}>
 			<Container maxWidth="lg">
@@ -34,6 +41,7 @@ const ManageCookies: FC = () => {
 							Accept Cookies
 						</Button>
 						<Button
+							onClick={() => handleTogglePopup(true)}
 							variant="text"
 							sx={{
 								fontFamily: "Poppins",
@@ -48,6 +56,9 @@ const ManageCookies: FC = () => {
 					</Box>
 				</Box>
 			</Container>
+
+			{/* manage cookie  - popup*/}
+			<CookiePopup handleToggle={handleTogglePopup} isOpen={isCookieOpen} />
 		</Box>
 	);
 };
