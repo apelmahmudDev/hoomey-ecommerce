@@ -8,6 +8,7 @@ export { default as AppBanner } from "./AppBanner";
 export { default as Layout } from "./Layout/Layout";
 export { default as Commitment } from "./Commitment";
 export { default as NewsLetter } from "./newsLetter";
+export { default as AbondonCart } from "./AbondonCart";
 export { default as TrackOrder } from "./TrackOrder";
 export { default as ProductCard } from "./ProductCard";
 export { default as SeachFilter } from "./SeachFilter";
