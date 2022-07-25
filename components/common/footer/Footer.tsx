@@ -1,18 +1,15 @@
 import { FC, useState } from "react";
-import Image from "next/image";
 import {
 	Box,
 	Container,
 	Divider,
 	FormControl,
 	Grid,
-	InputAdornment,
 	MenuItem,
 	Select,
 	SelectChangeEvent,
 	Typography,
 } from "@mui/material";
-import Flag from "../../../assets/images/flag.png";
 import ManageCookies from "../manageCookies";
 import Title from "./Title";
 import Link from "../../ui/Link";
@@ -20,6 +17,7 @@ import { useStyles } from "./styled";
 
 // icons
 import {
+	ArabicFlagSvg,
 	FacebookSvg,
 	InstagramSvg,
 	IpaySvg,
@@ -30,6 +28,7 @@ import {
 	VisaSvg,
 	WhatsappSvg,
 } from "../../icons";
+import USAFlag from "../../icons/UsaFlag";
 
 // links
 export const links = [
@@ -96,16 +95,18 @@ const Footer: FC = () => {
 										id="demo-simple-select"
 										value={language}
 										onChange={handleChange}
-										startAdornment={
-											<InputAdornment position="start">
-												<Image src={Flag} height={26} width={36} />
-											</InputAdornment>
-										}
+										// startAdornment={
+										// 	<InputAdornment position="start">
+										// 		<Image src={Flag} height={26} width={36} />
+										// 	</InputAdornment>
+										// }
 									>
-										<MenuItem sx={{ fontFamily: "Poppins" }} value={10}>
+										<MenuItem className={classes.menuItem} value={10}>
+											<USAFlag />
 											English
 										</MenuItem>
-										<MenuItem sx={{ fontFamily: "Poppins" }} value={20}>
+										<MenuItem className={classes.menuItem} value={20}>
+											<ArabicFlagSvg />
 											Arabic
 										</MenuItem>
 									</Select>

@@ -9,6 +9,18 @@ export const useStyles = makeStyles((theme) => ({
 			"& .MuiSvgIcon-root": {
 				color: theme.palette.secondary.main,
 			},
+
+			"& > .MuiSelect-select": {
+				display: "flex",
+				alignItems: "center",
+				gap: 5,
+			},
 		},
+	},
+	menuItem: {
+		color: "#292929",
+		fontFamily: "Poppins",
+		background: "#E2BC82 !important",
+		"& > svg": { marginRight: 5 },
 	},
 }));
