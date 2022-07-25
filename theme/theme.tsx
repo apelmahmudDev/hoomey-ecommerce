@@ -109,6 +109,13 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0,
+				},
+			},
+		},
 		MuiDrawer: {
 			styleOverrides: {
 				root: {

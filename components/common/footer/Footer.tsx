@@ -88,7 +88,12 @@ const Footer: FC = () => {
 						</Grid>
 						<Grid item xs={12} md={2}>
 							<Title content="Language" />
-							<Box sx={{ minWidth: 94, mt: 3.5 }}>
+							<Box
+								sx={{
+									minWidth: 94,
+									mt: 3.5,
+								}}
+							>
 								<FormControl className={classes.languageSelect} size="small">
 									<Select
 										labelId="demo-simple-select-label"

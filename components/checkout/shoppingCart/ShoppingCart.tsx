@@ -10,6 +10,7 @@ import {
 	FormControl,
 	TextField,
 	InputAdornment,
+	Button,
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -42,10 +43,10 @@ const ShoppingCart = () => {
 
 	return (
 		<div>
-			<Typography sx={{ mb: 3 }} variant="h6">
+			<Typography sx={{ mb: 3 }} variant="h6" fontFamily="Poppins">
 				Shopping Cart
 			</Typography>
-			<Typography sx={{ mb: 2 }} variant="h6">
+			<Typography sx={{ mb: 2 }} variant="h6" fontFamily="Poppins">
 				Your order
 			</Typography>
 			<Typography sx={{ mb: 2, fontSize: 12 }}>Total (1 Item) $50</Typography>
@@ -108,12 +109,33 @@ const ShoppingCart = () => {
 					Subtotal
 				</SmallText>
 				<SmallText sx={{ p: 1.5, color: COLORS.GRANITE_GREY }}>Shipping</SmallText>
-				<Box sx={{ ...styles, px: 1.5 }}>
-					<SmallText>USPS Priority 2-3 Day:</SmallText>
-					<SmallText>$5.00</SmallText>
+				<Box sx={{ ...styles.flexStack, p: 1.5 }}>
+					<SmallText sx={{ color: COLORS.GRANITE_GREY }}>USPS Priority 2-3 Day:</SmallText>
+					<SmallText sx={{ color: COLORS.GRANITE_GREY }}>$5.00</SmallText>
 				</Box>
-				<SmallText sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>Shipping to NJ</SmallText>
-				<SmallText sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>Tax</SmallText>
+				<Box
+					sx={{
+						...styles.flexStack,
+						p: 1.5,
+						borderBottom: "1px solid #D6D4D4",
+						borderTop: "1px solid #D6D4D4",
+					}}
+				>
+					<SmallText sx={{ color: COLORS.GRANITE_GREY }}>Tax</SmallText>
+					<SmallText sx={{ color: COLORS.GRANITE_GREY }}>$0.00</SmallText>
+				</Box>
+				<Box sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>
+					<SmallText sx={{ mb: 1.25, color: COLORS.GRANITE_GREY }}>Enter Promo Code:</SmallText>
+					<Box component="form">
+						<Box sx={{ display: "flex", justifyContent: "center" }}>
+							<TextField fullWidth size="small" id="filled-basic" placeholder="Promo Code" required />
+							<Button size="small" type="submit" variant="contained" color="secondary">
+								Submit
+							</Button>
+						</Box>
+					</Box>
+				</Box>
+
 				<Box sx={{ p: 1.5, display: "flex", justifyContent: "space-between" }}>
 					<Typography variant="body2" sx={{ fontWeight: 600, color: COLORS.GRANITE_GREY }}>
 						Total

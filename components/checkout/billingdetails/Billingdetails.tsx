@@ -77,7 +77,7 @@ const Billingdetails = () => {
 					<Label>Company name (optional)</Label>
 					<TextField fullWidth />
 				</Box>
-				<Typography sx={{ my: 3 }} variant="h6">
+				<Typography sx={{ my: 3 }} variant="h6" fontFamily="Poppins">
 					Shipping Details
 				</Typography>
 				<FormControlLabel
