@@ -125,8 +125,10 @@ import ContactBanner from "../assets/images/contact-banner.png";
 import FAQSBanner from "../assets/images/faqs-banner.png";
 import AvatarImg from "../assets/images/avatar.png";
 import PopupImg from "../assets/images/popup-shirt.png";
+import MenSizeImg from "../assets/images/men-size-item.png";
 
 export const IMAGES = {
+	MenSizeImg,
 	PopupImg,
 	AvatarImg,
 	BlogBanner1,

@@ -42,6 +42,7 @@ const Home: NextPage = () => {
 			{/* <PaymentPopup /> */}
 			{/* <CTAPopup /> */}
 			{/* <AbondonCart /> */}
+			{/* <SizeChart /> */}
 		</div>
 	);
 };
