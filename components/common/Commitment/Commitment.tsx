@@ -10,8 +10,9 @@ const Commitment: FC = () => {
 						color="common.black"
 						sx={{ fontSize: 12, fontFamily: "Lato", fontStyle: "italic", letterSpacing: "0.04em" }}
 					>
-						Your number one source for all exquisite products. We're dedicated to providing you the best of
-						high quality products, with a focus on dependability, customer service and affordable prices.
+						Your number one source for all exquisite products. We&apos;re dedicated to providing you the
+						best of high quality products, with a focus on dependability, customer service and affordable
+						prices.
 					</Typography>
 				</Box>
 			</Container>

@@ -1,4 +1,4 @@
-import { Container, Grid, Box, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
