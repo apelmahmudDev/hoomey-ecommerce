@@ -27,7 +27,13 @@ const ForMen: FC = () => {
 						</Link>
 					</Grid>
 					<Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
-						<Image src={IMAGES.ManImg} alt={"Female"} height={650} objectFit="cover" layout="responsive" />
+						<Image
+							src={IMAGES.ManImg}
+							alt={"Female"}
+							// height={650}
+							objectFit="cover"
+							layout="responsive"
+						/>
 					</Grid>
 				</Grid>
 			</Container>

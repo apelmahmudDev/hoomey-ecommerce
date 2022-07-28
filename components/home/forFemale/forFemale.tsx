@@ -17,7 +17,7 @@ const ForFemale: FC = () => {
 						<Image
 							src={IMAGES.FemaleImg}
 							alt={"Female"}
-							height={471}
+							// height={471}
 							objectFit="cover"
 							layout="responsive"
 						/>

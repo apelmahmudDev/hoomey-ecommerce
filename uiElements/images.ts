@@ -10,20 +10,20 @@ import WhiteTshirtImg from "../assets/images/latestProducts/white-tshirt.png";
 import BlackTshirtImg from "../assets/images/latestProducts/black-tshirt.png";
 
 // collections - home
-import BabyCareImg from "../assets/images/collections/baby-care.png";
-import ElectronicsImg from "../assets/images/collections/electronics.png";
-import GymAndSportsImg from "../assets/images/collections/gym-sports.png";
-import HealthAndBeautyImg from "../assets/images/collections/health&beauty.png";
-import HomeAndGardenImg from "../assets/images/collections/home&garden.png";
-import JewelryImg from "../assets/images/collections/jewelry.png";
-import KidsImg from "../assets/images/collections/kids.png";
-import MenImg from "../assets/images/collections/men.png";
-import PetsImg from "../assets/images/collections/pets.png";
-import WomenImg from "../assets/images/collections/women.png";
 
-import FemaleImg from "../assets/images/female.png";
-import ManImg from "../assets/images/man.png";
-import KidsSowImg from "../assets/images/kids.png";
+import GymAndSportsImg from "../assets/images/collections/gym-sports.png";
+import HomeAndGardenImg from "../assets/images/collections/home&garden.png";
+import HealthAndBeautyImg from "../assets/images/collections/health&beauty.png";
+import ElectronicsImg from "../assets/images/collections/home/omid-armin-B2w4rdIihEo-unsplash 1_20220627065420am.png";
+import JewelryImg from "../assets/images/collections/home/cornelia-ng-zZLhoEwGCeM-unsplash 1_20220627065319am.png";
+import PetsImg from "../assets/images/collections/home/jonas-vincent-xulIYVIbYIc-unsplash 1_20220627065353am.png";
+import KidsImg from "../assets/images/collections/home/jan-kopriva-ikmqVt9TTYw-unsplash 1_20220627065349am.png";
+import MenImg from "../assets/images/collections/home/sebastian-pociecha--JUoxG4sp88-unsplash 1_20220627065439am.png";
+import BabyCareImg from "../assets/images/collections/home/yuri-shirota-p0hDztR46cw-unsplash 1_20220627065523am.png";
+import WomenImg from "../assets/images/collections/home/omar-lopez-9w20MZ0lsK8-unsplash 1_20220627065416am.png";
+import FemaleImg from "../assets/images/collections/home/fashion-portrait-two-elegant-women-best-friends-posing-indoor-grey-wall-wearing-winter-fluffy-coat-black-casual-hat-fashionable-clothes-sisters-walking 1_20220627065321am.png";
+import ManImg from "../assets/images/collections/home/portrait-handsome-smiling-stylish-hipster-lumbersexual-businessman-model-man-dressed-jeans-jacket-clothes 1_20220627065423am.png";
+import KidsSowImg from "../assets/images/collections/home/kids-fashion-concept-group-teen-boys-girls-posing-park-children-colorful-clothes-lifestyle-trendy-colors-concepts 1_20220627065357am.png";
 import FlagImg from "../assets/images/flag.png";
 
 // men
@@ -31,12 +31,11 @@ import MenHeroImg from "../assets/images/collections/men/hero_image.png";
 import Men1Img from "../assets/images/collections/men/men1.png";
 import Men2Img from "../assets/images/collections/men/men2.png";
 import Men3Img from "../assets/images/collections/men/men3.png";
+import Men4Img from "../assets/images/collections/men/men4.png";
+import Men5Img from "../assets/images/collections/men/men5.png";
 import Men6Img from "../assets/images/collections/men/men6.png";
 import Men7Img from "../assets/images/collections/men/men7.png";
 import Men8Img from "../assets/images/collections/men/men8.png";
-import Men9Img from "../assets/images/collections/men/men9.png";
-import Men10Img from "../assets/images/collections/men/men10.png";
-import Men11Img from "../assets/images/collections/men/men11.png";
 
 // women
 import WomenHeroImg from "../assets/images/collections/women/women_hero.png";
@@ -215,9 +214,8 @@ export const IMAGES = {
 	Men6Img,
 	Men7Img,
 	Men8Img,
-	Men9Img,
-	Men10Img,
-	Men11Img,
+	Men4Img,
+	Men5Img,
 	BabyCareImg,
 	ElectronicsImg,
 	GymAndSportsImg,
