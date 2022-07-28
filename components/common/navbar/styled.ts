@@ -4,6 +4,7 @@ export const useStyles = makeStyles((theme) => ({
 	currencySelect: {
 		background: theme.palette.secondary.main,
 		"& .MuiOutlinedInput-root": {
+			height: 44,
 			borderRadius: 0,
 			color: theme.palette.common.white,
 			"& .MuiSvgIcon-root": {

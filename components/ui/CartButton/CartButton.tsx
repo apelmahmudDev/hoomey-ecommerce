@@ -6,7 +6,7 @@ const CartButton = ({ onClick, badgeContent = 1 }: { onClick: () => void; badgeC
 	const classes = useStyles();
 
 	return (
-		<Button onClick={onClick} sx={{ bgcolor: "#E2BC82" }} className={classes.cartButton}>
+		<Button onClick={onClick} sx={{ bgcolor: "#E2BC82", height: 44 }} className={classes.cartButton}>
 			<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
 				<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 					<BagSvg color="#fff" width={14} height={16} />

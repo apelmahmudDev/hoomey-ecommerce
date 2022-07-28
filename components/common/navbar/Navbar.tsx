@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useRouter } from "next/router";
 import { Box, ListItemIcon } from "@mui/material";
 import { paperPropsStyles, useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
@@ -47,6 +48,8 @@ const pages = [
 
 const Navbar: FC = () => {
 	const classes = useStyles();
+
+	const router = useRouter();
 
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -193,14 +196,10 @@ const Navbar: FC = () => {
 
 						{/* right side menu */}
 						<Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
-							<Box sx={{ display: "flex", gap: 2 }}>
+							<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
 								<IconButton onClick={handleSearchToggle} color="primary" size="small">
 									<SearchIcon />
 								</IconButton>
-
-								{/* <IconButton color="primary" size="small">
-									<PersonOutlineIcon />
-								</IconButton> */}
 
 								<IconButton
 									onClick={handleUserDropdownClick}
@@ -267,11 +266,15 @@ const Navbar: FC = () => {
 									</MenuItem>
 								</Menu>
 
-								<Link href={ROUTING_TREE.FAVOURITES}>
-									<IconButton color="primary" size="small">
-										<FavoriteBorderIcon />
-									</IconButton>
-								</Link>
+								<IconButton
+									onClick={() => router.push(ROUTING_TREE.FAVOURITES)}
+									color="primary"
+									size="small"
+								>
+									<FavoriteBorderIcon />
+								</IconButton>
+
+								{/* currency - dropdown */}
 								<Box sx={{ minWidth: 90 }}>
 									<FormControl className={classes.currencySelect} fullWidth size="small">
 										<Select
@@ -292,7 +295,7 @@ const Navbar: FC = () => {
 										</Select>
 									</FormControl>
 								</Box>
-								<CartButton badgeContent={0} onClick={() => toggleCartDrawer(true)} />
+								<CartButton badgeContent={1} onClick={() => toggleCartDrawer(true)} />
 							</Box>
 
 							{/* settings for small device */}
@@ -328,9 +331,13 @@ const Navbar: FC = () => {
 				</Container>
 			</AppBar>
 			<Toolbar />
+
+			{/* card details - drawer */}
 			<AppDrawer isDrawerOpen={isCartDrawerOpen} toggleDrawer={toggleCartDrawer}>
 				<CartDetails />
 			</AppDrawer>
+
+			{/* search dropdown - section */}
 			<Box
 				sx={{
 					"& .MuiBackdrop-root": {
