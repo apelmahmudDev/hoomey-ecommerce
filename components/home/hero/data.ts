@@ -7,15 +7,23 @@ export const heroData: {
 	title: string;
 }[] = [
 	{
-		image: IMAGES.CuteYoungGirlImg,
+		image: IMAGES.HomeHero1lImg,
 		title: "Discover the new you",
 	},
 	{
-		image: IMAGES.CuteYoungGirlImg,
+		image: IMAGES.HomeHero2lImg,
 		title: "Discover the new you",
 	},
 	{
-		image: IMAGES.CuteYoungGirlImg,
+		image: IMAGES.HomeHero3lImg,
+		title: "Discover the new you",
+	},
+	{
+		image: IMAGES.HomeHero4lImg,
+		title: "Discover the new you",
+	},
+	{
+		image: IMAGES.HomeHero5lImg,
 		title: "Discover the new you",
 	},
 ];

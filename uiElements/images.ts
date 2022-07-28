@@ -1,5 +1,9 @@
 // hero
-import CuteYoungGirlImg from "../assets/images/hero/cute-youn-girl.png";
+import HomeHero1lImg from "../assets/images/hero/home-hero-banner1_20220627065330am.png";
+import HomeHero2lImg from "../assets/images/hero/young-beautiful-stylish-woman-black-dress-red-hat-red-lipstick-happy-smiling-sexy-elegant 1_2022062706555am.png";
+import HomeHero3lImg from "../assets/images/hero/stylish-african-american-boy-gray-sweater-black-sunglasses-posed-street-fashionable-black-guy 1_20220627065443am.png";
+import HomeHero4lImg from "../assets/images/hero/black-female-athlete-warming-up-doing-stretching-exercises-nature 1_2022062706534am.png";
+import HomeHero5lImg from "../assets/images/hero/baby-girl-knitted-hat-scarf 1_20220627065248am.png";
 
 // latest products
 import WhiteTshirtImg from "../assets/images/latestProducts/white-tshirt.png";
@@ -128,6 +132,11 @@ import PopupImg from "../assets/images/popup-shirt.png";
 import MenSizeImg from "../assets/images/men-size-item.png";
 
 export const IMAGES = {
+	HomeHero1lImg,
+	HomeHero2lImg,
+	HomeHero3lImg,
+	HomeHero4lImg,
+	HomeHero5lImg,
 	MenSizeImg,
 	PopupImg,
 	AvatarImg,
@@ -209,7 +218,6 @@ export const IMAGES = {
 	Men9Img,
 	Men10Img,
 	Men11Img,
-	CuteYoungGirlImg,
 	BabyCareImg,
 	ElectronicsImg,
 	GymAndSportsImg,

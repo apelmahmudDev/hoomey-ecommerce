@@ -127,7 +127,7 @@ const ShoppingCart = () => {
 				<Box sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>
 					<SmallText sx={{ mb: 1.25, color: COLORS.GRANITE_GREY }}>Enter Promo Code:</SmallText>
 					<Box component="form">
-						<Box sx={{ display: "flex", justifyContent: "center" }}>
+						<Box sx={{ display: "flex" }}>
 							<TextField fullWidth size="small" id="filled-basic" placeholder="Promo Code" required />
 							<Button size="small" type="submit" variant="contained" color="secondary">
 								Submit
