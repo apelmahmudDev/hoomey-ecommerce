@@ -37,7 +37,6 @@ const Home: NextPage = () => {
 			{/* <SignIn /> */}
 			{/* <PasswordChange /> */}
 			{/* <ForgetPassword /> */}
-			{/* <TrackOrder /> */}
 			{/* <FilterDropdwon /> */}
 			{/* <PaymentPopup /> */}
 			{/* <CTAPopup /> */}

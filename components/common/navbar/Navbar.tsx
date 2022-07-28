@@ -28,6 +28,7 @@ import AppDrawer from "../AppDrawer";
 import HoverMenu from "./HoverMenu";
 import SearchDropdwon from "../SearchDropdwon";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
+import TrackOrder from "../TrackOrder";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -49,6 +50,7 @@ const Navbar: FC = () => {
 
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
+	const [isTrackOrderOpen, setIsTrackOrderOpen] = useState(false);
 	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState<null | HTMLElement>(null);
@@ -95,6 +97,10 @@ const Navbar: FC = () => {
 
 	const handleUserDropdownClose = () => {
 		setAnchorElUserDropdown(null);
+	};
+
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsTrackOrderOpen(boolean);
 	};
 
 	return (
@@ -247,7 +253,7 @@ const Navbar: FC = () => {
 											My Orders
 										</Link>
 									</MenuItem>
-									<MenuItem>
+									<MenuItem onClick={() => handleTogglePopup(true)}>
 										<ListItemIcon>
 											<TrackSvg />
 										</ListItemIcon>
@@ -348,6 +354,8 @@ const Navbar: FC = () => {
 					<SearchDropdwon />
 				</Dialog>
 			</Box>
+			{/* track order - popup */}
+			<TrackOrder isOpen={isTrackOrderOpen} handleToggle={handleTogglePopup} />
 		</>
 	);
 };

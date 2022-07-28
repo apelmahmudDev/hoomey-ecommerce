@@ -1,4 +1,3 @@
-import { FC, useState } from "react";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
@@ -6,23 +5,22 @@ import DialogContent from "@mui/material/DialogContent";
 import { CloseIconButton } from "../../ui";
 import { Label } from "../../styledComponents";
 
-const PasswordChange: FC = () => {
-	const [isTrackOrderOpen, setIsTrackOrderOpen] = useState(true);
+interface IProps {
+	isOpen: boolean;
+	handleToggle: (isToggle: boolean) => void;
+}
 
-	const handleTogglePopup = (boolean: boolean) => {
-		setIsTrackOrderOpen(boolean);
-	};
-
+const PasswordChange = ({ isOpen, handleToggle }: IProps) => {
 	return (
 		<Dialog
-			open={isTrackOrderOpen}
-			onClose={() => handleTogglePopup(false)}
+			open={isOpen}
+			onClose={() => handleToggle(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 			sx={{ "& .MuiPaper-root": { borderRadius: 0, minWidth: { xs: "auto", sm: 620, md: 900 } } }}
 		>
 			<DialogContent sx={{ py: 3, px: 5 }}>
-				<CloseIconButton onClick={() => handleTogglePopup(false)} />
+				<CloseIconButton onClick={() => handleToggle(false)} />
 				<Box>
 					<Typography sx={{ textAlign: "center", fontSize: { xs: 18, sm: 24 }, fontWeight: 600 }}>
 						Track your Order
