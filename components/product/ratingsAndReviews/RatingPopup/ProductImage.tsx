@@ -1,11 +1,12 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography, Button } from "@mui/material";
+import { SetActiveStepType } from "./Ratings";
 
 const Input = styled("input")({
 	display: "none",
 });
 
-const ProductImage = () => {
+const ProductImage = ({ setActiveStep }: SetActiveStepType) => {
 	return (
 		<>
 			<Typography sx={{ mb: 3.525 }}>We&apos;d love to see it in action!</Typography>
@@ -18,8 +19,9 @@ const ProductImage = () => {
 				</label>
 				<Button
 					sx={{ mt: 2.5, minWidth: { xs: "auto", md: 400 } }}
-					color="secondary"
+					onClick={() => setActiveStep(3)}
 					variant="outlined"
+					color="secondary"
 					fullWidth
 				>
 					Remind me later

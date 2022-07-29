@@ -1,4 +1,5 @@
 import { IconButton, Typography } from "@mui/material";
+import { HoverTooltip } from "../../styledComponents";
 import { HintsSvg } from "../../icons";
 
 const HintsHeading = ({
@@ -33,9 +34,11 @@ const HintsHeading = ({
 			variant={variant || "h6"}
 		>
 			{text}{" "}
-			<IconButton component="span">
-				<HintsSvg />
-			</IconButton>
+			<HoverTooltip title="These results are based on your searches">
+				<IconButton component="span">
+					<HintsSvg />
+				</IconButton>
+			</HoverTooltip>
 		</Typography>
 	);
 };

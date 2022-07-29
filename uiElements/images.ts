@@ -12,7 +12,7 @@ import BlackTshirtImg from "../assets/images/latestProducts/black-tshirt.png";
 // collections - home
 
 import GymAndSportsImg from "../assets/images/collections/gym-sports.png";
-import HomeAndGardenImg from "../assets/images/collections/home&garden.png";
+import HomeAndGardenImg from "../assets/images/collections/home/image 77_20220627065344am.png";
 import HealthAndBeautyImg from "../assets/images/collections/health&beauty.png";
 import ElectronicsImg from "../assets/images/collections/home/omid-armin-B2w4rdIihEo-unsplash 1_20220627065420am.png";
 import JewelryImg from "../assets/images/collections/home/cornelia-ng-zZLhoEwGCeM-unsplash 1_20220627065319am.png";

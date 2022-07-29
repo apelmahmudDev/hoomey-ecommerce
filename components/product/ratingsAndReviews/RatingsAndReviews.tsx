@@ -9,6 +9,7 @@ import { CircularProgressbarWithCount, Heading } from "../../ui";
 import { sliderData } from "./data";
 import RatingsSliderItem from "./RatingsSliderItem";
 import RatingsText from "./styledComponent/RatingsText";
+import RatingPopup from "./RatingPopup";
 
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,6 +45,7 @@ const RatingsAndReviews = () => {
 	const props: { itemLength: number } = { itemLength: sliderData.length };
 	const classes = useSliderStyles(props);
 
+	const [isRatingOpen, setIsRatingOpen] = useState(false);
 	const [ratings, setRatings] = useState<number | null>(0);
 
 	// for swiper slieder
@@ -53,6 +55,10 @@ const RatingsAndReviews = () => {
 		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + (index + 1) + "</span>";
 		},
+	};
+
+	const handleTogglePopup = (value: boolean) => {
+		setIsRatingOpen(value);
 	};
 
 	return (
@@ -149,7 +155,13 @@ const RatingsAndReviews = () => {
 							<Typography sx={{ mt: 4, fontSize: 18, fontWeight: 500 }}>
 								Have you purchased this item?
 							</Typography>
-							<Button fullWidth sx={{ mt: 2.5 }} color="secondary" variant="contained">
+							<Button
+								onClick={() => handleTogglePopup(true)}
+								variant="contained"
+								color="secondary"
+								sx={{ mt: 2.5 }}
+								fullWidth
+							>
 								Write a review
 							</Button>
 						</Box>
@@ -175,6 +187,9 @@ const RatingsAndReviews = () => {
 					))}
 				</Swiper>
 			</Container>
+
+			{/* popup - RatingsAndReviews */}
+			<RatingPopup isOpen={isRatingOpen} handleTogglePopup={handleTogglePopup} />
 		</SectionBox>
 	);
 };

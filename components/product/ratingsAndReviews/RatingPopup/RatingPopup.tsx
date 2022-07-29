@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { Box, DialogActions, Divider, Typography, Button } from "@mui/material";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -6,11 +6,12 @@ import StepLabel from "@mui/material/StepLabel";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { CloseIconButton } from "../../ui";
+import { CloseIconButton } from "../../../ui";
 import Ratings from "./Ratings";
 import ProductImage from "./ProductImage";
 import Comment from "./Comment";
 import Details from "./Details";
+import { IPopup } from "../../../../types/popup";
 
 const steps = ["Rating", "Product image", "Comment", "Your Details"];
 
@@ -43,13 +44,8 @@ const DetailsTitle = () => {
 	);
 };
 
-const RatingPopup: FC = () => {
-	const [activeStep, setActiveStep] = useState(4);
-	const [isRatingOpen, setIsRatingOpen] = useState(true);
-
-	const handleTogglePopup = (boolean: boolean) => {
-		setIsRatingOpen(boolean);
-	};
+const RatingPopup = ({ isOpen, handleTogglePopup }: IPopup) => {
+	const [activeStep, setActiveStep] = useState(1);
 
 	const handleActiveStepBack = () => {
 		switch (activeStep) {
@@ -69,7 +65,7 @@ const RatingPopup: FC = () => {
 
 	return (
 		<Dialog
-			open={isRatingOpen}
+			open={isOpen}
 			onClose={() => handleTogglePopup(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
@@ -100,9 +96,9 @@ const RatingPopup: FC = () => {
 
 					{/*body content rating  popup */}
 					<Box mt={5} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-						{activeStep <= 1 && <Ratings />}
-						{activeStep === 2 && <ProductImage />}
-						{activeStep === 3 && <Comment />}
+						{activeStep <= 1 && <Ratings setActiveStep={setActiveStep} />}
+						{activeStep === 2 && <ProductImage setActiveStep={setActiveStep} />}
+						{activeStep === 3 && <Comment setActiveStep={setActiveStep} />}
 						{activeStep === 4 && <Details />}
 					</Box>
 				</Box>
@@ -112,7 +108,11 @@ const RatingPopup: FC = () => {
 					<Button color="secondary" onClick={handleActiveStepBack}>
 						Back
 					</Button>
-					<Button color="secondary">Skip</Button>
+					{activeStep === 2 && (
+						<Button onClick={() => setActiveStep(3)} color="secondary">
+							Skip
+						</Button>
+					)}
 				</DialogActions>
 			)}
 		</Dialog>

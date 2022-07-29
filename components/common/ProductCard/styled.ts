@@ -5,6 +5,7 @@ export const useStyles = makeStyles((theme) => ({
 		position: "relative",
 		background: "none !important",
 		boxShadow: "none !important",
+		padding: theme.spacing(1.25),
 		borderRadius: 0,
 		"& .MuiCardContent-root": {
 			background: "#fff !important",

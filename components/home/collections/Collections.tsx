@@ -1,13 +1,38 @@
-import { FC } from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { FC, useEffect, useState } from "react";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import CollectionCard from "../../common/CollectionCard";
 // import CollectionsGrid from "../../common/CollectionsGrid";
 
 // data
-import { itemData } from "./data";
+import { ItemData, itemData } from "./data";
 import Link from "../../ui/Link";
 
 const Collections: FC = () => {
+	const [isMore, setIsMore] = useState<boolean>(false);
+	const [presentCollection, setPresentCollection] = useState<ItemData[]>([]);
+
+	const lessCollectionData = () => {
+		const newCollectionArr = itemData.slice(0, 8);
+		return setPresentCollection(newCollectionArr);
+	};
+
+	// fitst call data
+	useEffect(() => {
+		lessCollectionData();
+	}, []);
+
+	const handleRemainingCollections = () => {
+		setIsMore(!isMore);
+	};
+
+	useEffect(() => {
+		if (isMore) {
+			setPresentCollection(itemData);
+		} else {
+			lessCollectionData();
+		}
+	}, [isMore]);
+
 	return (
 		<Box my={9.1}>
 			<Container maxWidth="lg">
@@ -16,7 +41,7 @@ const Collections: FC = () => {
 				</Typography>
 				<>
 					<Grid container spacing={{ xs: 2, md: 5 }}>
-						{itemData.map((item, idx) => (
+						{presentCollection.map((item, idx) => (
 							<Grid key={idx} item xs={6} sm={4} md={3}>
 								<Link href={item.link}>
 									<CollectionCard key={idx} item={item} />
@@ -25,6 +50,17 @@ const Collections: FC = () => {
 						))}
 					</Grid>
 				</>
+				<Box textAlign="center" sx={{ mt: 6.25 }}>
+					<Button
+						onClick={handleRemainingCollections}
+						color="secondary"
+						variant="contained"
+						size="large"
+						sx={{ letterSpacing: "0.3em", fontSize: 14, fontWeight: 400, textTransform: "uppercase" }}
+					>
+						{isMore ? "View Less" : "View more"}
+					</Button>
+				</Box>
 			</Container>
 			{/* <CollectionsGrid itemData={itemData} /> */}
 		</Box>

@@ -30,10 +30,8 @@ const SearchDropdwon = () => {
 					<TextField
 						required
 						fullWidth
-						size="small"
 						type="search"
-						label="Search"
-						variant="filled"
+						placeholder="Search"
 						id="filled-search"
 						onChange={(e) => setSearchValue(e.target.value)}
 					/>

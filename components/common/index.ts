@@ -14,7 +14,6 @@ export { default as TrackOrder } from "./TrackOrder";
 export { default as ProductCard } from "./ProductCard";
 export { default as SeachFilter } from "./SeachFilter";
 export { default as CookiePopup } from "./CookiePopup";
-export { default as RatingPopup } from "./RatingPopup";
 export { default as ColorPalette } from "./ColorPalette";
 export { default as PaymentPopup } from "./PaymentPopup";
 export { default as CollectionsGrid } from "./CollectionsGrid";

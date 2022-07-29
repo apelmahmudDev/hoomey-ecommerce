@@ -1,5 +1,5 @@
 import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
-import { MailSvg, PersonSvg } from "../../icons";
+import { MailSvg, PersonSvg } from "../../../icons";
 
 const Details = () => {
 	return (

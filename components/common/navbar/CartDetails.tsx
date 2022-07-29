@@ -46,11 +46,10 @@ const CartDetails: FC = () => {
 	};
 
 	return (
-		<Box sx={{ position: "relative", display: "flex", flexDirection: "column", minHeight: `calc(100vh - 64px)` }}>
+		<Box sx={{ position: "relative", display: "flex", flexDirection: "column", minHeight: `calc(100vh - 110px)` }}>
 			<IconButton size="small" sx={{ position: "absolute", right: 0, color: "common.white" }}>
 				<CloseIcon fontSize="small" />
 			</IconButton>
-
 			{[...Array(1)].map((item, idx) => (
 				<Box key={idx} sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
 					<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={65} width={47} objectFit="cover" />
@@ -93,7 +92,6 @@ const CartDetails: FC = () => {
 				</Box>
 			))}
 			<CartDivider sx={{ mt: 6 }} />
-
 			{/* similar products view area - slider*/}
 			<Box mt={2.5}>
 				<Typography variant="body2" sx={{ mb: 2.5, fontWeight: 600, textAlign: "center" }}>
@@ -153,7 +151,6 @@ const CartDetails: FC = () => {
 					))}
 				</Swiper>
 			</Box>
-
 			<Box sx={{ mt: "auto", pt: 5 }}>
 				<CartDivider />
 				<Box sx={{ my: 1.25, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
