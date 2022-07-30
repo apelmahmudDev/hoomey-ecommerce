@@ -4,6 +4,7 @@ import { LockForInputSvg, MailSvg } from "../../icons";
 import { styled } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
 import NewCustomerSignUp from "./NewCustomerSignUp";
+import { useRouter } from "next/router";
 
 export const Label = styled(Typography)({
 	marginBottom: "10px",
@@ -14,6 +15,7 @@ export const Label = styled(Typography)({
 export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#FAFAFA" } };
 
 const ContinueCheckout = () => {
+	const router = useRouter();
 	return (
 		<Box mb={9.1}>
 			<Container>
@@ -24,7 +26,13 @@ const ContinueCheckout = () => {
 						<Box sx={{ p: 2.5, ...styles.b, ...styles.bg }}>
 							<Typography sx={{ fontWeight: 600 }}>Guest Checkout</Typography>
 							<Typography sx={{ fontSize: 12, my: 2.5 }}>Not ready to become a member yet?</Typography>
-							<Button variant="contained" color="secondary" fullWidth size="large">
+							<Button
+								onClick={() => router.push("/checkout")}
+								variant="contained"
+								color="secondary"
+								fullWidth
+								size="large"
+							>
 								Continue to checkout
 							</Button>
 						</Box>

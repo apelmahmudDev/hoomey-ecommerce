@@ -15,12 +15,13 @@ import { styled } from "@mui/system";
 import { HeadingText } from "../../styledComponents";
 import { COLORS } from "../../../theme/colors";
 import { useStyles } from "./styled";
-import { WhiteLockSvg } from "../../icons";
+import { PaypalColorSvg, WhiteLockSvg } from "../../icons";
 import { PaymentSystemView, SecuredByNorton } from "../../common";
 import { EndIconButton } from "../../ui";
 import { ExpandMoreIcon, LocationOnIcon } from "../../../uiElements/icons";
 import { useState } from "react";
 import { COUNTRIES } from "../../../assets/data/countries";
+import { useRouter } from "next/router";
 
 const SmallText = styled(Typography)({
 	fontSize: 10,
@@ -35,6 +36,8 @@ const styles = {
 };
 
 const CartTotals = () => {
+	const router = useRouter();
+
 	const classes = useStyles();
 	const [country, setCountry] = useState("Bangladesh");
 	const [product, setProduct] = useState("10");
@@ -128,9 +131,18 @@ const CartTotals = () => {
 			</Box>
 			<SecuredByNorton />
 			<PaymentSystemView />
-			<EndIconButton onClick={() => console.log("checkout working")} endIcon={<WhiteLockSvg />}>
+			<EndIconButton onClick={() => router.push("/sign-in-checkout")} endIcon={<WhiteLockSvg />}>
 				Proceed to checkout
 			</EndIconButton>
+			{/* checkout with- paypal button*/}
+			<Button
+				fullWidth
+				size="small"
+				variant="contained"
+				sx={{ mt: 1.25, bgcolor: "#fec33a", "&:hover": { bgcolor: "#cb9b2e" }, "& span": { ml: 0.5 } }}
+			>
+				<PaypalColorSvg width={50} height={20} /> <span> Checkout</span>
+			</Button>
 		</div>
 	);
 };

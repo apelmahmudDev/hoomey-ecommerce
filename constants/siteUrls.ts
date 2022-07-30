@@ -2,6 +2,7 @@ export const ROUTING_TREE = {
 	HOME: "/",
 	CART: "/cart",
 	CHECKOUT: "/checkout",
+	SIGN_IN_CHECKOUT: "/sign-in-checkout",
 	FAVOURITES: "/favorites",
 	MEN: "/men",
 	WOMEN: "/women",

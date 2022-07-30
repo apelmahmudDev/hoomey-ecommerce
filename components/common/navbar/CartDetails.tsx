@@ -167,7 +167,7 @@ const CartDetails: FC = () => {
 					<Button variant="outlined" fullWidth onClick={() => router.push(ROUTING_TREE.CART)}>
 						View Cart
 					</Button>
-					<Button variant="contained" fullWidth onClick={() => router.push(ROUTING_TREE.CHECKOUT)}>
+					<Button variant="contained" fullWidth onClick={() => router.push(ROUTING_TREE.SIGN_IN_CHECKOUT)}>
 						Checkout
 					</Button>
 				</Box>
