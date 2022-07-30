@@ -3,7 +3,7 @@ import { PopupDivider } from "../../styledComponents";
 
 const ColorPalette = () => {
 	return (
-		<Box textAlign="center">
+		<Box textAlign="center" sx={{ bgcolor: "common.white", p: 0, m: 0 }}>
 			<Typography variant="h6" fontWeight="600" sx={{ color: "#292929" }}>
 				Colors Variants
 			</Typography>

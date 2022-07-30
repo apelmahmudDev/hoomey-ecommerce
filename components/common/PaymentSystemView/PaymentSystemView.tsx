@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { FC } from "react";
-import { MasterCardForCartSvg, OPaySvg, PaypalSvg, UnionPaySvg, VisaForCartSvg } from "../../icons";
+import { DiscoverSvg, MasterCardForCartSvg, OPaySvg, PaypalSvg, UnionPaySvg, VisaForCartSvg } from "../../icons";
 
 const PaymentSystemView: FC = () => {
 	return (
@@ -9,6 +9,7 @@ const PaymentSystemView: FC = () => {
 				<MasterCardForCartSvg />
 				<VisaForCartSvg />
 				<PaypalSvg />
+				<DiscoverSvg />
 				<UnionPaySvg />
 				<OPaySvg />
 			</Box>

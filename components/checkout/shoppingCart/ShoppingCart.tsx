@@ -13,12 +13,13 @@ import {
 	Button,
 } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
 import { PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
-import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg } from "../../icons";
+import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg, PaypalColorSvg } from "../../icons";
 
 import { ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
@@ -34,6 +35,8 @@ const styles = {
 };
 
 const ShoppingCart = () => {
+	const router = useRouter();
+
 	const [size, setSize] = useState("10");
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
@@ -180,6 +183,18 @@ const ShoppingCart = () => {
 								</Box>
 							}
 						/>
+						<FormControlLabel
+							value="pay_with_paypal"
+							control={<Radio />}
+							label={
+								<Box sx={{ display: "flex", gap: 1.3 }}>
+									<PaypalColorSvg height={15} />
+									<Typography sx={{ fontSize: 10, color: COLORS.GRANITE_GREY }}>
+										Pay with Paypal
+									</Typography>
+								</Box>
+							}
+						/>
 					</RadioGroup>
 					<TextField
 						required
@@ -187,6 +202,7 @@ const ShoppingCart = () => {
 						size="small"
 						inputMode="numeric"
 						sx={{ borderRadius: 0 }}
+						placeholder="Enter card number"
 						InputProps={{
 							endAdornment: (
 								<InputAdornment position="end">
@@ -216,9 +232,19 @@ const ShoppingCart = () => {
 					</Typography>
 				}
 			/>
-			<EndIconButton onClick={() => console.log("checkout working")} endIcon={<WhiteLockSvg />}>
+			<EndIconButton onClick={() => router.push("/order-placed")} endIcon={<WhiteLockSvg />}>
 				Checkout
 			</EndIconButton>
+
+			{/* checkout with- paypal button*/}
+			<Button
+				fullWidth
+				size="small"
+				variant="contained"
+				sx={{ mt: 1.25, bgcolor: "#fec33a", "&:hover": { bgcolor: "#cb9b2e" }, "& span": { ml: 0.5 } }}
+			>
+				<PaypalColorSvg width={50} height={20} /> <span> Checkout</span>
+			</Button>
 		</div>
 	);
 };

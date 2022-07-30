@@ -1,6 +1,7 @@
 import { Box, Container, Divider, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
+import { CheckSvg } from "../../icons";
 import { HeadingText } from "../../styledComponents";
 
 const FlexStack = styled(Box)((theme) => ({
@@ -20,20 +21,20 @@ const ThanksOrder = () => {
 			<Container>
 				<HeadingText>Order Placed</HeadingText>
 				<Container maxWidth="md">
-					<Box sx={{ background: COLORS.OFF_WHITE, py: 2.5, px: 5 }}>
+					<Box sx={{ background: COLORS.OFF_WHITE, py: 2.5, px: 5, textAlign: "center" }}>
+						<CheckSvg sx={{ height: 70, width: 70 }} />
 						<Typography
 							sx={{
 								textTransform: "uppercase",
 								fontWeight: "medium",
 								letterSpacing: "0.1em",
-								mb: 2.5,
-								textAlign: "center",
+								my: 2.5,
 							}}
 							variant="h5"
 						>
 							Thank You For Your Order
 						</Typography>
-						<Typography variant="body2" sx={{ textAlign: "center" }}>
+						<Typography variant="body2">
 							Please check your inbox, as a confirmation email is on its way
 						</Typography>
 						<Divider sx={{ background: "1px solid #ACACAC", my: 2.5 }} />

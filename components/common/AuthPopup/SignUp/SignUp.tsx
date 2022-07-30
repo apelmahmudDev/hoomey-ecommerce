@@ -1,5 +1,16 @@
-import { FC, ReactNode, useState } from "react";
-import { Box, Button, Checkbox, Divider, FormControlLabel, IconButton, InputAdornment, TextField } from "@mui/material";
+import { FC, ReactNode, useEffect, useState } from "react";
+import {
+	Box,
+	Button,
+	Checkbox,
+	Divider,
+	FormControlLabel,
+	IconButton,
+	InputAdornment,
+	TextField,
+	LinearProgress,
+	Typography,
+} from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -24,11 +35,13 @@ import {
 	StyledBox,
 	StyledFooterBox,
 } from "../styledComponents";
+import { isStrongPassword } from "../../../../utils/validations";
 
 interface State {
-	currentPassword: string;
 	newPassword: string;
 	showPassword: boolean;
+	confirmPassword: string;
+	showConfirmPassword: boolean;
 }
 
 const FieldIcon = ({ icon }: { icon: ReactNode }) => {
@@ -40,6 +53,7 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const SignUp: FC = () => {
+	const [isStrongPass, setIsStrongPass] = useState(false);
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
 	const handleTogglePopup = (boolean: boolean) => {
@@ -47,19 +61,38 @@ const SignUp: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
-		currentPassword: "",
 		newPassword: "",
+		confirmPassword: "",
 		showPassword: false,
+		showConfirmPassword: false,
 	});
+
+	// password check
+	useEffect(() => {
+		if (isStrongPassword(values.newPassword)) {
+			setIsStrongPass(true);
+		} else {
+			setIsStrongPass(false);
+		}
+	}, [values]);
 
 	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
+	// handle new password - show
 	const handleClickShowPassword = () => {
 		setValues({
 			...values,
 			showPassword: !values.showPassword,
+		});
+	};
+
+	// handle confirm password - show
+	const handleClickConfirmShowPassword = () => {
+		setValues({
+			...values,
+			showConfirmPassword: !values.showConfirmPassword,
 		});
 	};
 
@@ -68,11 +101,22 @@ const SignUp: FC = () => {
 	};
 
 	// common components
-	const InputAdornmentEl = () => {
+	// for new password
+	const InputAdornmentElNewPass = () => {
 		return (
 			<InputAdornment position="end">
 				<IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
 					{values.showPassword ? <Visibility /> : <EyeCloseSvg />}
+				</IconButton>
+			</InputAdornment>
+		);
+	};
+	// for confrim password
+	const InputAdornmentElConfirmPass = () => {
+		return (
+			<InputAdornment position="end">
+				<IconButton onClick={handleClickConfirmShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+					{values.showConfirmPassword ? <Visibility /> : <EyeCloseSvg />}
 				</IconButton>
 			</InputAdornment>
 		);
@@ -129,36 +173,47 @@ const SignUp: FC = () => {
 							/>
 						</StyledBox>
 						<StyledBox>
-							<Label fontSize={18}>Current Password</Label>
+							<Label fontSize={18}>Password</Label>
 							<TextField
+								required
 								fullWidth
 								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
+								value={values.newPassword}
+								onChange={handleChange("newPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
 										<InputAdornment position="start">
-											<InputAdornmentEl />
+											<InputAdornmentElNewPass />
 										</InputAdornment>
 									),
 								}}
 							/>
+							{/* password label message */}
+							{values.newPassword.length ? (
+								<Box sx={{ width: "100%", mt: 1.25 }}>
+									<LinearProgress variant="determinate" value={isStrongPass ? 100 : 50} />
+									<Typography textAlign="right" variant="body2" color="primary">
+										{isStrongPass ? "Strong Password" : "Weak Password"}
+									</Typography>
+								</Box>
+							) : null}
 						</StyledBox>
 						<StyledBox>
 							<Label fontSize={18}>Confirm Password *</Label>
 							<TextField
+								required
 								fullWidth
-								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
+								type={values.showConfirmPassword ? "text" : "password"}
+								value={values.confirmPassword}
+								onChange={handleChange("confirmPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
 										<InputAdornment position="start">
-											<InputAdornmentEl />
+											<InputAdornmentElConfirmPass />
 										</InputAdornment>
 									),
 								}}

@@ -1,5 +1,6 @@
 import { Box, TextField, Grid, Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isEmailAddress } from "../../../utils/validations";
 import { AccountSettingsSvg } from "../../icons";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 
@@ -11,6 +12,8 @@ interface State {
 }
 
 const MyAccount = () => {
+	const [isError, setIsError] = useState(false);
+
 	const [values, setValues] = useState<State>({
 		firstName: "",
 		lastName: "",
@@ -21,6 +24,15 @@ const MyAccount = () => {
 	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
+
+	// email validation with regex
+	useEffect(() => {
+		if (isEmailAddress(values.email)) {
+			setIsError(false);
+		} else {
+			setIsError(true);
+		}
+	}, [values]);
 
 	return (
 		<Box>
@@ -61,7 +73,15 @@ const MyAccount = () => {
 				{/* email address */}
 				<Box my={2.5}>
 					<Label>Email Address</Label>
-					<TextField required defaultValue="example@gmail.com" fullWidth />
+					<TextField
+						required
+						type="email"
+						fullWidth
+						error={isError}
+						placeholder="example@gmail.com"
+						onChange={handleChange("email")}
+						helperText={isError && "The email address must be valid and include @"}
+					/>
 				</Box>
 
 				{/* Date of Birth */}

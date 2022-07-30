@@ -1,8 +1,9 @@
-import { Container, Box, Typography, Divider } from "@mui/material";
+import { Container, Box, Typography, Divider, Tooltip } from "@mui/material";
 import Image from "next/image";
 import { styled } from "@mui/system";
 import { IMAGES } from "../../../uiElements";
 import { HeadingText, ProductCircularColor, SmallText } from "../../styledComponents";
+import { ColorPalette } from "../../common";
 
 const FlexStack = styled(Box)((theme) => ({
 	display: "flex",
@@ -38,7 +39,9 @@ const OrderDetails = () => {
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Color</Text>
-							<ProductCircularColor color="#EBEBEB" />
+							<Tooltip title={<ColorPalette />}>
+								<ProductCircularColor color="#EBEBEB" />
+							</Tooltip>
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Size</Text>

@@ -10,9 +10,11 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Container,
+	IconButton,
 	// Theme,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Link } from "../../ui";
 
 // icons
@@ -26,7 +28,7 @@ import {
 	NortonSvg,
 } from "../../icons";
 import { IMAGES } from "../../../uiElements";
-import { AppAvatar } from "../../styledComponents";
+import { AppAvatar, HoverTooltip } from "../../styledComponents";
 
 // styles
 
@@ -74,7 +76,12 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 				<Typography sx={{ flexGrow: 1 }} variant="h6" textAlign="center">
 					My Account
 				</Typography>
-				<NortonSvg />
+
+				<HoverTooltip title="You are Protected">
+					<div>
+						<NortonSvg />
+					</div>
+				</HoverTooltip>
 			</Box>
 
 			<Box sx={{ display: "flex", gap: 2.5 }}>
@@ -91,8 +98,24 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 						},
 					}}
 				>
+					{/* profile image */}
 					<Box sx={{ display: "flex", gap: 2.5, alignItems: "center", padding: "25px 25px 0 25px" }}>
-						<AppAvatar src={IMAGES.AvatarImg} alt="avatar" objectFit="cover" height={60} width={60} />
+						<Box sx={{ position: "relative" }}>
+							<AppAvatar src={IMAGES.AvatarImg} alt="avatar" objectFit="cover" height={60} width={60} />
+							<IconButton
+								color="primary"
+								aria-label="upload picture"
+								component="label"
+								sx={{
+									position: "absolute",
+									right: -15,
+									bottom: 0,
+								}}
+							>
+								<input hidden accept="image/*" type="file" />
+								<PhotoCamera />
+							</IconButton>
+						</Box>
 						<div>
 							<Typography gutterBottom>Hi</Typography>
 							<Typography fontWeight="600">Jhon Doe</Typography>
@@ -115,6 +138,8 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 				{/* body content */}
 				<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
 					{children}
+
+					{/* -------⬇️------- */}
 					{/* <MyAccount /> */}
 					{/* <ChangePassword /> */}
 					{/* <AddressBook /> */}
