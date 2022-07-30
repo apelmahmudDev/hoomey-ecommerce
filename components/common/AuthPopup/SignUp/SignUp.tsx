@@ -13,7 +13,7 @@ import {
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { AuthIconButton, CloseIconButton, InputAdornmentElPass } from "../../../ui";
+import { AuthIconButton, CloseIconButton, InputAdornmentElPass, Link } from "../../../ui";
 import { ApplesSvg, FacebookCircleSvg, GoogleCircleSvg, LockFillSvg, MailFillSvg, PersonFillSvg } from "../../../icons";
 import { Label } from "../../../styledComponents";
 import {
@@ -25,9 +25,10 @@ import {
 	StyledBox,
 	StyledFooterBox,
 } from "../styledComponents";
-import { isStrongPassword } from "../../../../utils/validations";
+import { isEmailAddress, isStrongPassword } from "../../../../utils/validations";
 
 interface State {
+	email: string;
 	password: string;
 	confirmPassword: string;
 	showPassword: boolean;
@@ -43,6 +44,7 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const SignUp: FC = () => {
+	const [isError, setIsError] = useState(false);
 	const [isStrongPass, setIsStrongPass] = useState(false);
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
@@ -51,11 +53,21 @@ const SignUp: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
+		email: "",
 		password: "",
 		confirmPassword: "",
 		showPassword: false,
 		showConfirmPassword: false,
 	});
+
+	// email validation with regex 📧
+	useEffect(() => {
+		if (isEmailAddress(values.email)) {
+			setIsError(false);
+		} else {
+			setIsError(true);
+		}
+	}, [values]);
 
 	// password check 🔐
 
@@ -122,6 +134,9 @@ const SignUp: FC = () => {
 							<StyedTextField
 								required
 								type="email"
+								error={isError}
+								onChange={handleChange("email")}
+								helperText={isError && "The email address must be valid and include @"}
 								InputProps={{ startAdornment: <FieldIcon icon={<MailFillSvg />} /> }}
 							/>
 						</StyledBox>
@@ -191,8 +206,12 @@ const SignUp: FC = () => {
 							label={
 								<>
 									I agree to the{" "}
-									<Button sx={{ textDecoration: "underline" }}>Terms of Service</Button> &{" "}
-									<Button sx={{ textDecoration: "underline" }}>Privacy Policy</Button>
+									<Link href="/terms-of-service">
+										<Button sx={{ textDecoration: "underline" }}>Terms of Service</Button> &{" "}
+									</Link>
+									<Link href="/privacy-policy">
+										<Button sx={{ textDecoration: "underline" }}>Privacy Policy</Button>
+									</Link>
 								</>
 							}
 						/>
