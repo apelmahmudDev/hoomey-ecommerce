@@ -9,26 +9,30 @@ import {
 	SelectChangeEvent,
 	FormControl,
 	Select,
-	InputLabel,
-	InputAdornment,
+	Button,
+	Collapse,
 } from "@mui/material";
 import { FC, useState } from "react";
 import { CloseIcon } from "../../../uiElements/icons";
-import { ProductCard } from "../../common";
+import { FilterDropdwon, ProductCard } from "../../common";
 import { FiltersSvg } from "../../icons";
 // import { EmptyBox } from "../../styledComponents";
 // import { Link } from "../../ui";
 import { productData } from "./data";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const SearchProduct: FC = () => {
+	const [isFilterOpen, setIsFilterOpen] = useState(false);
 	const [bestMatch, setBestMatch] = useState("10");
-	const [filters, setFilters] = useState("10");
 
 	const handleMatchChange = (event: SelectChangeEvent) => {
 		setBestMatch(event.target.value as string);
 	};
-	const handleFiltersChange = (event: SelectChangeEvent) => {
-		setFilters(event.target.value as string);
+
+	// handle filter dropdown
+	const handleFilterClick = () => {
+		setIsFilterOpen(!isFilterOpen);
 	};
 
 	return (
@@ -51,25 +55,23 @@ const SearchProduct: FC = () => {
 				<Box mb={4}>
 					<Grid container spacing={5}>
 						<Grid item xs={12} md={3}>
-							<FormControl fullWidth sx={{ "& .MuiOutlinedInput-root": { height: 50 } }}>
-								<InputLabel id="demo-simple-select-label">Filters</InputLabel>
-								<Select
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
-									value={filters}
-									label="Filters"
-									onChange={handleFiltersChange}
-									startAdornment={
-										<InputAdornment position="start">
-											<FiltersSvg />
-										</InputAdornment>
-									}
-								>
-									<MenuItem value={10}>Good Ratings</MenuItem>
-									<MenuItem value={20}>Average Ratings</MenuItem>
-									<MenuItem value={30}>Bad Ratings</MenuItem>
-								</Select>
-							</FormControl>
+							<Button
+								fullWidth
+								size="large"
+								color="secondary"
+								variant="outlined"
+								startIcon={<FiltersSvg />}
+								onClick={handleFilterClick}
+								sx={{ justifyContent: "flex-start" }}
+							>
+								<Box component="span">Filters</Box>
+								<Box width="inherit" display="flex" justifyContent="flex-end">
+									{isFilterOpen ? <ExpandLess /> : <ExpandMore />}
+								</Box>
+							</Button>
+							<Collapse in={isFilterOpen} timeout="auto" unmountOnExit>
+								<FilterDropdwon handleFilterClick={handleFilterClick} />
+							</Collapse>
 						</Grid>
 						<Grid item xs={12} md={6}>
 							<Typography variant="h6" textAlign="center">
