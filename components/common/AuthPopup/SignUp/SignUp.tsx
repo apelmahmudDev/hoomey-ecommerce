@@ -5,7 +5,6 @@ import {
 	Checkbox,
 	Divider,
 	FormControlLabel,
-	IconButton,
 	InputAdornment,
 	TextField,
 	LinearProgress,
@@ -14,17 +13,8 @@ import {
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { AuthIconButton, CloseIconButton } from "../../../ui";
-import Visibility from "@mui/icons-material/Visibility";
-import {
-	ApplesSvg,
-	EyeCloseSvg,
-	FacebookCircleSvg,
-	GoogleCircleSvg,
-	LockFillSvg,
-	MailFillSvg,
-	PersonFillSvg,
-} from "../../../icons";
+import { AuthIconButton, CloseIconButton, InputAdornmentElPass } from "../../../ui";
+import { ApplesSvg, FacebookCircleSvg, GoogleCircleSvg, LockFillSvg, MailFillSvg, PersonFillSvg } from "../../../icons";
 import { Label } from "../../../styledComponents";
 import {
 	AuthDevider,
@@ -38,9 +28,9 @@ import {
 import { isStrongPassword } from "../../../../utils/validations";
 
 interface State {
-	newPassword: string;
-	showPassword: boolean;
+	password: string;
 	confirmPassword: string;
+	showPassword: boolean;
 	showConfirmPassword: boolean;
 }
 
@@ -61,15 +51,16 @@ const SignUp: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
-		newPassword: "",
+		password: "",
 		confirmPassword: "",
 		showPassword: false,
 		showConfirmPassword: false,
 	});
 
-	// password check
+	// password check 🔐
+
 	useEffect(() => {
-		if (isStrongPassword(values.newPassword)) {
+		if (isStrongPassword(values.password)) {
 			setIsStrongPass(true);
 		} else {
 			setIsStrongPass(false);
@@ -80,46 +71,8 @@ const SignUp: FC = () => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
-	// handle new password - show
-	const handleClickShowPassword = () => {
-		setValues({
-			...values,
-			showPassword: !values.showPassword,
-		});
-	};
-
-	// handle confirm password - show
-	const handleClickConfirmShowPassword = () => {
-		setValues({
-			...values,
-			showConfirmPassword: !values.showConfirmPassword,
-		});
-	};
-
-	const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.preventDefault();
-	};
-
-	// common components
-	// for new password
-	const InputAdornmentElNewPass = () => {
-		return (
-			<InputAdornment position="end">
-				<IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-					{values.showPassword ? <Visibility /> : <EyeCloseSvg />}
-				</IconButton>
-			</InputAdornment>
-		);
-	};
-	// for confrim password
-	const InputAdornmentElConfirmPass = () => {
-		return (
-			<InputAdornment position="end">
-				<IconButton onClick={handleClickConfirmShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-					{values.showConfirmPassword ? <Visibility /> : <EyeCloseSvg />}
-				</IconButton>
-			</InputAdornment>
-		);
+	const handleClickShowPassword = (props: { key: string; value: boolean }) => {
+		setValues({ ...values, [props.key]: !props.value });
 	};
 
 	return (
@@ -178,20 +131,26 @@ const SignUp: FC = () => {
 								required
 								fullWidth
 								type={values.showPassword ? "text" : "password"}
-								value={values.newPassword}
-								onChange={handleChange("newPassword")}
+								value={values.password}
+								onChange={handleChange("password")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
-										<InputAdornment position="start">
-											<InputAdornmentElNewPass />
-										</InputAdornment>
+										<InputAdornmentElPass
+											isShowing={values.showPassword}
+											onClick={() =>
+												handleClickShowPassword({
+													key: "showPassword",
+													value: values.showPassword,
+												})
+											}
+										/>
 									),
 								}}
 							/>
 							{/* password label message */}
-							{values.newPassword.length ? (
+							{values.password.length ? (
 								<Box sx={{ width: "100%", mt: 1.25 }}>
 									<LinearProgress variant="determinate" value={isStrongPass ? 100 : 50} />
 									<Typography textAlign="right" variant="body2" color="primary">
@@ -212,9 +171,15 @@ const SignUp: FC = () => {
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
-										<InputAdornment position="start">
-											<InputAdornmentElConfirmPass />
-										</InputAdornment>
+										<InputAdornmentElPass
+											isShowing={values.showConfirmPassword}
+											onClick={() =>
+												handleClickShowPassword({
+													key: "showConfirmPassword",
+													value: values.showConfirmPassword,
+												})
+											}
+										/>
 									),
 								}}
 							/>

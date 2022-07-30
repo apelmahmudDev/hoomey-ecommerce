@@ -1,46 +1,34 @@
-import { Box, Button, OutlinedInput, InputAdornment, IconButton } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
+import { Box, Button, OutlinedInput } from "@mui/material";
 import { useState } from "react";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
-import { EyeCloseSvg, ChangePassSvg } from "../../icons";
+import { ChangePassSvg } from "../../icons";
+import { InputAdornmentElPass } from "../../ui";
 
 interface State {
 	currentPassword: string;
 	newPassword: string;
-	showPassword: boolean;
+	reEnterNewPassword: string;
+	showCurrentPassword: boolean;
+	showNewPassword: boolean;
+	showReEnterPassword: boolean;
 }
 
 const ChangePassword = () => {
 	const [values, setValues] = useState<State>({
 		currentPassword: "",
 		newPassword: "",
-		showPassword: false,
+		reEnterNewPassword: "",
+		showCurrentPassword: false,
+		showNewPassword: false,
+		showReEnterPassword: false,
 	});
 
 	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
-	const handleClickShowPassword = () => {
-		setValues({
-			...values,
-			showPassword: !values.showPassword,
-		});
-	};
-
-	const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.preventDefault();
-	};
-
-	// common components
-	const InputAdornmentEl = () => {
-		return (
-			<InputAdornment position="end">
-				<IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-					{values.showPassword ? <Visibility /> : <EyeCloseSvg />}
-				</IconButton>
-			</InputAdornment>
-		);
+	const handleClickShowPassword = (props: { key: string; value: boolean }) => {
+		setValues({ ...values, [props.key]: !props.value });
 	};
 
 	return (
@@ -61,10 +49,20 @@ const ChangePassword = () => {
 					<Label>Current Password</Label>
 					<OutlinedInput
 						fullWidth
-						type={values.showPassword ? "text" : "password"}
+						type={values.showCurrentPassword ? "text" : "password"}
 						value={values.currentPassword}
 						onChange={handleChange("currentPassword")}
-						endAdornment={<InputAdornmentEl />}
+						endAdornment={
+							<InputAdornmentElPass
+								isShowing={values.showCurrentPassword}
+								onClick={() =>
+									handleClickShowPassword({
+										key: "showCurrentPassword",
+										value: values.showCurrentPassword,
+									})
+								}
+							/>
+						}
 					/>
 				</Box>
 				{/* new password */}
@@ -72,10 +70,20 @@ const ChangePassword = () => {
 					<Label>New Password</Label>
 					<OutlinedInput
 						fullWidth
-						type={values.showPassword ? "text" : "password"}
+						type={values.showNewPassword ? "text" : "password"}
 						value={values.newPassword}
 						onChange={handleChange("newPassword")}
-						endAdornment={<InputAdornmentEl />}
+						endAdornment={
+							<InputAdornmentElPass
+								isShowing={values.showNewPassword}
+								onClick={() =>
+									handleClickShowPassword({
+										key: "showNewPassword",
+										value: values.showNewPassword,
+									})
+								}
+							/>
+						}
 					/>
 				</Box>
 				{/* Re-Enter New Password */}
@@ -83,10 +91,20 @@ const ChangePassword = () => {
 					<Label>Re-Enter New Password</Label>
 					<OutlinedInput
 						fullWidth
-						type={values.showPassword ? "text" : "password"}
-						value={values.newPassword}
-						onChange={handleChange("newPassword")}
-						endAdornment={<InputAdornmentEl />}
+						type={values.showReEnterPassword ? "text" : "password"}
+						value={values.reEnterNewPassword}
+						onChange={handleChange("reEnterNewPassword")}
+						endAdornment={
+							<InputAdornmentElPass
+								isShowing={values.showReEnterPassword}
+								onClick={() =>
+									handleClickShowPassword({
+										key: "showReEnterPassword",
+										value: values.showReEnterPassword,
+									})
+								}
+							/>
+						}
 					/>
 				</Box>
 

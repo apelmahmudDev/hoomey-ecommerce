@@ -1,3 +1,4 @@
+export { default as InputAdornmentElPass } from "./InputAdornmentElPass";
 export { default as CartButton } from "./CartButton";
 export { default as Heading } from "./Heading";
 export { default as Link } from "./Link";
