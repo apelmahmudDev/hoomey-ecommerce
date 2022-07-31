@@ -32,7 +32,7 @@ import USAFlag from "../../icons/UsaFlag";
 
 // links
 export const links = [
-	{ link: "/about-hoomey", name: "About Hoomey" },
+	{ link: "/about-us", name: "About Hoomey" },
 	{ link: "/faqs", name: "FAQs" },
 	{ link: "/returns", name: "Returns" },
 	{ link: "/contact-us", name: "Contact us" },
