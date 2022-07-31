@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Lazy } from "swiper";
 import { useStyles } from "./styled";
@@ -34,12 +34,18 @@ const Hero: FC = () => {
 								className="swiper-lazy"
 							/>
 						</Box>
-						<Box className={classes.content}>
-							<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
-								{data.title}
-							</Typography>
-							<Button variant="contained">Shop Now</Button>
-						</Box>
+						<Container sx={{ position: "relative", height: "100%" }}>
+							<Box className={classes.content} sx={{ textAlign: data.contentPosition }}>
+								<Box sx={{ display: "inline-block", textAlign: "center" }}>
+									<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
+										{data.title}
+									</Typography>
+									<Box>
+										<Button variant="contained">Shop Now</Button>
+									</Box>
+								</Box>
+							</Box>
+						</Container>
 					</SwiperSlide>
 				))}
 			</Swiper>

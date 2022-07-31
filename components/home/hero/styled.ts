@@ -2,8 +2,10 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
 	mySwiper: {
-		height: 597,
-		maxHeight: 597,
+		// height: 597,
+		height: 697,
+		maxHeight: 697,
+		// maxHeight: 597,
 		"& .swiper-pagination": {
 			"& .swiper-pagination-bullet": {
 				background: "#fff",
@@ -21,9 +23,8 @@ export const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		paddingLeft: 8,
 		paddingRight: 8,
-		textAlign: "center",
 		position: "absolute",
-		top: "50%",
+		top: "-50%",
 		left: "50%",
 		transform: "translate(-50%,-50%)",
 
@@ -45,6 +46,7 @@ export const useStyles = makeStyles((theme) => ({
 			fontFamily: "Poppins",
 			fontWeight: 400,
 			letterSpacing: "0.3em",
+			textAlign: "center",
 		},
 	},
 }));
