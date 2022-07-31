@@ -6,6 +6,12 @@ export const useStyles = makeStyles((theme) => ({
 		height: 697,
 		maxHeight: 697,
 		// maxHeight: 597,
+		transition: "0.3s",
+		[theme.breakpoints.down("sm")]: {
+			height: 500,
+			maxHeight: 500,
+		},
+
 		"& .swiper-pagination": {
 			"& .swiper-pagination-bullet": {
 				background: "#fff",
