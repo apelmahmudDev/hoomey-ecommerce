@@ -17,6 +17,7 @@ import { Pagination, Lazy, Autoplay, Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { useStyles } from "./styled";
 
 // disyplay star details
 const StarViewProgress = ({
@@ -44,6 +45,7 @@ const StarViewProgress = ({
 const RatingsAndReviews = () => {
 	const props: { itemLength: number } = { itemLength: sliderData.length };
 	const classes = useSliderStyles(props);
+	const ownCSS = useStyles();
 
 	const [isRatingOpen, setIsRatingOpen] = useState(false);
 	const [ratings, setRatings] = useState<number | null>(0);
@@ -65,14 +67,15 @@ const RatingsAndReviews = () => {
 		<SectionBox>
 			<Container>
 				<Heading text="Ratings & Reviews" variant="h6" textAlign="center" mb={5} />
-				<Grid container spacing={8}>
-					<Grid item xs={12} sm={6} md={4}>
+				<Grid container spacing={10}>
+					<Grid item xs={12} sm={6} md={4} sx={{ position: "relative" }}>
 						<Box
+							// className={ownCSS.ratingBox}
 							sx={{
-								textAlign: "center",
 								display: "flex",
-								flexDirection: "column",
+								textAlign: "center",
 								alignItems: "center",
+								flexDirection: "column",
 							}}
 						>
 							<Box sx={{ height: 160, width: 160 }}>
@@ -94,8 +97,9 @@ const RatingsAndReviews = () => {
 							</Box>
 						</Box>
 					</Grid>
-					<Grid item xs={12} sm={6} md={4}>
+					<Grid item xs={12} sm={6} md={4} sx={{ position: "relative" }}>
 						<Box
+							className={ownCSS.ratingBox}
 							sx={{
 								textAlign: "center",
 								display: "flex",
@@ -138,7 +142,7 @@ const RatingsAndReviews = () => {
 									styles={buildStyles({
 										textColor: "red",
 										pathColor: "#E2BC82",
-										trailColor: "turquoise",
+										trailColor: "#E6E6E6",
 									})}
 								>
 									<Rating
@@ -173,8 +177,9 @@ const RatingsAndReviews = () => {
 					className={classes.mySwiper}
 					navigation={true}
 					pagination={pagination}
-					modules={[Pagination, Navigation, Autoplay, Lazy]}
 					lazy={true}
+					spaceBetween={30}
+					modules={[Pagination, Navigation, Autoplay, Lazy]}
 					autoplay={{
 						delay: 5000,
 						disableOnInteraction: false,
@@ -183,11 +188,12 @@ const RatingsAndReviews = () => {
 					{sliderData.map((comment, idx) => (
 						<SwiperSlide key={idx}>
 							<RatingsSliderItem comment={comment} />
+							<RatingsSliderItem comment={comment} />
+							<RatingsSliderItem comment={comment} />
 						</SwiperSlide>
 					))}
 				</Swiper>
 			</Container>
-
 			{/* popup - RatingsAndReviews */}
 			<RatingPopup isOpen={isRatingOpen} handleTogglePopup={handleTogglePopup} />
 		</SectionBox>

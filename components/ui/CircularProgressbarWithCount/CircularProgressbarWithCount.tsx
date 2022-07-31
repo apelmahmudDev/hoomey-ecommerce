@@ -15,7 +15,7 @@ const CircularProgressbarWithCount = ({ value, icon, count, desc }: IProps) => {
 			styles={buildStyles({
 				textColor: "red",
 				pathColor: "#E2BC82",
-				trailColor: "turquoise",
+				trailColor: "#E6E6E6",
 			})}
 		>
 			{icon}

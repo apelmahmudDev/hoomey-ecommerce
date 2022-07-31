@@ -6,6 +6,7 @@ const HintsHeading = ({
 	text,
 	variant,
 	mb,
+	tooltip,
 }: {
 	text: string;
 	variant?:
@@ -25,6 +26,7 @@ const HintsHeading = ({
 		| "inherit"
 		| undefined;
 	mb?: string | number;
+	tooltip: string;
 }) => {
 	return (
 		<Typography
@@ -34,7 +36,7 @@ const HintsHeading = ({
 			variant={variant || "h6"}
 		>
 			{text}{" "}
-			<HoverTooltip title="These results are based on your searches">
+			<HoverTooltip title={tooltip}>
 				<IconButton component="span">
 					<HintsSvg />
 				</IconButton>

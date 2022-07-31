@@ -15,15 +15,16 @@ import { IProduct } from "../../../types/product";
 interface IProps {
 	headingText: string;
 	productArr: IProduct[];
+	tooltipContent: string;
 }
 
-const ProductArrowSlider: FC<IProps> = ({ headingText, productArr }) => {
+const ProductArrowSlider: FC<IProps> = ({ headingText, productArr, tooltipContent }) => {
 	const classes = useStyles();
 
 	return (
 		<SectionBox>
 			<Container maxWidth="xl">
-				<HintsHeading text={headingText} />
+				<HintsHeading text={headingText} tooltip={tooltipContent} />
 				<Swiper
 					className={classes.mySwiper}
 					slidesPerView={4}

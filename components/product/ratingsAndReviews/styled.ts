@@ -41,6 +41,24 @@ export const useStyles = makeStyles((theme) => ({
 		},
 	},
 
+	ratingBox: {
+		justifyContent: "center",
+		"&::before": {
+			content: "''",
+			position: "absolute",
+			height: "65%",
+			borderLeft: "2px solid #E3E3E3",
+			left: 35,
+		},
+		"&::after": {
+			content: "''",
+			position: "absolute",
+			height: "65%",
+			borderRight: "2px solid #E3E3E3",
+			right: -35,
+		},
+	},
+
 	// mySwiper: (props: { itemLength: number }) => ({
 	// 	height: "100%",
 	// 	width: "100%",
