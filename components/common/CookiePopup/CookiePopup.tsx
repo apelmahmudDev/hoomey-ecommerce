@@ -3,7 +3,7 @@ import { Box, Button, Divider, Typography, Switch, DialogActions } from "@mui/ma
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { COLORS } from "../../../theme/colors";
-import { Link } from "../../ui";
+import { AppSwitch, Link } from "../../ui";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
@@ -42,11 +42,11 @@ const CookiePopup = ({ isOpen, handleToggle }: IProps) => {
 
 				<Box sx={{ my: 2.25, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 					<Typography variant="h6">Functional Cookies</Typography>
-					<Switch {...label} defaultChecked />
+					<AppSwitch {...label} defaultChecked />
 				</Box>
 				<Box sx={{ my: 2.25, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 					<Typography variant="h6">Marketing Cookies</Typography>
-					<Switch {...label} />
+					<AppSwitch {...label} />
 				</Box>
 			</DialogContent>
 			<DialogActions>
