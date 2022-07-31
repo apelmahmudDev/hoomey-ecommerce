@@ -5,6 +5,8 @@ import { styled } from "@mui/system";
 import { COLORS } from "../../../theme/colors";
 import NewCustomerSignUp from "./NewCustomerSignUp";
 import { useRouter } from "next/router";
+import { ForgetPassword } from "../../common/AuthPopup";
+import { useState } from "react";
 
 export const Label = styled(Typography)({
 	marginBottom: "10px",
@@ -16,6 +18,13 @@ export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#
 
 const ContinueCheckout = () => {
 	const router = useRouter();
+
+	const [isForgetPassOpen, setIsForgetPassOpen] = useState(false);
+
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsForgetPassOpen(boolean);
+	};
+
 	return (
 		<Box mb={9.1}>
 			<Container>
@@ -74,7 +83,14 @@ const ContinueCheckout = () => {
 									/>
 								</Box>
 								<Typography
-									sx={{ fontSize: 12, color: COLORS.GRANITE_GREY, textAlign: "right", mb: 2.5 }}
+									onClick={() => handleTogglePopup(true)}
+									sx={{
+										cursor: "pointer",
+										fontSize: 12,
+										color: COLORS.GRANITE_GREY,
+										textAlign: "right",
+										mb: 2.5,
+									}}
 								>
 									Forgot password?
 								</Typography>
@@ -89,6 +105,9 @@ const ContinueCheckout = () => {
 					</Grid>
 				</Grid>
 			</Container>
+
+			{/* popup - forgot password */}
+			<ForgetPassword isOpen={isForgetPassOpen} handleTogglePopup={handleTogglePopup} />
 		</Box>
 	);
 };

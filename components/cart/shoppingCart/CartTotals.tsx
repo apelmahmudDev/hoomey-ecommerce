@@ -39,7 +39,7 @@ const CartTotals = () => {
 	const router = useRouter();
 
 	const classes = useStyles();
-	const [country, setCountry] = useState("Bangladesh");
+	const [country, setCountry] = useState("United States");
 	const [product, setProduct] = useState("10");
 
 	const handleCountryChange = (event: SelectChangeEvent) => {

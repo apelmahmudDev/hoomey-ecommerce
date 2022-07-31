@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Box, Button, InputAdornment } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
@@ -7,6 +7,7 @@ import { CloseIconButton } from "../../../ui";
 import { MailFillSvg } from "../../../icons";
 import { Label } from "../../../styledComponents";
 import { AuthDevider, AuthSubtitle, AuthTitle, StyedTextField, StyledBox } from "../styledComponents";
+import { IPopup } from "../../../../types/popup";
 
 const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 	return (
@@ -16,16 +17,10 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 	);
 };
 
-const PasswordChange: FC = () => {
-	const [isForgetPassOpen, setIsForgetPassOpen] = useState(true);
-
-	const handleTogglePopup = (boolean: boolean) => {
-		setIsForgetPassOpen(boolean);
-	};
-
+const PasswordChange = ({ isOpen, handleTogglePopup }: IPopup) => {
 	return (
 		<Dialog
-			open={isForgetPassOpen}
+			open={isOpen}
 			onClose={() => handleTogglePopup(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
