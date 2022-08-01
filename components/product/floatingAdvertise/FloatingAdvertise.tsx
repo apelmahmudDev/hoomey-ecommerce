@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
-import { ProductSizeSelect } from "../../common";
+import { ColorPalette, ProductSizeSelect } from "../../common";
 import { ProductCircularColor } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, PriceTypography } from "../../ui";
 
@@ -48,7 +48,9 @@ export default function FloatingAdvertise() {
 						<Grid item xs={12} sm={6}>
 							<Box sx={{ display: "flex", alignItems: "center", gap: 2.4 }}>
 								<PriceTypography discount={90} price={50} fontSize={20} />
-								<ProductCircularColor color="#EBEBEB" />
+								<ProductCircularColor color="#FFDB00" className="color-circle">
+									<ColorPalette />
+								</ProductCircularColor>
 								<Box sx={{ ...styles }}>
 									<ArrowLeftIconButton onClick={() => console.log("decrement")} />
 									<Typography variant="h6" sx={{ fontFamily: "Poppins", fontWeight: 500 }}>

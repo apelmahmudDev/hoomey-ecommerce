@@ -102,9 +102,9 @@ const AbondonCart = () => {
 							</Box>
 							<Box sx={{ mb: 0.6, ...styles }}>
 								<SmallText>Color</SmallText>
-								<AppTooltip title={<ColorPalette />}>
-									<ProductCircularColor color="#EBEBEB" />
-								</AppTooltip>
+								<ProductCircularColor color="#FFDB00" className="color-circle">
+									<ColorPalette />
+								</ProductCircularColor>
 							</Box>
 							<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 								<SmallText>Size</SmallText>

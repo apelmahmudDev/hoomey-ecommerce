@@ -4,7 +4,7 @@ import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
-import { ProductSizeSelect } from "../../common";
+import { ColorPalette, ProductSizeSelect } from "../../common";
 import { HeadingText, ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 
@@ -47,7 +47,10 @@ const Item = () => {
 						</Box>
 						<Box sx={{ ...styles.flexStack }}>
 							<SmallText sx={{ color: COLORS.GRANITE_GREY }}>Color</SmallText>
-							<ProductCircularColor color="#EBEBEB" />
+
+							<ProductCircularColor color="#FFDB00" className="color-circle">
+								<ColorPalette />
+							</ProductCircularColor>
 						</Box>
 						<Box sx={{ ...styles.flexStack }}>
 							<SmallText sx={{ color: COLORS.GRANITE_GREY }}>Size</SmallText>

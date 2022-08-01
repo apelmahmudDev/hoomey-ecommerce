@@ -46,7 +46,7 @@ const CartDetails: FC = () => {
 	};
 
 	return (
-		<Box sx={{ position: "relative", display: "flex", flexDirection: "column", minHeight: `calc(100vh - 110px)` }}>
+		<Box sx={{ display: "flex", flexDirection: "column", minHeight: `calc(100vh - 110px)` }}>
 			<IconButton size="small" sx={{ position: "absolute", right: 0, color: "common.white" }}>
 				<CloseIcon fontSize="small" />
 			</IconButton>
@@ -72,9 +72,10 @@ const CartDetails: FC = () => {
 						</Box>
 						<Box sx={{ mb: 0.6, ...styles }}>
 							<SmallText>Color</SmallText>
-							<AppTooltip title={<ColorPalette />}>
-								<ProductCircularColor color="#EBEBEB" />
-							</AppTooltip>
+
+							<ProductCircularColor color="#FFDB00" className="color-circle">
+								<ColorPalette />
+							</ProductCircularColor>
 						</Box>
 						<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 							<SmallText>Size</SmallText>

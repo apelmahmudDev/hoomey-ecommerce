@@ -18,7 +18,7 @@ import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
-import { PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
+import { ColorPalette, PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
 import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg, PaypalColorSvg } from "../../icons";
 
 import { ProductCircularColor, SmallText } from "../../styledComponents";
@@ -92,7 +92,9 @@ const ShoppingCart = () => {
 						</Box>
 						<Box sx={{ ...styles.flexStack }}>
 							<Typography sx={{ ...styles.fs12 }}>Color</Typography>
-							<ProductCircularColor color="#EBEBEB" />
+							<ProductCircularColor color="#FFDB00" className="color-circle">
+								<ColorPalette />
+							</ProductCircularColor>
 						</Box>
 						<Box sx={{ ...styles.flexStack }}>
 							<Typography sx={{ ...styles.fs12 }}>Size</Typography>

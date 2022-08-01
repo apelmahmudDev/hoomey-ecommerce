@@ -39,9 +39,9 @@ const OrderDetails = () => {
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Color</Text>
-							<Tooltip title={<ColorPalette />}>
-								<ProductCircularColor color="#EBEBEB" />
-							</Tooltip>
+							<ProductCircularColor color="#FFDB00" className="color-circle">
+								<ColorPalette />
+							</ProductCircularColor>
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Size</Text>

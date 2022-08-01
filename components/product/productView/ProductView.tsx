@@ -24,7 +24,7 @@ import { FlexStack, ProductCircularColor } from "../../styledComponents";
 import { FacebookSvg, InstagramSvg, PinterestSvg, WhatsappSvg } from "../../icons";
 import { ArrowLeftIconButton, Link, ArrowRightIconButton, PriceTypography } from "../../ui";
 import { data } from "./data";
-import { ProductSizeSelect } from "../../common";
+import { ColorPalette, ProductSizeSelect } from "../../common";
 
 const ProductView = () => {
 	const classes = useStyles();
@@ -163,7 +163,9 @@ const ProductView = () => {
 							>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Color</Typography>
-									<ProductCircularColor color="#EBEBEB" />
+									<ProductCircularColor color="#FFDB00" className="color-circle">
+										<ColorPalette />
+									</ProductCircularColor>
 								</FlexStack>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Size</Typography>
