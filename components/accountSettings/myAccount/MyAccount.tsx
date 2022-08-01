@@ -1,5 +1,16 @@
-import { Box, TextField, Grid, Button } from "@mui/material";
+import {
+	Box,
+	TextField,
+	Grid,
+	Button,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+} from "@mui/material";
 import { useEffect, useState } from "react";
+import { days, months, years } from "../../../utils/select";
 import { isEmailAddress } from "../../../utils/validations";
 import { AccountSettingsSvg } from "../../icons";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
@@ -9,6 +20,9 @@ interface State {
 	lastName: string;
 	email: string;
 	dateOfBirth: string;
+	day: string;
+	month: string;
+	year: string;
 }
 
 const MyAccount = () => {
@@ -19,9 +33,12 @@ const MyAccount = () => {
 		lastName: "",
 		email: "",
 		dateOfBirth: "",
+		day: "",
+		month: "",
+		year: "",
 	});
 
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement> | SelectChangeEvent) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
@@ -89,15 +106,60 @@ const MyAccount = () => {
 				<Grid container spacing={2.5}>
 					{/* day */}
 					<Grid item xs={12} md={3}>
-						<TextField required defaultValue="Day" fullWidth />
+						<FormControl fullWidth required>
+							<InputLabel id="day-select-label">Day</InputLabel>
+							<Select
+								labelId="day-select-label"
+								id="day-select"
+								value={values.day}
+								label="Day"
+								onChange={handleChange("day")}
+							>
+								{days.map((day) => (
+									<MenuItem key={day} value={day}>
+										{day}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
 					</Grid>
 					{/* month */}
 					<Grid item xs={12} md={6}>
-						<TextField required defaultValue="Month" fullWidth />
+						<FormControl fullWidth required>
+							<InputLabel id="month-select-label">Month</InputLabel>
+							<Select
+								labelId="month-select-label"
+								id="month-select"
+								value={values.month}
+								label="Month"
+								onChange={handleChange("month")}
+							>
+								{months.map((month) => (
+									<MenuItem key={month} value={month}>
+										{month}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
 					</Grid>
 					{/* year */}
 					<Grid item xs={12} md={3}>
-						<TextField required defaultValue="Year" fullWidth />
+						<FormControl fullWidth required>
+							<InputLabel id="year-select-label">Year</InputLabel>
+							<Select
+								labelId="year-select-label"
+								id="year-select"
+								value={values.year}
+								label="Year"
+								onChange={handleChange("year")}
+							>
+								{years.map((year) => (
+									<MenuItem key={year} value={year}>
+										{year}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
 					</Grid>
 				</Grid>
 
