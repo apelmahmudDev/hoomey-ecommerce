@@ -1,8 +1,16 @@
 import { Box, Button, Typography, IconButton } from "@mui/material";
 import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 import { PaymentMethodsSvg, DeleteSvg, MasterCardSvg, VisaSvg } from "../../icons";
+import PaymentPopup from "./PaymentPopup";
+import { useState } from "react";
 
 const AddressBook = () => {
+	const [isPaymentMethodOpen, setIsPaymentMethodOpen] = useState(false);
+
+	const handleTogglePopup = (boolean: boolean) => {
+		setIsPaymentMethodOpen(boolean);
+	};
+
 	return (
 		<Box>
 			<Box sx={{ display: "flex", alignItems: "center", gap: 2, justifyContent: "space-between" }}>
@@ -10,7 +18,7 @@ const AddressBook = () => {
 					<PaymentMethodsSvg />
 					<TitleText>Payment Methods</TitleText>
 				</TitleFlexStack>
-				<Button color="secondary" variant="contained">
+				<Button onClick={() => handleTogglePopup(true)} color="secondary" variant="contained">
 					Add New
 				</Button>
 			</Box>
@@ -54,6 +62,9 @@ const AddressBook = () => {
 					</Box>
 				</Box>
 			))}
+
+			{/* popup for - add new payment */}
+			<PaymentPopup isOpen={isPaymentMethodOpen} handleTogglePopup={handleTogglePopup} />
 		</Box>
 	);
 };

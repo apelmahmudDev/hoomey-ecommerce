@@ -31,17 +31,14 @@ const Home: NextPage = () => {
 				<Footer />
 			</footer>
 			{/* popup & others section area*/}
-			{/* <NewsLetterPopup /> */}
 			{/* <RatingPopup /> */}
 			{/* <SignUp /> */}
 			{/* <SignIn /> */}
 			{/* <PasswordChange /> */}
 			{/* <ForgetPassword /> */}
 			{/* <FilterDropdwon /> */}
-			{/* <PaymentPopup /> */}
 			{/* <CTAPopup /> */}
 			{/* <AbondonCart /> */}
-			{/* <SizeChart /> */}
 		</div>
 	);
 };

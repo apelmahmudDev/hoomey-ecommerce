@@ -15,7 +15,6 @@ export { default as ProductCard } from "./ProductCard";
 export { default as SeachFilter } from "./SeachFilter";
 export { default as CookiePopup } from "./CookiePopup";
 export { default as ColorPalette } from "./ColorPalette";
-export { default as PaymentPopup } from "./PaymentPopup";
 export { default as CollectionsGrid } from "./CollectionsGrid";
 export { default as FilterDropdwon } from "./FilterDropdwon";
 export { default as SearchDropdwon } from "./SearchDropdwon";

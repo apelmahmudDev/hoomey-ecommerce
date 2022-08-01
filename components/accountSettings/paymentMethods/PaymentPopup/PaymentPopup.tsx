@@ -1,22 +1,16 @@
-import { FC, useState } from "react";
 import { Box, Button, Typography, DialogActions, FormControl, TextField, InputAdornment } from "@mui/material";
 
 import DialogContent from "@mui/material/DialogContent";
-import { Label, PopupDivider } from "../../styledComponents";
-import { MasterCardSvg, VisaSvg } from "../../icons";
-import SecuredByNorton from "../SecuredByNorton";
-import PaymentSystemView from "../PaymentSystemView";
-import Popup from "../Popup";
+import { Label, PopupDivider } from "../../../styledComponents";
+import { MasterCardSvg, VisaSvg } from "../../../icons";
+import SecuredByNorton from "../../../common/SecuredByNorton";
+import PaymentSystemView from "../../../common/PaymentSystemView";
+import Popup from "../../../common/Popup";
+import { IPopup } from "../../../../types/popup";
 
-const PaymentPopup: FC = () => {
-	const [isPaymentMethodOpen, setIsPaymentMethodOpen] = useState(false);
-
-	const handleTogglePopup = (boolean: boolean) => {
-		setIsPaymentMethodOpen(boolean);
-	};
-
+const PaymentPopup = ({ isOpen, handleTogglePopup }: IPopup) => {
 	return (
-		<Popup isOpen={isPaymentMethodOpen} handleTogglePopup={handleTogglePopup}>
+		<Popup isOpen={isOpen} handleTogglePopup={handleTogglePopup}>
 			<DialogContent>
 				<Typography textAlign="center" variant="h6" fontFamily="Poppins">
 					New Payment Method

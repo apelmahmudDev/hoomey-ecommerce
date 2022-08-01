@@ -13,18 +13,12 @@ import DialogContent from "@mui/material/DialogContent";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
 
-// interface IProps {
-// 	isOpen: boolean;
-// 	handleToggle: (isToggle: boolean) => void;
-// }
+interface IProps {
+	isOpen: boolean;
+	handleToggle: (isToggle: boolean) => void;
+}
 
-const SizeChart = () => {
-	const [isOpen, setIsOpen] = useState(true);
-
-	const handleToggle = (isToggle: boolean) => {
-		setIsOpen(isToggle);
-	};
-
+const SizeChart = ({ isOpen, handleToggle }: IProps) => {
 	return (
 		<Dialog
 			open={isOpen}

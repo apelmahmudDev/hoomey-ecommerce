@@ -24,10 +24,11 @@ import { FlexStack, ProductCircularColor } from "../../styledComponents";
 import { FacebookSvg, InstagramSvg, PinterestSvg, WhatsappSvg } from "../../icons";
 import { ArrowLeftIconButton, Link, ArrowRightIconButton, PriceTypography } from "../../ui";
 import { data } from "./data";
-import { ColorPalette, ProductSizeSelect } from "../../common";
+import { ColorPalette, ProductSizeSelect, SizeChart } from "../../common";
 
 const ProductView = () => {
 	const classes = useStyles();
+	const [isOpen, setIsOpen] = useState(false);
 	const [expanded, setExpanded] = useState<string | false>(false);
 
 	const handleChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
@@ -38,6 +39,10 @@ const ProductView = () => {
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
+	};
+	// handle toggole popup
+	const handleTogglePopup = (isToggle: boolean) => {
+		setIsOpen(isToggle);
 	};
 
 	// console.log(size);
@@ -88,7 +93,11 @@ const ProductView = () => {
 								</Typography>
 								<PriceTypography discount={90} price={500} />
 							</Box>
-							<Button color="secondary" className={classes.chartBtn}>
+							<Button
+								onClick={() => handleTogglePopup(true)}
+								color="secondary"
+								className={classes.chartBtn}
+							>
 								Size Chart
 							</Button>
 						</Box>
@@ -214,6 +223,9 @@ const ProductView = () => {
 					</Grid>
 				</Grid>
 			</Container>
+
+			{/* size chart popup */}
+			<SizeChart isOpen={isOpen} handleToggle={handleTogglePopup} />
 		</Box>
 	);
 };

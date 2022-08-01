@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { IMAGES } from "../../../uiElements";
@@ -9,11 +9,17 @@ import DialogContent from "@mui/material/DialogContent";
 import { CloseIconButton } from "../../ui";
 
 const NewsLetterPopup: FC = () => {
-	const [isNewsLetterOpen, setIsNewsLetterOpen] = useState(true);
+	const [isNewsLetterOpen, setIsNewsLetterOpen] = useState(false);
 
 	const handleTogglePopup = (boolean: boolean) => {
 		setIsNewsLetterOpen(boolean);
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			handleTogglePopup(true);
+		}, 5000);
+	}, []);
 
 	return (
 		<Dialog
