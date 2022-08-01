@@ -19,7 +19,8 @@ interface State {
 	firstName: string;
 	lastName: string;
 	email: string;
-	dateOfBirth: string;
+}
+interface SelectState {
 	day: string;
 	month: string;
 	year: string;
@@ -28,18 +29,26 @@ interface State {
 const MyAccount = () => {
 	const [isError, setIsError] = useState(false);
 
+	// for namal input / case of typescript issue
 	const [values, setValues] = useState<State>({
 		firstName: "",
 		lastName: "",
 		email: "",
-		dateOfBirth: "",
+	});
+
+	// select input / case of typescript issue
+	const [selectValues, setSelectValues] = useState<SelectState>({
 		day: "",
 		month: "",
 		year: "",
 	});
 
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement> | SelectChangeEvent) => {
+	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.target.value });
+	};
+
+	const handleSelectChange = (prop: keyof SelectState) => (event: SelectChangeEvent) => {
+		setSelectValues({ ...selectValues, [prop]: event.target.value });
 	};
 
 	// email validation with regex
@@ -111,9 +120,9 @@ const MyAccount = () => {
 							<Select
 								labelId="day-select-label"
 								id="day-select"
-								value={values.day}
+								value={selectValues.day}
 								label="Day"
-								onChange={handleChange("day")}
+								onChange={handleSelectChange("day")}
 							>
 								{days.map((day) => (
 									<MenuItem key={day} value={day}>
@@ -130,9 +139,9 @@ const MyAccount = () => {
 							<Select
 								labelId="month-select-label"
 								id="month-select"
-								value={values.month}
+								value={selectValues.month}
 								label="Month"
-								onChange={handleChange("month")}
+								onChange={handleSelectChange("month")}
 							>
 								{months.map((month) => (
 									<MenuItem key={month} value={month}>
@@ -149,9 +158,9 @@ const MyAccount = () => {
 							<Select
 								labelId="year-select-label"
 								id="year-select"
-								value={values.year}
+								value={selectValues.year}
 								label="Year"
-								onChange={handleChange("year")}
+								onChange={handleSelectChange("year")}
 							>
 								{years.map((year) => (
 									<MenuItem key={year} value={year}>
