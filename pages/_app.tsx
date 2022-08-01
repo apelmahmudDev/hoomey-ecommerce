@@ -15,7 +15,7 @@ import "swiper/css/lazy";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
-import { NewsLetterPopup } from "../components/common";
+import { CTAPopup, NewsLetterPopup } from "../components/common";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -41,8 +41,9 @@ function MyApp(props: IAppProps): ReactElement {
 					<CssBaseline />
 					<Component {...pageProps} />
 
-					{/* popup */}
+					{/* popup - they are showing itself any time & any where on the whole applications*/}
 					<NewsLetterPopup />
+					<CTAPopup />
 				</ThemeProvider>
 			</StylesProvider>
 		</CacheProvider>

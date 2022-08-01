@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Typography, Box, Rating, IconButton } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
@@ -16,11 +16,17 @@ import { CloseIcon } from "../../../uiElements/icons";
 // }
 
 const CTAPopup = () => {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const handleToggle = (isToggle: boolean) => {
 		setIsOpen(isToggle);
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			handleToggle(true);
+		}, 10000);
+	}, []);
 
 	return (
 		<Dialog

@@ -37,7 +37,6 @@ const Home: NextPage = () => {
 			{/* <PasswordChange /> */}
 			{/* <ForgetPassword /> */}
 			{/* <FilterDropdwon /> */}
-			{/* <CTAPopup /> */}
 			{/* <AbondonCart /> */}
 		</div>
 	);
