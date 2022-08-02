@@ -30,6 +30,8 @@ import HoverMenu from "./HoverMenu";
 import SearchDropdwon from "../SearchDropdwon";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import TrackOrder from "../TrackOrder";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -48,8 +50,9 @@ const pages = [
 
 const Navbar: FC = () => {
 	const classes = useStyles();
-
 	const router = useRouter();
+
+	const cart = useAppSelector((state: RootState) => state.cart);
 
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -295,7 +298,10 @@ const Navbar: FC = () => {
 										</Select>
 									</FormControl>
 								</Box>
-								<CartButton badgeContent={1} onClick={() => toggleCartDrawer(true)} />
+								<CartButton
+									badgeContent={cart.products.length}
+									onClick={() => toggleCartDrawer(true)}
+								/>
 							</Box>
 
 							{/* settings for small device */}

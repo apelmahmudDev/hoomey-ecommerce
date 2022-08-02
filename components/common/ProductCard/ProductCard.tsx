@@ -8,8 +8,12 @@ import { COLORS } from "../../../theme/colors";
 import { PriceTypography } from "../../ui";
 import { BagSvg, FavoriteOutlineSvg } from "../../icons";
 
+import { useAppDispatch } from "../../../store/hooks";
+import { addToCart } from "../../../store/slices/cartSlice";
+
 const ProductCard = ({ product }: { product: IProduct }) => {
 	const classes = useStyles();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Card className={classes.latestProductCard}>
@@ -35,7 +39,12 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 						<FavoriteOutlineSvg />
 						{/* <FavoriteFillSvg /> */}
 					</IconButton>
-					<IconButton color="primary" size="large" aria-label="add-to-cart">
+					<IconButton
+						onClick={() => dispatch(addToCart(product))}
+						color="primary"
+						size="large"
+						aria-label="add-to-cart"
+					>
 						<BagSvg />
 					</IconButton>
 				</Stack>

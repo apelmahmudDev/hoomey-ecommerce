@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "next/image";
 import { Typography, Box, IconButton, Grid } from "@mui/material";
 

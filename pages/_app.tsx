@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -7,6 +7,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import createEmotionCache from "../theme/createEmotionCache";
 import { appTheme } from "../theme/theme";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "../styles/globals.css";
 // Import Swiper styles
@@ -16,6 +17,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 import { CTAPopup, NewsLetterPopup } from "../components/common";
+import { wrapper } from "../store";
+import { Box } from "@mui/material";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -30,6 +33,14 @@ const generateClassName = createGenerateClassName({
 
 function MyApp(props: IAppProps): ReactElement {
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 1500);
+	}, []);
+
 	return (
 		<CacheProvider value={emotionCache}>
 			<StylesProvider generateClassName={generateClassName}>
@@ -39,15 +50,31 @@ function MyApp(props: IAppProps): ReactElement {
 				<ThemeProvider theme={appTheme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
-					<Component {...pageProps} />
 
-					{/* popup - they are showing itself any time & any where on the whole applications*/}
-					<NewsLetterPopup />
-					<CTAPopup />
+					{isLoading ? (
+						<Box
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								height: "100vh",
+								justifyContent: "center",
+							}}
+						>
+							<CircularProgress />
+						</Box>
+					) : (
+						<>
+							<Component {...pageProps} />
+
+							{/* popup - they are showing itself any time & any where on the whole applications*/}
+							<NewsLetterPopup />
+							<CTAPopup />
+						</>
+					)}
 				</ThemeProvider>
 			</StylesProvider>
 		</CacheProvider>
 	);
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

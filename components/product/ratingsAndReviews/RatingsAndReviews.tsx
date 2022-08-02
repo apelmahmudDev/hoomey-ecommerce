@@ -63,6 +63,8 @@ const RatingsAndReviews = () => {
 		setIsRatingOpen(value);
 	};
 
+	//
+
 	return (
 		<SectionBox>
 			<Container>
