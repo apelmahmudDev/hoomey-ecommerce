@@ -7,7 +7,6 @@ import { productData } from "./data";
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Lazy } from "swiper";
-import { Link } from "../../ui";
 
 const LatestProducts: FC = () => {
 	const classes = useStyles();
