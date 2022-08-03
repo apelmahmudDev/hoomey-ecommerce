@@ -7,7 +7,6 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import createEmotionCache from "../theme/createEmotionCache";
 import { appTheme } from "../theme/theme";
-import CircularProgress from "@mui/material/CircularProgress";
 
 import "../styles/globals.css";
 // Import Swiper styles
@@ -16,9 +15,9 @@ import "swiper/css/lazy";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
-import { CTAPopup, NewsLetterPopup } from "../components/common";
+
+import { CTAPopup, NewsLetterPopup, PageLoading } from "../components/common";
 import { wrapper } from "../store";
-import { Box } from "@mui/material";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -52,16 +51,7 @@ function MyApp(props: IAppProps): ReactElement {
 					<CssBaseline />
 
 					{isLoading ? (
-						<Box
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								height: "100vh",
-								justifyContent: "center",
-							}}
-						>
-							<CircularProgress />
-						</Box>
+						<PageLoading />
 					) : (
 						<>
 							<Component {...pageProps} />

@@ -14,8 +14,12 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import CircleIcon from "@mui/icons-material/Circle";
 import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
 import NorthWestIcon from "@mui/icons-material/NorthWest";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export {
+	ArrowForwardIosIcon,
+	ArrowBackIosNewIcon,
 	NorthWestIcon,
 	SettingsBackupRestoreIcon,
 	CircleIcon,

@@ -33,6 +33,7 @@ import TrackOrder from "../TrackOrder";
 import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store/types";
 import NotFound from "../NotFound";
+import TopHeader from "../TopHeader";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -113,6 +114,7 @@ const Navbar: FC = () => {
 	return (
 		<>
 			<AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white", color: "#727376" }}>
+				<TopHeader />
 				<Container maxWidth="lg">
 					<Toolbar disableGutters>
 						{/* menu for small device */}
@@ -337,6 +339,7 @@ const Navbar: FC = () => {
 					</Toolbar>
 				</Container>
 			</AppBar>
+			<Toolbar />
 			<Toolbar />
 
 			{/* card details - drawer */}
