@@ -14,7 +14,7 @@ import {
 	CardActionArea,
 	Divider,
 } from "@mui/material";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { useStyles } from "./styled";
@@ -28,18 +28,25 @@ import { ColorPalette, ProductSizeSelect, SizeChart } from "../../common";
 
 const ProductView = () => {
 	const classes = useStyles();
+
+	const [size, setSize] = useState("10");
 	const [isOpen, setIsOpen] = useState(false);
 	const [expanded, setExpanded] = useState<string | false>(false);
+	const [image, setImage] = useState<StaticImageData | string>(IMAGES.WhiteTshirtImg);
 
 	const handleChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
 		setExpanded(isExpanded ? panel : false);
 	};
 
-	const [size, setSize] = useState("10");
-
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
+
+	// change view image
+	const handleChangeImage = (image: StaticImageData | string) => {
+		setImage(image);
+	};
+
 	// handle toggole popup
 	const handleTogglePopup = (isToggle: boolean) => {
 		setIsOpen(isToggle);
@@ -55,7 +62,7 @@ const ProductView = () => {
 					<Grid item xs={12} sm={6}>
 						<Card sx={{ position: "relative" }}>
 							<Box sx={{ background: COLORS.PRODUCT_CARD_BG }}>
-								<Image src={IMAGES.WhiteTshirtImg} alt={"Product"} layout="responsive" />
+								<Image src={image} alt={"Product"} layout="responsive" />
 							</Box>
 							<Typography className={classes.discountChip}> -{56}%</Typography>
 						</Card>
@@ -67,7 +74,7 @@ const ProductView = () => {
 								{data.map((item, idx) => (
 									<Grid key={idx} item xs>
 										<Card>
-											<CardActionArea>
+											<CardActionArea onClick={() => handleChangeImage(item)}>
 												<Image
 													src={item}
 													alt="justify1"
