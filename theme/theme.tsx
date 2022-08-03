@@ -64,6 +64,13 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+		MuiStepIcon: {
+			styleOverrides: {
+				root: {
+					color: "#EEEEEE",
+				},
+			},
+		},
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: {
