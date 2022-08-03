@@ -6,14 +6,20 @@ import { Box, Stack, Typography, Divider, Rating, Card, CardContent, IconButton 
 import { IProduct } from "../../../types/product";
 import { COLORS } from "../../../theme/colors";
 import { Link, PriceTypography } from "../../ui";
-import { BagSvg, FavoriteOutlineSvg } from "../../icons";
+import { BagSvg, FavoriteFillSvg, FavoriteOutlineSvg } from "../../icons";
 
 import { useAppDispatch } from "../../../store/hooks";
 import { addToCart } from "../../../store/slices/cartSlice";
+import { useState } from "react";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
 	const classes = useStyles();
 	const dispatch = useAppDispatch();
+	const [isFavourite, setIsFavourite] = useState(false);
+
+	const handlefavorites = () => {
+		setIsFavourite(!isFavourite);
+	};
 
 	return (
 		<Link href={"/product/" + product.id}>
@@ -36,9 +42,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 						divider={<Divider orientation="vertical" flexItem />}
 						spacing={2}
 					>
-						<IconButton color="primary" size="large" aria-label="add-to-favorite">
-							<FavoriteOutlineSvg />
-							{/* <FavoriteFillSvg /> */}
+						<IconButton onClick={handlefavorites} color="primary" size="large" aria-label="add-to-favorite">
+							{isFavourite ? <FavoriteFillSvg /> : <FavoriteOutlineSvg />}
 						</IconButton>
 						<IconButton
 							onClick={() => dispatch(addToCart(product))}
