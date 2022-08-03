@@ -29,14 +29,14 @@ const CookiePopup = ({ isOpen, handleToggle }: IProps) => {
 				<Divider sx={{ bgcolor: "#000000", my: 2.5 }} />
 
 				<Typography textAlign="center" fontWeight="medium" sx={{ color: COLORS.GRANITE_GREY }}>
-					We use cookies to optimize our website and our services. For our policies, please visit our{" "}
+					We use cookies to optimize our website and our services. For our policies, please visit our
 					<Link href={ROUTING_TREE.PRIVACY_POLICY}>
-						<Button>Privacy Policy</Button>
+						<Button sx={{ textDecoration: "underline" }}>Privacy Policy</Button>
 					</Link>
-					or{" "}
+					or
 					<Link href={ROUTING_TREE.TERMS_OF_SERVICE}>
-						<Button>Terms of Service</Button>
-					</Link>{" "}
+						<Button sx={{ textDecoration: "underline" }}>Terms of Service</Button>
+					</Link>
 					page.
 				</Typography>
 

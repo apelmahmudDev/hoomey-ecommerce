@@ -161,16 +161,18 @@ const Navbar: FC = () => {
 						<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 							{/* hover menu*/}
 							<Box component="span" className={classes.dropdown}>
-								<Button
-									sx={{
-										fontFamily: "Euclid Circular A",
-										color: "#727376",
-										my: 2,
-										display: "block",
-									}}
-								>
-									Men
-								</Button>
+								<Link href="/men">
+									<Button
+										sx={{
+											fontFamily: "Euclid Circular A",
+											color: "#727376",
+											my: 2,
+											display: "block",
+										}}
+									>
+										Men
+									</Button>
+								</Link>
 								<Box className="dropdownContent">
 									<HoverMenu />
 								</Box>
