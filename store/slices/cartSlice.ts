@@ -7,10 +7,12 @@ interface CartProducts extends IProduct {
 
 interface InitialState {
 	products: CartProducts[];
+	subtotal: number;
 }
 
 const initialState: InitialState = {
 	products: [],
+	subtotal: 0,
 };
 
 export const cartSlice = createSlice({
@@ -23,13 +25,41 @@ export const cartSlice = createSlice({
 
 			if (matchProduct?.quantity) {
 				matchProduct.quantity++;
+				matchProduct.price *= matchProduct.quantity;
 			} else {
 				state.products = [...state.products, { ...product, quantity: 1 }];
 			}
+
+			// calculate subtotal
+			state.subtotal = state.products.reduce((sum, product) => sum + Number(product.price), 0);
+		},
+
+		quantityIncrement: (state: InitialState, action: PayloadAction<string>) => {
+			const matchProduct = state.products.find((product) => product.id === action.payload);
+			if (matchProduct) {
+				matchProduct.quantity++;
+				matchProduct.price *= matchProduct.quantity;
+			}
+		},
+
+		quantityDecrement: (state: InitialState, action: PayloadAction<string>) => {
+			const matchProduct = state.products.find((product) => product.id === action.payload);
+			if (matchProduct) {
+				if (matchProduct.quantity > 1) {
+					matchProduct.quantity--;
+					matchProduct.price *= matchProduct.quantity;
+				} else {
+					return;
+				}
+			}
+		},
+
+		removeFromCart: (state: InitialState, action: PayloadAction<string>) => {
+			state.products = state.products.filter((product) => product.id !== action.payload);
 		},
 	},
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, quantityIncrement, quantityDecrement, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

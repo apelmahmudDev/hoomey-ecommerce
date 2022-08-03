@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Dialog from "@mui/material/Dialog";
 import CartDetails from "./CartDetails";
 import CartButton from "../../ui/CartButton";
-import { DarkBagSvg, DarkPersonSvg, NavLogoSvg, OpenSvg, TrackSvg } from "../../icons";
+import { BagSvg, DarkBagSvg, DarkPersonSvg, NavLogoSvg, OpenSvg, TrackSvg } from "../../icons";
 import Link from "../../ui/Link";
 
 // import Tooltip from "@mui/material/Tooltip";
@@ -32,6 +32,7 @@ import { ROUTING_TREE } from "../../../constants/siteUrls";
 import TrackOrder from "../TrackOrder";
 import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store/types";
+import NotFound from "../NotFound";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -340,7 +341,13 @@ const Navbar: FC = () => {
 
 			{/* card details - drawer */}
 			<AppDrawer isDrawerOpen={isCartDrawerOpen} toggleDrawer={toggleCartDrawer}>
-				<CartDetails />
+				{cart.products.length ? (
+					<CartDetails />
+				) : (
+					<Box p={5}>
+						<NotFound message="No products in the cart." icon={<BagSvg color="#fff" />} />
+					</Box>
+				)}
 			</AppDrawer>
 
 			{/* search dropdown - section */}

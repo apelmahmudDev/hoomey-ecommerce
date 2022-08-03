@@ -6,7 +6,7 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 
-import { AppTooltip, CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
+import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
 import { useStyles } from "./styled";
 import { IMAGES } from "../../../uiElements";
 
@@ -16,6 +16,9 @@ import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 import ProductSizeSelect from "../ProductSizeSelect";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import ColorPalette from "../ColorPalette";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
+import { quantityIncrement, quantityDecrement, removeFromCart } from "../../../store/slices/cartSlice";
 
 const styles = {
 	display: "flex",
@@ -26,72 +29,92 @@ const styles = {
 const CartDetails: FC = () => {
 	const router = useRouter();
 	const classes = useStyles();
+	const dispatch = useAppDispatch();
+
+	const cart = useAppSelector((state: RootState) => state.cart);
+
 	const [size, setSize] = useState("10");
-	const [quantity, setQuantity] = useState(1);
+	// const [quantity, setQuantity] = useState(1);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
 	console.log(size);
 
-	const handleQuantityIncrementClick = () => {
-		setQuantity(quantity + 1);
-	};
-	const handleQuantityDecrementClick = () => {
-		if (quantity > 1) {
-			setQuantity(quantity - 1);
-		} else {
-			return;
-		}
-	};
+	// const handleQuantityIncrementClick = () => {
+	// 	setQuantity(quantity + 1);
+	// };
+	// const handleQuantityDecrementClick = () => {
+	// 	if (quantity > 1) {
+	// 		setQuantity(quantity - 1);
+	// 	} else {
+	// 		return;
+	// 	}
+	// };
 
 	return (
 		<Box sx={{ display: "flex", flexDirection: "column", minHeight: `calc(100vh - 110px)` }}>
-			<IconButton size="small" sx={{ position: "absolute", right: 0, color: "common.white" }}>
-				<CloseIcon fontSize="small" />
-			</IconButton>
-			{[...Array(1)].map((item, idx) => (
-				<Box key={idx} sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
-					<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={65} width={47} objectFit="cover" />
-					<Box>
-						<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
-							<Typography variant="body2" sx={{ fontWeight: 600 }}>
-								White Cotton Sweatshirt
-							</Typography>
-							<SmallText>${"50.00"}</SmallText>
-						</Box>
-						<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
-							<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
-							<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
-								<ArrowLeftIconButton color="#fff" onClick={handleQuantityDecrementClick} />
-								<Typography variant="body2" fontWeight="500">
-									{quantity}
-								</Typography>
-								<ArrowRightIconButton color="#fff" onClick={handleQuantityIncrementClick} />
-							</Box>
-						</Box>
-						<Box sx={{ mb: 0.6, ...styles }}>
-							<SmallText>Color</SmallText>
+			{cart.products.map((product, idx) => {
+				const { id, name, price, image, quantity } = product;
 
-							<ProductCircularColor color="#FFDB00" className="color-circle">
-								<ColorPalette />
-							</ProductCircularColor>
-						</Box>
-						<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
-							<SmallText>Size</SmallText>
+				return (
+					<div key={idx}>
+						<IconButton
+							size="small"
+							onClick={() => dispatch(removeFromCart(id))}
+							sx={{ position: "absolute", right: 0, color: "common.white" }}
+						>
+							<CloseIcon fontSize="small" />
+						</IconButton>
+						<Box sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
+							<Image src={image} alt="Product" height={65} width={47} objectFit="cover" />
 							<Box>
-								<ProductSizeSelect
-									value={size}
-									handleSizeChange={handleSizeChange}
-									iconColor="#fff"
-									outerFontColor="#fff"
-									outerFontSize={12}
-								/>
+								<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
+									<Typography variant="body2" sx={{ fontWeight: 600 }}>
+										{name}
+									</Typography>
+									<SmallText>${price}</SmallText>
+								</Box>
+								<Box sx={{ mb: 0.6, display: "flex", alignItems: "center" }}>
+									<SmallText sx={{ flex: 1 }}>Quantity</SmallText>
+									<Box component="span" sx={{ display: "flex", alignItems: "center", mr: -1 }}>
+										<ArrowLeftIconButton
+											onClick={() => dispatch(quantityDecrement(id))}
+											color="#fff"
+										/>
+										<Typography variant="body2" fontWeight="500">
+											{quantity}
+										</Typography>
+										<ArrowRightIconButton
+											onClick={() => dispatch(quantityIncrement(id))}
+											color="#fff"
+										/>
+									</Box>
+								</Box>
+								<Box sx={{ mb: 0.6, ...styles }}>
+									<SmallText>Color</SmallText>
+
+									<ProductCircularColor color="#FFDB00" className="color-circle">
+										<ColorPalette />
+									</ProductCircularColor>
+								</Box>
+								<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
+									<SmallText>Size</SmallText>
+									<Box>
+										<ProductSizeSelect
+											value={size}
+											handleSizeChange={handleSizeChange}
+											iconColor="#fff"
+											outerFontColor="#fff"
+											outerFontSize={12}
+										/>
+									</Box>
+								</Box>
 							</Box>
 						</Box>
-					</Box>
-				</Box>
-			))}
+					</div>
+				);
+			})}
 			<CartDivider sx={{ mt: 6 }} />
 			{/* similar products view area - slider*/}
 			<Box mt={2.5}>
@@ -159,7 +182,7 @@ const CartDetails: FC = () => {
 						Subtotal
 					</Typography>
 					<Typography fontWeight="500" fontSize={12}>
-						${(50).toFixed(2)}
+						${`${cart.subtotal.toFixed(2)}`}
 					</Typography>
 				</Box>
 				<CartDivider />
