@@ -21,7 +21,7 @@ const Billingdetails = () => {
 			<Typography sx={{ mb: 3 }} variant="h6">
 				Billing details
 			</Typography>
-			<Box component="form" autoComplete="off">
+			<div>
 				<Grid container spacing={{ xs: 0, sm: 2, md: 5 }}>
 					<Grid item xs={12} sm={6}>
 						<Box component="div" sx={{ my: 1.9 }}>
@@ -89,7 +89,7 @@ const Billingdetails = () => {
 					<Label>Order notes (optional)</Label>
 					<TextField fullWidth multiline />
 				</Box>
-			</Box>
+			</div>
 		</div>
 	);
 };

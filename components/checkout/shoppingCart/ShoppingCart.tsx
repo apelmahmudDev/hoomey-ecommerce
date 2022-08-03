@@ -13,7 +13,6 @@ import {
 	Button,
 } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
@@ -35,8 +34,6 @@ const styles = {
 };
 
 const ShoppingCart = () => {
-	const router = useRouter();
-
 	const [size, setSize] = useState("10");
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
@@ -234,7 +231,7 @@ const ShoppingCart = () => {
 					</Typography>
 				}
 			/>
-			<EndIconButton onClick={() => router.push("/order-placed")} endIcon={<WhiteLockSvg />}>
+			<EndIconButton type="submit" endIcon={<WhiteLockSvg />}>
 				Checkout
 			</EndIconButton>
 
@@ -242,6 +239,7 @@ const ShoppingCart = () => {
 			<Button
 				fullWidth
 				size="small"
+				type="submit"
 				variant="contained"
 				sx={{ mt: 1.25, bgcolor: "#fec33a", "&:hover": { bgcolor: "#cb9b2e" }, "& span": { ml: 0.5 } }}
 			>

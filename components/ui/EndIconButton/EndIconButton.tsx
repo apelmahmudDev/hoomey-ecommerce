@@ -1,14 +1,15 @@
 import { Button } from "@mui/material";
 
-interface IProps {
-	onClick: () => void;
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	onClick?: () => void;
 	endIcon: React.ReactNode;
 	children: React.ReactNode;
 }
 
-const EndIconButton = ({ onClick, endIcon, children }: IProps) => {
+const EndIconButton = ({ onClick, endIcon, children, ...props }: IProps) => {
 	return (
 		<Button
+			{...props}
 			onClick={onClick}
 			fullWidth
 			variant="contained"
