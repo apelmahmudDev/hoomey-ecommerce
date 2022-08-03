@@ -2,7 +2,7 @@ import { Container, Typography, Box, Grid, Button, SelectChangeEvent } from "@mu
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { ColorPalette, ProductSizeSelect } from "../../common";
@@ -19,15 +19,38 @@ const styles = {
 
 export default function FloatingAdvertise() {
 	const [size, setSize] = useState("10");
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
 
+	const handleScroll = () => {
+		const position = window.pageYOffset;
+		setScrollPosition(position);
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	// console.log(size);
 
 	return (
-		<AppBar position="fixed" sx={{ bgcolor: "common.white", top: "auto", bottom: 0, p: 1 }}>
+		<AppBar
+			position="fixed"
+			sx={{
+				display: scrollPosition >= 1150 ? "block" : "none",
+				bgcolor: "common.white",
+				top: "auto",
+				bottom: 0,
+				p: 1,
+			}}
+		>
 			<Toolbar>
 				<Container>
 					<Grid container spacing={3} alignItems="center">
