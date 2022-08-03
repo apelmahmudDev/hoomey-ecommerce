@@ -58,7 +58,7 @@ import Kids5Img from "../assets/images/collections/kids/kids5.png";
 import Kids6Img from "../assets/images/collections/kids/kids6.png";
 
 // baby
-import BabyHeroImg from "../assets/images/collections/baby/baby_hero.png";
+import BabyHeroImg from "../assets/images/collections/baby/baby-hero.png";
 import Baby1Img from "../assets/images/collections/baby/baby1.png";
 import Baby2Img from "../assets/images/collections/baby/baby2.png";
 import Baby3Img from "../assets/images/collections/baby/baby3.png";
