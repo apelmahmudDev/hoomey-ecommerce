@@ -10,7 +10,7 @@ import ProductSizeSelect from "../ProductSizeSelect";
 import { CloseIcon } from "../../../uiElements/icons";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import { ArrowLeftIconButton, ArrowRightIconButton, Link } from "../../ui";
-import { AppTooltip, CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
+import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
 
 const styles = {
 	display: "flex",
@@ -27,6 +27,7 @@ const AbondonCart = () => {
 	const [size, setSize] = useState("10");
 	const [isOpen, setIsOpen] = useState(true);
 	const [quantity, setQuantity] = useState(1);
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const handleToggle = (isToggle: boolean) => {
 		setIsOpen(isToggle);
@@ -46,6 +47,11 @@ const AbondonCart = () => {
 		} else {
 			return;
 		}
+	};
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
 	};
 
 	return (
@@ -102,9 +108,19 @@ const AbondonCart = () => {
 							</Box>
 							<Box sx={{ mb: 0.6, ...styles }}>
 								<SmallText>Color</SmallText>
-								<ProductCircularColor color="#FFDB00" className="color-circle">
+								{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 									<ColorPalette />
-								</ProductCircularColor>
+								</ProductCircularColor> */}
+								<ProductCircularColor
+									// aria-describedby={id}
+									color="#FFDB00"
+									className="color-circle"
+									onClick={handleOpenColorPalette}
+								/>
+								<ColorPalette
+									anchorEl={colorPaletteAnchorEl}
+									setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+								/>
 							</Box>
 							<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 								<SmallText>Size</SmallText>

@@ -1,4 +1,5 @@
-import { Container, Box, Typography, Divider, Tooltip } from "@mui/material";
+import { useState } from "react";
+import { Container, Box, Typography, Divider } from "@mui/material";
 import Image from "next/image";
 import { styled } from "@mui/system";
 import { IMAGES } from "../../../uiElements";
@@ -17,6 +18,13 @@ const Text = styled(Typography)((theme) => ({
 }));
 
 const OrderDetails = () => {
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
+	};
+
 	return (
 		<Box>
 			<Container maxWidth="md">
@@ -39,9 +47,19 @@ const OrderDetails = () => {
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Color</Text>
-							<ProductCircularColor color="#FFDB00" className="color-circle">
+							{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 								<ColorPalette />
-							</ProductCircularColor>
+							</ProductCircularColor> */}
+							<ProductCircularColor
+								// aria-describedby={id}
+								color="#FFDB00"
+								className="color-circle"
+								onClick={handleOpenColorPalette}
+							/>
+							<ColorPalette
+								anchorEl={colorPaletteAnchorEl}
+								setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+							/>
 						</FlexStack>
 						<FlexStack>
 							<Text variant="body2">Size</Text>

@@ -12,11 +12,18 @@ const styles = { flexStack: { my: 0.5, display: "flex", alignItems: "center", ju
 
 const Item = () => {
 	const [size, setSize] = useState("10");
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
 	console.log(size);
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
+	};
+
 	return (
 		<div>
 			<HeadingText sx={{ mb: 3.5 }}>Shopping Cart</HeadingText>
@@ -48,9 +55,19 @@ const Item = () => {
 						<Box sx={{ ...styles.flexStack }}>
 							<SmallText sx={{ color: COLORS.GRANITE_GREY }}>Color</SmallText>
 
-							<ProductCircularColor color="#FFDB00" className="color-circle">
+							{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 								<ColorPalette />
-							</ProductCircularColor>
+							</ProductCircularColor> */}
+							<ProductCircularColor
+								// aria-describedby={id}
+								color="#FFDB00"
+								className="color-circle"
+								onClick={handleOpenColorPalette}
+							/>
+							<ColorPalette
+								anchorEl={colorPaletteAnchorEl}
+								setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+							/>
 						</Box>
 						<Box sx={{ ...styles.flexStack }}>
 							<SmallText sx={{ color: COLORS.GRANITE_GREY }}>Size</SmallText>
