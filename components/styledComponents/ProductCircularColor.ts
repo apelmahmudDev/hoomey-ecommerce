@@ -1,9 +1,8 @@
 import { styled } from "@mui/system";
 
-const ProductCircularColor = styled("div")(({ color }: { color: string }) => ({
-	position: "relative",
+const ProductCircularColor = styled("button")(({ color }: { color: string }) => ({
 	width: "15px",
-	height: "15px",
+	height: "18px",
 	cursor: "pointer",
 	background: color,
 	borderRadius: "100%",

@@ -20,6 +20,7 @@ const styles = {
 export default function FloatingAdvertise() {
 	const [size, setSize] = useState("10");
 	const [scrollPosition, setScrollPosition] = useState(0);
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
@@ -39,6 +40,11 @@ export default function FloatingAdvertise() {
 	}, []);
 
 	// console.log(size);
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
+	};
 
 	return (
 		<AppBar
@@ -71,9 +77,20 @@ export default function FloatingAdvertise() {
 						<Grid item xs={12} sm={6}>
 							<Box sx={{ display: "flex", alignItems: "center", gap: 2.4 }}>
 								<PriceTypography discount={90} price={50} fontSize={20} />
-								<ProductCircularColor color="#FFDB00" className="color-circle">
+								{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 									<ColorPalette />
-								</ProductCircularColor>
+								</ProductCircularColor> */}
+								<ProductCircularColor
+									// aria-describedby={id}
+									color="#FFDB00"
+									className="color-circle"
+									onClick={handleOpenColorPalette}
+								/>
+								<ColorPalette
+									anchorEl={colorPaletteAnchorEl}
+									setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+								/>
+
 								<Box sx={{ ...styles }}>
 									<ArrowLeftIconButton onClick={() => console.log("decrement")} />
 									<Typography variant="h6" sx={{ fontFamily: "Poppins", fontWeight: 500 }}>

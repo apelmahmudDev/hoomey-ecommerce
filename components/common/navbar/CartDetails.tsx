@@ -30,6 +30,7 @@ const CartDetails: FC = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	const dispatch = useAppDispatch();
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const cart = useAppSelector((state: RootState) => state.cart);
 
@@ -51,6 +52,11 @@ const CartDetails: FC = () => {
 	// 		return;
 	// 	}
 	// };
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
+	};
 
 	return (
 		<Box sx={{ display: "flex", flexDirection: "column", minHeight: `calc(100vh - 110px)` }}>
@@ -94,9 +100,19 @@ const CartDetails: FC = () => {
 								<Box sx={{ mb: 0.6, ...styles }}>
 									<SmallText>Color</SmallText>
 
-									<ProductCircularColor color="#FFDB00" className="color-circle">
+									{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 										<ColorPalette />
-									</ProductCircularColor>
+									</ProductCircularColor> */}
+									<ProductCircularColor
+										// aria-describedby={id}
+										color="#FFDB00"
+										className="color-circle"
+										onClick={handleOpenColorPalette}
+									/>
+									<ColorPalette
+										anchorEl={colorPaletteAnchorEl}
+										setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+									/>
 								</Box>
 								<Box sx={{ mb: 0.6, mr: -0.7, ...styles }}>
 									<SmallText>Size</SmallText>

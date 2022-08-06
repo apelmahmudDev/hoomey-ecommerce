@@ -33,6 +33,7 @@ const ProductView = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [expanded, setExpanded] = useState<string | false>(false);
 	const [image, setImage] = useState<StaticImageData | string>(IMAGES.WhiteTshirtImg);
+	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const handleChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
 		setExpanded(isExpanded ? panel : false);
@@ -53,6 +54,11 @@ const ProductView = () => {
 	};
 
 	// console.log(size);
+
+	// color palette handler
+	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setColorPaletteAnchorElAnchorEl(event.currentTarget);
+	};
 
 	return (
 		<Box mb={9.1}>
@@ -179,9 +185,20 @@ const ProductView = () => {
 							>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Color</Typography>
-									<ProductCircularColor color="#FFDB00" className="color-circle">
+									{/* <ProductCircularColor color="#FFDB00" className="color-circle">
 										<ColorPalette />
-									</ProductCircularColor>
+									</ProductCircularColor> */}
+
+									<ProductCircularColor
+										// aria-describedby={id}
+										color="#FFDB00"
+										className="color-circle"
+										onClick={handleOpenColorPalette}
+									/>
+									<ColorPalette
+										anchorEl={colorPaletteAnchorEl}
+										setAnchorElAnchorEl={setColorPaletteAnchorElAnchorEl}
+									/>
 								</FlexStack>
 								<FlexStack>
 									<Typography className={classes.smallGreyText}>Size</Typography>
