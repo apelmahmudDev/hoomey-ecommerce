@@ -53,7 +53,7 @@ export default function FloatingAdvertise() {
 	};
 
 	return (
-		<Box sx={{ display: isClose && "none" }}>
+		<Box sx={{ display: isClose ? "none" : "block" }}>
 			<AppBar
 				position="fixed"
 				sx={{
