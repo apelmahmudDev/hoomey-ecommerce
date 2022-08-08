@@ -4,7 +4,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/types";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
@@ -26,7 +25,7 @@ export default function FloatingAdvertise() {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-	const color = useAppSelector((state: RootState) => state.color);
+	const color = useAppSelector((state) => state.color);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
