@@ -149,7 +149,7 @@ const ShoppingCart = () => {
 				<Box sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>
 					<SmallText sx={{ mb: 1.25, color: COLORS.GRANITE_GREY }}>Enter Promo Code:</SmallText>
 					<Box component="form">
-						<Box sx={{ display: "flex" }}>
+						<Box sx={{ display: "flex", "& .MuiFormControl-root": { bgcolor: "common.white" } }}>
 							<TextField fullWidth size="small" id="filled-basic" placeholder="Promo Code" required />
 							<Button size="small" type="submit" variant="contained" color="secondary">
 								Submit
@@ -197,7 +197,7 @@ const ShoppingCart = () => {
 								<Box sx={{ display: "flex", gap: 1.3 }}>
 									<PayWithCardSvg />
 									<Typography sx={{ fontSize: 10, color: COLORS.GRANITE_GREY }}>
-										Cash on Delivery
+										Pay with Credit/Debit Card
 									</Typography>
 								</Box>
 							}

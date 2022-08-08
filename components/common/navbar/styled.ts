@@ -66,19 +66,26 @@ export const useStyles = makeStyles((theme) => ({
 
 		"&:hover": {
 			"& .dropdownContent": {
-				display: "block",
+				visibility: "visible",
+				opacity: 1,
+				transform: "translateY(0)",
+				zIndex: 1,
+				transitionDelay: "0.2s",
 			},
 		},
 
 		"& .dropdownContent": {
 			minWidth: 982,
 			// minWidth: "100%",
-			display: "none",
+
 			position: "absolute",
 			background: "#fff",
-
+			opacity: 0,
+			zIndex: -1,
+			transition: "0.3s",
+			visibility: "hidden",
+			transform: "translateY(-3em)",
 			boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-			zIndex: 1,
 		},
 	},
 }));
