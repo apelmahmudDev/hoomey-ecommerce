@@ -32,6 +32,7 @@ const CartDetails: FC = () => {
 	const dispatch = useAppDispatch();
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
+	const color = useAppSelector((state: RootState) => state.color);
 	const cart = useAppSelector((state: RootState) => state.cart);
 
 	const [size, setSize] = useState("10");
@@ -105,7 +106,7 @@ const CartDetails: FC = () => {
 									</ProductCircularColor> */}
 									<ProductCircularColor
 										// aria-describedby={id}
-										color="#FFDB00"
+										color={color.colorInHex}
 										className="color-circle"
 										onClick={handleOpenColorPalette}
 									/>

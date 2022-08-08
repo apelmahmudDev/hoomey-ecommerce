@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
@@ -34,6 +36,8 @@ const styles = {
 };
 
 const ShoppingCart = () => {
+	const color = useAppSelector((state: RootState) => state.color);
+
 	const [size, setSize] = useState("10");
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -100,7 +104,7 @@ const ShoppingCart = () => {
 							</ProductCircularColor> */}
 							<ProductCircularColor
 								// aria-describedby={id}
-								color="#FFDB00"
+								color={color.colorInHex}
 								className="color-circle"
 								onClick={handleOpenColorPalette}
 							/>

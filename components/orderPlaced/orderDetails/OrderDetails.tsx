@@ -5,6 +5,8 @@ import { styled } from "@mui/system";
 import { IMAGES } from "../../../uiElements";
 import { HeadingText, ProductCircularColor, SmallText } from "../../styledComponents";
 import { ColorPalette } from "../../common";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 
 const FlexStack = styled(Box)((theme) => ({
 	display: "flex",
@@ -19,6 +21,7 @@ const Text = styled(Typography)((theme) => ({
 
 const OrderDetails = () => {
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const color = useAppSelector((state: RootState) => state.color);
 
 	// color palette handler
 	const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -52,7 +55,7 @@ const OrderDetails = () => {
 							</ProductCircularColor> */}
 							<ProductCircularColor
 								// aria-describedby={id}
-								color="#FFDB00"
+								color={color.colorInHex}
 								className="color-circle"
 								onClick={handleOpenColorPalette}
 							/>

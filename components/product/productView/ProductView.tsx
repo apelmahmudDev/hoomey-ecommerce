@@ -25,9 +25,13 @@ import { FacebookSvg, InstagramSvg, PinterestSvg, WhatsappSvg } from "../../icon
 import { ArrowLeftIconButton, Link, ArrowRightIconButton, PriceTypography } from "../../ui";
 import { data } from "./data";
 import { ColorPalette, ProductSizeSelect, SizeChart } from "../../common";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 
 const ProductView = () => {
 	const classes = useStyles();
+
+	const color = useAppSelector((state: RootState) => state.color);
 
 	const [size, setSize] = useState("10");
 	const [isOpen, setIsOpen] = useState(false);
@@ -191,7 +195,7 @@ const ProductView = () => {
 
 									<ProductCircularColor
 										// aria-describedby={id}
-										color="#FFDB00"
+										color={color.colorInHex}
 										className="color-circle"
 										onClick={handleOpenColorPalette}
 									/>

@@ -3,6 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { ColorPalette, ProductSizeSelect } from "../../common";
@@ -21,6 +23,8 @@ export default function FloatingAdvertise() {
 	const [size, setSize] = useState("10");
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+	const color = useAppSelector((state: RootState) => state.color);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
@@ -82,7 +86,7 @@ export default function FloatingAdvertise() {
 								</ProductCircularColor> */}
 								<ProductCircularColor
 									// aria-describedby={id}
-									color="#FFDB00"
+									color={color.colorInHex}
 									className="color-circle"
 									onClick={handleOpenColorPalette}
 								/>

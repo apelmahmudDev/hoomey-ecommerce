@@ -3,8 +3,27 @@ import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import CheckIcon from "@mui/icons-material/Check";
 import { styled } from "@mui/system";
+import { colorHandler } from "../../../store/slices/colorSlice";
+import { useAppDispatch } from "../../../store/hooks";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+const colors = {
+	blue: { name: "Blue", code: "#364C9B" },
+	purple: { name: "Purple", code: "#963DA7" },
+	pink: { name: "Pink", code: "#CE4589" },
+	black: { name: "Black", code: "#010101" },
+	red: { name: "Red", code: "#C81818" },
+	orange: { name: "Orange", code: "#DA851B" },
+	yellow: { name: "Yellow", code: "#FFDB00" },
+	green: { name: "Green", code: "#189418" },
+	white: { name: "White", code: "#FFFFFF" },
+	grey: { name: "Grey", code: "#EBEBEB" },
+	beige: { name: "Beige", code: "#BDA672" },
+	brown: { name: "Brown", code: "#714B26" },
+	gold: { name: "Gold", code: "#EDBE01" },
+	silver: { name: "Silver", code: "#BDBDBD" },
+};
 
 // styled component
 const ColorNameText = styled(Typography)({
@@ -60,6 +79,8 @@ const ColorPalette = ({
 	// eslint-disable-next-line @rushstack/no-new-null
 	setAnchorElAnchorEl: (isNull: HTMLButtonElement | null) => void;
 }) => {
+	const dispatch = useAppDispatch();
+
 	const [colorCheck, setColorCheck] = useState<State>({
 		blue: false,
 		purple: false,
@@ -77,9 +98,9 @@ const ColorPalette = ({
 		silver: false,
 	});
 
-	const handleChangeColor = (color: string) => {
-		console.log(color);
-		switch (color) {
+	const handleChangeColor = (color: { name: string; colorInHex: string }) => {
+		dispatch(colorHandler(color.colorInHex));
+		switch (color.name.toLowerCase()) {
 			case "blue":
 				setColorCheck({
 					...colorCheck,
@@ -375,7 +396,8 @@ const ColorPalette = ({
 				sx={{
 					p: 2,
 					// width: "100%",
-					maxWidth: 310,
+					width: 310,
+
 					// zIndex: "tooltip",
 					display: "flex",
 					flexWrap: "wrap",
@@ -389,145 +411,143 @@ const ColorPalette = ({
 				{/* blue color */}
 				<Box textAlign="center">
 					<Checkbox
-						checked={colorCheck.blue}
-						onClick={() => handleChangeColor("blue")}
 						{...label}
-						icon={<ColorCircle color="#364C9B" />}
-						checkedIcon={<ColorCheckCircle color="#364C9B" />}
+						checked={colorCheck.blue}
+						icon={<ColorCircle color={colors.blue.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.blue.code} />}
+						onClick={() => handleChangeColor({ name: colors.blue.name, colorInHex: colors.blue.code })}
 					/>
-					<ColorNameText>Blue</ColorNameText>
+					<ColorNameText>{colors.blue.name}</ColorNameText>
 				</Box>
 				{/* purple color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.purple}
-						onClick={() => handleChangeColor("purple")}
-						{...label}
-						icon={<ColorCircle color="#963DA7" />}
-						checkedIcon={<ColorCheckCircle color="#963DA7" />}
+						icon={<ColorCircle color={colors.purple.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.purple.code} />}
+						onClick={() => handleChangeColor({ name: colors.purple.name, colorInHex: colors.purple.code })}
 					/>
-					<ColorNameText>Purple</ColorNameText>
+					<ColorNameText>{colors.purple.name}</ColorNameText>
 				</Box>
 				{/* pink color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.pink}
-						onClick={() => handleChangeColor("pink")}
-						{...label}
-						icon={<ColorCircle color="#CE4589" />}
-						checkedIcon={<ColorCheckCircle color="#CE4589" />}
+						icon={<ColorCircle color={colors.pink.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.pink.code} />}
+						onClick={() => handleChangeColor({ name: colors.pink.name, colorInHex: colors.pink.code })}
 					/>
-					<ColorNameText>Pink</ColorNameText>
+					<ColorNameText>{colors.pink.name}</ColorNameText>
 				</Box>
 				{/* black color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.black}
-						onClick={() => handleChangeColor("black")}
-						{...label}
-						icon={<ColorCircle color="#010101" />}
-						checkedIcon={<ColorCheckCircle color="#010101" />}
+						icon={<ColorCircle color={colors.black.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.black.code} />}
+						onClick={() => handleChangeColor({ name: colors.black.name, colorInHex: colors.black.code })}
 					/>
-					<ColorNameText>Black</ColorNameText>
+					<ColorNameText>{colors.black.name}</ColorNameText>
 				</Box>
 				{/* red color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.red}
-						onClick={() => handleChangeColor("red")}
-						{...label}
-						icon={<ColorCircle color="#C81818" />}
-						checkedIcon={<ColorCheckCircle color="#C81818" />}
+						icon={<ColorCircle color={colors.red.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.red.code} />}
+						onClick={() => handleChangeColor({ name: colors.red.name, colorInHex: colors.red.code })}
 					/>
-					<ColorNameText>Red</ColorNameText>
+					<ColorNameText>{colors.red.name}</ColorNameText>
 				</Box>
 				{/* orange color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.orange}
-						onClick={() => handleChangeColor("orange")}
-						{...label}
-						icon={<ColorCircle color="#DA851B" />}
-						checkedIcon={<ColorCheckCircle color="#DA851B" />}
+						icon={<ColorCircle color={colors.orange.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.orange.code} />}
+						onClick={() => handleChangeColor({ name: colors.orange.name, colorInHex: colors.orange.code })}
 					/>
-					<ColorNameText>Orange</ColorNameText>
+					<ColorNameText>{colors.orange.name}</ColorNameText>
 				</Box>
 				{/* yellow color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.yellow}
-						onClick={() => handleChangeColor("yellow")}
-						{...label}
-						icon={<ColorCircle color="#FFDB00" />}
-						checkedIcon={<ColorCheckCircle color="#FFDB00" />}
+						icon={<ColorCircle color={colors.yellow.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.yellow.code} />}
+						onClick={() => handleChangeColor({ name: colors.yellow.name, colorInHex: colors.yellow.code })}
 					/>
-					<ColorNameText>Yellow</ColorNameText>
+					<ColorNameText>{colors.yellow.name}</ColorNameText>
 				</Box>
 				{/* green color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.green}
-						onClick={() => handleChangeColor("green")}
-						{...label}
-						icon={<ColorCircle color="#189418" />}
-						checkedIcon={<ColorCheckCircle color="#189418" />}
+						icon={<ColorCircle color={colors.green.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.green.code} />}
+						onClick={() => handleChangeColor({ name: colors.green.name, colorInHex: colors.green.code })}
 					/>
-					<ColorNameText>Green</ColorNameText>
+					<ColorNameText>{colors.green.name}</ColorNameText>
 				</Box>
 				{/* white color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.white}
-						onClick={() => handleChangeColor("white")}
-						{...label}
-						icon={<ColorCircle color="#FFFFFF" />}
-						checkedIcon={<ColorCheckCircle color="#FFFFFF" />}
+						icon={<ColorCircle color={colors.white.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.white.code} />}
+						onClick={() => handleChangeColor({ name: colors.white.name, colorInHex: colors.white.code })}
 					/>
-					<ColorNameText>White</ColorNameText>
+					<ColorNameText>{colors.white.name}</ColorNameText>
+				</Box>
+				{/* Grey color */}
+				<Box textAlign="center">
+					<Checkbox
+						checked={colorCheck.grey}
+						icon={<ColorCircle color={colors.grey.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.grey.code} />}
+						onClick={() => handleChangeColor({ name: colors.grey.name, colorInHex: colors.grey.code })}
+					/>
+					<ColorNameText>{colors.grey.name}</ColorNameText>
 				</Box>
 				{/* beige color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.beige}
-						onClick={() => handleChangeColor("beige")}
-						{...label}
-						icon={<ColorCircle color="#BDA672" />}
-						checkedIcon={<ColorCheckCircle color="#BDA672" />}
+						icon={<ColorCircle color={colors.beige.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.beige.code} />}
+						onClick={() => handleChangeColor({ name: colors.beige.name, colorInHex: colors.beige.code })}
 					/>
-					<ColorNameText>Beige</ColorNameText>
+					<ColorNameText>{colors.beige.name}</ColorNameText>
 				</Box>
 				{/* brown color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.brown}
-						onClick={() => handleChangeColor("brown")}
-						{...label}
-						icon={<ColorCircle color="#714B26" />}
-						checkedIcon={<ColorCheckCircle color="#714B26" />}
+						icon={<ColorCircle color={colors.brown.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.brown.code} />}
+						onClick={() => handleChangeColor({ name: colors.brown.name, colorInHex: colors.brown.code })}
 					/>
-					<ColorNameText>Brown</ColorNameText>
+					<ColorNameText>{colors.brown.name}</ColorNameText>
 				</Box>
 				{/* gold color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.gold}
-						onClick={() => handleChangeColor("gold")}
-						{...label}
-						icon={<ColorCircle color="#FBCB00" />}
-						checkedIcon={<ColorCheckCircle color="#FBCB00" />}
+						icon={<ColorCircle color={colors.gold.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.gold.code} />}
+						onClick={() => handleChangeColor({ name: colors.gold.name, colorInHex: colors.gold.code })}
 					/>
-					<ColorNameText>Gold</ColorNameText>
+					<ColorNameText>{colors.gold.name}</ColorNameText>
 				</Box>
 				{/* silver color */}
 				<Box textAlign="center">
 					<Checkbox
 						checked={colorCheck.silver}
-						onClick={() => handleChangeColor("silver")}
-						{...label}
-						icon={<ColorCircle color="#E0E0E0" />}
-						checkedIcon={<ColorCheckCircle color="#E0E0E0" />}
+						icon={<ColorCircle color={colors.silver.code} />}
+						checkedIcon={<ColorCheckCircle color={colors.silver.code} />}
+						onClick={() => handleChangeColor({ name: colors.silver.name, colorInHex: colors.silver.code })}
 					/>
-					<ColorNameText>Silver</ColorNameText>
+					<ColorNameText>{colors.silver.name}</ColorNameText>
 				</Box>
 			</Box>
 		</Popover>

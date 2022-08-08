@@ -11,6 +11,8 @@ import { CloseIcon } from "../../../uiElements/icons";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import { ArrowLeftIconButton, ArrowRightIconButton, Link } from "../../ui";
 import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
+import { useAppSelector } from "../../../store/hooks";
+import { RootState } from "../../../store/types";
 
 const styles = {
 	display: "flex",
@@ -24,6 +26,8 @@ const styles = {
 // }
 
 const AbondonCart = () => {
+	const color = useAppSelector((state: RootState) => state.color);
+
 	const [size, setSize] = useState("10");
 	const [isOpen, setIsOpen] = useState(true);
 	const [quantity, setQuantity] = useState(1);
@@ -113,7 +117,7 @@ const AbondonCart = () => {
 								</ProductCircularColor> */}
 								<ProductCircularColor
 									// aria-describedby={id}
-									color="#FFDB00"
+									color={color.colorInHex}
 									className="color-circle"
 									onClick={handleOpenColorPalette}
 								/>
