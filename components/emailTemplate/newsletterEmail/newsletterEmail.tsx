@@ -1,6 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
 import EmailLayout from "../common/layout";
-import { Link } from "../../ui";
 
 const NewsletterEmail = () => {
 	return (
@@ -29,31 +28,6 @@ const NewsletterEmail = () => {
 					If you did not sign up for this account, you can ignore this email.
 				</Typography>
 			</Box>
-			<Typography component="div" sx={{ mt: 3 }}>
-				<Box sx={{ lineHeight: 1, my: -0.5 }}>
-					Questions or FAQs? Check out our{" "}
-					<Link href="/faqs">
-						<Button sx={{ textDecoration: "underline" }}>Frequently Asked Questions.</Button>
-					</Link>
-				</Box>
-				<Box sx={{ lineHeight: 1, my: -0.5 }}>
-					In case of any refund or return visit
-					<Link href="/return">
-						<Button sx={{ textDecoration: "underline" }}>Returns.</Button>
-					</Link>
-				</Box>
-				<Box sx={{ lineHeight: 1, my: -0.5 }}>
-					Visit{" "}
-					<Link href="/privacy-policy">
-						<Button sx={{ textDecoration: "underline" }}>Privacy Policy</Button>
-					</Link>{" "}
-					and
-					<Link href="/terms-of-service">
-						<Button sx={{ textDecoration: "underline" }}> Terms of Service</Button>
-					</Link>{" "}
-					for our policies & terms
-				</Box>
-			</Typography>
 		</EmailLayout>
 	);
 };
