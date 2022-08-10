@@ -21,7 +21,7 @@ const TopHeader = () => {
 			<IconButton color="primary" size="small">
 				<ArrowBackIosNewIcon fontSize="small" />
 			</IconButton>
-			<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: { xs: 8, sm: 10 }, letterSpacing: "0.22em" }}>
+			<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: 10, letterSpacing: "0.22em" }}>
 				USE CODE FIRST10 FOR 10% OFF YOUR FIRST ORDER
 			</Typography>
 			<IconButton color="primary" size="small">

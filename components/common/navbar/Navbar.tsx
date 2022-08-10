@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { Box, ListItemIcon } from "@mui/material";
+import { Badge, Box, ListItemIcon } from "@mui/material";
 import { paperPropsStyles, useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -62,22 +62,14 @@ const Navbar: FC = () => {
 	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState<null | HTMLElement>(null);
-	// const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
 	};
-	// const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-	// 	setAnchorElUser(event.currentTarget);
-	// };
 
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
 	};
-
-	// const handleCloseUserMenu = () => {
-	// 	setAnchorElUser(null);
-	// };
 
 	const handleCurrencyChange = (event: SelectChangeEvent) => {
 		setCurrency(event.target.value as string);
@@ -117,46 +109,6 @@ const Navbar: FC = () => {
 				<TopHeader />
 				<Container maxWidth="lg">
 					<Toolbar disableGutters>
-						{/* menu for small device */}
-						<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-							<IconButton
-								size="large"
-								aria-label="account of current user"
-								aria-controls="menu-appbar"
-								aria-haspopup="true"
-								onClick={handleOpenNavMenu}
-								color="inherit"
-							>
-								<MenuIcon />
-							</IconButton>
-							<Menu
-								id="menu-appbar"
-								anchorEl={anchorElNav}
-								anchorOrigin={{
-									vertical: "bottom",
-									horizontal: "left",
-								}}
-								keepMounted
-								transformOrigin={{
-									vertical: "top",
-									horizontal: "left",
-								}}
-								open={Boolean(anchorElNav)}
-								onClose={handleCloseNavMenu}
-								sx={{
-									display: { xs: "block", md: "none" },
-								}}
-							>
-								{pages.map((page) => (
-									<Link href={page.link} key={page.name}>
-										<MenuItem onClick={handleCloseNavMenu}>
-											<Typography textAlign="center">{page.name}</Typography>
-										</MenuItem>
-									</Link>
-								))}
-							</Menu>
-						</Box>
-
 						{/* menu for large device */}
 						<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 							{/* hover menu*/}
@@ -196,15 +148,20 @@ const Navbar: FC = () => {
 						</Box>
 
 						{/* logo */}
-						<Box sx={{ mr: 2, display: "flex", flexGrow: 1 }}>
+						<Box sx={{ mr: 2, display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
 							<Link href="/">
 								<NavLogoSvg />
+							</Link>
+						</Box>
+						<Box sx={{ mr: 2, display: { xs: "flex", sm: "none" }, flexGrow: 1 }}>
+							<Link href="/">
+								<NavLogoSvg width={120} />
 							</Link>
 						</Box>
 
 						{/* right side menu */}
 						<Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
-							<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+							<Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1.25, sm: 2.5 } }}>
 								<IconButton onClick={handleSearchToggle} color="primary" size="small">
 									<SearchIcon />
 								</IconButton>
@@ -283,7 +240,7 @@ const Navbar: FC = () => {
 								</IconButton>
 
 								{/* currency - dropdown */}
-								<Box sx={{ minWidth: 90 }}>
+								<Box sx={{ minWidth: 90, display: { xs: "none", sm: "block" } }}>
 									<FormControl className={classes.currencySelect} fullWidth size="small">
 										<Select
 											labelId="demo-simple-select-label"
@@ -303,40 +260,65 @@ const Navbar: FC = () => {
 										</Select>
 									</FormControl>
 								</Box>
-								<CartButton
-									badgeContent={cart.products.length}
-									onClick={() => toggleCartDrawer(true)}
-								/>
-							</Box>
 
-							{/* settings for small device */}
-							{/* <Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+								{/* cart item count - show / badge */}
+								<Box sx={{ display: { xs: "none", sm: "block" } }}>
+									<CartButton
+										badgeContent={cart.products.length}
+										onClick={() => toggleCartDrawer(true)}
+									/>
+								</Box>
+
+								<Box
+									sx={{
+										display: { xs: "block", sm: "none" },
+									}}
+								>
+									<Badge badgeContent={cart.products.length} color="secondary">
+										<BagSvg height={21} width={33} />
+									</Badge>
+								</Box>
+							</Box>
+						</Box>
+
+						{/* menu for small device */}
+						<Box sx={{ ml: 2, flexGrow: 0, display: { xs: "flex", sm: "none" } }}>
+							<IconButton
+								size="large"
+								aria-label="account of current user"
+								aria-controls="menu-appbar"
+								aria-haspopup="true"
+								onClick={handleOpenNavMenu}
+								color="secondary"
+							>
+								<MenuIcon />
 							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: "45px" }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu> */}
+							<Menu
+								id="menu-appbar"
+								anchorEl={anchorElNav}
+								anchorOrigin={{
+									vertical: "bottom",
+									horizontal: "left",
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: "top",
+									horizontal: "left",
+								}}
+								open={Boolean(anchorElNav)}
+								onClose={handleCloseNavMenu}
+								sx={{
+									display: { xs: "block", md: "none" },
+								}}
+							>
+								{pages.map((page) => (
+									<Link href={page.link} key={page.name}>
+										<MenuItem onClick={handleCloseNavMenu}>
+											<Typography textAlign="center">{page.name}</Typography>
+										</MenuItem>
+									</Link>
+								))}
+							</Menu>
 						</Box>
 					</Toolbar>
 				</Container>

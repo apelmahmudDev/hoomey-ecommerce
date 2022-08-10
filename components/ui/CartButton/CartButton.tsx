@@ -7,10 +7,15 @@ const CartButton = ({ onClick, badgeContent = 1 }: { onClick: () => void; badgeC
 
 	return (
 		<Button onClick={onClick} sx={{ bgcolor: "#E2BC82", height: 44 }} className={classes.cartButton}>
-			<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
+			<Stack
+				direction="row"
+				sx={{ alignItems: "center" }}
+				divider={<Divider orientation="vertical" flexItem />}
+				spacing={1}
+			>
 				<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 					<BagSvg color="#fff" width={14} height={16} />
-					<Typography sx={{ fontFamily: "Euclid Circular A" }}>Cart</Typography>
+					<Typography sx={{ fontFamily: "Euclid Circular A", textTransform: "uppercase" }}>Cart</Typography>
 				</Box>
 				<Typography sx={{ fontFamily: "Euclid Circular A" }} className={classes.cartBtnBadge}>
 					{badgeContent}
