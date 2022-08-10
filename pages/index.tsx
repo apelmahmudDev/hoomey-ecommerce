@@ -5,6 +5,7 @@ import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Colle
 import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
 import { Box } from "@mui/material";
 import {
+	AbondonCartEmail,
 	// AdminEmail,
 	// NewsletterEmail,
 	// NewUserEmail,
@@ -50,7 +51,8 @@ const Home: NextPage = () => {
 				{/* <NewsletterEmail /> */}
 				{/* <UserAdminEmail /> */}
 				{/* <NewUserEmail /> */}
-				<OrderPlacedEmail />
+				{/* <OrderPlacedEmail /> */}
+				<AbondonCartEmail />
 			</Box>
 		</div>
 	);
