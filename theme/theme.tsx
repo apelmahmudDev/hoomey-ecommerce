@@ -7,7 +7,17 @@ declare module "@mui/styles/defaultTheme" {
 
 const theme = createTheme({
 	typography: {
-		fontFamily: ["Roboto", "Poppins", "Euclid Circular A", "Sedan", "Oswald", "Lato", "sans-serif"].join(","),
+		fontFamily: [
+			"Roboto",
+			"Poppins",
+			"Euclid Circular A",
+			"Sedan",
+			"Oswald",
+			"Lato",
+			"Bangers",
+			"cursive",
+			"sans-serif",
+		].join(","),
 		body1: {
 			fontFamily: "Poppins",
 		},

@@ -27,6 +27,8 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 					/>
 
+					<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+
 					{/* fonts end */}
 
 					{(this.props as any).emotionStyleTags}
