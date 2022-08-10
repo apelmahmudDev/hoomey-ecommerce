@@ -17,6 +17,7 @@ const AppDrawer = ({ children, isDrawerOpen, toggleDrawer }: IProps) => {
 			onClose={() => toggleDrawer(false)}
 			sx={{
 				"& .MuiPaper-root": {
+					minWidth: 300,
 					bgcolor: (theme) => theme.palette.secondary.main,
 				},
 			}}

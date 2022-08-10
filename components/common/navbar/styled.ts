@@ -3,6 +3,11 @@ import { makeStyles } from "@mui/styles";
 export const useStyles = makeStyles((theme) => ({
 	currencySelect: {
 		background: theme.palette.secondary.main,
+
+		[theme.breakpoints.down("sm")]: {
+			background: theme.palette.primary.main,
+		},
+
 		"& .MuiOutlinedInput-root": {
 			height: 44,
 			borderRadius: 0,

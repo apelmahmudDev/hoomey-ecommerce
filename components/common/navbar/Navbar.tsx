@@ -1,11 +1,10 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { Badge, Box, ListItemIcon } from "@mui/material";
+import { Badge, Box, List, ListItemIcon, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { paperPropsStyles, useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
@@ -60,16 +59,8 @@ const Navbar: FC = () => {
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
 	const [isTrackOrderOpen, setIsTrackOrderOpen] = useState(false);
 	const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
-	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+	const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
 	const [anchorElUserDropdown, setAnchorElUserDropdown] = useState<null | HTMLElement>(null);
-
-	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-		setAnchorElNav(event.currentTarget);
-	};
-
-	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
-	};
 
 	const handleCurrencyChange = (event: SelectChangeEvent) => {
 		setCurrency(event.target.value as string);
@@ -78,6 +69,10 @@ const Navbar: FC = () => {
 	// cart drawer view
 	const toggleCartDrawer = (open: boolean) => {
 		setIsCartDrawerOpen(open);
+	};
+	// nav drawer view
+	const toggleNavDrawer = (open: boolean) => {
+		setIsNavDrawerOpen(open);
 	};
 
 	// handle search
@@ -133,7 +128,6 @@ const Navbar: FC = () => {
 							{pages.map((page) => (
 								<Link href={page.link} key={page.name}>
 									<Button
-										onClick={handleCloseNavMenu}
 										sx={{
 											fontFamily: "Euclid Circular A",
 											color: "#727376",
@@ -274,51 +268,30 @@ const Navbar: FC = () => {
 										display: { xs: "block", sm: "none" },
 									}}
 								>
-									<Badge badgeContent={cart.products.length} color="secondary">
-										<BagSvg height={21} width={33} />
+									<Badge
+										onClick={() => toggleCartDrawer(true)}
+										badgeContent={cart.products.length}
+										color="secondary"
+									>
+										<IconButton size="small">
+											<BagSvg height={22} />
+										</IconButton>
 									</Badge>
 								</Box>
 							</Box>
 						</Box>
 
-						{/* menu for small device */}
 						<Box sx={{ ml: 2, flexGrow: 0, display: { xs: "flex", sm: "none" } }}>
 							<IconButton
 								size="large"
 								aria-label="account of current user"
 								aria-controls="menu-appbar"
 								aria-haspopup="true"
-								onClick={handleOpenNavMenu}
 								color="secondary"
+								onClick={() => toggleNavDrawer(true)}
 							>
 								<MenuIcon />
 							</IconButton>
-							<Menu
-								id="menu-appbar"
-								anchorEl={anchorElNav}
-								anchorOrigin={{
-									vertical: "bottom",
-									horizontal: "left",
-								}}
-								keepMounted
-								transformOrigin={{
-									vertical: "top",
-									horizontal: "left",
-								}}
-								open={Boolean(anchorElNav)}
-								onClose={handleCloseNavMenu}
-								sx={{
-									display: { xs: "block", md: "none" },
-								}}
-							>
-								{pages.map((page) => (
-									<Link href={page.link} key={page.name}>
-										<MenuItem onClick={handleCloseNavMenu}>
-											<Typography textAlign="center">{page.name}</Typography>
-										</MenuItem>
-									</Link>
-								))}
-							</Menu>
 						</Box>
 					</Toolbar>
 				</Container>
@@ -335,6 +308,52 @@ const Navbar: FC = () => {
 						<NotFound message="No products in the cart." icon={<BagSvg color="#fff" />} />
 					</Box>
 				)}
+			</AppDrawer>
+
+			{/* nav - drawer - for small device*/}
+			<AppDrawer isDrawerOpen={isNavDrawerOpen} toggleDrawer={toggleNavDrawer}>
+				{/* currency - dropdown */}
+				<Box sx={{ minWidth: 90, mb: 6 }}>
+					<FormControl className={classes.currencySelect} fullWidth size="small">
+						<Select
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							value={currency}
+							onChange={handleCurrencyChange}
+						>
+							{menuItems.map((item) => (
+								<MenuItem key={item.value} sx={{ fontFamily: "Euclid Circular A" }} value={item.value}>
+									{item.currency}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+				</Box>
+				<List
+					sx={{
+						"& .MuiListItemButton-root": {
+							my: 3,
+						},
+					}}
+				>
+					<Link href="/men">
+						<ListItem disablePadding>
+							<ListItemButton>
+								<ListItemText sx={{ textAlign: "center" }} primary={"Men"} />
+							</ListItemButton>
+						</ListItem>
+					</Link>
+
+					{pages.map((page, index) => (
+						<Link key={index} href={page.link}>
+							<ListItem disablePadding>
+								<ListItemButton>
+									<ListItemText sx={{ textAlign: "center" }} primary={page.name} />
+								</ListItemButton>
+							</ListItem>
+						</Link>
+					))}
+				</List>
 			</AppDrawer>
 
 			{/* search dropdown - section */}
