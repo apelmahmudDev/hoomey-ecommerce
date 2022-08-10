@@ -4,7 +4,10 @@ import Head from "next/head";
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
 import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
 import { Box } from "@mui/material";
-import { OfferEmail } from "../components/emailTemplate";
+import {
+	// OfferEmail,
+	PurchasedEmail,
+} from "../components/emailTemplate";
 
 const Home: NextPage = () => {
 	return (
@@ -46,7 +49,8 @@ const Home: NextPage = () => {
 				{/* <NewUserEmail /> */}
 				{/* <OrderPlacedEmail /> */}
 				{/* <AbondonCartEmail /> */}
-				<OfferEmail />
+				{/* <OfferEmail /> */}
+				<PurchasedEmail />
 			</Box>
 		</div>
 	);
