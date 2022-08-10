@@ -30,7 +30,7 @@ const Hero: FC = () => {
 								src={data.image}
 								alt="hero-banner"
 								layout="fill"
-								objectFit="cover"
+								// objectFit="contain"
 								className="swiper-lazy"
 							/>
 						</Box>
