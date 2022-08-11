@@ -40,15 +40,15 @@ const ThanksOrder = () => {
 						<Divider sx={{ background: "1px solid #ACACAC", my: 2.5 }} />
 						<FlexStack my={2.5}>
 							<Text>Order Number</Text>
-							<Text>#123456789</Text>
+							<Text sx={{ fontWeight: "600" }}>#123456789</Text>
 						</FlexStack>
 						<FlexStack my={2.5}>
 							<Text>Order Status</Text>
-							<Text>In Shipment</Text>
+							<Text sx={{ fontWeight: "600" }}>In Shipment</Text>
 						</FlexStack>
 						<FlexStack>
 							<Text>Delivery (expected)</Text>
-							<Text>23/May/2022 - 25/May/2022</Text>
+							<Text sx={{ fontWeight: "600" }}>23/May/2022 - 25/May/2022</Text>
 						</FlexStack>
 					</Box>
 				</Container>
