@@ -28,9 +28,10 @@ export const useStyles = makeStyles((theme) => ({
 				left: 0,
 				height: "100%",
 				width: "100%",
-				zIndex: 5,
+				zIndex: 3,
 				opacity: 0.3,
 				background: "#000000",
+
 				// backgroundImage: "linear-gradient(180deg, rgba(41, 41, 41, 0) 0%, #292929 100%)",
 			},
 		},
@@ -50,7 +51,7 @@ export const useStyles = makeStyles((theme) => ({
 	hoverView: {
 		position: "absolute",
 		display: "none !important",
-		zIndex: 5,
+		zIndex: 3,
 		bottom: 32,
 		left: 0,
 		right: 0,
