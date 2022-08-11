@@ -3,7 +3,7 @@ import { COLORS } from "../../../theme/colors";
 
 export const useStyles = makeStyles((theme) => ({
 	root: {
-		margin: "30px 0",
+		margin: theme.spacing(1, 0, 1, 0),
 		display: "flex",
 		alignItems: "flex-start",
 		gap: theme.spacing(5),

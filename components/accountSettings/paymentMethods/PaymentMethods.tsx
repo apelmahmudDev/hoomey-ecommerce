@@ -17,6 +17,8 @@ const AddressBook = () => {
 		setIsDefaultChecked(event.target.checked);
 	};
 
+	console.log(isDefaultChecked);
+
 	return (
 		<Box>
 			<Box sx={{ display: "flex", alignItems: "center", gap: 2, justifyContent: "space-between" }}>

@@ -16,6 +16,7 @@ export { default as ColorHeartSvg } from "./ColorHeart";
 export { default as ChangePassSvg } from "./ChangePass";
 export { default as MasterCardSvg } from "./MasterCard";
 export { default as DarkPersonSvg } from "./DrakPerson";
+export { default as MenuFilterSvg } from "./MenuFilter";
 export { default as ArabicFlagSvg } from "./ArabicFlag";
 export { default as PersonFillSvg } from "./PersonFill";
 export { default as WhiteLockSvg } from "./WhiteLock";

@@ -1,11 +1,11 @@
 import { useSliderStyles } from "./sliderStyled";
-import { Box, Button, Container, Divider, Grid, Rating, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Grid, Menu, MenuItem, Rating, Typography } from "@mui/material";
 import { useState } from "react";
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 
 import { StarIcon, ThumbUpIcon } from "../../../uiElements/icons";
 import { BorderLinearProgress, SectionBox } from "../../styledComponents";
-import { CircularProgressbarWithCount, Heading } from "../../ui";
+import { CircularProgressbarWithCount, Heading, Link } from "../../ui";
 import { sliderData } from "./data";
 import RatingsSliderItem from "./RatingsSliderItem";
 import RatingsText from "./styledComponent/RatingsText";
@@ -18,6 +18,7 @@ import { Pagination, Lazy, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useStyles } from "./styled";
+import { MenuFilterSvg } from "../../icons";
 
 // disyplay star details
 const StarViewProgress = ({
@@ -61,6 +62,16 @@ const RatingsAndReviews = () => {
 
 	const handleTogglePopup = (value: boolean) => {
 		setIsRatingOpen(value);
+	};
+
+	const [anchorElFilter, setAnchorElFilter] = useState<null | HTMLElement>(null);
+	const isOpenFilter = Boolean(anchorElFilter);
+
+	const handleFilterClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorElFilter(event.currentTarget);
+	};
+	const handleFilterClose = () => {
+		setAnchorElFilter(null);
 	};
 
 	//
@@ -173,7 +184,42 @@ const RatingsAndReviews = () => {
 						</Box>
 					</Grid>
 				</Grid>
-				<Divider sx={{ height: 2, background: "#E3E3E3", my: 6 }} />
+				<Divider sx={{ height: 2, background: "#E3E3E3", mt: 6, mb: 1 }} />
+
+				{/* filter category */}
+				<Box sx={{ textAlign: "right" }}>
+					<Button
+						id="basic-button"
+						aria-haspopup="true"
+						sx={{ p: 0, minWidth: 0 }}
+						onClick={handleFilterClick}
+						aria-expanded={isOpenFilter ? "true" : undefined}
+						aria-controls={isOpenFilter ? "basic-menu" : undefined}
+					>
+						<MenuFilterSvg sx={{ height: 40, width: 40 }} />
+					</Button>
+
+					<Menu
+						id="basic-menu"
+						anchorEl={anchorElFilter}
+						open={isOpenFilter}
+						onClose={handleFilterClose}
+						MenuListProps={{
+							"aria-labelledby": "basic-button",
+						}}
+					>
+						<Link href="/search-results">
+							<MenuItem onClick={handleFilterClose}>Good Ratings</MenuItem>
+						</Link>
+						<Link href="/search-results">
+							<MenuItem onClick={handleFilterClose}>Average Ratings</MenuItem>
+						</Link>
+						<Link href="/search-results">
+							<MenuItem onClick={handleFilterClose}>Bad Ratings</MenuItem>
+						</Link>
+					</Menu>
+				</Box>
+
 				{/* ratings slider */}
 				<Swiper
 					className={classes.mySwiper}
