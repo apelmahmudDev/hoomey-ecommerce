@@ -36,7 +36,14 @@ const styles = {
 };
 
 const ShoppingCart = () => {
+	const [paymentMethods, setPaymentMethods] = useState("cash_on_delivery");
 	const color = useAppSelector((state: RootState) => state.color);
+
+	const handlePaymetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setPaymentMethods((event.target as HTMLInputElement).value);
+	};
+
+	console.log(paymentMethods);
 
 	const [size, setSize] = useState("10");
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -44,6 +51,7 @@ const ShoppingCart = () => {
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);
 	};
+
 	console.log(size);
 
 	// color palette handler
@@ -148,14 +156,14 @@ const ShoppingCart = () => {
 				</Box>
 				<Box sx={{ p: 1.5, borderBottom: "1px solid #D6D4D4" }}>
 					<SmallText sx={{ mb: 1.25, color: COLORS.GRANITE_GREY }}>Enter Promo Code:</SmallText>
-					<Box component="form">
-						<Box sx={{ display: "flex", "& .MuiFormControl-root": { bgcolor: "common.white" } }}>
-							<TextField fullWidth size="small" id="filled-basic" placeholder="Promo Code" required />
-							<Button size="small" type="submit" variant="contained" color="secondary">
-								Submit
-							</Button>
-						</Box>
+					{/* <Box component="form"> */}
+					<Box sx={{ display: "flex", "& .MuiFormControl-root": { bgcolor: "common.white" } }}>
+						<TextField fullWidth size="small" id="filled-basic" placeholder="Promo Code" />
+						<Button size="small" variant="contained" color="secondary">
+							Submit
+						</Button>
 					</Box>
+					{/* </Box> */}
 				</Box>
 
 				<Box sx={{ p: 1.5, display: "flex", justifyContent: "space-between" }}>
@@ -177,6 +185,8 @@ const ShoppingCart = () => {
 						aria-labelledby="demo-radio-buttons-group-label"
 						defaultValue="cash_on_delivery"
 						name="radio-buttons-group"
+						onChange={handlePaymetChange}
+						value={paymentMethods}
 					>
 						<FormControlLabel
 							value="cash_on_delivery"
@@ -215,29 +225,33 @@ const ShoppingCart = () => {
 							}
 						/>
 					</RadioGroup>
-					<TextField
-						required
-						fullWidth
-						size="small"
-						inputMode="numeric"
-						sx={{ borderRadius: 0 }}
-						placeholder="Enter card number"
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position="end">
-									<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
-										<VisaSvg />
-										<MasterCardSvg />
-									</Box>
-								</InputAdornment>
-							),
-						}}
-					/>
-					<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
-						<TextField required size="small" placeholder="MM" />
-						<TextField required size="small" placeholder="YYYY" />
-						<TextField required size="small" placeholder="CVV" />
-					</Box>
+					{paymentMethods === "pay_with_card" && (
+						<>
+							<TextField
+								required
+								fullWidth
+								size="small"
+								inputMode="numeric"
+								sx={{ borderRadius: 0 }}
+								placeholder="Enter card number"
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
+												<VisaSvg />
+												<MasterCardSvg />
+											</Box>
+										</InputAdornment>
+									),
+								}}
+							/>
+							<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
+								<TextField required size="small" placeholder="MM" />
+								<TextField required size="small" placeholder="YYYY" />
+								<TextField required size="small" placeholder="CVV" />
+							</Box>
+						</>
+					)}
 				</FormControl>
 			</Box>
 
@@ -256,15 +270,17 @@ const ShoppingCart = () => {
 			</EndIconButton>
 
 			{/* checkout with- paypal button*/}
-			<Button
-				fullWidth
-				size="small"
-				type="submit"
-				variant="contained"
-				sx={{ mt: 1.25, bgcolor: "#fec33a", "&:hover": { bgcolor: "#cb9b2e" }, "& span": { ml: 0.5 } }}
-			>
-				<PaypalColorSvg width={50} height={20} /> <span> Checkout</span>
-			</Button>
+			{paymentMethods === "pay_with_paypal" && (
+				<Button
+					fullWidth
+					size="small"
+					type="submit"
+					variant="contained"
+					sx={{ mt: 1.25, bgcolor: "#fec33a", "&:hover": { bgcolor: "#cb9b2e" }, "& span": { ml: 0.5 } }}
+				>
+					<PaypalColorSvg width={50} height={20} /> <span> Checkout</span>
+				</Button>
+			)}
 		</div>
 	);
 };
