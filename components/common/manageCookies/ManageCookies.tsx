@@ -4,13 +4,14 @@ import CookiePopup from "../CookiePopup";
 
 const ManageCookies: FC = () => {
 	const [isCookieOpen, setIsCookieOpen] = useState(false);
+	const [isAccept, setIsAccept] = useState(false);
 
 	const handleTogglePopup = (boolean: boolean) => {
 		setIsCookieOpen(boolean);
 	};
 
 	return (
-		<Box sx={{ background: "#1F1F1F", py: 1.8 }}>
+		<Box sx={{ background: "#1F1F1F", py: 1.8, display: isAccept ? "none" : "block" }}>
 			<Container maxWidth="lg">
 				<Box
 					sx={{
@@ -36,6 +37,7 @@ const ManageCookies: FC = () => {
 					<Box>
 						<Button
 							variant="contained"
+							onClick={() => setIsAccept(true)}
 							sx={{ fontSize: 10, mr: 1, fontFamily: "Poppins", letterSpacing: "0.04em" }}
 						>
 							Accept Cookies
