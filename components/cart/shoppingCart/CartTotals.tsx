@@ -107,28 +107,13 @@ const CartTotals = () => {
 
 							{/* select country */}
 							<CountryDropdown
-								style={{
-									border: "1px solid #d6d4d4",
-									height: "40px",
-									color: "#939393",
-									fontSize: "16px",
-								}}
 								classes="country_dropdown"
 								value={country.country}
 								onChange={(val) => handleCountrySelect(val)}
-								tabIndex={1000}
 							/>
 
 							{/* select region */}
 							<RegionDropdown
-								style={{
-									marginTop: "4px",
-									border: "1px solid #d6d4d4",
-									height: "40px",
-									color: "#939393",
-									fontSize: "16px",
-									width: "100%",
-								}}
 								classes="country_dropdown"
 								country={country.country}
 								value={country.region}

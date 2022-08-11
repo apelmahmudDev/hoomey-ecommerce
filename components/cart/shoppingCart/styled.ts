@@ -10,5 +10,13 @@ export const useStyles = makeStyles((theme) => ({
 		"& .MuiAccordionSummary-expandIconWrapper": { "& .MuiSvgIcon-root": { fontSize: "1rem !important" } },
 		"& .MuiButtonBase-root, & .MuiAccordionSummary-root": { justifyContent: "flex-start" },
 		"& .MuiAccordionSummary-content": { display: "flex", alignItems: "center", flexGrow: 0 },
+
+		"& .country_dropdown": {
+			border: "1px solid #d6d4d4",
+			height: "40px",
+			color: "#939393",
+			fontSize: "16px",
+			margin: theme.spacing(0.5, 0),
+		},
 	},
 }));
