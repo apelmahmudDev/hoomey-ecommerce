@@ -4,10 +4,10 @@ import {
 	Accordion,
 	AccordionSummary,
 	AccordionDetails,
-	SelectChangeEvent,
-	MenuItem,
-	FormControl,
-	Select,
+	// SelectChangeEvent,
+	// MenuItem,
+	// FormControl,
+	// Select,
 	TextField,
 	Button,
 } from "@mui/material";
@@ -20,8 +20,12 @@ import { PaymentSystemView, SecuredByNorton } from "../../common";
 import { EndIconButton } from "../../ui";
 import { ExpandMoreIcon, LocationOnIcon } from "../../../uiElements/icons";
 import { useState } from "react";
-import { COUNTRIES } from "../../../assets/data/countries";
+// import { COUNTRIES } from "../../../assets/data/countries";
 import { useRouter } from "next/router";
+
+// note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to
+// keep file size down
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const SmallText = styled(Typography)({
 	fontSize: 10,
@@ -39,15 +43,27 @@ const CartTotals = () => {
 	const router = useRouter();
 
 	const classes = useStyles();
-	const [country, setCountry] = useState("United States");
-	const [product, setProduct] = useState("10");
+	// const [country, setCountry] = useState("United States");
+	// const [product, setProduct] = useState("10");
 
-	const handleCountryChange = (event: SelectChangeEvent) => {
-		setCountry(event.target.value as string);
+	// const handleCountryChange = (event: SelectChangeEvent) => {
+	// 	setCountry(event.target.value as string);
+	// };
+	// const handleProductChange = (event: SelectChangeEvent) => {
+	// 	setProduct(event.target.value as string);
+	// };
+
+	const [country, setCountry] = useState({ country: "United States", region: "Washington" });
+
+	const handleCountrySelect = (val: string) => {
+		setCountry({ ...country, country: val });
 	};
-	const handleProductChange = (event: SelectChangeEvent) => {
-		setProduct(event.target.value as string);
+
+	const handleRegionSelect = (val: string) => {
+		setCountry({ ...country, region: val });
 	};
+
+	console.log(country);
 
 	return (
 		<div>
@@ -73,7 +89,7 @@ const CartTotals = () => {
 								"& .MuiTextField-root, & .MuiFormControl-root": { my: 0.5 },
 							}}
 						>
-							<FormControl fullWidth>
+							{/* <FormControl fullWidth>
 								<Select
 									size="small"
 									labelId="demo-simple-select-label"
@@ -87,8 +103,39 @@ const CartTotals = () => {
 										</MenuItem>
 									))}
 								</Select>
-							</FormControl>
-							<FormControl fullWidth>
+							</FormControl> */}
+
+							{/* select country */}
+							<CountryDropdown
+								style={{
+									border: "1px solid #d6d4d4",
+									height: "40px",
+									color: "#939393",
+									fontSize: "16px",
+								}}
+								classes="country_dropdown"
+								value={country.country}
+								onChange={(val) => handleCountrySelect(val)}
+								tabIndex={1000}
+							/>
+
+							{/* select region */}
+							<RegionDropdown
+								style={{
+									marginTop: "4px",
+									border: "1px solid #d6d4d4",
+									height: "40px",
+									color: "#939393",
+									fontSize: "16px",
+									width: "100%",
+								}}
+								classes="country_dropdown"
+								country={country.country}
+								value={country.region}
+								onChange={(val) => handleRegionSelect(val)}
+							/>
+
+							{/* <FormControl fullWidth>
 								<Select
 									size="small"
 									labelId="demo-simple-select-label"
@@ -100,7 +147,8 @@ const CartTotals = () => {
 									<MenuItem value={20}>New Jersey</MenuItem>
 									<MenuItem value={30}>New Jersey</MenuItem>
 								</Select>
-							</FormControl>
+							</FormControl> */}
+
 							<TextField size="small" fullWidth placeholder="Town/City" />
 							<TextField size="small" fullWidth placeholder="ZIP" />
 							<Button
