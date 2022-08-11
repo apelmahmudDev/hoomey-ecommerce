@@ -34,9 +34,7 @@ const TopHeader = () => {
 		<Box
 			sx={{
 				gap: 2,
-				px: 1.25,
-				pt: 1.25,
-				pb: 1,
+				p: 1.25,
 				display: "flex",
 				color: "#fff",
 				textAlign: "center",
