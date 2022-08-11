@@ -1,4 +1,12 @@
-export const COUNTRIES = [
+interface CountryType {
+	name: string;
+	code: string;
+	timezone: string;
+	utc: string;
+	mobileCode: string;
+}
+
+export const COUNTRIES: readonly CountryType[] = [
 	{
 		name: "Afghanistan",
 		code: "AF",
