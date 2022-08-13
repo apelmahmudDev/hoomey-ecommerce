@@ -27,6 +27,13 @@ import { useRouter } from "next/router";
 // keep file size down
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface Inputs {
+	city: string;
+	zip: string;
+}
+
 const SmallText = styled(Typography)({
 	fontSize: 10,
 	fontWeight: 500,
@@ -41,8 +48,14 @@ const styles = {
 
 const CartTotals = () => {
 	const router = useRouter();
-
 	const classes = useStyles();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
 	// const [country, setCountry] = useState("United States");
 	// const [product, setProduct] = useState("10");
 
@@ -62,6 +75,9 @@ const CartTotals = () => {
 	const handleRegionSelect = (val: string) => {
 		setCountry({ ...country, region: val });
 	};
+
+	// handle form
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	console.log(country);
 
@@ -85,6 +101,7 @@ const CartTotals = () => {
 					<AccordionDetails>
 						<Box
 							component="form"
+							onSubmit={handleSubmit(onSubmit)}
 							sx={{
 								"& .MuiTextField-root, & .MuiFormControl-root": { my: 0.5 },
 							}}
@@ -134,13 +151,27 @@ const CartTotals = () => {
 								</Select>
 							</FormControl> */}
 
-							<TextField size="small" fullWidth placeholder="Town/City" />
-							<TextField size="small" fullWidth placeholder="ZIP" />
-							<Button
-								type="submit"
+							<TextField
 								fullWidth
-								color="secondary"
 								size="small"
+								placeholder="Town/City"
+								error={errors.city ? true : false}
+								helperText={errors.city && "Town/City is required"}
+								{...register("city", { required: true })}
+							/>
+							<TextField
+								fullWidth
+								size="small"
+								placeholder="ZIP"
+								error={errors.zip ? true : false}
+								helperText={errors.zip && "Zip is required"}
+								{...register("zip", { required: true })}
+							/>
+							<Button
+								fullWidth
+								size="small"
+								type="submit"
+								color="secondary"
 								variant="contained"
 								sx={{ mt: 1.2, justifyContent: "center !important" }}
 							>

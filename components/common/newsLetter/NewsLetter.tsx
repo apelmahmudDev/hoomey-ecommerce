@@ -35,12 +35,13 @@ const NewsLetter: FC = () => {
 					<Box component="form" onSubmit={handleSubmit(onSubmit)}>
 						<Box sx={{ display: "flex", justifyContent: "center" }}>
 							<TextField
-								className={classes.textField}
 								size="small"
+								type="email"
+								variant="filled"
 								id="filled-basic"
 								label="E-mail address"
-								variant="filled"
-								type="email"
+								className={classes.textField}
+								error={errors.email ? true : false}
 								{...register("email", { required: true, pattern: regex.email })}
 							/>
 							<Button className={classes.button} type="submit" variant="contained" color="secondary">
