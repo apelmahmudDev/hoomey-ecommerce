@@ -1,75 +1,77 @@
-import { FC } from "react";
-import { Box, Typography, Breadcrumbs, Link, Container } from "@mui/material";
-import { NavigateNextIcon } from "../../../uiElements/icons";
+import { FC, useEffect, useState } from "react";
+import { Box, Typography, Container } from "@mui/material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Link } from "../../ui";
+import { useRouter } from "next/router";
+import { regex } from "../../../utils/validations/regex";
 
-// const women = {
-// 	page: "women",
-// 	links: ["home", "women"],
-// };
-// const men = {
-// 	page: "men",
-// 	links: ["home", "men"],
-// };
-// const kids = {
-// 	page: "kids",
-// 	links: ["home", "kids"],
-// };
-// const product = {
-// 	page: "product",
-// 	links: ["home", "men", "clothing", "white cotton sweatshirt"],
-// };
-
-function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-	event.preventDefault();
-	console.info("You clicked a breadcrumb.");
+interface BreadcrumbsItem {
+	page: string;
+	links: { name: string; link: string }[];
 }
 
+// breadcrumbs item
+const women: BreadcrumbsItem = {
+	page: "Women",
+	links: [{ name: "Home", link: "" }],
+};
+
+const men: BreadcrumbsItem = {
+	page: "Men",
+	links: [{ name: "Home", link: "" }],
+};
+const kids: BreadcrumbsItem = {
+	page: "Kids",
+	links: [{ name: "kids", link: "" }],
+};
+
+// reusable components to render breadcrumb item
+
+const RenderBreadcrumb = ({ page }: { page: BreadcrumbsItem }) => {
+	return (
+		<Box
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				"& > a": {
+					color: "#939393",
+					margin: "0 7px",
+					fontSize: "10px",
+					"&:hover": { textDecoration: "underline" },
+				},
+			}}
+		>
+			{page &&
+				page.links &&
+				page.links.map((item) => (
+					<Link key={item.link} href={`/${item.link}`}>
+						{item.name} <ChevronRightIcon sx={{ fontSize: 10 }} />
+					</Link>
+				))}
+			<Typography sx={{ fontSize: 10 }} color="primary">
+				{page.page}
+			</Typography>
+		</Box>
+	);
+};
+
 const AppBreadcrumb: FC = () => {
-	// const breadcrumbs = [
-	// 	product.links.map((link) => (
-	// 		<Link underline="hover" key="1" color="inherit" href={"/" + link} onClick={handleClick}>
-	// 			{link}
-	// 		</Link>
-	// 	)),
+	const router = useRouter();
 
-	// 	// <Link
-	// 	// 	underline="hover"
-	// 	// 	key="2"
-	// 	// 	color="inherit"
-	// 	// 	href="/material-ui/getting-started/installation/"
-	// 	// 	onClick={handleClick}
-	// 	// >
-	// 	// 	Core
-	// 	// </Link>,
+	const [page, setPage] = useState({} as BreadcrumbsItem);
 
-	// 	<Typography key="3" color="primary">
-	// 		Women
-	// 	</Typography>,
-	// ];
+	const pathname = router.pathname.replace(regex.removeSlash, "");
 
-	const breadcrumbs = [
-		<Link underline="hover" key="1" color="inherit" href="/" onClick={handleClick}>
-			Home
-		</Link>,
-		// <Link
-		// 	underline="hover"
-		// 	key="2"
-		// 	color="inherit"
-		// 	href="/material-ui/getting-started/installation/"
-		// 	onClick={handleClick}
-		// >
-		// 	Core
-		// </Link>,
-		<Typography key="3" color="primary">
-			Men
-		</Typography>,
-	];
+	useEffect(() => {
+		if (pathname === "men") setPage(men);
+		if (pathname === "women") setPage(women);
+		if (pathname === "kids") setPage(kids);
+	}, [pathname]);
+
 	return (
 		<Box my={3}>
 			<Container>
-				<Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-					{breadcrumbs}
-				</Breadcrumbs>
+				<RenderBreadcrumb page={page} />
 			</Container>
 		</Box>
 	);
