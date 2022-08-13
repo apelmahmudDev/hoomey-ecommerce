@@ -7,11 +7,18 @@ import NewCustomerSignUp from "./NewCustomerSignUp";
 import { useRouter } from "next/router";
 import { ForgetPassword } from "../../common/AuthPopup";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../../../utils/validations/regex";
+
+interface Inputs {
+	email: string;
+	password: string;
+}
 
 export const Label = styled(Typography)({
 	marginBottom: "10px",
-	fontSize: 12,
 	fontWeight: 500,
+	fontSize: 12,
 });
 
 export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#FAFAFA" } };
@@ -19,11 +26,20 @@ export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#
 const ContinueCheckout = () => {
 	const router = useRouter();
 
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
 	const [isForgetPassOpen, setIsForgetPassOpen] = useState(false);
 
 	const handleTogglePopup = (boolean: boolean) => {
 		setIsForgetPassOpen(boolean);
 	};
+
+	// handle form
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	return (
 		<Box mb={9.1}>
@@ -51,13 +67,15 @@ const ContinueCheckout = () => {
 							<Typography sx={{ fontSize: 12, my: 2.5 }}>
 								Welcome back, Sign in for faster checkout
 							</Typography>
-							<Box component="form" autoComplete="off">
+							<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 								<Box component="div" sx={{ my: 2.5 }}>
 									<Label>Email address</Label>
 									<TextField
-										type="email"
-										required
 										fullWidth
+										type="email"
+										error={errors.email ? true : false}
+										{...register("email", { required: true, pattern: regex.email })}
+										helperText={errors.email && "The email address must be valid and include @"}
 										InputProps={{
 											startAdornment: (
 												<InputAdornment position="start">
@@ -70,9 +88,13 @@ const ContinueCheckout = () => {
 								<Box component="div" sx={{ my: 2.5 }}>
 									<Label>Password</Label>
 									<TextField
-										type="password"
-										required
 										fullWidth
+										type="password"
+										error={errors.password ? true : false}
+										{...register("password", {
+											required: "Password is required",
+										})}
+										helperText={errors?.password?.message}
 										InputProps={{
 											startAdornment: (
 												<InputAdornment position="start">
