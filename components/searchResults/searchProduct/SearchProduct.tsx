@@ -55,23 +55,25 @@ const SearchProduct: FC = () => {
 				<Box mb={4}>
 					<Grid container spacing={5}>
 						<Grid item xs={12} md={3}>
-							<Button
-								fullWidth
-								size="large"
-								color="secondary"
-								variant="outlined"
-								startIcon={<FiltersSvg />}
-								onClick={handleFilterClick}
-								sx={{ justifyContent: "flex-start" }}
-							>
-								<Box component="span">Filters</Box>
-								<Box width="inherit" display="flex" justifyContent="flex-end">
-									{isFilterOpen ? <ExpandLess /> : <ExpandMore />}
-								</Box>
-							</Button>
-							<Collapse in={isFilterOpen} timeout="auto" unmountOnExit>
-								<FilterDropdwon handleFilterClick={handleFilterClick} />
-							</Collapse>
+							<Box sx={{ position: "absolute", zIndex: 5, width: "100%", maxWidth: 300 }}>
+								<Button
+									fullWidth
+									size="large"
+									color="secondary"
+									variant="outlined"
+									startIcon={<FiltersSvg />}
+									onClick={handleFilterClick}
+									sx={{ justifyContent: "flex-start" }}
+								>
+									<Box component="span">Filters</Box>
+									<Box width="inherit" display="flex" justifyContent="flex-end">
+										{isFilterOpen ? <ExpandLess /> : <ExpandMore />}
+									</Box>
+								</Button>
+								<Collapse in={isFilterOpen} timeout="auto" unmountOnExit>
+									<FilterDropdwon handleFilterClick={handleFilterClick} />
+								</Collapse>
+							</Box>
 						</Grid>
 						<Grid item xs={12} md={6}>
 							<Typography variant="h6" textAlign="center">
