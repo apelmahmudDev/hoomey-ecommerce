@@ -1,18 +1,54 @@
-import { Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
+import { Box, Typography, TextField, InputAdornment, Button, LinearProgress } from "@mui/material";
 import { LockForInputSvg, MailSvg, PersonSvg } from "../../icons";
 import { Label, styles } from "./ContinueCheckout";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../../../utils/validations/regex";
+import { useEffect, useState } from "react";
+import { isStrongPassword } from "../../../utils/validations";
+
+interface Inputs {
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+	reEnterPassword: string;
+}
 
 const NewCustomerSignUp = () => {
+	const [isStrongPass, setIsStrongPass] = useState(false);
+
+	const {
+		watch,
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
+	// handle form
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+	// password check 🔐
+
+	useEffect(() => {
+		if (isStrongPassword(watch("password"))) {
+			setIsStrongPass(true);
+		} else {
+			setIsStrongPass(false);
+		}
+	}, [watch("password")]);
+
 	return (
 		<Box sx={{ p: 2.5, ...styles.b, ...styles.bg }}>
 			<Typography sx={{ fontWeight: 600 }}>New Customer</Typography>
 			<Typography sx={{ fontSize: 12, my: 2.5 }}>Become a member today - it’s fast & free!</Typography>
-			<Box component="form" autoComplete="off">
+			<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 				<Box component="div" sx={{ my: 2.5 }}>
 					<Label>First Name</Label>
 					<TextField
-						required
 						fullWidth
+						error={errors.firstName ? true : false}
+						{...register("firstName", { required: "This field is required" })}
+						helperText={errors.firstName && errors.firstName?.message}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -25,8 +61,10 @@ const NewCustomerSignUp = () => {
 				<Box component="div" sx={{ my: 2.5 }}>
 					<Label>Last Name</Label>
 					<TextField
-						required
 						fullWidth
+						error={errors.lastName ? true : false}
+						{...register("lastName", { required: "This field is required" })}
+						helperText={errors.lastName && errors.lastName?.message}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -39,9 +77,11 @@ const NewCustomerSignUp = () => {
 				<Box component="div" sx={{ my: 2.5 }}>
 					<Label>Email address</Label>
 					<TextField
-						type="email"
-						required
 						fullWidth
+						type="email"
+						error={errors.email ? true : false}
+						{...register("email", { required: true, pattern: regex.email })}
+						helperText={errors.email && "Enter valid email address"}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -55,8 +95,14 @@ const NewCustomerSignUp = () => {
 					<Label>Password</Label>
 					<TextField
 						type="password"
-						required
 						fullWidth
+						error={errors.password ? true : false}
+						{...register("password", {
+							required: "Password is required",
+							// pattern: regex.password,
+							minLength: { value: 8, message: "Password must be at least 8 characters" },
+						})}
+						helperText={errors.password && errors.password.message}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -65,13 +111,26 @@ const NewCustomerSignUp = () => {
 							),
 						}}
 					/>
+					{/* password label message */}
+					{watch("password")?.length ? (
+						<Box sx={{ width: "100%", mt: 1.25 }}>
+							<LinearProgress variant="determinate" value={isStrongPass ? 100 : 50} />
+							<Typography textAlign="right" variant="body2" color="primary">
+								{isStrongPass ? "Strong Password" : "Weak Password"}
+							</Typography>
+						</Box>
+					) : null}
 				</Box>
 				<Box component="div" sx={{ my: 2.5 }}>
 					<Label>Repeat Password</Label>
 					<TextField
 						type="password"
-						required
 						fullWidth
+						error={errors.reEnterPassword ? true : false}
+						{...register("reEnterPassword", {
+							required: "Please,  re-enter password",
+						})}
+						helperText={errors.reEnterPassword && errors.reEnterPassword.message}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">

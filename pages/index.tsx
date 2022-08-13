@@ -7,6 +7,7 @@ import { Commitment, Footer, Navbar, NewsLetter } from "../components/common";
 import // OfferEmail,
 // PurchasedEmail,
 "../components/emailTemplate";
+import { SignUp } from "../components/common/AuthPopup";
 
 const Home: NextPage = () => {
 	return (
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
 				<Footer />
 			</footer>
 			{/* popup & others section area*/}
-			{/* <SignUp /> */}
+			<SignUp />
 			{/* <SignIn /> */}
 			{/* <PasswordChange /> */}
 			{/* <AbondonCart /> */}
