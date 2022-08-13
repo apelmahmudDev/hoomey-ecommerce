@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { CombineCheckout } from "../components/checkout";
-import { Layout } from "../components/common";
 
 const Checkout: NextPage = () => {
 	return (
@@ -12,9 +11,7 @@ const Checkout: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<CombineCheckout />
-			</Layout>
+			<CombineCheckout />
 		</div>
 	);
 };

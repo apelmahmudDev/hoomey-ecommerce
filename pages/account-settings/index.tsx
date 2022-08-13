@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { MyAccount } from "../../components/accountSettings";
-import { AccountSettingsLayout, Layout } from "../../components/common";
+import { AccountSettingsLayout } from "../../components/common";
 
 const AccountSettings: NextPage = () => {
 	return (
@@ -12,11 +12,9 @@ const AccountSettings: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<AccountSettingsLayout>
-					<MyAccount />
-				</AccountSettingsLayout>
-			</Layout>
+			<AccountSettingsLayout>
+				<MyAccount />
+			</AccountSettingsLayout>
 		</div>
 	);
 };

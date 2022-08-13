@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
-import { Banner, Collections } from "../components/kids";
+import { Banner, Clothing } from "../components/menClothing";
 
-const Kids: NextPage = () => {
+const MenClothing: NextPage = () => {
 	return (
 		<div>
 			<Head>
@@ -12,12 +11,10 @@ const Kids: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<Banner />
-				<Collections />
-			</Layout>
+			<Banner />
+			<Clothing />
 		</div>
 	);
 };
 
-export default Kids;
+export default MenClothing;

@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Banner, Collections } from "../components/baby";
-import { Layout } from "../components/common";
 
 const Baby: NextPage = () => {
 	return (
@@ -12,10 +11,8 @@ const Baby: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<Banner />
-				<Collections />
-			</Layout>
+			<Banner />
+			<Collections />
 		</div>
 	);
 };

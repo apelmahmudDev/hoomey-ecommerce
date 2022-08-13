@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { AlsoLikeProducts, ShoppingCart } from "../components/cart";
-import { Layout } from "../components/common";
 
 const Cart: NextPage = () => {
 	return (
@@ -12,10 +11,8 @@ const Cart: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<ShoppingCart />
-				<AlsoLikeProducts />
-			</Layout>
+			<ShoppingCart />
+			<AlsoLikeProducts />
 		</div>
 	);
 };

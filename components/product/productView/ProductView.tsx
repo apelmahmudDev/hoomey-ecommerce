@@ -65,7 +65,7 @@ const ProductView = () => {
 	};
 
 	return (
-		<Box mb={9.1}>
+		<Box mb={9.1} mt={3}>
 			<Container maxWidth="md">
 				<Grid container spacing={5}>
 					{/* product view image card */}

@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 
-import { CTAPopup, NewsLetterPopup, PageLoading } from "../components/common";
+import { CTAPopup, Layout, NewsLetterPopup, PageLoading } from "../components/common";
 import { wrapper } from "../store";
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -53,13 +53,13 @@ function MyApp(props: IAppProps): ReactElement {
 					{isLoading ? (
 						<PageLoading />
 					) : (
-						<>
+						<Layout>
 							<Component {...pageProps} />
 
 							{/* popup - they are showing itself any time & any where on the whole applications*/}
 							<NewsLetterPopup />
 							<CTAPopup />
-						</>
+						</Layout>
 					)}
 				</ThemeProvider>
 			</StylesProvider>

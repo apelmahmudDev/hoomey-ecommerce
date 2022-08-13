@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { Banner, Collections } from "../components/pets";
 
 const Pets: NextPage = () => {
@@ -12,10 +11,8 @@ const Pets: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<Banner />
-				<Collections />
-			</Layout>
+			<Banner />
+			<Collections />
 		</div>
 	);
 };

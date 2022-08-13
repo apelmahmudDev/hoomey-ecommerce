@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { OrderDetails, ThanksOrder } from "../components/orderPlaced";
 
 const OrderPlaced: NextPage = () => {
@@ -12,10 +11,8 @@ const OrderPlaced: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<ThanksOrder />
-				<OrderDetails />
-			</Layout>
+			<ThanksOrder />
+			<OrderDetails />
 		</div>
 	);
 };

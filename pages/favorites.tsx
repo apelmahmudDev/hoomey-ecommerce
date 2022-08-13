@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { FavoritesProduct } from "../components/favorites";
 
 const Favorites: NextPage = () => {
@@ -12,9 +11,7 @@ const Favorites: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<FavoritesProduct />
-			</Layout>
+			<FavoritesProduct />
 		</div>
 	);
 };

@@ -1,77 +1,36 @@
-import { FC, useEffect, useState } from "react";
-import { Box, Typography, Container } from "@mui/material";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Link } from "../../ui";
+import { FC } from "react";
+import { Box, Container } from "@mui/material";
 import { useRouter } from "next/router";
-import { regex } from "../../../utils/validations/regex";
+import { Link } from "../../ui";
 
-interface BreadcrumbsItem {
-	page: string;
-	links: { name: string; link: string }[];
-}
-
-// breadcrumbs item
-const women: BreadcrumbsItem = {
-	page: "Women",
-	links: [{ name: "Home", link: "" }],
-};
-
-const men: BreadcrumbsItem = {
-	page: "Men",
-	links: [{ name: "Home", link: "" }],
-};
-const kids: BreadcrumbsItem = {
-	page: "Kids",
-	links: [{ name: "kids", link: "" }],
-};
-
-// reusable components to render breadcrumb item
-
-const RenderBreadcrumb = ({ page }: { page: BreadcrumbsItem }) => {
-	return (
-		<Box
-			sx={{
-				display: "flex",
-				alignItems: "center",
-				"& > a": {
-					color: "#939393",
-					margin: "0 7px",
-					fontSize: "10px",
-					"&:hover": { textDecoration: "underline" },
-				},
-			}}
-		>
-			{page &&
-				page.links &&
-				page.links.map((item) => (
-					<Link key={item.link} href={`/${item.link}`}>
-						{item.name} <ChevronRightIcon sx={{ fontSize: 10 }} />
-					</Link>
-				))}
-			<Typography sx={{ fontSize: 10 }} color="primary">
-				{page.page}
-			</Typography>
-		</Box>
-	);
-};
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Stack from "@mui/material/Stack";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const AppBreadcrumb: FC = () => {
 	const router = useRouter();
 
-	const [page, setPage] = useState({} as BreadcrumbsItem);
+	// console.log(router.query);
 
-	const pathname = router.pathname.replace(regex.removeSlash, "");
-
-	useEffect(() => {
-		if (pathname === "men") setPage(men);
-		if (pathname === "women") setPage(women);
-		if (pathname === "kids") setPage(kids);
-	}, [pathname]);
+	const keys = Object.values(router.query);
+	console.log(keys);
 
 	return (
-		<Box my={3}>
+		<Box pt={3} pb={4}>
 			<Container>
-				<RenderBreadcrumb page={page} />
+				<Stack spacing={2}>
+					<Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+						{/* {breadcrumbs} */}
+						<Link href="/">Home</Link>
+						{keys &&
+							keys?.map((link, idx) => (
+								<Link key={idx} href={`/${link}`}>
+									{link}
+									{/* {link && link[0].toUpperCase() + link.substring(1)} */}
+								</Link>
+							))}
+					</Breadcrumbs>
+				</Stack>
 			</Container>
 		</Box>
 	);

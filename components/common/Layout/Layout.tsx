@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 import AppBreadcrumb from "../AppBreadcrumb";
 import Commitment from "../Commitment";
@@ -6,6 +7,8 @@ import Navbar from "../navbar";
 import NewsLetter from "../newsLetter";
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
+	const router = useRouter();
+
 	return (
 		<div>
 			<nav>
@@ -13,7 +16,7 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 			</nav>
 
 			<main>
-				<AppBreadcrumb />
+				{router.pathname === "/" ? null : <AppBreadcrumb />}
 				{children}
 				<NewsLetter />
 				<Commitment />

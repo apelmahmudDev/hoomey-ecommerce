@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { Banner, SearchFaqs } from "../components/faqs";
 
 const FAQs: NextPage = () => {
@@ -12,10 +11,8 @@ const FAQs: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<Banner />
-				<SearchFaqs />
-			</Layout>
+			<Banner />
+			<SearchFaqs />
 		</div>
 	);
 };

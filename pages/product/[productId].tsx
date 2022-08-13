@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../../components/common";
 
 // components
 import {
@@ -21,14 +20,12 @@ const Product: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<ProductView />
-				<ProductDetails />
-				<RatingsAndReviews />
-				<RelatedProducts />
-				<AlsoLikeProducts />
-				<FloatingAdvertise />
-			</Layout>
+			<ProductView />
+			<ProductDetails />
+			<RatingsAndReviews />
+			<RelatedProducts />
+			<AlsoLikeProducts />
+			<FloatingAdvertise />
 		</div>
 	);
 };

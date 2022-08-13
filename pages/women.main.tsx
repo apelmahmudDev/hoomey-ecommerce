@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
-import { Banner, Clothing } from "../components/menClothing";
+import { Banner, Collections } from "../components/women";
 
-const MenClothing: NextPage = () => {
+const Women: NextPage = () => {
 	return (
 		<div>
 			<Head>
@@ -12,12 +11,10 @@ const MenClothing: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<Banner />
-				<Clothing />
-			</Layout>
+			<Banner />
+			<Collections />
 		</div>
 	);
 };
 
-export default MenClothing;
+export default Women;

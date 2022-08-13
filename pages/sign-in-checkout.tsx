@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { ContinueCheckout } from "../components/signInCheckout";
 
 const SignInCheckout: NextPage = () => {
@@ -12,9 +11,7 @@ const SignInCheckout: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<ContinueCheckout />
-			</Layout>
+			<ContinueCheckout />
 		</div>
 	);
 };

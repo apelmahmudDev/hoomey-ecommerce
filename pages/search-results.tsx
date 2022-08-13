@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "../components/common";
 import { SearchProduct } from "../components/searchResults";
 
 const SearchResults: NextPage = () => {
@@ -12,9 +11,7 @@ const SearchResults: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				<SearchProduct />
-			</Layout>
+			<SearchProduct />
 		</div>
 	);
 };

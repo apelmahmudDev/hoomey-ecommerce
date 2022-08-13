@@ -8,7 +8,6 @@ import {
 	// MyWishlist,
 	PaymentMethods,
 } from "../components/accountSettings";
-import { Layout } from "../components/common";
 
 import {
 	Box,
@@ -60,50 +59,48 @@ const AccountSettings: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Layout>
-				{/* account & settings */}
-				<Container>
-					<Typography sx={{ mb: 6 }} variant="h6" textAlign="center">
-						My Account
-					</Typography>
-					<Box sx={{ display: "flex", gap: 2.5 }}>
-						<CssBaseline />
-						<Box
-							sx={{
-								bgcolor: "#FBFBFB",
-								p: 4,
+			{/* account & settings */}
+			<Container>
+				<Typography sx={{ mb: 6 }} variant="h6" textAlign="center">
+					My Account
+				</Typography>
+				<Box sx={{ display: "flex", gap: 2.5 }}>
+					<CssBaseline />
+					<Box
+						sx={{
+							bgcolor: "#FBFBFB",
+							p: 4,
+							width: drawerWidth,
+							flexShrink: 0,
+							"& .MuiDrawer-paper": {
 								width: drawerWidth,
-								flexShrink: 0,
-								"& .MuiDrawer-paper": {
-									width: drawerWidth,
-									boxSizing: "border-box",
-								},
-							}}
-						>
-							<Divider />
-							<List>
-								{menus.map((menu) => (
-									<ListItem key={menu.name} disablePadding>
-										<ListItemButton>
-											<ListItemIcon>{menu.icon}</ListItemIcon>
-											<ListItemText primary={menu.name} />
-										</ListItemButton>
-									</ListItem>
-								))}
-							</List>
-						</Box>
-						{/* body content */}
-						<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
-							{/* <MyAccount /> */}
-							{/* <ChangePassword /> */}
-							{/* <AddressBook /> */}
-							{/* <MyOrders /> */}
-							{/* <MyWishlist /> */}
-							<PaymentMethods />
-						</Box>
+								boxSizing: "border-box",
+							},
+						}}
+					>
+						<Divider />
+						<List>
+							{menus.map((menu) => (
+								<ListItem key={menu.name} disablePadding>
+									<ListItemButton>
+										<ListItemIcon>{menu.icon}</ListItemIcon>
+										<ListItemText primary={menu.name} />
+									</ListItemButton>
+								</ListItem>
+							))}
+						</List>
 					</Box>
-				</Container>
-			</Layout>
+					{/* body content */}
+					<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
+						{/* <MyAccount /> */}
+						{/* <ChangePassword /> */}
+						{/* <AddressBook /> */}
+						{/* <MyOrders /> */}
+						{/* <MyWishlist /> */}
+						<PaymentMethods />
+					</Box>
+				</Box>
+			</Container>
 		</div>
 	);
 };
