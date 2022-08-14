@@ -18,6 +18,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 import { CTAPopup, Layout, NewsLetterPopup, PageLoading } from "../components/common";
 import { wrapper } from "../store";
+import { useRouter } from "next/router";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -31,6 +32,8 @@ const generateClassName = createGenerateClassName({
 });
 
 function MyApp(props: IAppProps): ReactElement {
+	const router = useRouter();
+	const pathname = router.pathname;
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -52,6 +55,8 @@ function MyApp(props: IAppProps): ReactElement {
 
 					{isLoading ? (
 						<PageLoading />
+					) : pathname === "/dashboard" ? (
+						<Component {...pageProps} />
 					) : (
 						<Layout>
 							<Component {...pageProps} />
