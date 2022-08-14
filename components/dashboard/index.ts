@@ -1,1 +1,1 @@
-export const module = "here";
+export { default as Dashboard } from "./dashboard";
