@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 
-const Link = ({ href, children, ...args }: { href: string; children: React.ReactNode }) => {
+const Link = ({ href, children }: { href: string; children: React.ReactNode }) => {
 	return (
 		<NextLink href={href}>
 			<a>{children}</a>

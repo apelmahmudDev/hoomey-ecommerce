@@ -14,7 +14,6 @@ import {
 	// Theme,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Link } from "../../ui";
 
 // icons
@@ -26,6 +25,7 @@ import {
 	ColorHeartSvg,
 	PaymentMethodsSvg,
 	NortonSvg,
+	CameraSvg,
 } from "../../icons";
 import { IMAGES } from "../../../uiElements";
 import { AppAvatar, HoverTooltip } from "../../styledComponents";
@@ -113,7 +113,7 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 								}}
 							>
 								<input hidden accept="image/*" type="file" />
-								<PhotoCamera />
+								<CameraSvg />
 							</IconButton>
 						</Box>
 						<div>
