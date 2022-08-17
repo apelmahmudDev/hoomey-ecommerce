@@ -11,6 +11,7 @@ import {
 } from "../components/icons";
 import { StyledCard } from "../components/styledComponents";
 import OrdersTable from "./OrdersTable";
+import TopSellingProductsTable from "./TopSellingProductsTable";
 
 const historyItems = [
 	{
@@ -91,8 +92,11 @@ const Dashboard = () => {
 			<Box my={3.8}>
 				{/* orders & top sellings products => Twice table*/}
 				<Grid container spacing={2.5}>
-					<Grid item xs={12} sm={6}>
+					<Grid item xs={12} lg={6}>
 						<OrdersTable />
+					</Grid>
+					<Grid item xs={12} lg={6}>
+						<TopSellingProductsTable />
 					</Grid>
 				</Grid>
 			</Box>

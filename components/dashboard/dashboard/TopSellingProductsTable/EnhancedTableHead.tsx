@@ -1,6 +1,6 @@
 import { TableHead, TableRow, TableCell, TableSortLabel, Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { Data, Order } from "./OrdersTable";
+import { Data, Order } from "./TopSellingProductsTable";
 
 interface EnhancedTableProps {
 	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
@@ -13,49 +13,35 @@ interface HeadCell {
 	disablePadding: boolean;
 	id: keyof Data;
 	label: string;
-	numeric: boolean;
+	align: "inherit" | "right" | "left" | "center" | "justify" | undefined;
 }
 
 const headCells: readonly HeadCell[] = [
 	{
-		id: "customer",
-		numeric: false,
+		id: "name",
+		align: "left",
+		label: "Name",
 		disablePadding: true,
-		label: "Customer",
-	},
-	{
-		id: "email",
-		numeric: false,
-		disablePadding: false,
-		label: "Email",
 	},
 	{
 		id: "amount",
-		numeric: false,
-		disablePadding: false,
+		align: "center",
 		label: "Amount",
+		disablePadding: false,
 	},
-	// {
-	// 	id: "status",
-	// 	numeric: false,
-	// 	disablePadding: false,
-	// 	label: "Status",
-	// },
-	// {
-	// 	id: "action",
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: "Action",
-	// },
+	{
+		id: "stock",
+		align: "center",
+		label: "Stock",
+		disablePadding: false,
+	},
 ];
 
 const EnhancedTableHead = (props: EnhancedTableProps) => {
 	const {
-		// onSelectAllClick,
 		order,
 		orderBy,
-		//  numSelected,
-		//   rowCount,
+
 		onRequestSort,
 	} = props;
 	const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
@@ -66,22 +52,12 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 		<TableHead>
 			<TableRow>
 				<TableCell padding="checkbox">#</TableCell>
-				{/* <TableCell padding="checkbox">
-					<Checkbox
-						color="primary"
-						indeterminate={numSelected > 0 && numSelected < rowCount}
-						checked={rowCount > 0 && numSelected === rowCount}
-						onChange={onSelectAllClick}
-						inputProps={{
-							"aria-label": "select all desserts",
-						}}
-					/>
-				</TableCell> */}
+
 				{headCells.map((headCell) => (
 					<TableCell
 						key={headCell.id}
-						align={headCell.numeric ? "right" : "center"}
-						padding={headCell.disablePadding ? "none" : "normal"}
+						align={headCell.align}
+						padding={headCell.disablePadding ? "none" : "normal" || "left"}
 						sortDirection={orderBy === headCell.id ? order : false}
 					>
 						<TableSortLabel
@@ -100,10 +76,7 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 				))}
 
 				<TableCell align="center" padding="normal">
-					Status
-				</TableCell>
-				<TableCell align="center" padding="normal">
-					Action
+					Stock Status
 				</TableCell>
 			</TableRow>
 		</TableHead>

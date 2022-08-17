@@ -8,6 +8,8 @@ import HomeHero5lImg from "../assets/images/hero/baby-girl-knitted-hat-scarf 1_2
 // latest products
 import WhiteTshirtImg from "../assets/images/latestProducts/white-tshirt.png";
 import BlackTshirtImg from "../assets/images/latestProducts/black-tshirt.png";
+import ProductOneImg from "../assets/images/latestProducts/product1.png";
+import ProductTwoImg from "../assets/images/latestProducts/product2.png";
 
 // collections - home
 
@@ -134,6 +136,8 @@ import MenSizeImg from "../assets/images/men-size-item.png";
 import CampaignImg from "../assets/images/svg/ecommerce-campaign.svg";
 
 export const IMAGES = {
+	ProductTwoImg,
+	ProductOneImg,
 	HomeHero1lImg,
 	HomeHero2lImg,
 	HomeHero3lImg,
