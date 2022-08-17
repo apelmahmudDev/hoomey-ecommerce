@@ -99,7 +99,7 @@ const Login: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Container maxWidth="xl">
+			<Container maxWidth={false}>
 				<Box sx={{ height: "100vh" }}>
 					<Grid container sx={{ height: "100%" }}>
 						<Grid item xs={12} md={5}>
