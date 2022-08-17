@@ -144,7 +144,7 @@ const Dashboard: NextPage = (props: Props) => {
 								</Search>
 
 								<IconButton aria-label="cart">
-									<Badge badgeContent={0} invisible color="error">
+									<Badge badgeContent={1} color="error">
 										<NavNotificationsSvg />
 									</Badge>
 								</IconButton>

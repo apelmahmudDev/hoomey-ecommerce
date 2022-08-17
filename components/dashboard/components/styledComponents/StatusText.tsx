@@ -1,0 +1,17 @@
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const StatusText = styled(Typography)(
+	({ status, color, fs, fw }: { status?: string; fs?: number | string; fw?: string | number; color?: string }) => ({
+		fontSize: fs || 14,
+		fontWeight: fw || 400,
+		color:
+			status === "Delivered" || status === "In Stock" || status === "Verified"
+				? "#04AF00"
+				: status === "Out of Stock" || status === "Unverified" || status === "Pending"
+				? "#FF0303"
+				: "#F97904",
+	}),
+);
+
+export default StatusText;

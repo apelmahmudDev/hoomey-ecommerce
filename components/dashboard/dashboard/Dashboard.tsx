@@ -1,4 +1,5 @@
 import { CardContent, Typography, IconButton, Stack, Box, Grid } from "@mui/material";
+
 import { CartText } from "../../styledComponents";
 import {
 	ArrowDownIcon,
@@ -9,6 +10,7 @@ import {
 	PeopleIcon,
 } from "../components/icons";
 import { StyledCard } from "../components/styledComponents";
+import OrdersTable from "./OrdersTable";
 
 const historyItems = [
 	{
@@ -85,6 +87,15 @@ const Dashboard = () => {
 					</Grid>
 				))}
 			</Grid>
+
+			<Box my={3.8}>
+				{/* orders & top sellings products => Twice table*/}
+				<Grid container spacing={2.5}>
+					<Grid item xs={12} sm={6}>
+						<OrdersTable />
+					</Grid>
+				</Grid>
+			</Box>
 		</div>
 	);
 };

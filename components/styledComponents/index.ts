@@ -20,3 +20,4 @@ export { default as StatusText } from "./StatusText";
 export { default as AppTooltip } from "./AppTooltip";
 export { default as Label } from "./Label";
 export { default as Search } from "./Search";
+export { default as Text } from "./Text";
