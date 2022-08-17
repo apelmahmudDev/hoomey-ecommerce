@@ -12,6 +12,7 @@ import {
 import { StyledCard } from "../components/styledComponents";
 import OrdersTable from "./OrdersTable";
 import TopSellingProductsTable from "./TopSellingProductsTable";
+import UsersTable from "./UsersTable";
 
 const historyItems = [
 	{
@@ -90,15 +91,31 @@ const Dashboard = () => {
 			</Grid>
 
 			<Box my={3.8}>
+				{/* Earning Revenue, Top Sales & Users table */}
+				<Box my={3.5} component="section">
+					<Grid container spacing={2.5}>
+						{/* Earning Revenue */}
+						<Grid item xs={12} lg={6} />
+						{/* Top Sales */}
+						<Grid item xs={12} lg={3} />
+						{/* Users table */}
+						<Grid item xs={12} lg={3}>
+							<UsersTable />
+						</Grid>
+					</Grid>
+				</Box>
+
 				{/* orders & top sellings products => Twice table*/}
-				<Grid container spacing={2.5}>
-					<Grid item xs={12} lg={6}>
-						<OrdersTable />
+				<Box my={3.5} component="section">
+					<Grid container spacing={2.5}>
+						<Grid item xs={12} lg={6}>
+							<OrdersTable />
+						</Grid>
+						<Grid item xs={12} lg={6}>
+							<TopSellingProductsTable />
+						</Grid>
 					</Grid>
-					<Grid item xs={12} lg={6}>
-						<TopSellingProductsTable />
-					</Grid>
-				</Grid>
+				</Box>
 			</Box>
 		</div>
 	);
