@@ -3,20 +3,14 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import { visuallyHidden } from "@mui/utils";
 import { useState } from "react";
-import { StatusText, StyledButton, StyledCard } from "../components/styledComponents";
 import { CardContent } from "@mui/material";
+import EnhancedTableHead from "./EnhancedTableHead";
+import EnhancedTableToolbar from "./EnhancedTableToolbar";
+import { StatusText, StyledButton, StyledCard } from "../../components/styledComponents";
 
-interface Data {
+export interface Data {
 	customer: string;
 	email: string;
 	amount: number;
@@ -50,7 +44,7 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
 	return 0;
 }
 
-type Order = "asc" | "desc";
+export type Order = "asc" | "desc";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getComparator<Key extends keyof any>(
@@ -75,127 +69,6 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 	});
 	return stabilizedThis.map((el) => el[0]);
 }
-
-interface HeadCell {
-	disablePadding: boolean;
-	id: keyof Data;
-	label: string;
-	numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-	{
-		id: "customer",
-		numeric: false,
-		disablePadding: true,
-		label: "Customer",
-	},
-	{
-		id: "email",
-		numeric: false,
-		disablePadding: false,
-		label: "Email",
-	},
-	{
-		id: "amount",
-		numeric: false,
-		disablePadding: false,
-		label: "Amount",
-	},
-	{
-		id: "status",
-		numeric: false,
-		disablePadding: false,
-		label: "Status",
-	},
-	{
-		id: "action",
-		numeric: true,
-		disablePadding: false,
-		label: "Action",
-	},
-];
-
-interface EnhancedTableProps {
-	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-	order: Order;
-	orderBy: string;
-	rowCount: number;
-}
-
-function EnhancedTableHead(props: EnhancedTableProps) {
-	const {
-		// onSelectAllClick,
-		order,
-		orderBy,
-		//  numSelected,
-		//   rowCount,
-		onRequestSort,
-	} = props;
-	const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
-		onRequestSort(event, property);
-	};
-
-	return (
-		<TableHead>
-			<TableRow>
-				<TableCell padding="checkbox">#</TableCell>
-				{/* <TableCell padding="checkbox">
-					<Checkbox
-						color="primary"
-						indeterminate={numSelected > 0 && numSelected < rowCount}
-						checked={rowCount > 0 && numSelected === rowCount}
-						onChange={onSelectAllClick}
-						inputProps={{
-							"aria-label": "select all desserts",
-						}}
-					/>
-				</TableCell> */}
-				{headCells.map((headCell) => (
-					<TableCell
-						key={headCell.id}
-						align={headCell.numeric ? "right" : "center"}
-						padding={headCell.disablePadding ? "none" : "normal"}
-						sortDirection={orderBy === headCell.id ? order : false}
-					>
-						<TableSortLabel
-							active={orderBy === headCell.id}
-							direction={orderBy === headCell.id ? order : "asc"}
-							onClick={createSortHandler(headCell.id)}
-						>
-							{headCell.label}
-							{orderBy === headCell.id ? (
-								<Box component="span" sx={visuallyHidden}>
-									{order === "desc" ? "sorted descending" : "sorted ascending"}
-								</Box>
-							) : null}
-						</TableSortLabel>
-					</TableCell>
-				))}
-			</TableRow>
-		</TableHead>
-	);
-}
-
-const EnhancedTableToolbar = () => {
-	return (
-		<Toolbar
-			sx={{
-				pl: { sm: 2 },
-				pr: { xs: 1, sm: 1 },
-			}}
-		>
-			<Typography sx={{ flex: "1 1 100%" }} variant="h6" id="tableTitle" component="div">
-				Orders
-			</Typography>
-			<Tooltip title="Filter list">
-				<IconButton>
-					<FilterListIcon />
-				</IconButton>
-			</Tooltip>
-		</Toolbar>
-	);
-};
 
 const OrdersTable = () => {
 	const [order, setOrder] = useState<Order>("asc");

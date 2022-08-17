@@ -179,7 +179,7 @@ const EnhancedTableToolbar = () => {
 	);
 };
 
-const OrdersTable = () => {
+const SortedTableTemp = () => {
 	const [order, setOrder] = useState<Order>("asc");
 	const [orderBy, setOrderBy] = useState<keyof Data>("amount");
 
@@ -238,4 +238,4 @@ const OrdersTable = () => {
 	);
 };
 
-export default OrdersTable;
+export default SortedTableTemp;
