@@ -55,7 +55,7 @@ function MyApp(props: IAppProps): ReactElement {
 
 					{isLoading ? (
 						<PageLoading />
-					) : pathname === "/dashboard" ? (
+					) : pathname === "/dashboard" || pathname === "/login" ? (
 						<Component {...pageProps} />
 					) : (
 						<Layout>

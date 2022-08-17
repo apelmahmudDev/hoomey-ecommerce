@@ -130,6 +130,9 @@ import AvatarImg from "../assets/images/avatar.png";
 import PopupImg from "../assets/images/popup-shirt.png";
 import MenSizeImg from "../assets/images/men-size-item.png";
 
+// login
+import CampaignImg from "../assets/images/svg/ecommerce-campaign.svg";
+
 export const IMAGES = {
 	HomeHero1lImg,
 	HomeHero2lImg,
@@ -232,4 +235,5 @@ export const IMAGES = {
 	ManImg,
 	KidsSowImg,
 	FlagImg,
+	CampaignImg,
 };

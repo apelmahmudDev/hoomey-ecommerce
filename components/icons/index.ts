@@ -66,3 +66,5 @@ export { default as CheckCartSvg } from "./CheckCart";
 export { default as DashboardMenuSvg } from "./DashboardMenu";
 export { default as AppIconSvg } from "./AppIcon";
 export { default as NavNotificationsSvg } from "./NavNotifications";
+export { default as EmailFilledSvg } from "./EmailFill";
+export { default as LockFilledSvg } from "./LockFilled";
