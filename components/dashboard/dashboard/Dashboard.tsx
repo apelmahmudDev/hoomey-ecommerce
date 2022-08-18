@@ -10,6 +10,7 @@ import {
 	PeopleIcon,
 } from "../components/icons";
 import { StyledCard } from "../components/styledComponents";
+import EarningRevenueChart from "./EarningRevenueChart";
 import OrdersTable from "./OrdersTable";
 import TopSalesChart from "./TopSalesChart";
 import TopSellingProductsTable from "./TopSellingProductsTable";
@@ -96,7 +97,9 @@ const Dashboard = () => {
 				<Box my={3.5} component="section">
 					<Grid container spacing={2.5}>
 						{/* Earning Revenue */}
-						<Grid item xs={12} lg={6} />
+						<Grid item xs={12} lg={6}>
+							<EarningRevenueChart />
+						</Grid>
 
 						{/* Top Sales */}
 						<Grid item xs={12} lg={3}>

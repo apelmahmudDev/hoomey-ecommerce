@@ -203,6 +203,7 @@ const Dashboard: NextPage = (props: Props) => {
 						</Drawer>
 					</Box>
 					<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+						{/* dashboard content changes here*/}
 						<Toolbar />
 						<DashboardComp />
 					</Box>
