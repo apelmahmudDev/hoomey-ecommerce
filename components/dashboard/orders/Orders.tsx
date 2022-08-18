@@ -1,8 +1,9 @@
-import { CardContent, Typography, Stack, Box, Grid, Button } from "@mui/material";
+import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
 
 import { CartText, RoundButton } from "../../styledComponents";
 import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../components/icons";
 import { StyledCard } from "../components/styledComponents";
+import OrdersTable from "./OrdersTable";
 
 const historyItems = [
 	{
@@ -70,7 +71,7 @@ const Orders = () => {
 										<Typography variant="h6" sx={{ opacity: 0.7, letterSpacing: "-0.25924px" }}>
 											{item.dec}
 										</Typography>
-										<Typography variant="h3" fontWeight="bold">
+										<Typography variant="h4" fontWeight="bold">
 											{item.title}
 										</Typography>
 									</Stack>
@@ -85,25 +86,9 @@ const Orders = () => {
 				))}
 			</Grid>
 
-			<Box my={3.8}>
-				{/* Earning Revenue, Top Sales & Users table */}
-				<Box my={3.5} component="section">
-					<Grid container spacing={2.5}>
-						{/* Earning Revenue */}
-						<Grid item xs={12} lg={6} />
-
-						{/* Top Sales */}
-						<Grid item xs={12} lg={3} />
-					</Grid>
-				</Box>
-
-				{/* orders & top sellings products => Twice table*/}
-				<Box my={3.5} component="section">
-					<Grid container spacing={2.5}>
-						{/* <Grid item xs={12} lg={6}></Grid>
-						<Grid item xs={12} lg={6}></Grid> */}
-					</Grid>
-				</Box>
+			{/* table section */}
+			<Box my={2.5}>
+				<OrdersTable />
 			</Box>
 		</div>
 	);

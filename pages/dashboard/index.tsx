@@ -35,7 +35,10 @@ import {
 
 import { Link } from "../../components/ui";
 import { IMAGES } from "../../uiElements";
-import { Dashboard as DashboardComp, Orders } from "../../components/dashboard";
+import {
+	// Dashboard as DashboardComp,
+	Orders,
+} from "../../components/dashboard";
 
 const drawerWidth = 100;
 
