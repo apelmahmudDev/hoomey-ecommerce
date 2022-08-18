@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { CardContent } from "@mui/material";
-import { StyledCard } from "../../components/styledComponents";
+import { StatusChip, StyledCard } from "../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
@@ -14,42 +14,64 @@ import { Order } from "../../../../types/order";
 import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
 
 export interface Data {
-	calories: number;
-	carbs: number;
-	fat: number;
-	name: string;
-	protein: number;
+	orderNo: number;
+	date: string | number;
+	time: string;
+	customer: string;
+	total: number;
+	paymentStatus: string;
+	fulfillmentStatus: string;
+	items: number;
+	deliveryMethod: string;
+	tags: string;
 }
 
-function createData(name: string, calories: number, fat: number, carbs: number, protein: number): Data {
+function createData(
+	orderNo: number,
+	date: string | number,
+	time: string,
+	customer: string,
+	total: number,
+	paymentStatus: string,
+	fulfillmentStatus: string,
+	items: number,
+	deliveryMethod: string,
+	tags: string,
+): Data {
 	return {
-		name,
-		calories,
-		fat,
-		carbs,
-		protein,
+		orderNo,
+		date,
+		time,
+		customer,
+		total,
+		paymentStatus,
+		fulfillmentStatus,
+		items,
+		deliveryMethod,
+		tags,
 	};
 }
 
 const rows = [
-	createData("Cupcake", 305, 3.7, 67, 4.3),
-	createData("Donut", 452, 25.0, 51, 4.9),
-	createData("Eclair", 262, 16.0, 24, 6.0),
-	createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-	createData("Gingerbread", 356, 16.0, 49, 3.9),
-	createData("Honeycomb", 408, 3.2, 87, 6.5),
-	createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-	createData("Jelly Bean", 375, 0.0, 94, 0.0),
-	createData("KitKat", 518, 26.0, 65, 7.0),
-	createData("Lollipop", 392, 0.2, 98, 0.0),
-	createData("Marshmallow", 318, 0, 81, 2.0),
-	createData("Nougat", 360, 19.0, 9, 37.0),
-	createData("Oreo", 437, 18.0, 63, 4.0),
+	createData(12345, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(
+		67890,
+		"22-May-2022",
+		"12:15 pm",
+		"Mariah Betts",
+		1000,
+		"UnPaid",
+		"UnFulfilled",
+		2,
+		"Shipping",
+		"Clothes",
+	),
+	createData(12343, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
 ];
 
 const OrdersTable = () => {
 	const [order, setOrder] = useState<Order>("asc");
-	const [orderBy, setOrderBy] = useState<keyof Data>("calories");
+	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -77,7 +99,7 @@ const OrdersTable = () => {
 			<StyledCard sx={{ width: "100%" }}>
 				<CardContent>
 					<TableContainer>
-						<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
+						<Table sx={{ minWidth: 1300 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -88,15 +110,28 @@ const OrdersTable = () => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={row.name}>
+											<TableRow hover tabIndex={-1} key={row.orderNo}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													{row.name}
+													{row.orderNo}
 												</TableCell>
-												<TableCell align="right">{row.calories}</TableCell>
-												<TableCell align="right">{row.fat}</TableCell>
-												<TableCell align="right">{row.carbs}</TableCell>
-												<TableCell align="right">{row.protein}</TableCell>
+												<TableCell align="center">{row.date}</TableCell>
+												<TableCell align="center">{row.time}</TableCell>
+												<TableCell align="center">{row.customer}</TableCell>
+												<TableCell align="right">${row.total}</TableCell>
+												<TableCell align="center">
+													<StatusChip status={row.paymentStatus}>
+														{row.paymentStatus}
+													</StatusChip>
+												</TableCell>
+												<TableCell align="center">
+													<StatusChip status={row.fulfillmentStatus}>
+														{row.fulfillmentStatus}
+													</StatusChip>
+												</TableCell>
+												<TableCell align="right">{row.items}</TableCell>
+												<TableCell align="center">{row.deliveryMethod}</TableCell>
+												<TableCell align="right">{row.tags}</TableCell>
 											</TableRow>
 										);
 									})}
@@ -112,17 +147,17 @@ const OrdersTable = () => {
 							</TableBody>
 						</Table>
 					</TableContainer>
-					<TablePagination
-						page={page}
-						component="div"
-						count={rows.length}
-						rowsPerPage={rowsPerPage}
-						onPageChange={handleChangePage}
-						rowsPerPageOptions={[5, 10, 25]}
-						onRowsPerPageChange={handleChangeRowsPerPage}
-					/>
 				</CardContent>
 			</StyledCard>
+			<TablePagination
+				page={page}
+				component="div"
+				count={rows.length}
+				rowsPerPage={rowsPerPage}
+				onPageChange={handleChangePage}
+				rowsPerPageOptions={[5, 10, 25]}
+				onRowsPerPageChange={handleChangeRowsPerPage}
+			/>
 		</Box>
 	);
 };

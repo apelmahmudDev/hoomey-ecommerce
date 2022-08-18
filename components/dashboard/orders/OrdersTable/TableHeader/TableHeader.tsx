@@ -1,5 +1,6 @@
 import { TableHead, TableRow, TableCell, TableSortLabel, Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
+import { Align } from "../../../../../types/align";
 import { Order } from "../../../../../types/order";
 import { Data } from "../OrdersTable";
 
@@ -10,42 +11,72 @@ interface TableHeaderProps {
 }
 
 interface HeadCell {
-	disablePadding: boolean;
 	id: keyof Data;
+	disablePadding: boolean;
 	label: string;
-	numeric: boolean;
+	align: Align;
 }
 
 const headCells: readonly HeadCell[] = [
 	{
-		id: "name",
-		numeric: false,
+		id: "orderNo",
+		align: "left",
 		disablePadding: true,
-		label: "Dessert (100g serving)",
+		label: "Order No.",
 	},
 	{
-		id: "calories",
-		numeric: true,
+		id: "date",
+		align: "center",
 		disablePadding: false,
-		label: "Calories",
+		label: "Date",
 	},
 	{
-		id: "fat",
-		numeric: true,
+		id: "time",
+		align: "center",
 		disablePadding: false,
-		label: "Fat (g)",
+		label: "Time",
 	},
 	{
-		id: "carbs",
-		numeric: true,
+		id: "customer",
+		align: "center",
 		disablePadding: false,
-		label: "Carbs (g)",
+		label: "Customer",
 	},
 	{
-		id: "protein",
-		numeric: true,
+		id: "total",
+		align: "right",
 		disablePadding: false,
-		label: "Protein (g)",
+		label: "Total",
+	},
+	{
+		id: "paymentStatus",
+		align: "center",
+		disablePadding: false,
+		label: "Payment Status",
+	},
+	{
+		id: "fulfillmentStatus",
+		align: "center",
+		disablePadding: false,
+		label: "fulfillment Status",
+	},
+	{
+		id: "items",
+		align: "right",
+		disablePadding: false,
+		label: "Items",
+	},
+	{
+		id: "deliveryMethod",
+		align: "center",
+		disablePadding: false,
+		label: "Delivery Method",
+	},
+	{
+		id: "tags",
+		align: "right",
+		disablePadding: false,
+		label: "Tags",
 	},
 ];
 
@@ -62,7 +93,7 @@ const TableHeader = (props: TableHeaderProps) => {
 				{headCells.map((headCell) => (
 					<TableCell
 						key={headCell.id}
-						align={headCell.numeric ? "right" : "left"}
+						align={headCell.align}
 						padding={headCell.disablePadding ? "none" : "normal"}
 						sortDirection={orderBy === headCell.id ? order : false}
 					>
