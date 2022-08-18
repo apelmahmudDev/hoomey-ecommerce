@@ -16,7 +16,7 @@ import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } from "../components/styledComponents";
+import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } from "../../components/styledComponents";
 
 // icons
 import {
@@ -31,11 +31,11 @@ import {
 	DashboardMenuSvg,
 	NotificationsSvg,
 	NavNotificationsSvg,
-} from "../components/icons";
+} from "../../components/icons";
 
-import { Link } from "../components/ui";
-import { IMAGES } from "../uiElements";
-import { Dashboard as DashboardComp } from "../components/dashboard";
+import { Link } from "../../components/ui";
+import { IMAGES } from "../../uiElements";
+import { Dashboard as DashboardComp } from "../../components/dashboard";
 
 const drawerWidth = 100;
 
