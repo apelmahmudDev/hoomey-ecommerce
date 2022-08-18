@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { StyledCard, StyledFormControl } from "../../components/styledComponents";
-import { Toolbar, Typography, MenuItem, Box, Select, SelectChangeEvent, CardContent } from "@mui/material";
+import { StyledCard, StyledFormControl, VariantListItem } from "../../components/styledComponents";
+import { Toolbar, Typography, MenuItem, Box, Select, SelectChangeEvent, CardContent, Stack } from "@mui/material";
 // import Chart from "react-apexcharts";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), {
@@ -65,6 +65,14 @@ const TopSalesChart = () => {
 				</div>
 
 				<AppDivider />
+				<Box sx={{ mt: 2.5 }}>
+					<Stack direction="row" spacing={3.5}>
+						<VariantListItem category={"Electronics"}>Electronics</VariantListItem>
+						<VariantListItem category={"Women"}>Women</VariantListItem>
+						<VariantListItem category={"Men"}>Men</VariantListItem>
+						<VariantListItem category={"Kids"}>Kids</VariantListItem>
+					</Stack>
+				</Box>
 			</CardContent>
 		</StyledCard>
 	);
