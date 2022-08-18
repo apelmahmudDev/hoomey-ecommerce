@@ -24,6 +24,24 @@ const theme = createTheme({
 		body2: {
 			fontFamily: "Poppins",
 		},
+		h1: {
+			fontFamily: "Poppins",
+		},
+		h2: {
+			fontFamily: "Poppins",
+		},
+		h3: {
+			fontFamily: "Poppins",
+		},
+		h4: {
+			fontFamily: "Poppins",
+		},
+		h5: {
+			fontFamily: "Poppins",
+		},
+		h6: {
+			fontFamily: "Poppins",
+		},
 	},
 	palette: {
 		mode: "light",
