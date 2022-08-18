@@ -13,6 +13,7 @@ export { default as FlexStack } from "./FlexStack";
 export { default as SectionBox } from "./SectionBox";
 export { default as Avatar } from "./Avatar";
 export { default as HeadingText } from "./HeadingText";
+export { default as RoundButton } from "./RoundButton";
 export { default as AppDivider } from "./AppDivider";
 export { default as CartText } from "./CartText";
 export { default as EmptyBox } from "./EmptyBox";
