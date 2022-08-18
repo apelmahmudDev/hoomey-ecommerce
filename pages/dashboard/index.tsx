@@ -35,7 +35,7 @@ import {
 
 import { Link } from "../../components/ui";
 import { IMAGES } from "../../uiElements";
-import { Dashboard as DashboardComp } from "../../components/dashboard";
+import { Dashboard as DashboardComp, Orders } from "../../components/dashboard";
 
 const drawerWidth = 100;
 
@@ -205,7 +205,8 @@ const Dashboard: NextPage = (props: Props) => {
 					<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
 						{/* dashboard content changes here*/}
 						<Toolbar />
-						<DashboardComp />
+						{/* <DashboardComp /> */}
+						<Orders />
 					</Box>
 				</Box>
 			</>
