@@ -36,11 +36,7 @@ const UsersTable = () => {
 						</TableHead>
 						<TableBody>
 							{rows.map((row, index) => (
-								<TableRow
-									hover
-									key={row.name}
-									sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-								>
+								<TableRow hover key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
 									<TableCell component="th" scope="row">
 										{index + 1}
 									</TableCell>
