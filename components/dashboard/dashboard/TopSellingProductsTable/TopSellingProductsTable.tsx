@@ -13,6 +13,8 @@ import Image from "next/image";
 import { IMAGES } from "../../../../uiElements";
 import { ArrowUpIcon } from "../../components/icons";
 import { CartText } from "../../../styledComponents";
+import { Order } from "../../../../types/order";
+import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
 
 export interface Data {
 	name: string;
@@ -31,42 +33,6 @@ function createData(name: string, amount: number, stock: number, status: string)
 }
 
 const rows = [createData("John Doe", 100, 43, "In Stock"), createData("Oliver", 200, 43, "Out of Stock")];
-
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
-}
-
-export type Order = "asc" | "desc";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getComparator<Key extends keyof any>(
-	order: Order,
-	orderBy: Key,
-): (a: { [key in Key]: number | string }, b: { [key in Key]: number | string }) => number {
-	return order === "desc"
-		? (a, b) => descendingComparator(a, b, orderBy)
-		: (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
-	const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-	stabilizedThis.sort((a, b) => {
-		const order = comparator(a[0], b[0]);
-		if (order !== 0) {
-			return order;
-		}
-		return a[1] - b[1];
-	});
-	return stabilizedThis.map((el) => el[0]);
-}
 
 const TopSellingProductsTable = () => {
 	const [order, setOrder] = useState<Order>("asc");
@@ -95,7 +61,7 @@ const TopSellingProductsTable = () => {
 							/>
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                            rows.slice().sort(getComparator(order, orderBy)) */}
+                          		  rows.slice().sort(getComparator(order, orderBy)) */}
 								{stableSort(rows, getComparator(order, orderBy)).map((row, index) => {
 									const labelId = `enhanced-table-checkbox-${index}`;
 

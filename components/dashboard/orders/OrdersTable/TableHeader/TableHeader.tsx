@@ -2,7 +2,7 @@ import { TableHead, TableRow, TableCell, TableSortLabel, Box } from "@mui/materi
 import { visuallyHidden } from "@mui/utils";
 import { Data, Order } from "../OrdersTable";
 
-interface EnhancedTableProps {
+interface TableHeaderProps {
 	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
 	order: Order;
 	orderBy: string;
@@ -48,7 +48,7 @@ const headCells: readonly HeadCell[] = [
 	},
 ];
 
-const EnhancedTableHead = (props: EnhancedTableProps) => {
+const TableHeader = (props: TableHeaderProps) => {
 	const { order, orderBy, onRequestSort } = props;
 	const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
 		onRequestSort(event, property);
@@ -84,4 +84,4 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 	);
 };
 
-export default EnhancedTableHead;
+export default TableHeader;

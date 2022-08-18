@@ -4,11 +4,9 @@ import { StyledTextField } from "../../../components/styledComponents";
 import { RoundButton } from "../../../../styledComponents";
 import { ExportIcon } from "../../../components/icons";
 
-interface EnhancedTableToolbarProps {
-	numSelected: number;
-}
+// interface EnhancedTableToolbarProps {}
 
-const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
+const TableToolbar = () => {
 	return (
 		<Toolbar sx={{ mb: 2.5, px: "0 !important" }}>
 			<Grid container spacing={1.25}>
@@ -40,4 +38,4 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
 	);
 };
 
-export default EnhancedTableToolbar;
+export default TableToolbar;

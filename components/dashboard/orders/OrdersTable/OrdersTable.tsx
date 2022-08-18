@@ -7,9 +7,11 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { CardContent } from "@mui/material";
 import { StyledCard } from "../../components/styledComponents";
-import EnhancedTableHead from "./EnhancedTableHead";
-import EnhancedTableToolbar from "./EnhancedTableToolbar";
+import TableHeader from "./TableHeader";
+import TableToolbar from "./TableToolbar";
 import { useState } from "react";
+import { Order } from "../../../../types/order";
+import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
 
 export interface Data {
 	calories: number;
@@ -45,46 +47,9 @@ const rows = [
 	createData("Oreo", 437, 18.0, 63, 4.0),
 ];
 
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
-}
-
-export type Order = "asc" | "desc";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getComparator<Key extends keyof any>(
-	order: Order,
-	orderBy: Key,
-): (a: { [key in Key]: number | string }, b: { [key in Key]: number | string }) => number {
-	return order === "desc"
-		? (a, b) => descendingComparator(a, b, orderBy)
-		: (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
-	const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-	stabilizedThis.sort((a, b) => {
-		const order = comparator(a[0], b[0]);
-		if (order !== 0) {
-			return order;
-		}
-		return a[1] - b[1];
-	});
-	return stabilizedThis.map((el) => el[0]);
-}
-
 const OrdersTable = () => {
 	const [order, setOrder] = useState<Order>("asc");
 	const [orderBy, setOrderBy] = useState<keyof Data>("calories");
-	const [selected, setSelected] = useState<readonly string[]>([]);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -92,15 +57,6 @@ const OrdersTable = () => {
 		const isAsc = orderBy === property && order === "asc";
 		setOrder(isAsc ? "desc" : "asc");
 		setOrderBy(property);
-	};
-
-	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.checked) {
-			const newSelected = rows.map((n) => n.name);
-			setSelected(newSelected);
-			return;
-		}
-		setSelected([]);
 	};
 
 	const handleChangePage = (event: unknown, newPage: number) => {
@@ -117,19 +73,12 @@ const OrdersTable = () => {
 
 	return (
 		<Box sx={{ width: "100%" }}>
-			<EnhancedTableToolbar numSelected={selected.length} />
+			<TableToolbar />
 			<StyledCard sx={{ width: "100%" }}>
 				<CardContent>
 					<TableContainer>
 						<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
-							<EnhancedTableHead
-								numSelected={selected.length}
-								order={order}
-								orderBy={orderBy}
-								onSelectAllClick={handleSelectAllClick}
-								onRequestSort={handleRequestSort}
-								rowCount={rows.length}
-							/>
+							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
                                 rows.slice().sort(getComparator(order, orderBy)) */}
@@ -164,12 +113,12 @@ const OrdersTable = () => {
 						</Table>
 					</TableContainer>
 					<TablePagination
-						rowsPerPageOptions={[5, 10, 25]}
+						page={page}
 						component="div"
 						count={rows.length}
 						rowsPerPage={rowsPerPage}
-						page={page}
 						onPageChange={handleChangePage}
+						rowsPerPageOptions={[5, 10, 25]}
 						onRowsPerPageChange={handleChangeRowsPerPage}
 					/>
 				</CardContent>
