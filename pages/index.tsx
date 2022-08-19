@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
 import FrontLayout from "../Layout/FrontLayout";
 
-const Home: NextLayoutComponentType = (props) => {
+const Home: NextLayoutComponentType = () => {
 	return (
 		<div>
 			<Head>

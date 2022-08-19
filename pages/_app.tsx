@@ -37,6 +37,7 @@ function MyApp(props: ComponentWithLayoutProps) {
 		}, 1500);
 	}, []);
 
+	// @ts-ignore
 	return (
 		<CacheProvider value={emotionCache}>
 			<StylesProvider generateClassName={generateClassName}>
@@ -50,6 +51,7 @@ function MyApp(props: ComponentWithLayoutProps) {
 					{isLoading ? (
 						<PageLoading />
 					) : Component.PageLayout ? (
+						// @ts-ignore
 						<Component.PageLayout>
 							<Component {...pageProps} />
 						</Component.PageLayout>
