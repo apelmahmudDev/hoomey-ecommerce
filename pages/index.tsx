@@ -1,8 +1,9 @@
-import type { NextPage } from "next";
+import type { NextLayoutComponentType } from "next";
 import Head from "next/head";
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
+import FrontLayout from "../Layout/FrontLayout";
 
-const Home: NextPage = () => {
+const Home: NextLayoutComponentType = (props) => {
 	return (
 		<div>
 			<Head>
@@ -40,5 +41,7 @@ const Home: NextPage = () => {
 		</div>
 	);
 };
+
+Home.PageLayout = FrontLayout;
 
 export default Home;
