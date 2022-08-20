@@ -1,6 +1,14 @@
-import { Box, CardContent, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { RoundButton } from "../../styledComponents";
-import { StyledCard } from "../components/styledComponents";
+import { ArrowDownIcon, ArrowUpIcon } from "../components/icons";
+import AvgOrderValueChart from "./AvgOrderValueChart";
+import CustomerRateChart from "./CustomerRateChart";
+import DayComparedToFilter from "./DayComparedToFilter";
+import OnlineStoreConversionRateChart from "./OnlineStoreConversionRateChart";
+import TopCard from "./TopCard";
+import TotalOnlineStoreVisitsChart from "./TotalOnlineStoreVisitsChart";
+import TotalOrdersChart from "./TotalOrdersChart";
+import TotalSalesChart from "./TotalSalesChart";
 
 const analyticsData = {
 	Visitors: {
@@ -28,6 +36,60 @@ const analyticsData = {
 		text2: "$230.92 yesterday’s total",
 	},
 };
+const graphData = {
+	TotalSales: {
+		smallIcon: <ArrowUpIcon />,
+		title: "$50",
+		titleColor: "#E2BC82",
+		dec: "Customers",
+		subtitle: "+20% Inc",
+		color: "#04AF00",
+	},
+	TotalOnlineStoreVisits: {
+		smallIcon: <ArrowDownIcon />,
+		title: "89",
+		titleColor: "#45BABD",
+		dec: "Orders",
+		subtitle: "-20% Dec",
+		color: "#FF0303",
+	},
+	CustomerRate: {
+		smallIcon: <ArrowUpIcon />,
+		title1: "60.00%",
+		title1Sub: "New customers",
+		title1Color: "#8A34FF",
+		title2: "40.00%",
+		title2Sub: "Repeat customers",
+		title2Color: "#00ADD3",
+		dec: "Revenue",
+		subtitle: "-20% Inc",
+		color: "#04AF00",
+	},
+	OnlineStoreConversionRate: {
+		smallIcon: <ArrowDownIcon />,
+		title: "3.37%",
+		titleColor: "#20C997",
+		dec: "AVG Order Value",
+		subtitle: "-20% Dec",
+		color: "#FF0303",
+	},
+	AvgOrderValue: {
+		smallIcon: <ArrowUpIcon />,
+		title: "$31.16",
+		titleColor: "#FF7049",
+		dec: "Customers",
+		subtitle: "+20% Inc",
+		color: "#04AF00",
+	},
+	TotalOrders: {
+		smallIcon: <ArrowDownIcon />,
+		title: "3",
+		titleColor: "#FF0303",
+		dec: "AVG Order Value",
+		subtitle: "-20% Dec",
+		color: "#FF0303",
+	},
+};
 
 const Analytics = () => {
 	return (
@@ -35,7 +97,7 @@ const Analytics = () => {
 			{/* top part of Analytics */}
 			<Box
 				sx={{
-					mb: 4,
+					mb: 2,
 					mt: 2,
 					display: "flex",
 					alignItems: "center",
@@ -53,6 +115,20 @@ const Analytics = () => {
 				</Box>
 			</Box>
 
+			{/* Day filter */}
+			<Box
+				sx={{
+					mb: 4,
+					display: "flex",
+					alignItems: "start",
+					gap: 2.5,
+					justifyContent: "flex-start",
+					flexWrap: "wrap",
+				}}
+			>
+				<DayComparedToFilter />
+			</Box>
+
 			{/* Analyticts top card */}
 
 			<Box
@@ -66,189 +142,50 @@ const Analytics = () => {
 					flexWrap: "wrap",
 				}}
 			>
-				<StyledCard sx={{ px: 3, width: "100%" }}>
-					<CardContent>
-						<Grid container direction="row" justifyContent="center" alignItems="center">
-							<Grid item xs={3}>
-								<Stack direction="column" alignItems="center" spacing={1}>
-									<Stack sx={{ flexGrow: 1 }} spacing={1}>
-										<Typography
-											variant="h6"
-											align="center"
-											sx={{ opacity: 0.5, letterSpacing: "-0.25924px" }}
-										>
-											{analyticsData.Visitors.title}
-										</Typography>
-										<Typography variant="h4" fontWeight="bold" align="center">
-											{analyticsData.Visitors.value}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Visitors.text1}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Visitors.text2}
-										</Typography>
-									</Stack>
-								</Stack>
-							</Grid>
-
-							<Grid
-								item
-								style={{
-									paddingLeft: "10px",
-									borderStyle: "solid",
-									borderColor: "rgba(0, 0, 0, 0.12)",
-									borderWidth: "0 0 0 1px",
-								}}
-								xs={3}
-							>
-								<Stack direction="column" alignItems="center" spacing={1}>
-									<Stack sx={{ flexGrow: 1 }} spacing={1}>
-										<Typography
-											variant="h6"
-											align="center"
-											sx={{ opacity: 0.5, letterSpacing: "-0.25924px" }}
-										>
-											{analyticsData.Conversion.title}
-										</Typography>
-										<Typography variant="h4" fontWeight="bold" align="center">
-											{analyticsData.Conversion.value}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Conversion.text1}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Conversion.text2}
-										</Typography>
-									</Stack>
-								</Stack>
-							</Grid>
-
-							<Grid
-								item
-								style={{
-									paddingLeft: "10px",
-									borderStyle: "solid",
-									borderColor: "rgba(0, 0, 0, 0.12)",
-									borderWidth: "0 0 0 1px",
-								}}
-								xs={3}
-							>
-								<Stack direction="column" alignItems="center" spacing={1}>
-									<Stack sx={{ flexGrow: 1 }} spacing={1}>
-										<Typography
-											variant="h6"
-											align="center"
-											sx={{ opacity: 0.5, letterSpacing: "-0.25924px" }}
-										>
-											{analyticsData.Orders.title}
-										</Typography>
-										<Typography variant="h4" fontWeight="bold" align="center">
-											{analyticsData.Orders.value}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Orders.text1}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Orders.text2}
-										</Typography>
-									</Stack>
-								</Stack>
-							</Grid>
-
-							<Grid
-								item
-								style={{
-									paddingLeft: "10px",
-									borderStyle: "solid",
-									borderColor: "rgba(0, 0, 0, 0.12)",
-									borderWidth: "0 0 0 1px",
-								}}
-								xs={3}
-							>
-								<Stack direction="column" alignItems="center" spacing={1}>
-									<Stack sx={{ flexGrow: 1 }} spacing={1}>
-										<Typography
-											variant="h6"
-											align="center"
-											sx={{ opacity: 0.5, letterSpacing: "-0.25924px" }}
-										>
-											{analyticsData.Revenue.title}
-										</Typography>
-										<Typography variant="h4" fontWeight="bold" align="center">
-											{analyticsData.Revenue.value}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Revenue.text1}
-										</Typography>
-										<Typography
-											sx={{
-												color: "#8B8B8B",
-												fontWeight: "400",
-												fontSize: "12px",
-											}}
-											align="center"
-										>
-											{analyticsData.Revenue.text2}
-										</Typography>
-									</Stack>
-								</Stack>
-							</Grid>
-						</Grid>
-					</CardContent>
-				</StyledCard>
+				<TopCard analyticsData={analyticsData} />
 			</Box>
 
-			{/* table section */}
+			{/* graphs section */}
+			<Box my={3.8}>
+				{/* Earning Revenue, Top Sales & Users table */}
+				<Box my={3.5} component="section">
+					<Grid container spacing={2.5}>
+						{/* Total Sales */}
+						<Grid item xs={12} lg={4}>
+							<TotalSalesChart TotalSalesData={graphData.TotalSales} />
+						</Grid>
+
+						{/* Total Online Store Visits */}
+						<Grid item xs={12} lg={4}>
+							<TotalOnlineStoreVisitsChart
+								TotalOnlineStoreVisitsData={graphData.TotalOnlineStoreVisits}
+							/>
+						</Grid>
+
+						{/* Cstomer Rate*/}
+						<Grid item xs={12} lg={4}>
+							<CustomerRateChart CustomerRateData={graphData.CustomerRate} />
+						</Grid>
+
+						{/* Online Store Conversion Rate */}
+						<Grid item xs={12} lg={4}>
+							<OnlineStoreConversionRateChart
+								OnlineStoreConversionRateData={graphData.OnlineStoreConversionRate}
+							/>
+						</Grid>
+
+						{/* Average Order Value */}
+						<Grid item xs={12} lg={4}>
+							<AvgOrderValueChart AvgOrderData={graphData.AvgOrderValue} />
+						</Grid>
+
+						{/* Total Orders */}
+						<Grid item xs={12} lg={4}>
+							<TotalOrdersChart TotalOrdersData={graphData.TotalOrders} />
+						</Grid>
+					</Grid>
+				</Box>
+			</Box>
 		</div>
 	);
 };
