@@ -1,10 +1,13 @@
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Grid, Typography } from "@mui/material";
-import { RoundButton } from "../../styledComponents";
+import { useState } from "react";
+import { CircleButton, RoundButton } from "../../styledComponents";
 import { ArrowDownIcon, ArrowUpIcon } from "../components/icons";
 import AvgOrderValueChart from "./AvgOrderValueChart";
 import CustomerRateChart from "./CustomerRateChart";
 import DayComparedToFilter from "./DayComparedToFilter";
 import OnlineStoreConversionRateChart from "./OnlineStoreConversionRateChart";
+import Reportings from "./Reportings/Reportings";
 import TopCard from "./TopCard";
 import TotalOnlineStoreVisitsChart from "./TotalOnlineStoreVisitsChart";
 import TotalOrdersChart from "./TotalOrdersChart";
@@ -92,100 +95,143 @@ const graphData = {
 };
 
 const Analytics = () => {
+	const [state, setState] = useState("analytics");
 	return (
 		<div>
 			{/* top part of Analytics */}
-			<Box
-				sx={{
-					mb: 2,
-					mt: 2,
-					display: "flex",
-					alignItems: "center",
-					gap: 2.5,
-					justifyContent: "space-between",
-					flexWrap: "wrap",
-				}}
-			>
-				<Typography variant="h6" fontWeight={600}>
-					Analytics
-				</Typography>
+			{state === "analytics" && (
+				<>
+					<Box
+						sx={{
+							mb: 2,
+							mt: 2,
+							display: "flex",
+							alignItems: "center",
+							gap: 2.5,
+							justifyContent: "space-between",
+							flexWrap: "wrap",
+						}}
+					>
+						<Typography variant="h6" fontWeight={600}>
+							Analytics
+						</Typography>
 
-				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton variant="contained">Reportings</RoundButton>
-				</Box>
-			</Box>
+						<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+							<RoundButton variant="contained" onClick={() => setState("reportings")}>
+								Reportings
+							</RoundButton>
+						</Box>
+					</Box>
 
-			{/* Day filter */}
-			<Box
-				sx={{
-					mb: 4,
-					display: "flex",
-					alignItems: "start",
-					gap: 2.5,
-					justifyContent: "flex-start",
-					flexWrap: "wrap",
-				}}
-			>
-				<DayComparedToFilter />
-			</Box>
+					{/* Day filter */}
+					<Box
+						sx={{
+							mb: 4,
+							display: "flex",
+							alignItems: "start",
+							gap: 2.5,
+							justifyContent: "flex-start",
+							flexWrap: "wrap",
+						}}
+					>
+						<DayComparedToFilter />
+					</Box>
 
-			{/* Analyticts top card */}
+					{/* Analyticts top card */}
 
-			<Box
-				sx={{
-					mb: 4,
-					mt: 2,
-					display: "flex",
-					alignItems: "center",
-					gap: 2.5,
-					justifyContent: "space-between",
-					flexWrap: "wrap",
-				}}
-			>
-				<TopCard analyticsData={analyticsData} />
-			</Box>
+					<Box
+						sx={{
+							mb: 4,
+							mt: 2,
+							display: "flex",
+							alignItems: "center",
+							gap: 2.5,
+							justifyContent: "space-between",
+							flexWrap: "wrap",
+						}}
+					>
+						<TopCard analyticsData={analyticsData} />
+					</Box>
 
-			{/* graphs section */}
-			<Box my={3.8}>
-				{/* Earning Revenue, Top Sales & Users table */}
-				<Box my={3.5} component="section">
-					<Grid container spacing={2.5}>
-						{/* Total Sales */}
-						<Grid item xs={12} lg={4}>
-							<TotalSalesChart TotalSalesData={graphData.TotalSales} />
-						</Grid>
+					{/* graphs section */}
+					<Box my={3.8}>
+						{/* Earning Revenue, Top Sales & Users table */}
+						<Box my={3.5} component="section">
+							<Grid container spacing={2.5}>
+								{/* Total Sales */}
+								<Grid item xs={12} lg={4}>
+									<TotalSalesChart TotalSalesData={graphData.TotalSales} />
+								</Grid>
 
-						{/* Total Online Store Visits */}
-						<Grid item xs={12} lg={4}>
-							<TotalOnlineStoreVisitsChart
-								TotalOnlineStoreVisitsData={graphData.TotalOnlineStoreVisits}
-							/>
-						</Grid>
+								{/* Total Online Store Visits */}
+								<Grid item xs={12} lg={4}>
+									<TotalOnlineStoreVisitsChart
+										TotalOnlineStoreVisitsData={graphData.TotalOnlineStoreVisits}
+									/>
+								</Grid>
 
-						{/* Cstomer Rate*/}
-						<Grid item xs={12} lg={4}>
-							<CustomerRateChart CustomerRateData={graphData.CustomerRate} />
-						</Grid>
+								{/* Cstomer Rate*/}
+								<Grid item xs={12} lg={4}>
+									<CustomerRateChart CustomerRateData={graphData.CustomerRate} />
+								</Grid>
 
-						{/* Online Store Conversion Rate */}
-						<Grid item xs={12} lg={4}>
-							<OnlineStoreConversionRateChart
-								OnlineStoreConversionRateData={graphData.OnlineStoreConversionRate}
-							/>
-						</Grid>
+								{/* Online Store Conversion Rate */}
+								<Grid item xs={12} lg={4}>
+									<OnlineStoreConversionRateChart
+										OnlineStoreConversionRateData={graphData.OnlineStoreConversionRate}
+									/>
+								</Grid>
 
-						{/* Average Order Value */}
-						<Grid item xs={12} lg={4}>
-							<AvgOrderValueChart AvgOrderData={graphData.AvgOrderValue} />
-						</Grid>
+								{/* Average Order Value */}
+								<Grid item xs={12} lg={4}>
+									<AvgOrderValueChart AvgOrderData={graphData.AvgOrderValue} />
+								</Grid>
 
-						{/* Total Orders */}
-						<Grid item xs={12} lg={4}>
-							<TotalOrdersChart TotalOrdersData={graphData.TotalOrders} />
-						</Grid>
-					</Grid>
-				</Box>
-			</Box>
+								{/* Total Orders */}
+								<Grid item xs={12} lg={4}>
+									<TotalOrdersChart TotalOrdersData={graphData.TotalOrders} />
+								</Grid>
+							</Grid>
+						</Box>
+					</Box>
+				</>
+			)}
+			{state === "reportings" && (
+				<>
+					<Box
+						sx={{
+							mb: 2,
+							mt: 2,
+							display: "flex",
+							alignItems: "center",
+							gap: 2.5,
+							justifyContent: "flex-start",
+							flexWrap: "wrap",
+						}}
+					>
+						<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+							<CircleButton
+								sx={{ minWidth: "6px", padding: "2px" }}
+								variant="contained"
+								onClick={() => setState("analytics")}
+							>
+								<ArrowBackIcon />
+							</CircleButton>
+							<Typography
+								sx={{
+									fontWeight: "500",
+									fontSize: "18px",
+									marginY: "auto",
+								}}
+								align="center"
+							>
+								Reportings
+							</Typography>
+						</Box>
+						<Reportings />
+					</Box>
+				</>
+			)}
 		</div>
 	);
 };
