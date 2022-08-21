@@ -1,6 +1,7 @@
-import { NextPage } from "next";
-import Head from "next/head";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
+import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
@@ -10,32 +11,30 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Badge from "@mui/material/Badge";
+import Head from "next/head";
 import { FC, useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } from "../components/styledComponents";
 
 // icons
 import {
-	BarSvg,
-	ReviewsSvg,
 	AppIconSvg,
-	SettingsSvg,
-	CustomersSvg,
+	BarSvg,
 	CheckCartSvg,
-	DeliveryCarSvg,
+	CustomersSvg,
 	DashboardBagSvg,
 	DashboardMenuSvg,
-	NotificationsSvg,
+	DeliveryCarSvg,
 	NavNotificationsSvg,
+	NotificationsSvg,
+	ReviewsSvg,
+	SettingsSvg,
 } from "../components/icons";
 
 import { Link } from "../components/ui";
-import { IMAGES } from "../uiElements";
 import { AdminLayoutProps } from "../types/page";
+import { IMAGES } from "../uiElements";
 
 const drawerWidth = 100;
 
@@ -193,7 +192,10 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 							{drawer}
 						</Drawer>
 					</Box>
-					<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+					<Box
+						component="main"
+						sx={{ flexGrow: 1, mt: 8, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+					>
 						{/* dashboard content changes here*/}
 						{children}
 					</Box>
