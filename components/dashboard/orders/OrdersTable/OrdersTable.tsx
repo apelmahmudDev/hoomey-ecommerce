@@ -3,15 +3,15 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { CardContent } from "@mui/material";
+import { CardContent, SelectChangeEvent } from "@mui/material";
 import { StatusChip, StyledCard } from "../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
 import { Order } from "../../../../types/order";
 import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
+import { TableCustomPagination } from "../../../ui";
 
 export interface Data {
 	orderNo: number;
@@ -54,6 +54,13 @@ function createData(
 
 const rows = [
 	createData(12345, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12346, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12347, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12348, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12349, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12340, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12341, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData(12342, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
 	createData(
 		67890,
 		"22-May-2022",
@@ -70,10 +77,10 @@ const rows = [
 ];
 
 const OrdersTable = () => {
-	const [order, setOrder] = useState<Order>("asc");
 	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
-	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
+	const [order, setOrder] = useState<Order>("asc");
+	const [page, setPage] = useState(0);
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -81,14 +88,19 @@ const OrdersTable = () => {
 		setOrderBy(property);
 	};
 
-	const handleChangePage = (event: unknown, newPage: number) => {
-		setPage(newPage);
-	};
-
-	const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
+
+	// const handleChangePage = (event: unknown, newPage: number) => {
+	// 	setPage(newPage);
+	// };
+
+	// const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+	// 	setRowsPerPage(parseInt(event.target.value, 10));
+	// 	setPage(0);
+	// };
 
 	// Avoid a layout jump when reaching the last page with empty rows.
 	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -149,7 +161,7 @@ const OrdersTable = () => {
 					</TableContainer>
 				</CardContent>
 			</StyledCard>
-			<TablePagination
+			{/* <TablePagination
 				page={page}
 				component="div"
 				count={rows.length}
@@ -157,7 +169,10 @@ const OrdersTable = () => {
 				onPageChange={handleChangePage}
 				rowsPerPageOptions={[5, 10, 25]}
 				onRowsPerPageChange={handleChangeRowsPerPage}
-			/>
+			/> */}
+
+			{/* customized table pagination  */}
+			<TableCustomPagination handleChangeRowsPerPage={handleChangeRowsPerPage} rowsPerPage={rowsPerPage} />
 		</Box>
 	);
 };
