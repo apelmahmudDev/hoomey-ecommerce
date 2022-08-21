@@ -1,3 +1,4 @@
+import { NextLayoutComponentType } from "next";
 import React, { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -22,6 +23,7 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "../components/ui";
+import AuthLayout from "../Layout/AuthLayout";
 
 const StyledTextField = styled(TextField)({
 	"& .MuiInput-underline:after": {
@@ -62,7 +64,7 @@ interface State {
 	showPassword: boolean;
 }
 
-const Login: NextPage = () => {
+const Login: NextLayoutComponentType = () => {
 	const [values, setValues] = useState<State>({
 		amount: "",
 		password: "",
@@ -238,4 +240,5 @@ const Login: NextPage = () => {
 	);
 };
 
+Login.PageLayout = AuthLayout;
 export default Login;
