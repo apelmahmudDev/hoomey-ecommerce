@@ -1,5 +1,4 @@
-import type { AppProps } from "next/app";
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,24 +15,19 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 
-import { CTAPopup, Layout, NewsLetterPopup, PageLoading } from "../components/common";
+import { PageLoading } from "../components/common";
 import { wrapper } from "../store";
-import { useRouter } from "next/router";
+import { ComponentWithLayoutProps } from "../types/page";
+import FrontLayout from "../Layout/FrontLayout";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
-
-interface IAppProps extends AppProps {
-	emotionCache?: EmotionCache;
-}
 
 const generateClassName = createGenerateClassName({
 	productionPrefix: "c",
 });
 
-function MyApp(props: IAppProps): ReactElement {
-	const router = useRouter();
-	const pathname = router.pathname;
+function MyApp(props: ComponentWithLayoutProps) {
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +37,7 @@ function MyApp(props: IAppProps): ReactElement {
 		}, 1500);
 	}, []);
 
+	// @ts-ignore
 	return (
 		<CacheProvider value={emotionCache}>
 			<StylesProvider generateClassName={generateClassName}>
@@ -55,16 +50,15 @@ function MyApp(props: IAppProps): ReactElement {
 
 					{isLoading ? (
 						<PageLoading />
-					) : pathname === "/dashboard" || pathname === "/login" ? (
-						<Component {...pageProps} />
-					) : (
-						<Layout>
+					) : Component.PageLayout ? (
+						// @ts-ignore
+						<Component.PageLayout>
 							<Component {...pageProps} />
-
-							{/* popup - they are showing itself any time & any where on the whole applications*/}
-							<NewsLetterPopup />
-							<CTAPopup />
-						</Layout>
+						</Component.PageLayout>
+					) : (
+						<FrontLayout>
+							<Component {...pageProps} />
+						</FrontLayout>
 					)}
 				</ThemeProvider>
 			</StylesProvider>
