@@ -40,14 +40,14 @@ const drawerWidth = 100;
 
 const drawerItem = [
 	{ icon: <DashboardMenuSvg />, text: "Dashboard", link: "/dashboard" },
-	{ icon: <CheckCartSvg />, text: "Orders", link: "/orders" },
-	{ icon: <DashboardBagSvg />, text: "Products", link: "/products" },
-	{ icon: <CustomersSvg />, text: "Customers", link: "/customers" },
-	{ icon: <ReviewsSvg />, text: "Reviews", link: "/reviews" },
-	{ icon: <DeliveryCarSvg />, text: "Shipping", link: "/shipping" },
-	{ icon: <BarSvg />, text: "Analytics", link: "/analytics" },
-	{ icon: <NotificationsSvg />, text: "Notification", link: "/notification" },
-	{ icon: <SettingsSvg />, text: "Settings", link: "/settings" },
+	{ icon: <CheckCartSvg />, text: "Orders", link: "/dashboard/order" },
+	{ icon: <DashboardBagSvg />, text: "Products", link: "/dashboard/products" },
+	{ icon: <CustomersSvg />, text: "Customers", link: "/dashboard/customers" },
+	{ icon: <ReviewsSvg />, text: "Reviews", link: "/dashboard/reviews" },
+	{ icon: <DeliveryCarSvg />, text: "Shipping", link: "/dashboard/shipping" },
+	{ icon: <BarSvg />, text: "Analytics", link: "/dashboard/analytics" },
+	{ icon: <NotificationsSvg />, text: "Notification", link: "/dashboard/notification" },
+	{ icon: <SettingsSvg />, text: "Settings", link: "/dashboard/settings" },
 ];
 
 const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
@@ -68,19 +68,24 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 			<AppDivider sx={{ mb: 1.25, opacity: 0.5 }} />
 			<List>
 				{drawerItem.map((item, index) => (
-					<ListItem key={index} disablePadding>
-						<ListItemButton
-							sx={{
-								px: 1,
-								width: "inherit",
-								flexDirection: "column",
-								"&:hover": { bgcolor: "primary.main", color: "text.primary" },
-							}}
-						>
-							<ListItemIcon sx={{ minWidth: 0 }}>{item.icon}</ListItemIcon>
-							<ListItemText sx={{ "& > span": { fontSize: 14, fontWeight: 500 } }} primary={item.text} />
-						</ListItemButton>
-					</ListItem>
+					<Link href={item.link} key={index}>
+						<ListItem disablePadding>
+							<ListItemButton
+								sx={{
+									px: 1,
+									width: "inherit",
+									flexDirection: "column",
+									"&:hover": { bgcolor: "primary.main", color: "text.primary" },
+								}}
+							>
+								<ListItemIcon sx={{ minWidth: 0 }}>{item.icon}</ListItemIcon>
+								<ListItemText
+									sx={{ "& > span": { fontSize: 14, fontWeight: 500 } }}
+									primary={item.text}
+								/>
+							</ListItemButton>
+						</ListItem>
+					</Link>
 				))}
 			</List>
 		</div>
