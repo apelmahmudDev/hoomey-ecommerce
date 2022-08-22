@@ -1,7 +1,7 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import { CircleButton, RoundButton } from "../../styledComponents";
+import { CircleIconButton, RoundButton } from "../../styledComponents";
 import { ArrowDownIcon, ArrowUpIcon } from "../components/icons";
 import AvgOrderValueChart from "./AvgOrderValueChart";
 import CustomerRateChart from "./CustomerRateChart";
@@ -210,13 +210,12 @@ const Analytics = () => {
 						}}
 					>
 						<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-							<CircleButton
+							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("analytics")}
 							>
 								<ArrowBackIcon />
-							</CircleButton>
+							</CircleIconButton>
 							<Typography
 								sx={{
 									fontWeight: "500",

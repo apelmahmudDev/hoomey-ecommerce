@@ -6,16 +6,16 @@ const StatusChip = styled(Typography)(
 		fontSize: fs || 14,
 		fontWeight: fw || 400,
 		color:
-			status === "Paid" || status === "Fulfilled"
+			status === "Paid" || status === "Fulfilled" || status === "Sent" || status === "Recovered"
 				? "#04AF00"
-				: status === "UnPaid" || status === "UnFulfilled"
+				: status === "UnPaid" || status === "UnFulfilled" || status === "Not Sent" || status === "Not Recovered"
 				? "#FF0303"
 				: "#F97904",
 
 		background:
-			status === "Paid" || status === "Fulfilled"
+			status === "Paid" || status === "Fulfilled" || status === "Sent" || status === "Recovered"
 				? "#E1FFE0"
-				: status === "UnPaid" || status === "UnFulfilled"
+				: status === "UnPaid" || status === "UnFulfilled" || status === "Not Sent" || status === "Not Recovered"
 				? "#FFEAEA"
 				: "#c4c4c4",
 

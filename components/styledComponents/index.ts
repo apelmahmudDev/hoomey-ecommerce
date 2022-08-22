@@ -4,7 +4,7 @@ export { default as AppAvatar, default as Avatar } from "./Avatar";
 export { default as BorderLinearProgress } from "./BorderLinearProgress";
 export { default as CartDivider } from "./CartDivider";
 export { default as CartText } from "./CartText";
-export { default as CircleButton } from "./CircleButton";
+export { default as CircleIconButton } from "./CircleIconButton";
 export { default as CloseButton } from "./CloseButton";
 export { default as EmptyBox } from "./EmptyBox";
 export { default as FlexStack } from "./FlexStack";

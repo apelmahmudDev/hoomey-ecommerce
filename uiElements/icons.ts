@@ -16,8 +16,10 @@ import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore
 import NorthWestIcon from "@mui/icons-material/NorthWest";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export {
+	ArrowBackIcon,
 	ArrowForwardIosIcon,
 	ArrowBackIosNewIcon,
 	NorthWestIcon,
