@@ -142,7 +142,11 @@ const OrdersTable = () => {
 													</StatusText>
 												</TableCell>
 												<TableCell align="right">
-													<StyledButton variant="contained" color="secondary">
+													<StyledButton
+														variant="contained"
+														color="secondary"
+														sx={{ maxHeight: 30 }}
+													>
 														View
 													</StyledButton>
 												</TableCell>

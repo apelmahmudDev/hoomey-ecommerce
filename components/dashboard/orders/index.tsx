@@ -21,7 +21,7 @@ function OrderView() {
 		<>
 			{tab === ORDER_TABS.ROOT && <Orders handleTabChange={handleTabChange} />}
 			{tab === ORDER_TABS.ABANDONED_CART && <AbandonedCart handleTabChange={handleTabChange} setTab={setTab} />}
-			{tab === ORDER_TABS.CREATE_ORDER && <CreateOrder handleTabChange={handleTabChange} />}
+			{tab === ORDER_TABS.CREATE_ORDER && <CreateOrder handleTabChange={handleTabChange} setTab={setTab} />}
 		</>
 	);
 }

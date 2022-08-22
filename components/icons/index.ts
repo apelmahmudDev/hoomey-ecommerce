@@ -68,3 +68,4 @@ export { default as AppIconSvg } from "./AppIcon";
 export { default as NavNotificationsSvg } from "./NavNotifications";
 export { default as EmailFilledSvg } from "./EmailFill";
 export { default as LockFilledSvg } from "./LockFilled";
+export { default as SearchIcon } from "./SearchIcon";
