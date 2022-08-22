@@ -91,7 +91,7 @@ const OrdersTable = () => {
 			<StyledCard sx={{ width: "100%" }}>
 				<CardContent>
 					<TableContainer>
-						<Table sx={{ minWidth: 1300 }} aria-labelledby="tableTitle" size="medium">
+						<Table sx={{ minWidth: 950 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:

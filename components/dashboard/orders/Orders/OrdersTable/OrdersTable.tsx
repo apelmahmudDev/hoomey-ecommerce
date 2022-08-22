@@ -12,6 +12,8 @@ import { useState } from "react";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
+import { ITabChange } from "../../../../../types/tab-change";
+import { ORDER_TABS } from "../..";
 
 export interface Data {
 	orderNo: number;
@@ -76,7 +78,7 @@ const rows = [
 	createData(12343, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
 ];
 
-const OrdersTable = () => {
+const OrdersTable = ({ handleTabChange }: ITabChange) => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -125,7 +127,12 @@ const OrdersTable = () => {
 											<TableRow hover tabIndex={-1} key={row.orderNo}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													{row.orderNo}
+													<span
+														onClick={() => handleTabChange(ORDER_TABS.ORDER_DETAILS)}
+														style={{ cursor: "pointer" }}
+													>
+														{row.orderNo}
+													</span>
 												</TableCell>
 												<TableCell align="center">{row.date}</TableCell>
 												<TableCell align="center">{row.time}</TableCell>

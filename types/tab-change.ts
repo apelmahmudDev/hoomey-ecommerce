@@ -1,1 +1,4 @@
-export type HandleTabChangeType = (tab: string) => void;
+export interface ITabChange {
+	handleTabChange: (tab: string) => void;
+	setTab?: (tab: string) => void;
+}

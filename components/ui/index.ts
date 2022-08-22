@@ -5,6 +5,7 @@ export { default as AppSwitch } from "./AppSwitch";
 export { default as ShopForButton } from "./ShopForButton";
 export { default as HintsHeading } from "./HintsHeading";
 export { default as EndIconButton } from "./EndIconButton";
+export { default as BackIconButton } from "./BackIconButton";
 export { default as BulletListItem } from "./BulletListItem";
 export { default as PriceTypography } from "./PriceTypography";
 export { default as CloseIconButton } from "./CloseIconButton";

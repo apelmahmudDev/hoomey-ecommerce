@@ -1,6 +1,6 @@
 import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
 import { ORDER_TABS } from "..";
-import { HandleTabChangeType } from "../../../../types/tab-change";
+import { ITabChange } from "../../../../types/tab-change";
 
 import { CartText, RoundButton } from "../../../styledComponents";
 import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
@@ -34,11 +34,7 @@ const historyItems = [
 	},
 ];
 
-interface OrdersProps {
-	handleTabChange: HandleTabChangeType;
-}
-
-const Orders = ({ handleTabChange }: OrdersProps) => {
+const Orders = ({ handleTabChange }: ITabChange) => {
 	return (
 		<div>
 			{/* top part of orders */}
@@ -100,7 +96,7 @@ const Orders = ({ handleTabChange }: OrdersProps) => {
 
 			{/* table section */}
 			<Box my={2.5}>
-				<OrdersTable />
+				<OrdersTable handleTabChange={handleTabChange} />
 			</Box>
 		</div>
 	);
