@@ -1,3 +1,3 @@
 export { default as Analytics } from "./analytics";
 export { default as Dashboard } from "./dashboard";
-export { default as Orders } from "./orders/OrderView";
+export { default as Orders } from "./orders";
