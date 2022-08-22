@@ -145,8 +145,10 @@ const TotalSalesChart = ({ TotalSalesData }: { TotalSalesData: TotalSalesDataPro
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{TotalSalesData.smallIcon}
-						<CartText color={TotalSalesData.color}>{TotalSalesData.subtitle}</CartText>
+						<>
+							{TotalSalesData.smallIcon}
+							<CartText color={TotalSalesData.color}>{TotalSalesData.subtitle}</CartText>
+						</>
 					</Stack>
 				</Stack>
 

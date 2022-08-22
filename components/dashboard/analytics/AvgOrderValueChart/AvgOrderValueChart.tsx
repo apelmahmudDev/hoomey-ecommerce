@@ -145,8 +145,10 @@ const AvgOrderValueChart = ({ AvgOrderData }: { AvgOrderData: AvgOrderDataProps 
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{AvgOrderData.smallIcon}
-						<CartText color={AvgOrderData.color}>{AvgOrderData.subtitle}</CartText>
+						<>
+							{AvgOrderData.smallIcon}
+							<CartText color={AvgOrderData.color}>{AvgOrderData.subtitle}</CartText>
+						</>
 					</Stack>
 				</Stack>
 

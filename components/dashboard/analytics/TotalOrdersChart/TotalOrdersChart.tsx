@@ -152,8 +152,10 @@ const TotalOrdersChart = ({ TotalOrdersData }: { TotalOrdersData: TotalOrderssDa
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{TotalOrdersData.smallIcon}
-						<CartText color={TotalOrdersData.color}>{TotalOrdersData.subtitle}</CartText>
+						<>
+							{TotalOrdersData.smallIcon}
+							<CartText color={TotalOrdersData.color}>{TotalOrdersData.subtitle}</CartText>
+						</>
 					</Stack>
 				</Stack>
 

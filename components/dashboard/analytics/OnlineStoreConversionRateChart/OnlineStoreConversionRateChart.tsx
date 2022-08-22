@@ -145,10 +145,12 @@ const OnlineStoreConversionRateChart = ({
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{OnlineStoreConversionRateData.smallIcon}
-						<CartText color={OnlineStoreConversionRateData.color}>
-							{OnlineStoreConversionRateData.subtitle}
-						</CartText>
+						<>
+							{OnlineStoreConversionRateData.smallIcon}
+							<CartText color={OnlineStoreConversionRateData.color}>
+								{OnlineStoreConversionRateData.subtitle}
+							</CartText>
+						</>
 					</Stack>
 				</Stack>
 

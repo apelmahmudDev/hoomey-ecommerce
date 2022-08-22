@@ -152,10 +152,12 @@ const TotalOnlineStoreVisitsChart = ({
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{TotalOnlineStoreVisitsData.smallIcon}
-						<CartText color={TotalOnlineStoreVisitsData.color}>
-							{TotalOnlineStoreVisitsData.subtitle}
-						</CartText>
+						<>
+							{TotalOnlineStoreVisitsData.smallIcon}
+							<CartText color={TotalOnlineStoreVisitsData.color}>
+								{TotalOnlineStoreVisitsData.subtitle}
+							</CartText>
+						</>
 					</Stack>
 				</Stack>
 

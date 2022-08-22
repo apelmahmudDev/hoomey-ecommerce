@@ -190,8 +190,10 @@ const CustomerRateChart = ({ CustomerRateData }: { CustomerRateData: CustomerRat
 						</Stack>
 					</Box>
 					<Stack alignItems="center" spacing={1}>
-						{CustomerRateData.smallIcon}
-						<CartText color={CustomerRateData.color}>{CustomerRateData.subtitle}</CartText>
+						<>
+							{CustomerRateData.smallIcon}
+							<CartText color={CustomerRateData.color}>{CustomerRateData.subtitle}</CartText>
+						</>
 					</Stack>
 				</Stack>
 
