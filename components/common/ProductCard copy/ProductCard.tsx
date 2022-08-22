@@ -22,7 +22,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 	};
 
 	return (
-		<Box className={classes.root} component="div">
+		<Box>
 			<Link href={"/product/" + product.id}>
 				<Card className={classes.latestProductCard}>
 					<Box sx={{ background: COLORS.PRODUCT_CARD_BG, position: "relative" }}>
@@ -35,6 +35,27 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 							layout="responsive"
 							className="swiper-lazy"
 						/>
+
+						{/* hover view item  */}
+						{/* <Stack
+						className={classes.hoverView}
+						direction="row"
+						divider={<Divider orientation="vertical" flexItem />}
+						spacing={2}
+					>
+						<IconButton onClick={handlefavorites} color="primary" size="large" aria-label="add-to-favorite">
+							{isFavourite ? <FavoriteFillSvg /> : <FavoriteOutlineSvg />}
+						</IconButton>
+
+						<IconButton
+							onClick={() => dispatch(addToCart(product))}
+							color="primary"
+							size="large"
+							aria-label="add-to-cart"
+						>
+							<BagSvg />
+						</IconButton>
+					</Stack> */}
 					</Box>
 
 					<CardContent>
@@ -49,9 +70,19 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 					<Typography className={classes.discountChip}> -{product.discount}%</Typography>
 				</Card>
 			</Link>
-
-			{/* hover item -> add to cart & add to favourite */}
 			<Stack
+				// sx={{
+				// 	position: "absolute",
+				// 	// display: "none !important",
+				// 	zIndex: 3,
+				// 	bottom: 50,
+				// 	left: 0,
+				// 	right: 0,
+				// 	background: "#fff",
+				// 	justifyContent: "space-around",
+				// 	mx: 4,
+				// 	px: 3,
+				// }}
 				className={classes.hoverView}
 				direction="row"
 				divider={<Divider orientation="vertical" flexItem />}

@@ -13,7 +13,7 @@ import RatingPopup from "./RatingPopup";
 
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Lazy, Autoplay, Navigation } from "swiper";
+import { Pagination, Lazy, Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -31,7 +31,7 @@ const StarViewProgress = ({
 	starCount: number;
 }) => {
 	return (
-		<Box sx={{ my: 1.5, width: "100%", display: "flex", alignItems: "center", gap: 1.2 }}>
+		<Box component={Button} sx={{ p: 0, my: 1.5, width: "100%", display: "flex", alignItems: "center", gap: 1.2 }}>
 			<RatingsText color="#7A7A7A" sx={{ whiteSpace: "nowrap" }}>
 				{starTitle}
 			</RatingsText>
@@ -100,7 +100,7 @@ const RatingsAndReviews = () => {
 								/>
 							</Box>
 							<RatingsText sx={{ mt: 4 }}>Based on 365 ratings</RatingsText>
-							{/* start count */}
+							{/* star count */}
 							<Box mb={2} sx={{ width: "100%" }}>
 								<StarViewProgress starTitle="5 Star" starCount={173} progressValue={70} />
 								<StarViewProgress starTitle="4 Star" starCount={100} progressValue={50} />
@@ -227,11 +227,16 @@ const RatingsAndReviews = () => {
 					pagination={pagination}
 					lazy={true}
 					spaceBetween={30}
-					modules={[Pagination, Navigation, Autoplay, Lazy]}
-					autoplay={{
-						delay: 5000,
-						disableOnInteraction: false,
-					}}
+					modules={[
+						Pagination,
+						Navigation,
+						// Autoplay,
+						Lazy,
+					]}
+					// autoplay={{
+					// 	delay: 5000,
+					// 	disableOnInteraction: false,
+					// }}
 				>
 					{sliderData.map((comment, idx) => (
 						<SwiperSlide key={idx}>
