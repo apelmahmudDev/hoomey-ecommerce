@@ -1,8 +1,8 @@
 import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
 
-import { CartText, RoundButton } from "../../styledComponents";
-import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../components/icons";
-import { StyledCard } from "../components/styledComponents";
+import { CartText, RoundButton } from "../../../styledComponents";
+import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
+import { StyledCard } from "../../components/styledComponents";
 import OrdersTable from "./OrdersTable";
 
 const historyItems = [

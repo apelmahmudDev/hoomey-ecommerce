@@ -5,13 +5,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { CardContent, SelectChangeEvent } from "@mui/material";
-import { StatusChip, StyledCard } from "../../components/styledComponents";
+import { StatusChip, StyledCard } from "../../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
-import { Order } from "../../../../types/order";
-import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
-import { TableCustomPagination } from "../../../ui";
+import { Order } from "../../../../../types/order";
+import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
+import { TableCustomPagination } from "../../../../ui";
 
 export interface Data {
 	orderNo: number;

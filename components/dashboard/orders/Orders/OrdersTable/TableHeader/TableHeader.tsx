@@ -1,7 +1,7 @@
 import { TableHead, TableRow, TableCell, TableSortLabel, Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { Align } from "../../../../../types/align";
-import { Order } from "../../../../../types/order";
+import { Align } from "../../../../../../types/align";
+import { Order } from "../../../../../../types/order";
 import { Data } from "../OrdersTable";
 
 interface TableHeaderProps {

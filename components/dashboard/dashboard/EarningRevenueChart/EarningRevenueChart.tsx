@@ -50,6 +50,7 @@ const options: ApexOptions = {
 	},
 	stroke: {
 		curve: "smooth",
+		show: true,
 	},
 	xaxis: {
 		categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
