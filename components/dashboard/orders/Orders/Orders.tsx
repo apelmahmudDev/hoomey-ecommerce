@@ -1,4 +1,5 @@
 import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
+import { ORDER_TABS } from "..";
 
 import { CartText, RoundButton } from "../../../styledComponents";
 import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
@@ -32,7 +33,11 @@ const historyItems = [
 	},
 ];
 
-const Orders = () => {
+interface OrdersProps {
+	handleTabChange: (tab: string) => void;
+}
+
+const Orders = ({ handleTabChange }: OrdersProps) => {
 	return (
 		<div>
 			{/* top part of orders */}
@@ -52,8 +57,14 @@ const Orders = () => {
 				</Typography>
 
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton variant="contained">Abandoned Cart</RoundButton>
-					<RoundButton variant="contained" color="secondary">
+					<RoundButton onClick={() => handleTabChange(ORDER_TABS.ABANDONED_CART)} variant="contained">
+						Abandoned Cart
+					</RoundButton>
+					<RoundButton
+						onClick={() => handleTabChange(ORDER_TABS.CREATE_ORDER)}
+						variant="contained"
+						color="secondary"
+					>
 						Create Order
 					</RoundButton>
 				</Box>
