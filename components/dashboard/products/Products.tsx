@@ -60,7 +60,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Products")}
 							>
 								<ArrowBackIcon />
@@ -100,7 +99,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Products")}
 							>
 								<ArrowBackIcon />
@@ -144,7 +142,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Category")}
 							>
 								<ArrowBackIcon />
