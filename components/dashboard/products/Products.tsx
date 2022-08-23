@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
 
 const Products = () => {
@@ -122,7 +123,9 @@ const Products = () => {
 						</Box>
 					</Box>
 					{/* table section */}
-					<Box my={2.5}>Category Table</Box>
+					<Box my={2.5}>
+						<CategoryTable />
+					</Box>
 				</>
 			)}
 			{state === "Add Category" && (
