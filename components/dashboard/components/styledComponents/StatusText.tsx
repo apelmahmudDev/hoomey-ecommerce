@@ -11,7 +11,8 @@ const StatusText = styled(Typography)(
 			status === "Verified" ||
 			status === "Active" ||
 			status === "Paid" ||
-			status === "Fulfilled"
+			status === "Fulfilled" ||
+			status === "Recovered"
 				? "#04AF00"
 				: status === "Out of Stock" || status === "Unverified" || status === "Pending" || status === "Inactive"
 				? "#FF0303"
