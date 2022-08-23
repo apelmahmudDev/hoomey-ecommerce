@@ -11,7 +11,6 @@ import {
 	ListItemText,
 	Container,
 	IconButton,
-	// Theme,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Link } from "../../ui";
@@ -19,19 +18,30 @@ import { Link } from "../../ui";
 // icons
 import {
 	AccountSettingsSvg,
+	ColorShoppingBagSvg,
+	PaymentMethodsSvg,
 	ChangePassSvg,
 	AddressBookSvg,
-	ColorShoppingBagSvg,
 	ColorHeartSvg,
-	PaymentMethodsSvg,
 	NortonSvg,
 	CameraSvg,
 } from "../../icons";
 import { IMAGES } from "../../../uiElements";
 import { AppAvatar, HoverTooltip } from "../../styledComponents";
+import { CloseIcon, KeyboardArrowRightIcon } from "../../../uiElements/icons";
+
+const drawerWidth = 250;
 
 // styles
-
+const drawerSx = {
+	bgcolor: "#FBFBFB",
+	width: drawerWidth,
+	flexShrink: 0,
+	"& .MuiDrawer-paper": {
+		width: drawerWidth,
+		boxSizing: "border-box",
+	},
+};
 const useStyles = makeStyles((theme) => ({
 	listItemRoot: {
 		"& .MuiListItemButton-root": {
@@ -49,30 +59,26 @@ const useStyles = makeStyles((theme) => ({
 
 	drawerVisible: {
 		height: "100%",
+		width: "100%",
 		position: "absolute",
-		background: "#fff",
-		opacity: 1,
 		zIndex: 1,
+		left: 0,
+		top: 0,
 		transition: "0.3s",
 		visibility: "visible",
-		transform: "translateY(0)",
-		boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-		[theme.breakpoints.down("md")]: {},
+		transform: "translateX(0)",
 	},
 	drawerHidden: {
+		height: "100%",
 		position: "absolute",
-		background: "#fff",
-		opacity: 0,
-		zIndex: -1,
+		zIndex: 1,
+		left: 0,
+		top: 0,
 		transition: "0.3s",
 		visibility: "hidden",
-		transform: "translateY(-3em)",
-		boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-		[theme.breakpoints.down("md")]: {},
+		transform: "translateX(-250px)",
 	},
 }));
-
-const drawerWidth = 250;
 
 const menus = [
 	{ link: "/account-settings", name: "Account Settings", icon: <AccountSettingsSvg width={20} height={15} /> },
@@ -93,15 +99,68 @@ const menus = [
 
 const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	const classes = useStyles();
-	const [isDrawerVisible, SetIsDrawerVisible] = useState(true);
+	const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+
+	const handleDrawerToggle = () => {
+		setIsDrawerVisible(!isDrawerVisible);
+	};
+
+	const handleDrawerClose = () => {
+		setIsDrawerVisible(false);
+	};
+
+	const drawer = (
+		<Box>
+			{/* profile image */}
+			<Box sx={{ display: "flex", gap: 2.5, alignItems: "center", padding: "25px 25px 0 25px" }}>
+				<Box sx={{ position: "relative" }}>
+					<AppAvatar src={IMAGES.AvatarImg} alt="avatar" objectFit="cover" height={60} width={60} />
+					<IconButton
+						color="primary"
+						aria-label="upload picture"
+						component="label"
+						sx={{
+							position: "absolute",
+							right: -15,
+							bottom: 0,
+						}}
+					>
+						<input hidden accept="image/*" type="file" />
+						<CameraSvg />
+					</IconButton>
+				</Box>
+				<div>
+					<Typography gutterBottom>Hi</Typography>
+					<Typography fontWeight="600">Jhon Doe</Typography>
+				</div>
+			</Box>
+			<Divider sx={{ margin: "30px 0", background: "#ABABAB" }} />
+			<List>
+				{menus.map((menu) => (
+					<Link key={menu.name} href={menu.link}>
+						<ListItem disablePadding className={classes.listItemRoot}>
+							<ListItemButton onClick={handleDrawerClose}>
+								<ListItemIcon sx={{ minWidth: 40 }}>{menu.icon}</ListItemIcon>
+								<ListItemText primary={menu.name} />
+							</ListItemButton>
+						</ListItem>
+					</Link>
+				))}
+			</List>
+		</Box>
+	);
 
 	return (
 		<Container>
 			<Box sx={{ mb: 6, display: "flex", alignItems: "center" }}>
+				<Box sx={{ display: { xs: "block", md: "none" } }}>
+					<IconButton onClick={handleDrawerToggle}>
+						{isDrawerVisible ? <CloseIcon color="primary" /> : <KeyboardArrowRightIcon color="primary" />}
+					</IconButton>
+				</Box>
 				<Typography sx={{ flexGrow: 1 }} variant="h6" textAlign="center">
 					My Account
 				</Typography>
-
 				<HoverTooltip title="You are Protected">
 					<div>
 						<NortonSvg />
@@ -109,60 +168,20 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 				</HoverTooltip>
 			</Box>
 
-			<Box sx={{ display: "flex", gap: 2.5 }}>
+			<Box sx={{ display: "flex", gap: 2.5, position: "relative" }}>
 				<CssBaseline />
 
+				{/* drawer in large device */}
+				<Box sx={{ display: { xs: "none", md: "block" }, ...drawerSx }}>{drawer}</Box>
+
+				{/* drawer in small device */}
 				<Box
 					className={isDrawerVisible ? classes.drawerVisible : classes.drawerHidden}
-					sx={{
-						// display: { xs: "none", md: "block" },
-
-						bgcolor: "#FBFBFB",
-						width: drawerWidth,
-						flexShrink: 0,
-						"& .MuiDrawer-paper": {
-							width: drawerWidth,
-							boxSizing: "border-box",
-						},
-					}}
+					sx={{ display: { xs: "block", md: "none" }, ...drawerSx }}
 				>
-					{/* profile image */}
-					<Box sx={{ display: "flex", gap: 2.5, alignItems: "center", padding: "25px 25px 0 25px" }}>
-						<Box sx={{ position: "relative" }}>
-							<AppAvatar src={IMAGES.AvatarImg} alt="avatar" objectFit="cover" height={60} width={60} />
-							<IconButton
-								color="primary"
-								aria-label="upload picture"
-								component="label"
-								sx={{
-									position: "absolute",
-									right: -15,
-									bottom: 0,
-								}}
-							>
-								<input hidden accept="image/*" type="file" />
-								<CameraSvg />
-							</IconButton>
-						</Box>
-						<div>
-							<Typography gutterBottom>Hi</Typography>
-							<Typography fontWeight="600">Jhon Doe</Typography>
-						</div>
-					</Box>
-					<Divider sx={{ margin: "30px 0", background: "#ABABAB" }} />
-					<List>
-						{menus.map((menu) => (
-							<Link key={menu.name} href={menu.link}>
-								<ListItem disablePadding className={classes.listItemRoot}>
-									<ListItemButton>
-										<ListItemIcon sx={{ minWidth: 40 }}>{menu.icon}</ListItemIcon>
-										<ListItemText primary={menu.name} />
-									</ListItemButton>
-								</ListItem>
-							</Link>
-						))}
-					</List>
+					{drawer}
 				</Box>
+
 				{/* body content */}
 				<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
 					{children}

@@ -17,8 +17,10 @@ import NorthWestIcon from "@mui/icons-material/NorthWest";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export {
+	KeyboardArrowRightIcon,
 	ArrowBackIcon,
 	ArrowForwardIosIcon,
 	ArrowBackIosNewIcon,
