@@ -55,11 +55,13 @@ const AbandonedCartDetails = ({ handleTabChange }: ITabChange) => {
 							<Customer />
 						</Grid>
 					</Grid>
-					<Grid container spacing={2.5}>
-						<Grid item xs={12} md={7}>
-							<Additional />
+					<Box my={2.5}>
+						<Grid container spacing={2.5}>
+							<Grid item xs={12} md={7}>
+								<Additional />
+							</Grid>
 						</Grid>
-					</Grid>
+					</Box>
 				</Box>
 			</Box>
 		</Box>
