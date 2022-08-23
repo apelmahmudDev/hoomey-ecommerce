@@ -7,7 +7,7 @@ const Customer = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ mb: 2.5 }} fontWeight={600} fontSie={18}>
+				<Typography sx={{ mb: 2.5 }} fontWeight={600} fontSize={18}>
 					Customer
 				</Typography>
 
@@ -22,7 +22,7 @@ const Customer = () => {
 
 				<DashboardDivider sx={{ my: 2.5 }} />
 
-				<Typography sx={{ mb: 2.5 }} fontSie={18} fontWeight={500}>
+				<Typography sx={{ mb: 2.5 }} fontSize={18} fontWeight={500}>
 					Shipping Address
 				</Typography>
 
@@ -31,7 +31,7 @@ const Customer = () => {
 					<br /> +190123456789
 				</Typography>
 
-				<Typography fontSie={18} fontWeight="medium">
+				<Typography fontSize={18} fontWeight="medium">
 					Billing Address
 				</Typography>
 
