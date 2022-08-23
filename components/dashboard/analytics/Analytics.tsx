@@ -7,7 +7,7 @@ import AvgOrderValueChart from "./AvgOrderValueChart";
 import CustomerRateChart from "./CustomerRateChart";
 import DayComparedToFilter from "./DayComparedToFilter";
 import OnlineStoreConversionRateChart from "./OnlineStoreConversionRateChart";
-import Reportings from "./Reportings/Reportings";
+import Reportings from "./Reportings";
 import TopCard from "./TopCard";
 import TotalOnlineStoreVisitsChart from "./TotalOnlineStoreVisitsChart";
 import TotalOrdersChart from "./TotalOrdersChart";

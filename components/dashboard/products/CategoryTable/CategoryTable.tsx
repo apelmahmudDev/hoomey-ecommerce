@@ -14,6 +14,7 @@ import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 
 export interface Data {
+	id: number;
 	category: string;
 	date: string | number;
 	subCategories: number;
@@ -23,6 +24,7 @@ export interface Data {
 }
 
 function createData(
+	id: number,
 	category: string,
 	date: string | number,
 	subCategories: number,
@@ -31,6 +33,7 @@ function createData(
 	action: string,
 ): Data {
 	return {
+		id,
 		category,
 		date,
 		subCategories,
@@ -41,15 +44,15 @@ function createData(
 }
 
 const rows = [
-	createData("Men", "22-May-2022", 6, 4, "Active", "Active"),
-	createData("Kids", "22-May-2022", 4, 5, "Draft", "Inactive"),
-	createData("Women", "22-May-2022", 2, 4, "Active", "Active"),
-	createData("Men", "22-May-2022", 3, 4, "Draft", "Inactive"),
-	createData("Kids", "22-May-2022", 5, 2, "Active", "Active"),
-	createData("Women", "22-May-2022", 4, 5, "Active", "Inactive"),
-	createData("Men", "22-May-2022", 2, 5, "Draft", "Active"),
-	createData("Kids", "22-May-2022", 5, 2, "Active", "Inactive"),
-	createData("Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
+	createData(1, "Men", "22-May-2022", 6, 4, "Active", "Active"),
+	createData(2, "Kids", "22-May-2022", 4, 5, "Draft", "Inactive"),
+	createData(3, "Women", "22-May-2022", 2, 4, "Active", "Active"),
+	createData(4, "Men", "22-May-2022", 3, 4, "Draft", "Inactive"),
+	createData(5, "Kids", "22-May-2022", 5, 2, "Active", "Active"),
+	createData(6, "Women", "22-May-2022", 4, 5, "Active", "Inactive"),
+	createData(7, "Men", "22-May-2022", 2, 5, "Draft", "Active"),
+	createData(8, "Kids", "22-May-2022", 5, 2, "Active", "Inactive"),
+	createData(9, "Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
 ];
 
 const OrdersTable = () => {
@@ -98,7 +101,7 @@ const OrdersTable = () => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={row.category}>
+											<TableRow hover tabIndex={-1} key={row.id}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell
 													component="th"
