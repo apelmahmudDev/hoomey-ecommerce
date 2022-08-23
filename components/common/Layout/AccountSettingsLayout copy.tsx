@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import {
 	Box,
 	Typography,
@@ -46,30 +46,6 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
-
-	drawerVisible: {
-		height: "100%",
-		position: "absolute",
-		background: "#fff",
-		opacity: 1,
-		zIndex: 1,
-		transition: "0.3s",
-		visibility: "visible",
-		transform: "translateY(0)",
-		boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-		[theme.breakpoints.down("md")]: {},
-	},
-	drawerHidden: {
-		position: "absolute",
-		background: "#fff",
-		opacity: 0,
-		zIndex: -1,
-		transition: "0.3s",
-		visibility: "hidden",
-		transform: "translateY(-3em)",
-		boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-		[theme.breakpoints.down("md")]: {},
-	},
 }));
 
 const drawerWidth = 250;
@@ -93,7 +69,6 @@ const menus = [
 
 const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	const classes = useStyles();
-	const [isDrawerVisible, SetIsDrawerVisible] = useState(true);
 
 	return (
 		<Container>
@@ -113,10 +88,7 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 				<CssBaseline />
 
 				<Box
-					className={isDrawerVisible ? classes.drawerVisible : classes.drawerHidden}
 					sx={{
-						// display: { xs: "none", md: "block" },
-
 						bgcolor: "#FBFBFB",
 						width: drawerWidth,
 						flexShrink: 0,
