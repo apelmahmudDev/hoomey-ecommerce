@@ -1,5 +1,4 @@
-import { CardContent, Box, Typography } from "@mui/material";
-import Check from "../../../../icons/Check";
+import { CardContent, Box, Typography, Button, InputLabel } from "@mui/material";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
 const Checkout = () => {

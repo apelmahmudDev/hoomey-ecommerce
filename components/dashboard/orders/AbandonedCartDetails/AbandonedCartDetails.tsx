@@ -13,7 +13,9 @@ const AbandonedCartDetails = ({ handleTabChange }: ITabChange) => {
 		<Box my={2.5}>
 			{/* back to order tab */}
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ROOT)}>Abondoned Cart</BackIconButton>
+				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ABANDONED_CART)}>
+					Abondoned Cart
+				</BackIconButton>
 			</Box>
 
 			<Box component="section">
