@@ -23,11 +23,11 @@ const headCells: readonly HeadCell[] = [
 		id: "product",
 		align: "left",
 		label: "Product",
-		disablePadding: true,
+		disablePadding: false,
 	},
 	{
 		id: "status",
-		align: "center",
+		align: "left",
 		label: "Status",
 		disablePadding: false,
 	},

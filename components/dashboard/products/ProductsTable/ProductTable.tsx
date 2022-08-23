@@ -11,7 +11,7 @@ import { Order } from "../../../../types/order";
 import { IMAGES } from "../../../../uiElements";
 import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../ui";
-import { StyledCard, StyledFormControl } from "../../components/styledComponents";
+import { StatusText, StyledCard, StyledFormControl } from "../../components/styledComponents";
 import EnhancedTableHead from "./EnhancedTableHead";
 import { useStyles } from "./styled";
 import TableToolbar from "./TableToolbar";
@@ -21,6 +21,7 @@ export interface Data {
 	image: string;
 	status: string;
 	inventory: number;
+	varient: number;
 	type: string;
 	vendor: string;
 }
@@ -30,6 +31,7 @@ function createData(
 	image: string,
 	status: string,
 	inventory: number,
+	varient: number,
 	type: string,
 	vendor: string,
 ): Data {
@@ -38,21 +40,22 @@ function createData(
 		image,
 		status,
 		inventory,
+		varient,
 		type,
 		vendor,
 	};
 }
 
 const rows = [
-	createData("John Doe", "Tshirt Levis", "Active", 12, "Women", "Hoomey"),
-	createData("Oliver", "Jeans Jacket", "Inactive", 212, "Men", "Hoomey"),
-	createData("John Do", "Fullcap", "Active", 12, "clothing", "Hoomey"),
-	createData("Olive", "Tshirt Levis", "Inactive", 21, "Men", "Hoomey"),
-	createData("John D", "Jeans Jacket", "Active", 2, "Women", "Hoomey"),
-	createData("Oliv", "Fullcap", "Inactive", 19, "clothing", "Hoomey"),
-	createData("John ", "Tshirt Levis", "Active", 102, "Men", "Hoomey"),
-	createData("Oli", "Jeans Jacket", "Inactive", 78, "Men", "Hoomey"),
-	createData("Ol", "Fullcap", "Inactive", 7, "Women", "Hoomey"),
+	createData("John Doe", "Tshirt Levis", "Active", 12, 4, "Women", "Hoomey"),
+	createData("Oliver", "Jeans Jacket", "Inactive", 212, 0, "Men", "Hoomey"),
+	createData("John Do", "Fullcap", "Active", 0, 5, "clothing", "Hoomey"),
+	createData("Olive", "Tshirt Levis", "Inactive", 21, 0, "Men", "Hoomey"),
+	createData("John D", "Jeans Jacket", "Active", 0, 6, "Women", "Hoomey"),
+	createData("Oliv", "Fullcap", "Inactive", 19, 4, "clothing", "Hoomey"),
+	createData("John ", "Tshirt Levis", "Active", 0, 0, "Men", "Hoomey"),
+	createData("Oli", "Jeans Jacket", "Inactive", 7, 8, "Men", "Hoomey"),
+	createData("Ol", "Fullcap", "Inactive", 7, 0, "Women", "Hoomey"),
 ];
 
 const ProductTable = () => {
@@ -123,7 +126,7 @@ const ProductTable = () => {
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<Stack direction="row" spacing={2}>
+													<Stack direction="row" spacing={1}>
 														<Image
 															src={
 																row.image !== "Tshirt Levis"
@@ -151,7 +154,7 @@ const ProductTable = () => {
 													</Stack>
 												</TableCell>
 
-												<TableCell align="center">
+												<TableCell align="left">
 													<Box sx={{ minWidth: "135px", height: "45px" }}>
 														<StyledFormControl
 															fullWidth
@@ -176,7 +179,22 @@ const ProductTable = () => {
 														</StyledFormControl>
 													</Box>
 												</TableCell>
-												<TableCell align="center">{row.inventory} in stock</TableCell>
+												<TableCell align="center">
+													<Stack direction="row" spacing={1}>
+														<StatusText
+															fw={500}
+															status={row.inventory !== 0 ? "In Stock" : "Out of Stock"}
+														>
+															{row.inventory} in stock
+														</StatusText>
+														{row.varient !== 0 && (
+															<Typography sx={{ fontWeight: "400", fontSize: 14 }}>
+																for {row.varient} variants
+															</Typography>
+														)}
+													</Stack>
+												</TableCell>
+
 												<TableCell align="center">{row.type}</TableCell>
 
 												<TableCell align="center">{row.vendor}</TableCell>
