@@ -1,4 +1,4 @@
-import { CardContent, SelectChangeEvent } from "@mui/material";
+import { CardContent, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,7 +9,8 @@ import { useState } from "react";
 import { Order } from "../../../../types/order";
 import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../ui";
-import { StatusChip, StyledCard } from "../../components/styledComponents";
+import { StyledCard, StyledFormControl } from "../../components/styledComponents";
+import { useStyles } from "./styled";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 
@@ -60,6 +61,17 @@ const OrdersTable = () => {
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
 	const [page, setPage] = useState(0);
+	const [filter, setFilter] = useState("10");
+	const [actionFilter, setActionFilter] = useState("10");
+	const classes = useStyles();
+
+	const handleFilter = (event: SelectChangeEvent) => {
+		setFilter(event.target.value as string);
+	};
+
+	const handleActionFilter = (event: SelectChangeEvent) => {
+		setActionFilter(event.target.value as string);
+	};
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -116,10 +128,58 @@ const OrdersTable = () => {
 												<TableCell align="center">{row.subCategories}</TableCell>
 												<TableCell align="center">{row.products}</TableCell>
 												<TableCell align="center">
-													<StatusChip status={row.status}>{row.status}</StatusChip>
+													<Box sx={{ minWidth: "135px", height: "45px" }}>
+														<StyledFormControl
+															fullWidth
+															size="small"
+															className={
+																row.status !== "Active"
+																	? row.status !== "Draft"
+																		? classes.Inactive
+																		: classes.Draft
+																	: classes.Active
+															}
+														>
+															<Select
+																labelId="demo-simple-select-label"
+																id="demo-simple-select"
+																value={filter}
+																onChange={handleFilter}
+															>
+																<MenuItem value={10}>{row.status}</MenuItem>
+																<MenuItem value={20}>
+																	{row.status === "Active" ? "Draft" : "Active"}
+																</MenuItem>
+															</Select>
+														</StyledFormControl>
+													</Box>
 												</TableCell>
 												<TableCell align="center">
-													<StatusChip status={row.action}>{row.action}</StatusChip>
+													<Box sx={{ minWidth: "135px", height: "45px" }}>
+														<StyledFormControl
+															fullWidth
+															size="small"
+															className={
+																row.action !== "Active"
+																	? row.action !== "Draft"
+																		? classes.Inactive
+																		: classes.Draft
+																	: classes.Active
+															}
+														>
+															<Select
+																labelId="demo-simple-select-label"
+																id="demo-simple-select"
+																value={actionFilter}
+																onChange={handleActionFilter}
+															>
+																<MenuItem value={10}>{row.action}</MenuItem>
+																<MenuItem value={20}>
+																	{row.action === "Active" ? "Inactive" : "Active"}
+																</MenuItem>
+															</Select>
+														</StyledFormControl>
+													</Box>
 												</TableCell>
 											</TableRow>
 										);
