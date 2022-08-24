@@ -1,63 +1,62 @@
-import { useState } from "react";
+import { CardContent, SelectChangeEvent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { CardContent, SelectChangeEvent } from "@mui/material";
-import { StatusChip, StyledCard } from "../../../components/styledComponents";
+import { useState } from "react";
+import { Order } from "../../../../types/order";
+import { getComparator, stableSort } from "../../../../utils/helper/table-sort";
+import { TableCustomPagination } from "../../../ui";
+import { StatusChip, StyledCard } from "../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
-import { Order } from "../../../../../types/order";
-import { TableCustomPagination } from "../../../../ui";
-import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 
 export interface Data {
-	orderNo: number;
+	id: number;
+	category: string;
 	date: string | number;
-	time: string;
-	customer: string;
-	emailStatus: string;
-	recoveryStatus: string;
-	total: number;
+	subCategories: number;
+	products: number;
+	status: string;
+	action: string;
 }
 
 function createData(
-	orderNo: number,
+	id: number,
+	category: string,
 	date: string | number,
-	time: string,
-	customer: string,
-	emailStatus: string,
-	recoveryStatus: string,
-	total: number,
+	subCategories: number,
+	products: number,
+	status: string,
+	action: string,
 ): Data {
 	return {
-		orderNo,
+		id,
+		category,
 		date,
-		time,
-		customer,
-		emailStatus,
-		recoveryStatus,
-		total,
+		subCategories,
+		products,
+		status,
+		action,
 	};
 }
 
 const rows = [
-	createData(12341, "22-May-2022", "12:15 pm", "John Doe", "Sent", "Recovered", 2000),
-	createData(12342, "22-May-2022", "12:15 pm", "Mariah Betts", "Not Sent", "Not Recovered", 500),
-	createData(12343, "22-May-2022", "12:15 pm", "John Doe", "Sent", "Recovered", 2000),
-	createData(12344, "22-May-2022", "12:15 pm", "Mariah Betts", "Not Sent", "Not Recovered", 500),
-	createData(12345, "22-May-2022", "12:15 pm", "John Doe", "Sent", "Recovered", 2000),
-	createData(12346, "22-May-2022", "12:15 pm", "Mariah Betts", "Not Sent", "Not Recovered", 500),
-	createData(12347, "22-May-2022", "12:15 pm", "John Doe", "Sent", "Recovered", 2000),
-	createData(12348, "22-May-2022", "12:15 pm", "Mariah Betts", "Not Sent", "Not Recovered", 500),
-	createData(12349, "22-May-2022", "12:15 pm", "John Doe", "Sent", "Recovered", 2000),
-	createData(12340, "22-May-2022", "12:15 pm", "Mariah Betts", "Not Sent", "Not Recovered", 500),
+	createData(1, "Men", "22-May-2022", 6, 4, "Active", "Active"),
+	createData(2, "Kids", "22-May-2022", 4, 5, "Draft", "Inactive"),
+	createData(3, "Women", "22-May-2022", 2, 4, "Active", "Active"),
+	createData(4, "Men", "22-May-2022", 3, 4, "Draft", "Inactive"),
+	createData(5, "Kids", "22-May-2022", 5, 2, "Active", "Active"),
+	createData(6, "Women", "22-May-2022", 4, 5, "Active", "Inactive"),
+	createData(7, "Men", "22-May-2022", 2, 5, "Draft", "Active"),
+	createData(8, "Kids", "22-May-2022", 5, 2, "Active", "Inactive"),
+	createData(9, "Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
 ];
 
 const OrdersTable = () => {
-	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
+	const [orderBy, setOrderBy] = useState<keyof Data>("category");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
 	const [page, setPage] = useState(0);
@@ -91,7 +90,7 @@ const OrdersTable = () => {
 			<StyledCard sx={{ width: "100%" }}>
 				<CardContent>
 					<TableContainer>
-						<Table sx={{ minWidth: 950 }} aria-labelledby="tableTitle" size="medium">
+						<Table sx={{ minWidth: 1000 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -102,24 +101,26 @@ const OrdersTable = () => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={row.orderNo}>
+											<TableRow hover tabIndex={-1} key={row.id}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
-												<TableCell component="th" id={labelId} scope="row" padding="none">
-													{row.orderNo}
+												<TableCell
+													component="th"
+													id={labelId}
+													scope="row"
+													align="center"
+													padding="none"
+												>
+													{row.category}
 												</TableCell>
 												<TableCell align="center">{row.date}</TableCell>
-												<TableCell align="center">{row.time}</TableCell>
-												<TableCell align="center">{row.customer}</TableCell>
-
+												<TableCell align="center">{row.subCategories}</TableCell>
+												<TableCell align="center">{row.products}</TableCell>
 												<TableCell align="center">
-													<StatusChip status={row.emailStatus}>{row.emailStatus}</StatusChip>
+													<StatusChip status={row.status}>{row.status}</StatusChip>
 												</TableCell>
 												<TableCell align="center">
-													<StatusChip status={row.recoveryStatus}>
-														{row.recoveryStatus}
-													</StatusChip>
+													<StatusChip status={row.action}>{row.action}</StatusChip>
 												</TableCell>
-												<TableCell align="right">${row.total}</TableCell>
 											</TableRow>
 										);
 									})}

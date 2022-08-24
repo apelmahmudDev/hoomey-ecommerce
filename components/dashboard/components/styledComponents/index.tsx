@@ -5,6 +5,5 @@ export { default as StatusChip } from "./StatusChip";
 export { default as StyledButton } from "./StyledButton";
 export { default as StyledTextField } from "./StyledTextField";
 export { default as VariantListItem } from "./VariantListItem";
-export { default as DashboardDivider } from "./DashboardDivider";
 export { default as SmallFormControl } from "./SmallFormControl";
 export { default as StyledFormControl } from "./StyledFormControl";

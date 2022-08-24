@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
 
 const Products = () => {
@@ -59,7 +60,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Products")}
 							>
 								<ArrowBackIcon />
@@ -99,7 +99,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Products")}
 							>
 								<ArrowBackIcon />
@@ -122,7 +121,9 @@ const Products = () => {
 						</Box>
 					</Box>
 					{/* table section */}
-					<Box my={2.5}>Category Table</Box>
+					<Box my={2.5}>
+						<CategoryTable />
+					</Box>
 				</>
 			)}
 			{state === "Add Category" && (
@@ -141,7 +142,6 @@ const Products = () => {
 						<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
 							<CircleIconButton
 								sx={{ minWidth: "6px", padding: "2px" }}
-								variant="contained"
 								onClick={() => setState("Category")}
 							>
 								<ArrowBackIcon />
