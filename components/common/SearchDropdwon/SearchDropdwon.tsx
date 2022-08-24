@@ -28,8 +28,8 @@ const SearchDropdwon = () => {
 					}}
 				>
 					<TextField
-						required
 						fullWidth
+						required
 						type="search"
 						placeholder="Search"
 						id="filled-search"
@@ -41,9 +41,9 @@ const SearchDropdwon = () => {
 				</Box>
 			</Box>
 			<Box className="search-suggestions" sx={{ display: isShowSuggestion ? "block" : "none" }}>
-				<Paper sx={{ p: 2.5, display: "flex", gap: 2.5 }}>
+				<Paper sx={{ p: 2.5, display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2.5 }}>
 					{/* your searches */}
-					<Box sx={{ width: 300 }}>
+					<Box sx={{ width: { xs: "100%", sm: 300 } }}>
 						<SearchTitle>Your Searches</SearchTitle>
 
 						<FlexStack>
@@ -69,9 +69,9 @@ const SearchDropdwon = () => {
 					{/* Products */}
 					<Box>
 						<SearchTitle>Products</SearchTitle>
-						<Grid container spacing={3}>
+						<Grid container spacing={2}>
 							{productData.map((product, idx) => (
-								<Grid key={idx} item xs={6} md={4}>
+								<Grid key={idx} item xs={12} md={6} lg={4}>
 									<ProductCard product={product} />
 								</Grid>
 							))}
