@@ -69,3 +69,4 @@ export { default as NavNotificationsSvg } from "./NavNotifications";
 export { default as EmailFilledSvg } from "./EmailFill";
 export { default as LockFilledSvg } from "./LockFilled";
 export { default as SearchIcon } from "./SearchIcon";
+export { default as GraySearchIcon } from "./GraySearchIcon";

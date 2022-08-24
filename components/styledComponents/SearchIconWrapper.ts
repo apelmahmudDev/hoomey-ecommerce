@@ -8,6 +8,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
+	zIndex: 5,
 }));
 
 export default SearchIconWrapper;

@@ -25,7 +25,7 @@ const UsersTable = () => {
 			<CardContent>
 				<EnhancedTableToolbar />
 				<TableContainer>
-					<Table sx={{ minWidth: { xs: 600, lg: 0 } }} aria-label="simple table">
+					<Table sx={{ minWidth: 450 }} aria-label="simple table">
 						<TableHead>
 							<TableRow>
 								<TableCell>#</TableCell>

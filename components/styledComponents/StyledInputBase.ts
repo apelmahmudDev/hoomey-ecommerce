@@ -3,6 +3,7 @@ import InputBase from "@mui/material/InputBase";
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	color: "inherit",
+
 	"& .MuiInputBase-input": {
 		padding: theme.spacing(1, 1, 1, 0),
 		border: "1px solid #D2D2D2",

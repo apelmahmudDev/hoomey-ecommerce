@@ -19,7 +19,7 @@ const EnhancedTableToolbar = () => {
 				Orders
 			</Typography>
 
-			<Box sx={{ minWidth: "150px" }}>
+			<Box sx={{ minWidth: "155px" }}>
 				<StyledFormControl fullWidth size="small">
 					<Select
 						labelId="demo-simple-select-label"

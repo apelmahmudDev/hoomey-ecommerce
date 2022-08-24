@@ -1,5 +1,4 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
@@ -26,6 +25,7 @@ import {
 	DashboardBagSvg,
 	DashboardMenuSvg,
 	DeliveryCarSvg,
+	GraySearchIcon,
 	NavNotificationsSvg,
 	NotificationsSvg,
 	ReviewsSvg,
@@ -36,7 +36,7 @@ import { Link } from "../components/ui";
 import { AdminLayoutProps } from "../types/page";
 import { IMAGES } from "../uiElements";
 
-const drawerWidth = 100;
+const drawerWidth = 120;
 
 const drawerItem = [
 	{ icon: <DashboardMenuSvg />, text: "Dashboard", link: "/dashboard" },
@@ -133,7 +133,7 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 							<Box sx={{ p: 2, display: "flex", alignItems: "center", gap: 4 }}>
 								<Search>
 									<SearchIconWrapper>
-										<SearchIcon color="primary" />
+										<GraySearchIcon sx={{ fontSize: 20 }} />
 									</SearchIconWrapper>
 									<StyledInputBase placeholder="Search" inputProps={{ "aria-label": "search" }} />
 								</Search>

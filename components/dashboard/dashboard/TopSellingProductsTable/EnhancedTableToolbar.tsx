@@ -19,7 +19,7 @@ const EnhancedTableToolbar = () => {
 				Top selling products
 			</Typography>
 
-			<Box sx={{ minWidth: "150px" }}>
+			<Box sx={{ minWidth: "160px" }}>
 				<StyledFormControl fullWidth size="small">
 					<Select
 						labelId="demo-simple-select-label"
