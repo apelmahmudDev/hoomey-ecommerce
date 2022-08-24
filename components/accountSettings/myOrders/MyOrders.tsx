@@ -18,14 +18,23 @@ const MyOrders = () => {
 			{[...Array(3)].map((item, idx) => (
 				<Box
 					key={idx}
-					sx={{ display: "flex", gap: 2.5, bgcolor: "common.white", width: "100%", p: 2.5, my: 2.5 }}
+					sx={{
+						p: 2.5,
+						my: 2.5,
+						gap: 2.5,
+						width: "100%",
+						display: "flex",
+						alignItems: "center",
+						bgcolor: "common.white",
+						flexDirection: { xs: "column", sm: "row" },
+					}}
 				>
-					<Box sx={{ position: "relative", width: 200 }}>
-						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={185} width={134} />
+					<Box sx={{ position: "relative", width: 200, textAlign: "center" }}>
+						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={185} width={134} placeholder="blur" />
 					</Box>
 
 					<Box width="100%">
-						<FlexStack>
+						<FlexStack sx={{ flexWrap: "wrap", mb: 2 }}>
 							<Typography fontWeight="600">White Cotton Sweatshirt </Typography>
 							<Button variant="outlined" color="secondary">
 								View Order
