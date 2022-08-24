@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
+import Options from "./AddProduct/Options";
+import Pricing from "./AddProduct/Pricing";
 import ProductOrganization from "./AddProduct/ProdctOrganization";
 import ProductStatus from "./AddProduct/ProductStatus";
 import ShippingPrice from "./AddProduct/ShippingPrice";
@@ -87,10 +89,17 @@ const Products = () => {
 							</RoundButton>
 						</Box>
 						<Grid container spacing={2.5}>
-							<Grid item xs={12} md={6}>
-								<SizeChart />
+							<Grid item xs={12} md={7}>
+								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<Pricing />
+									</Grid>
+									<Grid item xs={12}>
+										<Options />
+									</Grid>
+								</Grid>
 							</Grid>
-							<Grid item xs={12} md={6}>
+							<Grid item container xs={12} md={5}>
 								<Grid container spacing={2.5}>
 									<Grid item xs={12}>
 										<ProductStatus />
@@ -100,6 +109,9 @@ const Products = () => {
 									</Grid>
 									<Grid item xs={12}>
 										<ProductOrganization />
+									</Grid>
+									<Grid item xs={12}>
+										<SizeChart />
 									</Grid>
 									<Grid item xs={12}>
 										<ShippingPrice />
