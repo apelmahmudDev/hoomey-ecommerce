@@ -297,7 +297,7 @@ const Navbar: FC = () => {
 				</Container>
 			</AppBar>
 			<Toolbar />
-			<Toolbar />
+			<Toolbar sx={{ minHeight: "38px !important" }} />
 
 			{/* card details - drawer */}
 			<AppDrawer isDrawerOpen={isCartDrawerOpen} toggleDrawer={toggleCartDrawer}>

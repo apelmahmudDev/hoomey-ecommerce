@@ -2,16 +2,24 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
 	mySwiper: {
-		// height: 597,
-		height: 697,
-		maxHeight: 697,
-		// maxHeight: 597,
-		transition: "0.3s",
-		[theme.breakpoints.down("sm")]: {
-			height: 500,
-			maxHeight: 500,
-		},
+		"& .banner": {
+			transition: "0.3s",
+			position: "relative",
+			backgroundSize: "cover",
+			backgroundColor: "#c4c4c4",
+			backgroundRepeat: "no-repeat",
+			backgroundPosition: "center center",
 
+			height: "100vh",
+			padding: theme.spacing(0, 2),
+
+			[theme.breakpoints.down("md")]: {
+				height: 500,
+			},
+			[theme.breakpoints.down("sm")]: {
+				height: 400,
+			},
+		},
 		"& .swiper-pagination": {
 			"& .swiper-pagination-bullet": {
 				background: "#fff",
@@ -26,14 +34,6 @@ export const useStyles = makeStyles((theme) => ({
 	},
 
 	content: {
-		width: "100%",
-		paddingLeft: 8,
-		paddingRight: 8,
-		position: "absolute",
-		top: "-50%",
-		left: "50%",
-		transform: "translate(-50%,-50%)",
-
 		"& .MuiButton-root, & .MuiTypography-root": {
 			textTransform: "uppercase",
 		},
@@ -42,6 +42,11 @@ export const useStyles = makeStyles((theme) => ({
 			fontSize: 30,
 			color: "#FFFFFF",
 			letterSpacing: "0.22em",
+			transition: "0.3s",
+			[theme.breakpoints.down("sm")]: {
+				letterSpacing: "0.16em",
+				fontSize: 24,
+			},
 		},
 
 		"& .MuiButton-root": {
@@ -53,6 +58,12 @@ export const useStyles = makeStyles((theme) => ({
 			fontWeight: 400,
 			letterSpacing: "0.3em",
 			textAlign: "center",
+			transition: "0.3s",
+
+			[theme.breakpoints.down("sm")]: {
+				letterSpacing: "0.2em",
+				padding: theme.spacing(1, 3),
+			},
 		},
 	},
 }));

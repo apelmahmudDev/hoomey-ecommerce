@@ -3,7 +3,6 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Lazy } from "swiper";
 import { useStyles } from "./styled";
-import Image from "next/image";
 import { heroData } from "./data";
 
 const Hero: FC = () => {
@@ -25,27 +24,32 @@ const Hero: FC = () => {
 			>
 				{heroData.map((data, idx) => (
 					<SwiperSlide key={idx}>
-						<Box sx={{ width: "100%", height: "100%", position: "relative" }}>
-							<Image
-								src={data.image}
-								alt="hero-banner"
-								layout="fill"
-								objectFit="cover"
-								className="swiper-lazy"
-							/>
-						</Box>
-						<Container sx={{ position: "relative", height: "100%" }}>
-							<Box className={classes.content} sx={{ textAlign: data.contentPosition }}>
-								<Box sx={{ display: "inline-block", textAlign: "center" }}>
-									<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
-										{data.title}
-									</Typography>
-									<Box>
-										<Button variant="contained">Shop Now</Button>
+						<Box
+							className="banner"
+							sx={{
+								backgroundImage: `url(${data.image})`,
+							}}
+						>
+							<Container
+								sx={{
+									height: "100%",
+									display: "flex",
+									justifyContent: "center",
+									flexDirection: "column",
+								}}
+							>
+								<Box className={classes.content} sx={{ textAlign: data.contentPosition }}>
+									<Box sx={{ display: "inline-block", textAlign: "center" }}>
+										<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
+											{data.title}
+										</Typography>
+										<Box>
+											<Button variant="contained">Shop Now</Button>
+										</Box>
 									</Box>
 								</Box>
-							</Box>
-						</Container>
+							</Container>
+						</Box>
 					</SwiperSlide>
 				))}
 			</Swiper>

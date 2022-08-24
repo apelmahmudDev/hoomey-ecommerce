@@ -1,34 +1,26 @@
-import { StaticImageData } from "next/image";
-import { IMAGES } from "../../../uiElements";
-
-// heroData
-export const heroData: {
-	image: string | StaticImageData;
-	title: string;
-	contentPosition: "left" | "center" | "right";
-}[] = [
+export const heroData = [
 	{
-		image: IMAGES.HomeHero1lImg,
+		image: "/assets/home-hero1.png",
 		title: "Discover the new you",
 		contentPosition: "center",
 	},
 	{
-		image: IMAGES.HomeHero2lImg,
+		image: "/assets/young-beautiful-stylish-woman.png",
 		title: "The Way forward",
 		contentPosition: "left",
 	},
 	{
-		image: IMAGES.HomeHero5lImg,
+		image: "/assets/baby-girl-knitted.png",
 		title: "Outfits for the little ones",
 		contentPosition: "right",
 	},
 	{
-		image: IMAGES.HomeHero3lImg,
+		image: "/assets/stylish-african-american-boy.png",
 		title: "Tradition of trust",
 		contentPosition: "center",
 	},
 	{
-		image: IMAGES.HomeHero4lImg,
+		image: "/assets/black-female-athlete.png",
 		title: "Comfortable sports wearings",
 		contentPosition: "right",
 	},
