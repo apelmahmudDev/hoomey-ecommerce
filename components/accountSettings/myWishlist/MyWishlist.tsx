@@ -16,7 +16,7 @@ const MyWishlist = () => {
 
 			<Grid container spacing={{ xs: 2, md: 4 }}>
 				{productData.map((product, idx) => (
-					<Grid key={idx} item xs={6} md={4}>
+					<Grid key={idx} item xs={12} sm={6} lg={4}>
 						<ProductCard product={product} />
 					</Grid>
 				))}
