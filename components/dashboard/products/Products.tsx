@@ -1,9 +1,10 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
+import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
 import Pricing from "./AddProduct/Pricing";
@@ -104,6 +105,33 @@ const Products = () => {
 									</Grid>
 									<Grid item xs={12}>
 										<SEO />
+									</Grid>
+									<Grid item xs={12}>
+										<MetaFields />
+									</Grid>
+									<Grid item xs={12} mt={5}>
+										<Container maxWidth="sm">
+											<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+												<Button
+													sx={{ borderRadius: "5px" }}
+													size="large"
+													fullWidth
+													variant="outlined"
+													color="secondary"
+												>
+													Cancel
+												</Button>
+												<Button
+													sx={{ borderRadius: "5px" }}
+													size="large"
+													fullWidth
+													variant="contained"
+													color="secondary"
+												>
+													Add
+												</Button>
+											</Box>
+										</Container>
 									</Grid>
 								</Grid>
 							</Grid>

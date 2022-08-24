@@ -17,7 +17,7 @@ const Pricing = () => {
 					Pricing
 				</Typography>
 				<Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
-					<Box sx={{ display: "flex", flexDirection: "column" }}>
+					<Box sx={{ display: "flex", flexDirection: "column", minWidth: "50%" }}>
 						<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="semibold">
 							Price
 						</Typography>
@@ -25,7 +25,7 @@ const Pricing = () => {
 							<StyledTextField size="small" placeholder="$ 0.00" fullWidth required />
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", flexDirection: "column" }}>
+					<Box sx={{ display: "flex", flexDirection: "column", minWidth: "50%" }}>
 						<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="semibold">
 							Compare at price
 						</Typography>
@@ -35,7 +35,7 @@ const Pricing = () => {
 					</Box>
 				</Box>
 				<FormControlLabel
-					sx={{ mt: 2, mb: 2 }}
+					sx={{ mb: 2 }}
 					label="Charge tax on this product"
 					control={<Checkbox checked={isDefaultChecked} onChange={handleDefaultCheckChange} />}
 				/>
