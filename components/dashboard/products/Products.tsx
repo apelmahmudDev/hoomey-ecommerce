@@ -3,8 +3,10 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import Category from "./AddProduct/Category";
+import ProductOrganization from "./AddProduct/ProdctOrganization";
 import ShippingPrice from "./AddProduct/ShippingPrice";
-import Customer from "./AddProduct/SizeChart";
+import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
 import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
@@ -85,11 +87,16 @@ const Products = () => {
 						</Box>
 						<Grid container spacing={2.5}>
 							<Grid item xs={12} md={6}>
-								<Customer />
+								<SizeChart />
 							</Grid>
 							<Grid item xs={12} md={6}>
 								<Grid container spacing={2.5}>
-									{/* tags */}
+									<Grid item xs={12}>
+										<Category />
+									</Grid>
+									<Grid item xs={12}>
+										<ProductOrganization />
+									</Grid>
 									<Grid item xs={12}>
 										<ShippingPrice />
 									</Grid>

@@ -1,7 +1,7 @@
 import { Box, CardContent, Typography } from "@mui/material";
 import { StyledButton, StyledCard, StyledTextField } from "../../../components/styledComponents";
 
-const Customer = () => {
+const SizeChart = () => {
 	return (
 		<StyledCard>
 			<CardContent>
@@ -32,4 +32,4 @@ const Customer = () => {
 	);
 };
 
-export default Customer;
+export default SizeChart;
