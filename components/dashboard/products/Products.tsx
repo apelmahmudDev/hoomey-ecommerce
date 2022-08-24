@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
 import ProductOrganization from "./AddProduct/ProdctOrganization";
+import ProductStatus from "./AddProduct/ProductStatus";
 import ShippingPrice from "./AddProduct/ShippingPrice";
 import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
@@ -91,6 +92,9 @@ const Products = () => {
 							</Grid>
 							<Grid item xs={12} md={6}>
 								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<ProductStatus />
+									</Grid>
 									<Grid item xs={12}>
 										<Category />
 									</Grid>
