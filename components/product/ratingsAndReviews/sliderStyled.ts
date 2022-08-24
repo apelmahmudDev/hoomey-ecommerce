@@ -8,6 +8,7 @@ export const useSliderStyles = makeStyles((theme) => ({
 		"& .swiper-button-prev, & .swiper-button-next": {
 			top: "100%",
 			marginTop: "-43px",
+			// zIndex: 99,
 			width: `calc(100% - 40px * ${props.itemLength})`,
 			"&::after": {
 				color: "#292929",

@@ -1,18 +1,21 @@
 import { FC } from "react";
-import { useStyles } from "./styled";
+// import { useStyles } from "./styled";
 import Image from "next/image";
 import { Typography, Box, Button } from "@mui/material";
 
 // Import Swiper
-import { Pagination, Lazy, Autoplay, Navigation } from "swiper";
+import { Pagination, Lazy, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { sliderData } from "./data";
 import { ArrowRightAltIcon } from "../../../uiElements/icons";
 import { Link } from "../../ui";
+import { useSliderStyles } from "../../product/ratingsAndReviews/sliderStyled";
 
 const BlogsSlider: FC = () => {
-	const classes = useStyles();
+	const props: { itemLength: number } = { itemLength: sliderData.length };
+	const sliderCSS = useSliderStyles(props);
+	// const classes = useStyles();
 
 	// for swiper slieder
 	const pagination = {
@@ -24,21 +27,21 @@ const BlogsSlider: FC = () => {
 
 	return (
 		<Swiper
-			className={classes.mySwiper}
+			className={sliderCSS.mySwiper}
 			navigation={true}
 			pagination={pagination}
-			modules={[Pagination, Navigation, Autoplay, Lazy]}
+			modules={[Pagination, Navigation, Lazy]}
 			lazy={true}
-			autoplay={{
-				delay: 5000,
-				disableOnInteraction: false,
-			}}
+			// autoplay={{
+			// 	delay: 5000,
+			// 	disableOnInteraction: false,
+			// }}
 		>
 			{sliderData.map((item, idx) => (
 				<SwiperSlide key={idx}>
 					<Box sx={{ position: "relative" }}>
 						{/* <Box className={classes.banner}> */}
-						<Image src={item.image} alt="banner-hero" layout="responsive" />
+						<Image src={item.image} alt="banner-hero" layout="responsive" placeholder="blur" />
 						{/* </Box> */}
 					</Box>
 					<Box my={3}>
