@@ -1,8 +1,11 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import ShippingPrice from "./AddProduct/ShippingPrice";
+import Customer from "./AddProduct/SizeChart";
+import Taxes from "./AddProduct/Taxes";
 import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
 
@@ -80,6 +83,22 @@ const Products = () => {
 								Import Product by CSV
 							</RoundButton>
 						</Box>
+						<Grid container spacing={2.5}>
+							<Grid item xs={12} md={6}>
+								<Customer />
+							</Grid>
+							<Grid item xs={12} md={6}>
+								<Grid container spacing={2.5}>
+									{/* tags */}
+									<Grid item xs={12}>
+										<ShippingPrice />
+									</Grid>
+									<Grid item xs={12}>
+										<Taxes />
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
 					</Box>
 				</>
 			)}
