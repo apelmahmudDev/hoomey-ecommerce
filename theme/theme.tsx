@@ -138,7 +138,7 @@ export let appTheme = createTheme(theme, {
 		MuiMenuItem: {
 			styleOverrides: {
 				root: {
-					border: "1px solid #ABABAB !important",
+					borderBottom: "1px solid #D8D8D8 !important",
 					color: theme.palette.secondary.main,
 					opacity: 0.8,
 				},
