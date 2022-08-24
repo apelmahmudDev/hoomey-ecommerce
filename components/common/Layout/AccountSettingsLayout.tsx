@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "100%",
 		width: "100%",
 		position: "absolute",
-		zIndex: 1,
+		zIndex: 5,
 		left: 0,
 		top: 0,
 		transition: "0.3s",
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 	drawerHidden: {
 		height: "100%",
 		position: "absolute",
-		zIndex: 1,
+		zIndex: 5,
 		left: 0,
 		top: 0,
 		transition: "0.3s",
