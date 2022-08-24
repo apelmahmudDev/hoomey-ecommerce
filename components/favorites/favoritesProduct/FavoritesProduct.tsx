@@ -26,7 +26,7 @@ const FavoritesProduct: FC = () => {
 			<Container maxWidth="xl">
 				<Box mb={4}>
 					<Grid container spacing={5}>
-						<Grid item xs={8} sm={4} md={3}>
+						<Grid item xs={12} sm={5} md={3}>
 							<Box sx={{ position: "absolute", zIndex: 5, width: "100%", maxWidth: 300 }}>
 								<Button
 									fullWidth
@@ -48,12 +48,11 @@ const FavoritesProduct: FC = () => {
 								</Collapse>
 							</Box>
 						</Grid>
-						<Grid item xs={4} sm={6} md={6}>
-							<Typography variant="h6" textAlign="center">
+						<Grid item xs={12} sm={7} md={6}>
+							<Typography sx={{ mt: { xs: 2.5, sm: 0 } }} variant="h6" textAlign="center">
 								Favorites
 							</Typography>
 						</Grid>
-						{/* <Grid item xs={12} md={3}></Grid> */}
 					</Grid>
 				</Box>
 
