@@ -42,8 +42,16 @@ const AddressBook = () => {
 				},
 				{ card: <VisaSvg height={30} width={50} />, aboutCard: "This card has been expired", checked: false },
 			].map((item, idx) => (
-				<Box key={idx} sx={{ position: "relative", bgcolor: "common.white", p: 2.5, my: 2.5 }}>
-					<Box sx={{ mr: 7, display: "flex", gap: 2.5 }}>
+				<Box key={idx} sx={{ position: "relative", bgcolor: "common.white", p: { xs: 1, sm: 2.5 }, my: 2.5 }}>
+					<Box
+						sx={{
+							mr: 7,
+							width: { xs: "100%", sm: "auto" },
+							display: "flex",
+							flexDirection: { xs: "column", sm: "row" },
+							gap: 2.5,
+						}}
+					>
 						<Box component="span" mt={1.5}>
 							{item.card}
 						</Box>
@@ -71,7 +79,7 @@ const AddressBook = () => {
 					/>
 
 					{/* action on right corner */}
-					<Box sx={{ position: "absolute", top: 20, right: 20 }}>
+					<Box sx={{ position: "absolute", top: { xs: 12, sm: 20 }, right: { xs: 2, sm: 20 } }}>
 						<Box>
 							<IconButton>
 								<DeleteSvg />
@@ -80,7 +88,6 @@ const AddressBook = () => {
 					</Box>
 				</Box>
 			))}
-
 			{/* popup for - add new payment */}
 			<PaymentPopup isOpen={isPaymentMethodOpen} handleTogglePopup={handleTogglePopup} />
 		</Box>

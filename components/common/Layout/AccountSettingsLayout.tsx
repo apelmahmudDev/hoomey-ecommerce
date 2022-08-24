@@ -183,7 +183,7 @@ const AccountSettingsLayout: FC<{ children: React.ReactNode }> = ({ children }) 
 				</Box>
 
 				{/* body content */}
-				<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: 4 }}>
+				<Box component="main" sx={{ flexGrow: 1, bgcolor: "#FBFBFB", p: { xs: 1, sm: 4 } }}>
 					{children}
 
 					{/* -------⬇️------- */}
