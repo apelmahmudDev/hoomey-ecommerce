@@ -49,6 +49,10 @@ export const useStyles = makeStyles((theme) => ({
 			height: "65%",
 			borderLeft: "2px solid #E3E3E3",
 			left: 35,
+
+			[theme.breakpoints.down("sm")]: {
+				borderLeft: "none",
+			},
 		},
 		"&::after": {
 			content: "''",
@@ -56,6 +60,10 @@ export const useStyles = makeStyles((theme) => ({
 			height: "65%",
 			borderRight: "2px solid #E3E3E3",
 			right: -35,
+
+			[theme.breakpoints.down("md")]: {
+				borderRight: "none",
+			},
 		},
 	},
 

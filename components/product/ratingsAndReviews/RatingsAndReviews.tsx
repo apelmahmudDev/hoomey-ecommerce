@@ -80,7 +80,11 @@ const RatingsAndReviews = () => {
 		<SectionBox>
 			<Container>
 				<Heading text="Ratings & Reviews" variant="h6" textAlign="center" mb={5} />
-				<Grid container spacing={10}>
+				<Grid
+					// sx={{ width: "100%" }}
+					container
+					spacing={10}
+				>
 					<Grid item xs={12} sm={6} md={4} sx={{ position: "relative" }}>
 						<Box
 							// className={ownCSS.ratingBox}
