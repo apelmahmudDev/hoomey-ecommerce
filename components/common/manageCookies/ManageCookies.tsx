@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { FC, useState } from "react";
-import CookiePopup from "../CookiePopup";
+import CookiePopup from "./CookiePopup";
 
 const ManageCookies: FC = () => {
 	const [isCookieOpen, setIsCookieOpen] = useState(false);

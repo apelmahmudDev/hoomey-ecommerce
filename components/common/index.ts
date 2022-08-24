@@ -16,7 +16,6 @@ export { default as PageLoading } from "./PageLoading";
 export { default as TrackOrder } from "./TrackOrder";
 export { default as ProductCard } from "./ProductCard";
 export { default as SeachFilter } from "./SeachFilter";
-export { default as CookiePopup } from "./CookiePopup";
 export { default as ColorPalette } from "./ColorPalette";
 export { default as CollectionsGrid } from "./CollectionsGrid";
 export { default as FilterDropdwon } from "./FilterDropdwon";

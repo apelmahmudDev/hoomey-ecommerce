@@ -16,7 +16,7 @@ const AppSwitch = styled((props: SwitchProps) => (
 			transform: "translateX(28px)",
 			color: "#fff",
 			"& + .MuiSwitch-track": {
-				backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
+				backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#E2BC82",
 				opacity: 1,
 				border: 0,
 			},

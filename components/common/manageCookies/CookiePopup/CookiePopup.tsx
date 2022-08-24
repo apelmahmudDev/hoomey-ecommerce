@@ -2,9 +2,9 @@ import { Box, Button, Divider, Typography, DialogActions } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { COLORS } from "../../../theme/colors";
-import { AppSwitch, Link } from "../../ui";
-import { ROUTING_TREE } from "../../../constants/siteUrls";
+import { COLORS } from "../../../../theme/colors";
+import { AppSwitch, Link } from "../../../ui";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
