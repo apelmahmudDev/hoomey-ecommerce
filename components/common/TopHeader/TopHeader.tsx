@@ -44,21 +44,15 @@ const TopHeader = () => {
 			}}
 		>
 			<Swiper navigation={true} modules={[Navigation]} className={classes.mySwiper}>
-				<SwiperSlide>
-					<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: 10, letterSpacing: "0.22em" }}>
-						USE CODE FIRST10 FOR 10% OFF YOUR FIRST ORDER
-					</Typography>
-				</SwiperSlide>
-				<SwiperSlide>
-					<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: 10, letterSpacing: "0.22em" }}>
-						USE CODE FIRST10 FOR 10% OFF YOUR FIRST ORDER
-					</Typography>
-				</SwiperSlide>
-				<SwiperSlide>
-					<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: 10, letterSpacing: "0.22em" }}>
-						USE CODE FIRST10 FOR 10% OFF YOUR FIRST ORDER
-					</Typography>
-				</SwiperSlide>
+				{[...Array(3)].map((item, idx) => (
+					<SwiperSlide key={idx}>
+						<Box sx={{ width: { xs: 290, sm: "100%" }, mx: "auto" }}>
+							<Typography sx={{ fontFamily: "Euclid Circular A", fontSize: 10, letterSpacing: "0.22em" }}>
+								USE CODE FIRST10 FOR 10% OFF YOUR FIRST ORDER
+							</Typography>
+						</Box>
+					</SwiperSlide>
+				))}
 			</Swiper>
 		</Box>
 	);
