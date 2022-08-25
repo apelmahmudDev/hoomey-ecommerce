@@ -2,6 +2,7 @@ import { TableHead, TableRow, TableCell, TableSortLabel, Box } from "@mui/materi
 import { visuallyHidden } from "@mui/utils";
 import { Align } from "../../../../../../types/align";
 import { Order } from "../../../../../../types/order";
+import { UnfoldMoreIcon } from "../../../../../../uiElements/icons";
 import { Data } from "../OrdersTable";
 
 interface TableHeaderProps {
@@ -101,6 +102,7 @@ const TableHeader = (props: TableHeaderProps) => {
 							active={orderBy === headCell.id}
 							direction={orderBy === headCell.id ? order : "asc"}
 							onClick={createSortHandler(headCell.id)}
+							IconComponent={UnfoldMoreIcon}
 						>
 							{headCell.label}
 							{orderBy === headCell.id ? (

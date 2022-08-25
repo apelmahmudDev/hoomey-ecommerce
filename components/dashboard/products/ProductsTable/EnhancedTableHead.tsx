@@ -1,7 +1,7 @@
-import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import { Box, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { Order } from "../../../../types/order";
+import { UnfoldMoreIcon } from "../../../../uiElements/icons";
 import { Data } from "./ProductTable";
 
 interface EnhancedTableProps {

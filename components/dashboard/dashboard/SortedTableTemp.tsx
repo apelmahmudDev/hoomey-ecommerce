@@ -15,6 +15,7 @@ import { visuallyHidden } from "@mui/utils";
 import { useState } from "react";
 import { StatusText, StyledButton, StyledCard } from "../components/styledComponents";
 import { CardContent } from "@mui/material";
+import { UnfoldMoreIcon } from "../../../uiElements/icons";
 
 interface Data {
 	customer: string;
@@ -144,6 +145,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 							active={orderBy === headCell.id}
 							direction={orderBy === headCell.id ? order : "asc"}
 							onClick={createSortHandler(headCell.id)}
+							IconComponent={UnfoldMoreIcon}
 						>
 							{headCell.label}
 							{orderBy === headCell.id ? (
