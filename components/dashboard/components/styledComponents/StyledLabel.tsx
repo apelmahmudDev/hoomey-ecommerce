@@ -2,7 +2,7 @@ import { InputLabel, InputLabelProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 interface StyledInputLabelProps extends InputLabelProps {
-	fw: string | number;
+	fw?: string | number;
 }
 
 const StyledLabel = styled(InputLabel)<StyledInputLabelProps>(({ theme, fw }) => ({

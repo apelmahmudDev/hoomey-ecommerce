@@ -4,16 +4,17 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { CardContent, MenuItem, SelectChangeEvent } from "@mui/material";
-import { StyledCard, StyledSelect } from "../../../components/styledComponents";
+import { CardContent, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { StatusFormContorl, StyledCard } from "../../../components/styledComponents";
+import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
+import { ITabChange } from "../../../../../types/tab-change";
+import { TableCustomPagination } from "../../../../ui";
+import { Order } from "../../../../../types/order";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
-import { Order } from "../../../../../types/order";
-import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
-import { TableCustomPagination } from "../../../../ui";
-import { ITabChange } from "../../../../../types/tab-change";
 import { CUSTOMER_TABS } from "../..";
+import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
 
 export interface Data {
 	customer: string;
@@ -106,18 +107,19 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 													</span>
 												</TableCell>
 												<TableCell align="center">
-													<StyledSelect
-														// IconComponent={KeyboardArrowDownIcon}
-														status={status}
-														size="small"
-														labelId="demo-simple-select-label"
-														id="demo-simple-select"
-														value={status}
-														onChange={handleStatusChange}
-													>
-														<MenuItem value="Active">Active</MenuItem>
-														<MenuItem value="Inactive">Inactive</MenuItem>
-													</StyledSelect>
+													<StatusFormContorl status={row.status}>
+														<Select
+															size="small"
+															value={status}
+															id="demo-simple-select"
+															onChange={handleStatusChange}
+															labelId="demo-simple-select-label"
+															IconComponent={KeyboardArrowDownIcon}
+														>
+															<MenuItem value="Active">Active</MenuItem>
+															<MenuItem value="Inactive">Inactive</MenuItem>
+														</Select>
+													</StatusFormContorl>
 												</TableCell>
 												<TableCell align="center">{row.location}</TableCell>
 												<TableCell align="center">{row.orders} Orders</TableCell>
