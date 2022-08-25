@@ -1,9 +1,9 @@
 import { Typography, Box } from "@mui/material";
+import { CUSTOMER_TABS } from "..";
 import React from "react";
 import CustomersTable from "./CustomersTable";
 import { RoundButton } from "../../../styledComponents";
 import { ITabChange } from "../../../../types/tab-change";
-import { CUSTOMER_TABS } from "..";
 
 const Customers = ({ handleTabChange }: ITabChange) => {
 	return (
