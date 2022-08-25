@@ -18,7 +18,14 @@ const UserProfile = () => {
 						}}
 					>
 						<Box sx={{ minHeight: { xs: 50, sm: 100 }, minWidth: { xs: 50, sm: 100 } }}>
-							<AppAvatar src={IMAGES.AvatarImg} alt="avatar" objectFit="cover" height={100} width={100} />
+							<AppAvatar
+								src={IMAGES.AvatarImg}
+								alt="avatar"
+								objectFit="cover"
+								height={100}
+								width={100}
+								placeholder="blur"
+							/>
 						</Box>
 
 						<div>
