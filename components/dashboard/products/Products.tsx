@@ -12,6 +12,7 @@ import Pricing from "./AddProduct/Pricing";
 import ProductOrganization from "./AddProduct/ProdctOrganization";
 import ProductStatus from "./AddProduct/ProductStatus";
 import SEO from "./AddProduct/SEO";
+import Shipping from "./AddProduct/Shipping";
 import ShippingPrice from "./AddProduct/ShippingPrice";
 import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
@@ -103,6 +104,9 @@ const Products = () => {
 									</Grid>
 									<Grid item xs={12}>
 										<Options />
+									</Grid>
+									<Grid item xs={12}>
+										<Shipping />
 									</Grid>
 									<Grid item xs={12}>
 										<OptionsCheckBox />

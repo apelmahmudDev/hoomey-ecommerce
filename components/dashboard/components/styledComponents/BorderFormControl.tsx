@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 const BorderFormControl = styled(FormControl)(({ theme }) => ({
 	"& .MuiOutlinedInput-root": {
 		borderRadius: 5,
+		height: 30,
 		backgroundColor: "#ECECEC",
 		boxShadow: "0px 0px 5px rgba(40, 86, 120, 0.1)",
 		borderWidth: 3,
