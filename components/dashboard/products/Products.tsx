@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
+import Inventory from "./AddProduct/Inventory";
 import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
@@ -96,6 +97,9 @@ const Products = () => {
 								<Grid container spacing={2.5}>
 									<Grid item xs={12}>
 										<Pricing />
+									</Grid>
+									<Grid item xs={12}>
+										<Inventory />
 									</Grid>
 									<Grid item xs={12}>
 										<Options />

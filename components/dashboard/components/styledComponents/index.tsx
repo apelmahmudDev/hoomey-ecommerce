@@ -1,9 +1,10 @@
+export { default as BorderFormControl } from "./BorderFormControl";
+export { default as SmallFormControl } from "./SmallFormControl";
 export { default as SmallInput } from "./SmallInput";
-export { default as StatusText } from "./StatusText";
-export { default as StyledCard } from "./StyledCard";
 export { default as StatusChip } from "./StatusChip";
+export { default as StatusText } from "./StatusText";
 export { default as StyledButton } from "./StyledButton";
+export { default as StyledCard } from "./StyledCard";
+export { default as StyledFormControl } from "./StyledFormControl";
 export { default as StyledTextField } from "./StyledTextField";
 export { default as VariantListItem } from "./VariantListItem";
-export { default as SmallFormControl } from "./SmallFormControl";
-export { default as StyledFormControl } from "./StyledFormControl";
