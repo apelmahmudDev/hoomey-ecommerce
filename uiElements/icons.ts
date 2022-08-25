@@ -19,8 +19,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export {
+	KeyboardArrowDownIcon,
 	UnfoldMoreIcon,
 	KeyboardArrowRightIcon,
 	ArrowBackIcon,

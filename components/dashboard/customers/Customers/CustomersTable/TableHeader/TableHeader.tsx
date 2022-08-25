@@ -20,64 +20,34 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
 	{
-		id: "orderNo",
+		id: "customer",
 		align: "left",
 		disablePadding: true,
-		label: "Order No.",
-	},
-	{
-		id: "date",
-		align: "center",
-		disablePadding: false,
-		label: "Date",
-	},
-	{
-		id: "time",
-		align: "center",
-		disablePadding: false,
-		label: "Time",
-	},
-	{
-		id: "customer",
-		align: "center",
-		disablePadding: false,
 		label: "Customer",
 	},
 	{
-		id: "total",
-		align: "right",
-		disablePadding: false,
-		label: "Total",
-	},
-	{
-		id: "paymentStatus",
+		id: "status",
 		align: "center",
 		disablePadding: false,
-		label: "Payment Status",
+		label: "Status",
 	},
 	{
-		id: "fulfillmentStatus",
+		id: "location",
 		align: "center",
 		disablePadding: false,
-		label: "fulfillment Status",
+		label: "Location",
 	},
 	{
-		id: "items",
-		align: "right",
-		disablePadding: false,
-		label: "Items",
-	},
-	{
-		id: "deliveryMethod",
+		id: "orders",
 		align: "center",
 		disablePadding: false,
-		label: "Delivery Method",
+		label: "Orders",
 	},
 	{
-		id: "tags",
+		id: "spent",
 		align: "right",
 		disablePadding: false,
-		label: "Tags",
+		label: "Spent",
 	},
 ];
 

@@ -4,8 +4,8 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { CardContent, SelectChangeEvent } from "@mui/material";
-import { StatusChip, StyledCard } from "../../../components/styledComponents";
+import { CardContent, MenuItem, SelectChangeEvent } from "@mui/material";
+import { StyledCard, StyledSelect } from "../../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
@@ -14,75 +14,47 @@ import { getComparator, stableSort } from "../../../../../utils/helper/table-sor
 import { TableCustomPagination } from "../../../../ui";
 import { ITabChange } from "../../../../../types/tab-change";
 import { CUSTOMER_TABS } from "../..";
+import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
 
 export interface Data {
-	orderNo: number;
-	date: string | number;
-	time: string;
 	customer: string;
-	total: number;
-	paymentStatus: string;
-	fulfillmentStatus: string;
-	items: number;
-	deliveryMethod: string;
-	tags: string;
+	status: string;
+	location: string;
+	orders: number;
+	spent: number;
 }
 
-function createData(
-	orderNo: number,
-	date: string | number,
-	time: string,
-	customer: string,
-	total: number,
-	paymentStatus: string,
-	fulfillmentStatus: string,
-	items: number,
-	deliveryMethod: string,
-	tags: string,
-): Data {
+function createData(customer: string, status: string, location: string, orders: number, spent: number): Data {
 	return {
-		orderNo,
-		date,
-		time,
 		customer,
-		total,
-		paymentStatus,
-		fulfillmentStatus,
-		items,
-		deliveryMethod,
-		tags,
+		status,
+		location,
+		orders,
+		spent,
 	};
 }
 
 const rows = [
-	createData(12345, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12346, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12347, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12348, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12349, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12340, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12341, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(12342, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
-	createData(
-		67890,
-		"22-May-2022",
-		"12:15 pm",
-		"Mariah Betts",
-		1000,
-		"UnPaid",
-		"UnFulfilled",
-		2,
-		"Shipping",
-		"Clothes",
-	),
-	createData(12343, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
+	createData("John Doe", "Active", "Oxford WI, United States", 1, 1000),
+	createData("Mariah Betts", "Inactive", "United States", 0, 500),
+	createData("John Doe", "Active", "Oxford WI, United States", 1, 1000),
+	createData("Mariah Betts", "Inactive", "United States", 0, 500),
+	createData("John Doe", "Active", "Oxford WI, United States", 1, 1000),
+	createData("Mariah Betts", "Inactive", "United States", 0, 500),
+	createData("John Doe", "Active", "Oxford WI, United States", 1, 1000),
+	createData("Mariah Betts", "Inactive", "United States", 0, 500),
 ];
 
 const CustomersTable = ({ handleTabChange }: ITabChange) => {
-	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
+	const [orderBy, setOrderBy] = useState<keyof Data>("customer");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
+	const [status, setStatus] = useState("Active");
 	const [page, setPage] = useState(0);
+
+	const handleStatusChange = (event: SelectChangeEvent<unknown>) => {
+		setStatus(event.target.value as string);
+	};
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -113,7 +85,7 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 			<StyledCard sx={{ width: "100%" }}>
 				<CardContent>
 					<TableContainer>
-						<Table sx={{ minWidth: 1300 }} aria-labelledby="tableTitle" size="medium">
+						<Table sx={{ minWidth: 650 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
 							<TableBody>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -124,33 +96,33 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={row.orderNo}>
+											<TableRow hover tabIndex={-1} key={index}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
 													<span
 														onClick={() => handleTabChange(CUSTOMER_TABS.CUSTOMER_DETAILS)}
 														style={{ cursor: "pointer" }}
 													>
-														{row.orderNo}
+														{row.customer}
 													</span>
 												</TableCell>
-												<TableCell align="center">{row.date}</TableCell>
-												<TableCell align="center">{row.time}</TableCell>
-												<TableCell align="center">{row.customer}</TableCell>
-												<TableCell align="right">${row.total}</TableCell>
 												<TableCell align="center">
-													<StatusChip status={row.paymentStatus}>
-														{row.paymentStatus}
-													</StatusChip>
+													<StyledSelect
+														// IconComponent={KeyboardArrowDownIcon}
+														status={status}
+														size="small"
+														labelId="demo-simple-select-label"
+														id="demo-simple-select"
+														value={status}
+														onChange={handleStatusChange}
+													>
+														<MenuItem value="Active">Active</MenuItem>
+														<MenuItem value="Inactive">Inactive</MenuItem>
+													</StyledSelect>
 												</TableCell>
-												<TableCell align="center">
-													<StatusChip status={row.fulfillmentStatus}>
-														{row.fulfillmentStatus}
-													</StatusChip>
-												</TableCell>
-												<TableCell align="right">{row.items}</TableCell>
-												<TableCell align="center">{row.deliveryMethod}</TableCell>
-												<TableCell align="right">{row.tags}</TableCell>
+												<TableCell align="center">{row.location}</TableCell>
+												<TableCell align="center">{row.orders} Orders</TableCell>
+												<TableCell align="right">${row.spent}</TableCell>
 											</TableRow>
 										);
 									})}
