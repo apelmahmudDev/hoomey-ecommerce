@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
 import { CUSTOMER_TABS } from "..";
 import { BackIconButton } from "../../../ui";
 import { ITabChange } from "../../../../types/tab-change";
@@ -44,6 +44,18 @@ const AddCustomer = ({ handleTabChange }: ITabChange) => {
 				<Box my={2.5} component="section">
 					<Tags />
 				</Box>
+
+				{/* submit or cancel button */}
+				<Container maxWidth="sm">
+					<Box sx={{ display: "flex", gap: 2.5, mt: 5 }}>
+						<Button fullWidth variant="outlined" color="secondary">
+							Cancle
+						</Button>
+						<Button fullWidth type="submit" variant="contained" color="secondary">
+							Add
+						</Button>
+					</Box>
+				</Container>
 			</Box>
 		</Box>
 	);
