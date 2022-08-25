@@ -5,3 +5,5 @@ export { default as PeopleIcon } from "./PeopleIcon";
 export { default as ArrowUpIcon } from "./ArrowUpIcon";
 export { default as ExportIcon } from "./ExportIcon";
 export { default as NoteIcon } from "./NoteIcon";
+export { default as SmileIcon } from "./SmileIcon";
+export { default as AttachmentIcon } from "./AttachmentIcon";

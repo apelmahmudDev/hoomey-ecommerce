@@ -20,6 +20,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import AttachmentIcon from "@mui/icons-material/Attachment";
 
 export {
 	KeyboardArrowDownIcon,
@@ -44,4 +45,5 @@ export {
 	CloseIcon,
 	AddIcon,
 	ThumbUpIcon,
+	AttachmentIcon,
 };
