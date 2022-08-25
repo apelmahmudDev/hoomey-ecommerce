@@ -1,3 +1,4 @@
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import { Box, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { Order } from "../../../../types/order";
@@ -22,11 +23,11 @@ const headCells: readonly HeadCell[] = [
 		id: "product",
 		align: "left",
 		label: "Product",
-		disablePadding: true,
+		disablePadding: false,
 	},
 	{
 		id: "status",
-		align: "center",
+		align: "left",
 		label: "Status",
 		disablePadding: false,
 	},
@@ -77,6 +78,7 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 							active={orderBy === headCell.id}
 							direction={orderBy === headCell.id ? order : "asc"}
 							onClick={createSortHandler(headCell.id)}
+							IconComponent={UnfoldMoreIcon}
 						>
 							{headCell.label}
 							{orderBy === headCell.id ? (

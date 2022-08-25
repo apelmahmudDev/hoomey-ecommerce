@@ -1,8 +1,19 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import Category from "./AddProduct/Category";
+import MetaFields from "./AddProduct/MetaFields";
+import Options from "./AddProduct/Options";
+import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
+import Pricing from "./AddProduct/Pricing";
+import ProductOrganization from "./AddProduct/ProdctOrganization";
+import ProductStatus from "./AddProduct/ProductStatus";
+import SEO from "./AddProduct/SEO";
+import ShippingPrice from "./AddProduct/ShippingPrice";
+import SizeChart from "./AddProduct/SizeChart";
+import Taxes from "./AddProduct/Taxes";
 import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
 
@@ -80,6 +91,73 @@ const Products = () => {
 								Import Product by CSV
 							</RoundButton>
 						</Box>
+						<Grid container spacing={2.5}>
+							<Grid item xs={12} md={7}>
+								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<Pricing />
+									</Grid>
+									<Grid item xs={12}>
+										<Options />
+									</Grid>
+									<Grid item xs={12}>
+										<OptionsCheckBox />
+									</Grid>
+									<Grid item xs={12}>
+										<SEO />
+									</Grid>
+									<Grid item xs={12}>
+										<MetaFields />
+									</Grid>
+									<Grid item xs={12} mt={5}>
+										<Container maxWidth="sm">
+											<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+												<Button
+													sx={{ borderRadius: "5px" }}
+													size="large"
+													fullWidth
+													variant="outlined"
+													color="secondary"
+												>
+													Cancel
+												</Button>
+												<Button
+													sx={{ borderRadius: "5px" }}
+													size="large"
+													fullWidth
+													variant="contained"
+													color="secondary"
+												>
+													Add
+												</Button>
+											</Box>
+										</Container>
+									</Grid>
+								</Grid>
+							</Grid>
+							<Grid item container xs={12} md={5}>
+								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<ProductStatus />
+									</Grid>
+									<Grid item xs={12}>
+										<Category />
+									</Grid>
+									<Grid item xs={12}>
+										<ProductOrganization />
+									</Grid>
+									<Grid item xs={12}>
+										<SizeChart />
+									</Grid>
+									<Grid item xs={12}>
+										<ShippingPrice />
+									</Grid>
+									<Grid item xs={12}>
+										<Taxes />
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
 					</Box>
 				</>
 			)}

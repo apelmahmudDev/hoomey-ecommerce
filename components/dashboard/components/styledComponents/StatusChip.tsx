@@ -18,6 +18,8 @@ const StatusChip = styled(Typography)(
 				  status === "Not Recovered" ||
 				  status === "Inactive"
 				? "#FF0303"
+				: status === "Draft"
+				? "#676767"
 				: "#F97904",
 
 		background:
