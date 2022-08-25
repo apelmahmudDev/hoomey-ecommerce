@@ -13,13 +13,13 @@ const TableToolbar = () => {
 				<Grid item xs={12} sm={9}>
 					<Grid container spacing={1.25}>
 						<Grid item xs={12} md={4}>
-							<StyledTextField size="small" fullWidth placeholder="Search by Order No." />
-						</Grid>
-						<Grid item xs={12} md={4}>
 							<StyledTextField size="small" fullWidth placeholder="Search by Customer" />
 						</Grid>
 						<Grid item xs={12} md={4}>
-							<StyledTextField size="small" fullWidth placeholder="Search by Tags" />
+							<StyledTextField size="small" fullWidth placeholder="Search by Location" />
+						</Grid>
+						<Grid item xs={12} md={4}>
+							<StyledTextField size="small" fullWidth placeholder="Search by Orders" />
 						</Grid>
 					</Grid>
 				</Grid>
