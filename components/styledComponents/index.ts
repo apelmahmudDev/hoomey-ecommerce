@@ -22,3 +22,4 @@ export { default as StatusText } from "./StatusText";
 export { default as StyledInputBase } from "./StyledInputBase";
 export { default as Text } from "./Text";
 export { default as ViewMoreButton } from "./ViewMoreButton";
+export { default as DashboardDivider } from "./DashboardDivider";

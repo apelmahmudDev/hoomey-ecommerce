@@ -13,7 +13,11 @@ const StatusText = styled(Typography)(
 			status === "Paid" ||
 			status === "Fulfilled"
 				? "#04AF00"
-				: status === "Out of Stock" || status === "Unverified" || status === "Pending" || status === "Inactive"
+				: status === "Out of Stock" ||
+				  status === "Unverified" ||
+				  status === "Pending" ||
+				  status === "Inactive" ||
+				  status === "Unfulfilled"
 				? "#FF0303"
 				: "#F97904",
 	}),
