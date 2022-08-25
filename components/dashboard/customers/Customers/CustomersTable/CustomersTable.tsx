@@ -14,7 +14,6 @@ import { getComparator, stableSort } from "../../../../../utils/helper/table-sor
 import { TableCustomPagination } from "../../../../ui";
 import { ITabChange } from "../../../../../types/tab-change";
 import { CUSTOMER_TABS } from "../..";
-import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
 
 export interface Data {
 	customer: string;
