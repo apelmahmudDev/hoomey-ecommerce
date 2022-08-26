@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
 import Inventory from "./AddProduct/Inventory";
+import LongDescription from "./AddProduct/LongDescription";
 import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
@@ -14,6 +15,7 @@ import ProductStatus from "./AddProduct/ProductStatus";
 import SEO from "./AddProduct/SEO";
 import Shipping from "./AddProduct/Shipping";
 import ShippingPrice from "./AddProduct/ShippingPrice";
+import ShortDescription from "./AddProduct/ShortDescription";
 import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
 import Variants from "./AddProduct/Variants";
@@ -97,6 +99,12 @@ const Products = () => {
 						<Grid container spacing={2.5}>
 							<Grid item xs={12} md={7}>
 								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<ShortDescription />
+									</Grid>
+									<Grid item xs={12}>
+										<LongDescription />
+									</Grid>
 									<Grid item xs={12}>
 										<Pricing />
 									</Grid>

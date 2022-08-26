@@ -37,6 +37,7 @@
 		"@mui/styles": "^5.8.4",
 		"@mui/system": "^5.8.7",
 		"@reduxjs/toolkit": "^1.8.3",
+		"@tinymce/tinymce-react": "^4.2.0",
 		"clsx": "^1.1.1",
 		"jsondiffpatch": "^0.4.1",
 		"next": "^12.1.6",
