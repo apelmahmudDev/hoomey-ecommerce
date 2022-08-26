@@ -9,7 +9,7 @@ import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
 import Pricing from "./AddProduct/Pricing";
-import ProductOrganization from "./AddProduct/ProdctOrganization";
+import ProductOrganization from "./AddProduct/ProductOrganization";
 import ProductStatus from "./AddProduct/ProductStatus";
 import SEO from "./AddProduct/SEO";
 import Shipping from "./AddProduct/Shipping";

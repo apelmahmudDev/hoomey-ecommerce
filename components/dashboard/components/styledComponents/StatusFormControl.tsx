@@ -7,7 +7,7 @@ interface StyledFormControlProps extends FormControlProps {
 	status: string;
 }
 
-const StatusFormContorl = styled(FormControl)<StyledFormControlProps>(({ theme, fw, fs, status }) => ({
+const StatusFormControl = styled(FormControl)<StyledFormControlProps>(({ theme, fw, fs, status }) => ({
 	"& .MuiOutlinedInput-root, &.MuiInputBase-root": {
 		boxShadow: "0px 0px 5px rgba(40, 86, 120, 0.1)",
 		borderRadius: 5,
@@ -25,4 +25,4 @@ const StatusFormContorl = styled(FormControl)<StyledFormControlProps>(({ theme, 
 	},
 }));
 
-export default StatusFormContorl;
+export default StatusFormControl;

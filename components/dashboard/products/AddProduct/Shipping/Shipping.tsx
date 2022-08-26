@@ -15,7 +15,7 @@ import { useStyles } from "./styled";
 const Shipping = () => {
 	const [isPhysicalProductChecked, setIsPhysicalProductChecked] = useState(true);
 	const [filter, setFilter] = useState("10");
-	const [regionFilter, setRegionFilter] = useState("10");
+	const [, setRegionFilter] = useState("10");
 
 	const classes = useStyles();
 	const handleFilter = (event: SelectChangeEvent) => {
@@ -90,14 +90,14 @@ const Shipping = () => {
 							value={filter}
 							onChange={handleRegionFilter}
 						>
-							<MenuItem value={10}>Select Contry/region</MenuItem>
+							<MenuItem value={10}>Select Country/region</MenuItem>
 							<MenuItem value={20}>USA</MenuItem>
 						</Select>
 					</BorderFormControl>
 				</Box>
 
 				<Typography sx={{ color: "#8B8B8B", fontWeight: "400", fontSize: "14px", mt: 1.25 }} fontWeight="light">
-					In most cases, where the product is mnufactured.
+					In most cases, where the product is manufactured.
 				</Typography>
 				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="bold">
 					Harmonized System code

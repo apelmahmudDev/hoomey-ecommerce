@@ -30,7 +30,7 @@ const UserProfile = () => {
 
 						<div>
 							<Typography gutterBottom fontWeight="600">
-								Jhon Doe
+								John Doe
 							</Typography>
 							<Typography fontWeight="medium" variant="body2" color="text.secondary">
 								johndoe@abc.com

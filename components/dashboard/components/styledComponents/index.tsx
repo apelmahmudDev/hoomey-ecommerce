@@ -9,6 +9,6 @@ export { default as StyledCard } from "./StyledCard";
 export { default as StyledTextField } from "./StyledTextField";
 export { default as VariantListItem } from "./VariantListItem";
 export { default as SmallFormControl } from "./SmallFormControl";
-export { default as StatusFormContorl } from "./StatusFormContorl";
+export { default as StatusFormControl } from "./StatusFormControl";
 export { default as StyledFormControl } from "./StyledFormControl";
 export { default as SelectFormControl } from "./SelectFormControl";

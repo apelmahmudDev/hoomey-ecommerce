@@ -1,32 +1,16 @@
-import {
-	Box,
-	Button,
-	CardContent,
-	Checkbox,
-	Divider,
-	FormControlLabel,
-	SelectChangeEvent,
-	Stack,
-	Typography,
-} from "@mui/material";
+import { Box, Button, CardContent, Checkbox, Divider, FormControlLabel, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import { IMAGES } from "../../../../../uiElements";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
-import { useStyles } from "../styled";
 
 const Variants = () => {
-	const [filter, setFilter] = useState("10");
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	// handle track quantity check
 	const handleTrackCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setIsTrackChecked(event.target.checked);
 	};
 
-	const classes = useStyles();
-	const handleFilter = (event: SelectChangeEvent) => {
-		setFilter(event.target.value as string);
-	};
 	return (
 		<StyledCard>
 			<CardContent>
