@@ -4,8 +4,8 @@ import { CartText } from "../../styledComponents";
 import {
 	ArrowDownIcon,
 	ArrowUpIcon,
-	BarIndecatorIcon,
-	DollerCartIcon,
+	BarIndicatorIcon,
+	DollarCartIcon,
 	NoteIcon,
 	PeopleIcon,
 } from "../components/icons";
@@ -34,7 +34,7 @@ const historyItems = [
 		color: "#FF0303",
 	},
 	{
-		largeIcon: <BarIndecatorIcon fontSize="large" />,
+		largeIcon: <BarIndicatorIcon fontSize="large" />,
 		samallIcon: <ArrowUpIcon />,
 		title: "$2500",
 		dec: "Revenue",
@@ -42,7 +42,7 @@ const historyItems = [
 		color: "#04AF00",
 	},
 	{
-		largeIcon: <DollerCartIcon fontSize="large" />,
+		largeIcon: <DollarCartIcon fontSize="large" />,
 		samallIcon: <ArrowDownIcon />,
 		title: "$7",
 		dec: "AVG Order Value",

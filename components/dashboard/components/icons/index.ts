@@ -1,5 +1,5 @@
-export { default as BarIndecatorIcon } from "./BarIndecatorIcon";
-export { default as DollerCartIcon } from "./DollerCartIcon";
+export { default as BarIndicatorIcon } from "./BarIndicatorIcon";
+export { default as DollarCartIcon } from "./DollarCartIcon";
 export { default as ArrowDownIcon } from "./ArrowDownIcon";
 export { default as PeopleIcon } from "./PeopleIcon";
 export { default as ArrowUpIcon } from "./ArrowUpIcon";

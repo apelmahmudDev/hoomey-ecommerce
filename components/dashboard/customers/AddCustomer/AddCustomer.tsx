@@ -49,7 +49,7 @@ const AddCustomer = ({ handleTabChange }: ITabChange) => {
 				<Container maxWidth="sm">
 					<Box sx={{ display: "flex", gap: 2.5, mt: 5 }}>
 						<Button fullWidth variant="outlined" color="secondary">
-							Cancle
+							Cancel
 						</Button>
 						<Button fullWidth type="submit" variant="contained" color="secondary">
 							Add

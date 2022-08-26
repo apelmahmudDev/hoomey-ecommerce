@@ -3,7 +3,7 @@ import { ORDER_TABS } from "..";
 import { ITabChange } from "../../../../types/tab-change";
 
 import { CartText, RoundButton } from "../../../styledComponents";
-import { ArrowDownIcon, ArrowUpIcon, BarIndecatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
+import { ArrowDownIcon, ArrowUpIcon, BarIndicatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
 import { StyledCard } from "../../components/styledComponents";
 import OrdersTable from "./OrdersTable";
 
@@ -25,7 +25,7 @@ const historyItems = [
 		color: "#FF0303",
 	},
 	{
-		largeIcon: <BarIndecatorIcon fontSize="large" />,
+		largeIcon: <BarIndicatorIcon fontSize="large" />,
 		samallIcon: <ArrowUpIcon />,
 		title: 153,
 		dec: "Delivered Orders",

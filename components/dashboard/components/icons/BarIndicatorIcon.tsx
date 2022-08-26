@@ -1,6 +1,6 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-const BarIndecatorIcon = (props: SvgIconProps) => {
+const BarIndicatorIcon = (props: SvgIconProps) => {
 	return (
 		<SvgIcon {...props}>
 			<svg viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,4 +42,4 @@ const BarIndecatorIcon = (props: SvgIconProps) => {
 		</SvgIcon>
 	);
 };
-export default BarIndecatorIcon;
+export default BarIndicatorIcon;
