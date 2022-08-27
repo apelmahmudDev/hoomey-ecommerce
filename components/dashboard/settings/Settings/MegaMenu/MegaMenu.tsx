@@ -1,16 +1,20 @@
-import { CardContent, Typography, Box } from "@mui/material";
+import { CardContent, Typography, Box, Button } from "@mui/material";
 import { StyledCard } from "../../../components/styledComponents";
 import { styled } from "@mui/material/styles";
+import { tabSwitch } from "../../../../../store/slices/settingsSlice";
+import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
+import { useAppDispatch } from "../../../../../store/hooks";
 
 const FlexStack = styled(Box)({
 	gap: 20,
-	margin: "10px 0",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-between",
 });
 
 const MegaMenu = () => {
+	const dispatch = useAppDispatch();
+
 	return (
 		<StyledCard>
 			<CardContent>
@@ -20,21 +24,15 @@ const MegaMenu = () => {
 
 				<FlexStack>
 					<Typography variant="body2">Men</Typography>
-					<Typography variant="body2" color="primary.main" fontWeight="medium">
-						Customize
-					</Typography>
+					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
 				</FlexStack>
 				<FlexStack>
 					<Typography variant="body2">Women</Typography>
-					<Typography variant="body2" color="primary.main" fontWeight="medium">
-						Customize
-					</Typography>
+					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
 				</FlexStack>
 				<FlexStack>
 					<Typography variant="body2">Kids</Typography>
-					<Typography variant="body2" color="primary.main" fontWeight="medium">
-						Customize
-					</Typography>
+					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
 				</FlexStack>
 			</CardContent>
 		</StyledCard>
