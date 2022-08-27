@@ -5,18 +5,18 @@ import { useRef } from "react";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
 const ShortDescription = () => {
-	const editorRef = useRef(null);
+	const editorRef = useRef("test");
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Title
 				</Typography>
 
 				<Box component="form" sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>
 					<StyledTextField size="small" fullWidth required placeholder="White Sweatshirt" />
 				</Box>
-				<Typography sx={{ fontSize: 18, mt: 1.25, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mt: 1.25, mb: 1.25 }} fontWeight="medium">
 					Short Description
 				</Typography>
 
@@ -24,7 +24,7 @@ const ShortDescription = () => {
 					<>
 						<Editor
 							apiKey="x9lygirk5iz8k0f5tv17jrnabz3ckd46ewl672tyvhr87pdk"
-							onInit={(evt, editor) => (editorRef.current = editor)}
+							onInit={(evt, editor) => (editorRef.current = "test")}
 							initialValue="<p>Write description here...</p>"
 							init={{
 								height: 200,
