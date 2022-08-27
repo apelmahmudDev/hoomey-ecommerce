@@ -71,3 +71,4 @@ export { default as VisaSvg } from "./Visa";
 export { default as VisaForCartSvg } from "./VisaForCart";
 export { default as WhatsappSvg } from "./Whatsapp";
 export { default as WhiteLockSvg } from "./WhiteLock";
+export { default as CameraDarkSvg } from "./CameraDark";
