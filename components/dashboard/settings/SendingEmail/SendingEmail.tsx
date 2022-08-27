@@ -1,11 +1,20 @@
-import { Box, Grid } from "@mui/material";
+import { Box, FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { ChangeEvent, useState } from "react";
 import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
 import { useAppDispatch } from "../../../../store/hooks";
 import { tabSwitch } from "../../../../store/slices/settingsSlice";
 import { BackIconButton } from "../../../ui";
+import SelectEmailTemplate from "./SelectEmailTemplate";
+import WriteYourself from "./WriteYourself";
 
 const SendingEmail = () => {
 	const dispatch = useAppDispatch();
+
+	const [value, setValue] = useState("email_template");
+
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setValue((event.target as HTMLInputElement).value);
+	};
 
 	return (
 		<Box my={2.5}>
@@ -13,14 +22,17 @@ const SendingEmail = () => {
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">
-				<Grid container spacing={2.5}>
-					{/* menu */}
-					<Grid item xs={12} md={4} />
-
-					{/* add item */}
-					<Grid item xs={12} md={8} />
-				</Grid>
+				<FormControl>
+					<RadioGroup name="controlled-radio-buttons-group" value={value} onChange={handleChange}>
+						<FormControlLabel value="email_template" control={<Radio />} label="Select Email templates" />
+						<FormControlLabel value="write_yourself" control={<Radio />} label="Write yourself" />
+					</RadioGroup>
+				</FormControl>
 			</Box>
+
+			{/* switch email process system */}
+			{value === "email_template" && <SelectEmailTemplate />}
+			{value === "write_yourself" && <WriteYourself />}
 		</Box>
 	);
 };

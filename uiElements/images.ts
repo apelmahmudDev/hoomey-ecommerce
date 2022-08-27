@@ -140,7 +140,11 @@ import AboutBanner from "../assets/images/young-handsome.png";
 // login
 import CampaignImg from "../assets/images/svg/ecommerce-campaign.svg";
 
+// dashboard
+import OrderPlacedEmailImg from "../assets/images/order-placed-email.png";
+
 export const IMAGES = {
+	OrderPlacedEmailImg,
 	ProductTwoImg,
 	ProductOneImg,
 	HomeHero1lImg,
