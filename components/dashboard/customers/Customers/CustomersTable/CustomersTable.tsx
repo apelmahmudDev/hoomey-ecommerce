@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { CardContent, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { StatusFormContorl, StyledCard } from "../../../components/styledComponents";
+import { StatusFormControl, StyledCard } from "../../../components/styledComponents";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { ITabChange } from "../../../../../types/tab-change";
 import { TableCustomPagination } from "../../../../ui";
@@ -107,7 +107,7 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 													</span>
 												</TableCell>
 												<TableCell align="center">
-													<StatusFormContorl status={row.status}>
+													<StatusFormControl status={row.status}>
 														<Select
 															size="small"
 															value={status}
@@ -119,7 +119,7 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 															<MenuItem value="Active">Active</MenuItem>
 															<MenuItem value="Inactive">Inactive</MenuItem>
 														</Select>
-													</StatusFormContorl>
+													</StatusFormControl>
 												</TableCell>
 												<TableCell align="center">{row.location}</TableCell>
 												<TableCell align="center">{row.orders} Orders</TableCell>

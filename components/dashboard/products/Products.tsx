@@ -4,16 +4,19 @@ import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
+import Inventory from "./AddProduct/Inventory";
 import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
 import Pricing from "./AddProduct/Pricing";
-import ProductOrganization from "./AddProduct/ProdctOrganization";
+import ProductOrganization from "./AddProduct/ProductOrganization";
 import ProductStatus from "./AddProduct/ProductStatus";
 import SEO from "./AddProduct/SEO";
+import Shipping from "./AddProduct/Shipping";
 import ShippingPrice from "./AddProduct/ShippingPrice";
 import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
+import Variants from "./AddProduct/Variants";
 import CategoryTable from "./CategoryTable";
 import ProductsTable from "./ProductsTable";
 
@@ -98,7 +101,16 @@ const Products = () => {
 										<Pricing />
 									</Grid>
 									<Grid item xs={12}>
+										<Inventory />
+									</Grid>
+									<Grid item xs={12}>
 										<Options />
+									</Grid>
+									<Grid item xs={12}>
+										<Variants />
+									</Grid>
+									<Grid item xs={12}>
+										<Shipping />
 									</Grid>
 									<Grid item xs={12}>
 										<OptionsCheckBox />

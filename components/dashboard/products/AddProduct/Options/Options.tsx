@@ -1,8 +1,8 @@
 import { Box, CardContent, IconButton, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
 import { useState } from "react";
 import { DeleteRedSvg } from "../../../../icons";
-import { StyledButton, StyledCard, StyledFormControl, StyledTextField } from "../../../components/styledComponents";
-import { useStyles } from "./styled";
+import { BorderFormControl, StyledButton, StyledCard, StyledTextField } from "../../../components/styledComponents";
+import { useStyles } from "../styled";
 
 const Options = () => {
 	const [filter, setFilter] = useState("10");
@@ -21,7 +21,7 @@ const Options = () => {
 					Option name
 				</Typography>
 				<Box sx={{ minWidth: "135px", height: "45px" }}>
-					<StyledFormControl fullWidth size="small" className={classes.statusSelect}>
+					<BorderFormControl fullWidth size="small" className={classes.statusSelect}>
 						<Select
 							labelId="demo-simple-select-label"
 							id="demo-simple-select"
@@ -31,7 +31,7 @@ const Options = () => {
 							<MenuItem value={10}>Color</MenuItem>
 							<MenuItem value={20}>Size</MenuItem>
 						</Select>
-					</StyledFormControl>
+					</BorderFormControl>
 				</Box>
 
 				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="bold">

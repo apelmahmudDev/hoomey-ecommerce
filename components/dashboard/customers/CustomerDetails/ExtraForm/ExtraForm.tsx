@@ -23,9 +23,9 @@ const ExtraForm = () => {
 						<Typography fontWeight="medium" gutterBottom>
 							Marketing Status
 						</Typography>
-						<FormControlLabel label="Email subcription" control={<Checkbox defaultChecked />} />
+						<FormControlLabel label="Email subscription" control={<Checkbox defaultChecked />} />
 						<br />
-						<FormControlLabel label="SMS subcription" control={<Checkbox />} />
+						<FormControlLabel label="SMS subscription" control={<Checkbox />} />
 					</CardContent>
 				</StyledCard>
 			</Box>

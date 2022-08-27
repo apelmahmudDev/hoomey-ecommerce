@@ -1,7 +1,7 @@
 import { Box, CardContent, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
 import { useState } from "react";
-import { StyledCard, StyledFormControl } from "../../../components/styledComponents";
-import { useStyles } from "./styled";
+import { BorderFormControl, StyledCard } from "../../../components/styledComponents";
+import { useStyles } from "../styled";
 
 const ProductStatus = () => {
 	const [filter, setFilter] = useState("10");
@@ -19,7 +19,7 @@ const ProductStatus = () => {
 				</Typography>
 
 				<Box sx={{ minWidth: "135px", height: "45px" }}>
-					<StyledFormControl fullWidth size="small" className={classes.statusSelect}>
+					<BorderFormControl fullWidth size="small" className={classes.statusSelect}>
 						<Select
 							labelId="demo-simple-select-label"
 							id="demo-simple-select"
@@ -29,7 +29,7 @@ const ProductStatus = () => {
 							<MenuItem value={10}>Draft</MenuItem>
 							<MenuItem value={20}>Active</MenuItem>
 						</Select>
-					</StyledFormControl>
+					</BorderFormControl>
 				</Box>
 			</CardContent>
 		</StyledCard>

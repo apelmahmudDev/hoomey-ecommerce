@@ -1,6 +1,6 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-const DollerCartIcon = (props: SvgIconProps) => {
+const DollarCartIcon = (props: SvgIconProps) => {
 	return (
 		<SvgIcon {...props}>
 			<svg viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,4 +29,4 @@ const DollerCartIcon = (props: SvgIconProps) => {
 		</SvgIcon>
 	);
 };
-export default DollerCartIcon;
+export default DollarCartIcon;
