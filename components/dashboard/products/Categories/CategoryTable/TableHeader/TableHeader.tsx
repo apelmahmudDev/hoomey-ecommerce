@@ -1,63 +1,64 @@
 import { Box, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { Order } from "../../../../types/order";
-import { UnfoldMoreIcon } from "../../../../uiElements/icons";
-import { Data } from "./ProductTable";
+import { Align } from "../../../../../../types/align";
+import { Order } from "../../../../../../types/order";
+import { UnfoldMoreIcon } from "../../../../../../uiElements/icons";
+import { Data } from "../CategoryTable";
 
-interface EnhancedTableProps {
+interface TableHeaderProps {
 	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
 	order: Order;
 	orderBy: string;
-	rowCount: number;
 }
 
 interface HeadCell {
-	disablePadding: boolean;
 	id: keyof Data;
+	disablePadding: boolean;
 	label: string;
-	align: "inherit" | "right" | "left" | "center" | "justify" | undefined;
+	align: Align;
 }
 
 const headCells: readonly HeadCell[] = [
 	{
-		id: "product",
-		align: "left",
-		label: "Product",
+		id: "category",
+		align: "center",
+		disablePadding: true,
+		label: "Category",
+	},
+	{
+		id: "date",
+		align: "center",
+		disablePadding: true,
+		label: "Date",
+	},
+	{
+		id: "subCategories",
+		align: "center",
+		disablePadding: true,
+		label: "Sub Categories",
+	},
+	{
+		id: "products",
+		align: "center",
 		disablePadding: false,
+		label: "Products",
 	},
 	{
 		id: "status",
-		align: "left",
+		align: "center",
+		disablePadding: false,
 		label: "Status",
-		disablePadding: false,
 	},
 	{
-		id: "inventory",
+		id: "action",
 		align: "center",
-		label: "Inventory",
 		disablePadding: false,
-	},
-	{
-		id: "type",
-		align: "center",
-		label: "Type",
-		disablePadding: false,
-	},
-	{
-		id: "vendor",
-		align: "center",
-		label: "Vendor",
-		disablePadding: false,
+		label: "Action",
 	},
 ];
 
-const EnhancedTableHead = (props: EnhancedTableProps) => {
-	const {
-		order,
-		orderBy,
-
-		onRequestSort,
-	} = props;
+const TableHeader = (props: TableHeaderProps) => {
+	const { order, orderBy, onRequestSort } = props;
 	const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
 		onRequestSort(event, property);
 	};
@@ -66,12 +67,11 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 		<TableHead>
 			<TableRow>
 				<TableCell padding="checkbox">#</TableCell>
-
 				{headCells.map((headCell) => (
 					<TableCell
 						key={headCell.id}
 						align={headCell.align}
-						padding={headCell.disablePadding ? "none" : "normal" || "left"}
+						padding={headCell.disablePadding ? "none" : "normal"}
 						sortDirection={orderBy === headCell.id ? order : false}
 					>
 						<TableSortLabel
@@ -94,4 +94,4 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
 	);
 };
 
-export default EnhancedTableHead;
+export default TableHeader;
