@@ -6,4 +6,5 @@ export { default as ArrowUpIcon } from "./ArrowUpIcon";
 export { default as ExportIcon } from "./ExportIcon";
 export { default as NoteIcon } from "./NoteIcon";
 export { default as SmileIcon } from "./SmileIcon";
+export { default as RemoveIcon } from "./RemoveIcon";
 export { default as AttachmentIcon } from "./AttachmentIcon";
