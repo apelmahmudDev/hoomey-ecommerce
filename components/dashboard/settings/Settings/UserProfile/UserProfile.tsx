@@ -66,7 +66,7 @@ const UserProfile = () => {
 						<StyledTextField
 							type="tel"
 							inputProps={{
-								inputmode: "numeric",
+								inputMode: "numeric",
 							}}
 							size="small"
 							fullWidth
