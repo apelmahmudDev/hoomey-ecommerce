@@ -14,30 +14,39 @@ const Settings = () => {
 			</Typography>
 
 			{/* settings sections */}
+
 			<Box component="section">
-				<UserProfile />
+				<Box component="section" sx={{ my: 2.5 }}>
+					<UserProfile />
+				</Box>
 
 				{/* payment method & promo bar */}
-				<Grid container spacing={2.5}>
-					<Grid item xs={12} md={6}>
-						<PaymentMethod />
+				<Box component="section" sx={{ my: 2.5 }}>
+					<Grid container spacing={2.5}>
+						<Grid item xs={12} md={6}>
+							<PaymentMethod />
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<PromoBar />
+						</Grid>
 					</Grid>
-					<Grid item xs={12} md={6}>
-						<PromoBar />
-					</Grid>
-				</Grid>
+				</Box>
 
 				{/* mega menu & manage*/}
-				<Grid container spacing={2.5}>
-					<Grid item xs={12} md={6}>
-						<MegaMenu />
+				<Box component="section" sx={{ my: 2.5 }}>
+					<Grid container spacing={2.5}>
+						<Grid item xs={12} md={6}>
+							<MegaMenu />
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Manage />
+						</Grid>
 					</Grid>
-					<Grid item xs={12} md={6}>
-						<Manage />
-					</Grid>
-				</Grid>
+				</Box>
 
-				<Coupons />
+				<Box component="section" sx={{ my: 2.5 }}>
+					<Coupons />
+				</Box>
 			</Box>
 		</div>
 	);
