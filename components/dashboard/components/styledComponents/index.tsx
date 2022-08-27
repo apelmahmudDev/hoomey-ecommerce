@@ -3,6 +3,7 @@ export { default as SmallInput } from "./SmallInput";
 export { default as StatusText } from "./StatusText";
 export { default as StatusChip } from "./StatusChip";
 export { default as StyledLabel } from "./StyledLabel";
+export { default as OrangeButton } from "./OrangeButton";
 export { default as StyledButton } from "./StyledButton";
 export { default as StyledTextBox } from "./StyledTextBox";
 export { default as AppEditorRoot } from "./AppEditorRoot";

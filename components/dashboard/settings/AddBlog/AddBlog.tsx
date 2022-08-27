@@ -9,7 +9,7 @@ const Blogs = () => {
 
 	return (
 		<Box my={2.5}>
-			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ROOT))}>Add Blog</BackIconButton>
+			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.BLOGS))}>Add Blog</BackIconButton>
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">
