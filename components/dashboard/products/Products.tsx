@@ -1,11 +1,12 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Container, FormControlLabel, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
 import Category from "./AddProduct/Category";
 import Inventory from "./AddProduct/Inventory";
 import LongDescription from "./AddProduct/LongDescription";
+import Media from "./AddProduct/Media";
 import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
@@ -103,7 +104,17 @@ const Products = () => {
 										<ShortDescription />
 									</Grid>
 									<Grid item xs={12}>
+										<FormControlLabel
+											control={<Checkbox defaultChecked />}
+											label="Long Description"
+										/>
+									</Grid>
+
+									<Grid item xs={12}>
 										<LongDescription />
+									</Grid>
+									<Grid item xs={12}>
+										<Media />
 									</Grid>
 									<Grid item xs={12}>
 										<Pricing />
