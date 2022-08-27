@@ -1,8 +1,9 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
 import { useAppDispatch } from "../../../../store/hooks";
 import { tabSwitch } from "../../../../store/slices/settingsSlice";
 import { BackIconButton } from "../../../ui";
+import ManageCouponTable from "./ManageCouponTable";
 
 const ManageCoupon = () => {
 	const dispatch = useAppDispatch();
@@ -13,13 +14,7 @@ const ManageCoupon = () => {
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">
-				<Grid container spacing={2.5}>
-					{/* menu */}
-					<Grid item xs={12} md={4} />
-
-					{/* add item */}
-					<Grid item xs={12} md={8} />
-				</Grid>
+				<ManageCouponTable />
 			</Box>
 		</Box>
 	);
