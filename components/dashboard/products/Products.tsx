@@ -1,10 +1,14 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Container, FormControlLabel, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import CategoryStatus from "./AddCategory/CategoryStatus";
+import Title from "./AddCategory/Title";
 import Category from "./AddProduct/Category";
 import Inventory from "./AddProduct/Inventory";
+import LongDescription from "./AddProduct/LongDescription";
+import Media from "./AddProduct/Media";
 import MetaFields from "./AddProduct/MetaFields";
 import Options from "./AddProduct/Options";
 import OptionsCheckBox from "./AddProduct/OptionsCheckBox";
@@ -14,6 +18,7 @@ import ProductStatus from "./AddProduct/ProductStatus";
 import SEO from "./AddProduct/SEO";
 import Shipping from "./AddProduct/Shipping";
 import ShippingPrice from "./AddProduct/ShippingPrice";
+import ShortDescription from "./AddProduct/ShortDescription";
 import SizeChart from "./AddProduct/SizeChart";
 import Taxes from "./AddProduct/Taxes";
 import Variants from "./AddProduct/Variants";
@@ -97,6 +102,22 @@ const Products = () => {
 						<Grid container spacing={2.5}>
 							<Grid item xs={12} md={7}>
 								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<ShortDescription />
+									</Grid>
+									<Grid item xs={12}>
+										<FormControlLabel
+											control={<Checkbox defaultChecked />}
+											label="Long Description"
+										/>
+									</Grid>
+
+									<Grid item xs={12}>
+										<LongDescription />
+									</Grid>
+									<Grid item xs={12}>
+										<Media />
+									</Grid>
 									<Grid item xs={12}>
 										<Pricing />
 									</Grid>
@@ -247,6 +268,25 @@ const Products = () => {
 								Add Category
 							</Typography>
 						</Box>
+						<Grid container spacing={2.5}>
+							<Grid item xs={12} md={7}>
+								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<Title />
+									</Grid>
+									<Grid item xs={12}>
+										<Media />
+									</Grid>
+								</Grid>
+							</Grid>
+							<Grid item xs={12} md={5}>
+								<Grid container spacing={2.5}>
+									<Grid item xs={12}>
+										<CategoryStatus />
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
 					</Box>
 				</>
 			)}
