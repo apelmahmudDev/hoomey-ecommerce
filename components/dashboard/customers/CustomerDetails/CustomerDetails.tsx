@@ -1,7 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import { CUSTOMER_TABS } from "..";
 import { BackIconButton } from "../../../ui";
-import { RoundButton } from "../../../styledComponents";
 import { ITabChange } from "../../../../types/tab-change";
 import Notes from "./Notes";
 import Address from "./Address";
@@ -9,15 +8,14 @@ import Timeline from "./Timeline";
 import ExtraForm from "./ExtraForm";
 import LastOrder from "./LastOrder";
 import UserProfile from "./UserProfile";
+import { OrangeButton } from "../../components/styledComponents";
 
 const CustomerDetails = ({ handleTabChange }: ITabChange) => {
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5} display="flex" alignItems="center" justifyContent="space-between">
 				<BackIconButton onClick={() => handleTabChange(CUSTOMER_TABS.ROOT)}>Customer Details</BackIconButton>
-				<RoundButton sx={{ bgcolor: "#FB5555", color: "common.white", "&:hover": { bgcolor: "#fb5555bb" } }}>
-					Delete Customer
-				</RoundButton>
+				<OrangeButton>Delete Customer</OrangeButton>
 			</Box>
 
 			{/* ---------other section ---------*/}

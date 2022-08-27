@@ -2,6 +2,7 @@ export { default as Link } from "./Link";
 export { default as CartButton } from "./CartButton";
 export { default as Heading } from "./Heading";
 export { default as AppSwitch } from "./AppSwitch";
+export { default as AppDropzone } from "./AppDropzone";
 export { default as ShopForButton } from "./ShopForButton";
 export { default as HintsHeading } from "./HintsHeading";
 export { default as EndIconButton } from "./EndIconButton";
