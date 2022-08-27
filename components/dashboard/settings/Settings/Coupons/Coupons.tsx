@@ -1,7 +1,11 @@
 import { CardContent, Typography, InputAdornment, Grid, Button, Box } from "@mui/material";
+import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
+import { useAppDispatch } from "../../../../../store/hooks";
+import { tabSwitch } from "../../../../../store/slices/settingsSlice";
 import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../../components/styledComponents";
 
 const Coupons = () => {
+	const dispatch = useAppDispatch();
 	return (
 		<StyledCard>
 			<CardContent>
@@ -9,7 +13,7 @@ const Coupons = () => {
 					<Typography gutterBottom fontWeight="medium">
 						Coupons
 					</Typography>
-					<Button>Manage Coupon</Button>
+					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MANAGE_COUPON))}>Manage Coupon</Button>
 				</Box>
 
 				{/* form input */}

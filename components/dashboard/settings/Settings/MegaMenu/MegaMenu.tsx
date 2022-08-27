@@ -18,7 +18,7 @@ const MegaMenu = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ mb: 2.5 }} fontWeight="medium">
+				<Typography gutterBottom fontWeight="medium">
 					Mega Menu
 				</Typography>
 
