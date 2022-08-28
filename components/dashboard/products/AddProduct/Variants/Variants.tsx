@@ -17,10 +17,10 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 		<StyledCard>
 			<CardContent>
 				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
-					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Variants
 					</Typography>
-					<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px" }} fontWeight="bold">
+					<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px" }} fontWeight="medium">
 						Add another Variant
 					</Typography>
 				</Box>
