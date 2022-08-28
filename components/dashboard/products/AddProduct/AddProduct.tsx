@@ -90,7 +90,7 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 								<Options />
 							</Grid>
 							<Grid item xs={12}>
-								<Variants />
+								<Variants handleTabChange={handleTabChange} />
 							</Grid>
 							<Grid item xs={12}>
 								<Shipping />

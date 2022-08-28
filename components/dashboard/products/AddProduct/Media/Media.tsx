@@ -1,4 +1,4 @@
-import { Box, CardContent, Typography } from "@mui/material";
+import { Box, CardContent, IconButton, Typography } from "@mui/material";
 import { StyledCard } from "../../../components/styledComponents";
 
 const Media = () => {
@@ -29,15 +29,22 @@ const Media = () => {
 							justifyContent: "center",
 						}}
 					>
-						<Typography sx={{ color: "#E2BC82", fontWeight: "500", fontSize: "16px", mt: 2 }}>
-							Add file
-						</Typography>
+						<IconButton color="primary" aria-label="upload picture" component="label">
+							<input hidden accept="image/*,video/*" type="file" />
+							<Typography sx={{ color: "#E2BC82", fontWeight: "500", fontSize: "16px", mt: 2 }}>
+								Add file
+							</Typography>
+						</IconButton>
+
 						<Typography sx={{ color: "#E2BC82", fontWeight: "500", fontSize: "16px", mt: 2, ml: 2, mr: 2 }}>
 							|
 						</Typography>
-						<Typography sx={{ color: "#E2BC82", fontWeight: "500", fontSize: "16px", mt: 2 }}>
-							Add from URL
-						</Typography>
+						<IconButton color="primary" aria-label="upload picture" component="label">
+							<input hidden accept="url*" type="url" />
+							<Typography sx={{ color: "#E2BC82", fontWeight: "500", fontSize: "16px", mt: 2 }}>
+								Add from URL
+							</Typography>
+						</IconButton>
 					</Box>
 
 					<Typography

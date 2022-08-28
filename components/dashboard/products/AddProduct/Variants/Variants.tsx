@@ -1,10 +1,12 @@
 import { Box, Button, CardContent, Checkbox, Divider, FormControlLabel, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { PRODUCTS_TABS } from "../..";
+import { ITabChange } from "../../../../../types/tab-change";
 import { IMAGES } from "../../../../../uiElements";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
-const Variants = () => {
+const Variants = ({ handleTabChange }: ITabChange) => {
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	// handle track quantity check
 	const handleTrackCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +96,7 @@ const Variants = () => {
 							fullWidth
 							variant="contained"
 							color="secondary"
+							onClick={() => handleTabChange(PRODUCTS_TABS.EDIT_VARIANT)}
 						>
 							Edit
 						</Button>{" "}
