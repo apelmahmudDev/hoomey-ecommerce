@@ -82,7 +82,7 @@ const rows = [
 
 export default function SelectUsersTable() {
 	const [order, setOrder] = useState<Order>("asc");
-	const [orderBy, setOrderBy] = useState<keyof Data>("calories");
+	const [orderBy, setOrderBy] = useState<keyof Data>("contactNo");
 	const [selected, setSelected] = useState<readonly string[]>([]);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
