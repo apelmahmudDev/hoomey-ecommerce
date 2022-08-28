@@ -5,6 +5,34 @@ import { Order } from "../../../../../../types/order";
 import { UnfoldMoreIcon } from "../../../../../../uiElements/icons";
 import { Data } from "../SelectUsersTable";
 
+interface HeadCell {
+	id: keyof Data;
+	disablePadding: boolean;
+	label: string;
+	align: Align;
+}
+
+const headCells: readonly HeadCell[] = [
+	{
+		id: "name",
+		align: "center",
+		disablePadding: true,
+		label: "Name",
+	},
+	{
+		id: "email",
+		align: "center",
+		disablePadding: true,
+		label: "Email",
+	},
+	{
+		id: "contactNo",
+		align: "right",
+		disablePadding: true,
+		label: "Contact No.",
+	},
+];
+
 interface TableHeaderProps {
 	numSelected: number;
 	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
@@ -13,80 +41,6 @@ interface TableHeaderProps {
 	orderBy: string;
 	rowCount: number;
 }
-
-// interface HeadCell {
-// 	id: keyof Data;
-// 	disablePadding: boolean;
-// 	label: string;
-// 	align: Align;
-// }
-
-// const headCells: readonly HeadCell[] = [
-// 	{
-// 		id: "name",
-// 		align: "center",
-// 		disablePadding: true,
-// 		label: "Name",
-// 	},
-// 	{
-// 		id: "date",
-// 		align: "center",
-// 		disablePadding: false,
-// 		label: "Date",
-// 	},
-// 	{
-// 		id: "amount",
-// 		align: "center",
-// 		disablePadding: false,
-// 		label: "Amount",
-// 	},
-// 	{
-// 		id: "status",
-// 		align: "center",
-// 		disablePadding: false,
-// 		label: "Status",
-// 	},
-// ];
-
-interface HeadCell {
-	disablePadding: boolean;
-	id: keyof Data;
-	label: string;
-	numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-	{
-		id: "name",
-		numeric: false,
-		disablePadding: true,
-		label: "Dessert (100g serving)",
-	},
-	{
-		id: "calories",
-		numeric: true,
-		disablePadding: false,
-		label: "Calories",
-	},
-	{
-		id: "fat",
-		numeric: true,
-		disablePadding: false,
-		label: "Fat (g)",
-	},
-	{
-		id: "carbs",
-		numeric: true,
-		disablePadding: false,
-		label: "Carbs (g)",
-	},
-	{
-		id: "protein",
-		numeric: true,
-		disablePadding: false,
-		label: "Protein (g)",
-	},
-];
 
 const TableHeader = (props: TableHeaderProps) => {
 	const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -111,7 +65,7 @@ const TableHeader = (props: TableHeaderProps) => {
 				{headCells.map((headCell) => (
 					<TableCell
 						key={headCell.id}
-						align={headCell.numeric ? "right" : "left"}
+						align={headCell.align}
 						padding={headCell.disablePadding ? "none" : "normal"}
 						sortDirection={orderBy === headCell.id ? order : false}
 					>

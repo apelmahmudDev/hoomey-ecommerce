@@ -19,37 +19,30 @@ import { StyledCard } from "../../../components/styledComponents";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 
 export interface Data {
-	calories: number;
-	carbs: number;
-	fat: number;
 	name: string;
-	protein: number;
+	email: string;
+	contactNo: number | string;
 }
 
-function createData(name: string, calories: number, fat: number, carbs: number, protein: number): Data {
+function createData(name: string, email: string, contactNo: number | string): Data {
 	return {
 		name,
-		calories,
-		fat,
-		carbs,
-		protein,
+		email,
+		contactNo,
 	};
 }
 
 const rows = [
-	createData("Cupcake", 305, 3.7, 67, 4.3),
-	createData("Donut", 452, 25.0, 51, 4.9),
-	createData("Eclair", 262, 16.0, 24, 6.0),
-	createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-	createData("Gingerbread", 356, 16.0, 49, 3.9),
-	createData("Honeycomb", 408, 3.2, 87, 6.5),
-	createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-	createData("Jelly Bean", 375, 0.0, 94, 0.0),
-	createData("KitKat", 518, 26.0, 65, 7.0),
-	createData("Lollipop", 392, 0.2, 98, 0.0),
-	createData("Marshmallow", 318, 0, 81, 2.0),
-	createData("Nougat", 360, 19.0, 9, 37.0),
-	createData("Oreo", 437, 18.0, 63, 4.0),
+	createData("Jhon Done", "jhone@gmail.com", 1234567879),
+	createData("Mariah Betts", "Mariah@abc.com", 1234567879),
+	createData("Jhon Done", "jhone@gmail.com", 1234567879),
+	createData("Mariah Betts", "Mariah@abc.com", 1234567879),
+	createData("Jhon Done", "jhone@gmail.com", 1234567879),
+	createData("Mariah Betts", "Mariah@abc.com", 1234567879),
+	createData("Jhon Done", "jhone@gmail.com", 1234567879),
+	createData("Mariah Betts", "Mariah@abc.com", 1234567879),
+	createData("Jhon Done", "jhone@gmail.com", 1234567879),
+	createData("Mariah Betts", "Mariah@abc.com", 1234567879),
 ];
 
 // function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -147,7 +140,7 @@ export default function SelectUsersTable() {
 				<CardContent>
 					<SelectToolbar numSelected={selected.length} />
 					<TableContainer>
-						<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
+						<Table sx={{ minWidth: 650 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader
 								numSelected={selected.length}
 								order={order}
@@ -172,7 +165,8 @@ export default function SelectUsersTable() {
 												role="checkbox"
 												aria-checked={isItemSelected}
 												tabIndex={-1}
-												key={row.name}
+												key={index}
+												// key={row.name}
 												selected={isItemSelected}
 											>
 												<TableCell padding="checkbox">
@@ -184,13 +178,11 @@ export default function SelectUsersTable() {
 														}}
 													/>
 												</TableCell>
-												<TableCell component="th" id={labelId} scope="row" padding="none">
+												<TableCell id={labelId} scope="row" align="center">
 													{row.name}
 												</TableCell>
-												<TableCell align="right">{row.calories}</TableCell>
-												<TableCell align="right">{row.fat}</TableCell>
-												<TableCell align="right">{row.carbs}</TableCell>
-												<TableCell align="right">{row.protein}</TableCell>
+												<TableCell align="center">{row.email}</TableCell>
+												<TableCell align="right">{row.contactNo}</TableCell>
 											</TableRow>
 										);
 									})}
