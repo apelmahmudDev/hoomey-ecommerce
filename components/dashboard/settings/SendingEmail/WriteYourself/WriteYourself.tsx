@@ -18,7 +18,7 @@ const WriteYourself = () => {
 					<StyledLabel fw="500">Email text</StyledLabel>
 					{/* <StyledTextField size="small" multiline rows={4} fullWidth placeholder="Write here..." /> */}
 					<Editor
-						apiKey="x9lygirk5iz8k0f5tv17jrnabz3ckd46ewl672tyvhr87pdk"
+						apiKey={process.env.NEXT_PUBLIC_TEXT_EDITOR_API_KEY}
 						onInit={(evt, editor) => (editorRef.current = "test")}
 						initialValue="<p>Write description here...</p>"
 						init={{
