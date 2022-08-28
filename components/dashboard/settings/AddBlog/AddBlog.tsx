@@ -1,12 +1,12 @@
 import { Box, Grid, Container, CardContent, Typography } from "@mui/material";
 import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../store/hooks";
 import { tabSwitch } from "../../../../store/slices/settingsSlice";
 import { DashboardDivider, RoundButton } from "../../../styledComponents";
 import { AppDropzone, BackIconButton } from "../../../ui";
 import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../components/styledComponents";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
+import { useAppDispatch } from "../../../../store/hooks";
 
 const Blogs = () => {
 	const dispatch = useAppDispatch();

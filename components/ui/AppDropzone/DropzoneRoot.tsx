@@ -1,20 +1,27 @@
 // @mui material components
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
-export default styled(Box)(({ theme }) => ({
+interface StyledBoxProps extends BoxProps {
+	action: string;
+}
+
+export default styled(Box)<StyledBoxProps>(({ theme }) => ({
+	fontFamily: "Poppins",
 	display: "flex",
-	alignItems: "center",
-	border: "0.5px solid #ABABAB !important",
 	borderRadius: 5,
+	alignItems: "center",
+	justifyContent: "center",
+	border: "0.5px solid #ABABAB !important",
+	color: theme.palette.text.secondary,
 
 	"& .dz-default": {
 		margin: "0 auto !important",
 	},
 
 	"& .dz-default .dz-button": {
-		// color: `${text.main} !important`,
-		// fontSize: `${size.sm} !important`,
+		color: theme.palette.text.secondary,
+		// fontSize: "14px !important",
 	},
 
 	"& .dz-preview .dz-details": {
@@ -22,7 +29,7 @@ export default styled(Box)(({ theme }) => ({
 		opacity: "1 !important",
 
 		"& .dz-size span, & .dz-filename span": {
-			// backgroundColor: `${rgba(white.main, 0.7)} !important`,
+			backgroundColor: theme.palette.primary.main,
 		},
 	},
 
@@ -31,8 +38,9 @@ export default styled(Box)(({ theme }) => ({
 	},
 
 	"& .dz-remove": {
-		// color: `${dark.main} !important`,
+		color: theme.palette.text.secondary,
 		textDecoration: "none",
+		fontWeight: 500,
 
 		"&:hover, &:focus": {
 			textDecoration: "none !important",
