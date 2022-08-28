@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReviewDetails from "./ReviewDetails";
 import Reviews from "./Reviews";
 
 // tabs constants
@@ -17,7 +18,7 @@ function ReviewView() {
 	return (
 		<>
 			{tab === REVIEW_TABS.ROOT && <Reviews handleTabChange={handleTabChange} />}
-			{/* {tab === REVIEW_TABS.REVIEW_DETAILS && <AbandonedCart handleTabChange={handleTabChange} setTab={setTab} />} */}
+			{tab === REVIEW_TABS.REVIEW_DETAILS && <ReviewDetails handleTabChange={handleTabChange} setTab={setTab} />}
 		</>
 	);
 }
