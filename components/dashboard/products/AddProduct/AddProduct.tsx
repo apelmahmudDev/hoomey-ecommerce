@@ -1,5 +1,5 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
+import { Box, CardContent, Typography } from "@mui/material";
 import { PRODUCTS_TABS } from "..";
 import { ITabChange } from "../../../../types/tab-change";
 
@@ -9,8 +9,12 @@ import { CircleIconButton } from "../../../styledComponents";
 import { Button, Checkbox, Container, FormControlLabel } from "@mui/material";
 import Media from "./Media";
 
+import { useState } from "react";
+import { Popup } from "../../../common";
 import { RoundButton } from "../../../styledComponents";
+import { StyledButton, StyledCard } from "../../components/styledComponents";
 import Category from "./Category";
+import ImportCSV from "./ImportCSV";
 import Inventory from "./Inventory";
 import LongDescription from "./LongDescription";
 import MetaFields from "./MetaFields";
@@ -28,6 +32,16 @@ import Taxes from "./Taxes";
 import Variants from "./Variants";
 
 const AddProduct = ({ handleTabChange }: ITabChange) => {
+	const [isImportCSVOpen, setIsImportCSVOpen] = useState(false);
+	const [isSEOOpen, setIsSEOOpen] = useState(false);
+
+	const handleImportCSVTogglePopup = (boolean: boolean) => {
+		setIsImportCSVOpen(boolean);
+	};
+
+	const handleSEOTogglePopup = (boolean: boolean) => {
+		setIsSEOOpen(boolean);
+	};
 	return (
 		<div>
 			<Box
@@ -60,7 +74,7 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 					</Typography>
 				</Box>
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton variant="contained" color="secondary">
+					<RoundButton variant="contained" color="secondary" onClick={() => handleImportCSVTogglePopup(true)}>
 						Import Product by CSV
 					</RoundButton>
 				</Box>
@@ -99,7 +113,31 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 								<OptionsCheckBox />
 							</Grid>
 							<Grid item xs={12}>
-								<SEO />
+								{/*SEO section with pop up */}
+								<StyledCard>
+									<CardContent>
+										<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+											Search engine listing preview
+										</Typography>
+
+										<Typography
+											sx={{ color: "#8B8B8B", fontWeight: "400", fontSize: "12px", mt: 1.25 }}
+											fontWeight="light"
+										>
+											Add a title and description to see how this product might appear in a search
+											engine listing.
+										</Typography>
+										<StyledButton
+											sx={{ px: 4, minWidth: "132px", mt: 2 }}
+											type="submit"
+											variant="contained"
+											color="secondary"
+											onClick={() => handleSEOTogglePopup(true)}
+										>
+											Edit website SEO
+										</StyledButton>
+									</CardContent>
+								</StyledCard>
 							</Grid>
 							<Grid item xs={12}>
 								<MetaFields />
@@ -153,6 +191,14 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 						</Grid>
 					</Grid>
 				</Grid>
+				{/* Popup -> Import CSV */}
+				<Popup isOpen={isImportCSVOpen} isNeedCloseBtn handleTogglePopup={handleImportCSVTogglePopup}>
+					<ImportCSV handleTogglePopup={handleImportCSVTogglePopup} />
+				</Popup>
+				{/* Popup -> SEO */}
+				<Popup isOpen={isSEOOpen} isNeedCloseBtn handleTogglePopup={handleSEOTogglePopup}>
+					<SEO handleTogglePopup={handleSEOTogglePopup} />
+				</Popup>
 			</Box>
 		</div>
 	);

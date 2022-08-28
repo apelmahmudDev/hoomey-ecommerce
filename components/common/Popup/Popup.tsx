@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
+import { ReactNode } from "react";
 import { CloseIcon } from "../../../uiElements/icons";
 
 export interface DialogCloseProps {
@@ -44,7 +44,7 @@ const Popup = ({
 			onClose={() => handleTogglePopup(false)}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
-			sx={{ "& .MuiPaper-root": { borderRadius: 0, maxWidth: 700 } }}
+			sx={{ "& .MuiPaper-root": { borderRadius: 5, maxWidth: 700 } }}
 		>
 			{isNeedCloseBtn && <DialogClose onClick={() => handleTogglePopup(false)} />}
 
