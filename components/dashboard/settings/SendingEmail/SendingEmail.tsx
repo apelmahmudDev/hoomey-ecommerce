@@ -37,7 +37,12 @@ const SendingEmail = () => {
 
 			{/* next button */}
 			<Box sx={{ mt: 6, textAlign: "center" }}>
-				<RoundButton sx={{ minWidth: 300 }} variant="contained" color="secondary">
+				<RoundButton
+					onClick={() => dispatch(tabSwitch(SETTINGS_TABS.SENDING_EMAIL_SELECT_USERS))}
+					sx={{ minWidth: 300 }}
+					variant="contained"
+					color="secondary"
+				>
 					Next
 				</RoundButton>
 			</Box>
