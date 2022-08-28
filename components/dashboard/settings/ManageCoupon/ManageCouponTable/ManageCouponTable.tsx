@@ -4,16 +4,32 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { CardContent, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { StatusFormControl, StyledCard } from "../../../components/styledComponents";
+import {
+	CardContent,
+	DialogActions,
+	DialogContent,
+	InputAdornment,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+	Typography,
+} from "@mui/material";
+import {
+	StatusFormControl,
+	StyledCard,
+	StyledLabel,
+	StyledTextBox,
+	StyledTextField,
+} from "../../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
-import { RoundButton } from "../../../../styledComponents";
+import { PopupDivider, RoundButton } from "../../../../styledComponents";
 import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
+import { Popup } from "../../../../common";
 
 export interface Data {
 	name: string;
@@ -47,11 +63,16 @@ const rows = [
 ];
 
 const ManageCouponTable = () => {
+	const [isOpenEditDialog, setIsOpenEditDialog] = useState(false);
 	const [orderBy, setOrderBy] = useState<keyof Data>("date");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
 	const [status, setStatus] = useState("Active");
 	const [page, setPage] = useState(0);
+
+	const handleEditDialog = (isToggle: boolean) => {
+		setIsOpenEditDialog(isToggle);
+	};
 
 	const handleStatusChange = (event: SelectChangeEvent<unknown>) => {
 		setStatus(event.target.value as string);
@@ -119,7 +140,12 @@ const ManageCouponTable = () => {
 													</StatusFormControl>
 												</TableCell>
 												<TableCell align="right">
-													<RoundButton size="small" color="secondary" variant="contained">
+													<RoundButton
+														onClick={() => handleEditDialog(true)}
+														size="small"
+														color="secondary"
+														variant="contained"
+													>
 														Edit
 													</RoundButton>
 												</TableCell>
@@ -152,6 +178,53 @@ const ManageCouponTable = () => {
 
 			{/* customized table pagination  */}
 			<TableCustomPagination handleChangeRowsPerPage={handleChangeRowsPerPage} rowsPerPage={rowsPerPage} />
+
+			{/* edit dialog */}
+			<Popup rounded isOpen={isOpenEditDialog} isNeedCloseBtn={true} handleTogglePopup={handleEditDialog}>
+				<DialogContent>
+					<Typography textAlign="center" variant="h5" fontWeight="medium">
+						Edit Coupon
+					</Typography>
+
+					<PopupDivider />
+
+					{/* form input */}
+					<Box component="form">
+						<StyledTextBox>
+							<StyledLabel fw="500">Coupon</StyledLabel>
+							<StyledTextField size="small" fullWidth defaultValue="HOOM123" />
+						</StyledTextBox>
+						<StyledTextBox>
+							<StyledLabel fw="500">Amount</StyledLabel>
+							<StyledTextField
+								size="small"
+								fullWidth
+								defaultValue="50"
+								InputProps={{
+									startAdornment: <InputAdornment position="start">$</InputAdornment>,
+								}}
+							/>
+						</StyledTextBox>
+						<StyledTextBox>
+							<StyledLabel fw="500">Coupon Expirey</StyledLabel>
+							<StyledTextField size="small" fullWidth defaultValue="mm/dd/yyyy" />
+						</StyledTextBox>
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<RoundButton fullWidth onClick={() => handleEditDialog(false)} variant="outlined" color="secondary">
+						Cancel
+					</RoundButton>
+					<RoundButton
+						fullWidth
+						onClick={() => handleEditDialog(false)}
+						variant="contained"
+						color="secondary"
+					>
+						Save
+					</RoundButton>
+				</DialogActions>
+			</Popup>
 		</Box>
 	);
 };

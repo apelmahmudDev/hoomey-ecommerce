@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
-import { SETTINGS_TABS } from "../../../constants/tabs/settings";
-import { RootState } from "../../../store/types";
-import AddBlog from "./AddBlog";
 import Blogs from "./Blogs";
-import ContactOrNewsletter from "./ContactOrNewsletter";
-import ManageCoupon from "./ManageCoupon";
+import AddBlog from "./AddBlog";
 import MegaMenu from "./MegaMenu";
+import Settings from "./Settings";
 import SelectUsers from "./SelectUsers";
 import SendingEmail from "./SendingEmail";
-import Settings from "./Settings";
+import ManageCoupon from "./ManageCoupon";
+import { RootState } from "../../../store/types";
+import ContactOrNewsletter from "./ContactOrNewsletter";
+import { SETTINGS_TABS } from "../../../constants/tabs/settings";
 
 function SettingsView() {
 	const settings = useSelector((state: RootState) => state.settings);
