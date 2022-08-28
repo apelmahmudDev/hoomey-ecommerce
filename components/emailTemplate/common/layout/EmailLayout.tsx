@@ -1,5 +1,4 @@
 import { Box, Typography, Button } from "@mui/material";
-import { Container } from "@mui/system";
 import { ReactNode } from "react";
 import { Link } from "../../../ui";
 import Footer from "./footer";
