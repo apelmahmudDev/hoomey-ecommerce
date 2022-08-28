@@ -1,23 +1,13 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { REVIEW_TABS } from "..";
 import { ITabChange } from "../../../../types/tab-change";
 
 import { CircleIconButton } from "../../../styledComponents";
 
-import { useState } from "react";
-
+import PhotoCard from "./PhotoCard";
+import Ratings from "./Ratings";
 const ReviewDetails = ({ handleTabChange }: ITabChange) => {
-	const [isImportCSVOpen, setIsImportCSVOpen] = useState(false);
-	const [isSEOOpen, setIsSEOOpen] = useState(false);
-
-	const handleImportCSVTogglePopup = (boolean: boolean) => {
-		setIsImportCSVOpen(boolean);
-	};
-
-	const handleSEOTogglePopup = (boolean: boolean) => {
-		setIsSEOOpen(boolean);
-	};
 	return (
 		<div>
 			<Box
@@ -49,6 +39,14 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 						Review Details
 					</Typography>
 				</Box>
+				<Grid container spacing={2.5}>
+					<Grid item xs={12} md={4}>
+						<PhotoCard />
+					</Grid>
+					<Grid item xs={12} md={4}>
+						<Ratings />
+					</Grid>
+				</Grid>
 			</Box>
 		</div>
 	);
