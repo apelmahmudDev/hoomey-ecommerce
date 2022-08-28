@@ -5,9 +5,13 @@ import { tabSwitch } from "../../../../store/slices/settingsSlice";
 import { DashboardDivider, RoundButton } from "../../../styledComponents";
 import { AppDropzone, BackIconButton } from "../../../ui";
 import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../components/styledComponents";
+import { Editor } from "@tinymce/tinymce-react";
+import { useRef } from "react";
 
 const Blogs = () => {
 	const dispatch = useAppDispatch();
+	const editorRef = useRef("test");
+
 	return (
 		<Box my={2.5}>
 			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.BLOGS))}>Add Blog</BackIconButton>
@@ -31,12 +35,42 @@ const Blogs = () => {
 
 								<StyledTextBox>
 									<StyledLabel fw="500">Description</StyledLabel>
-									<StyledTextField
-										multiline
-										rows={5}
-										size="small"
-										fullWidth
-										placeholder="Write description here..."
+									<Editor
+										apiKey="x9lygirk5iz8k0f5tv17jrnabz3ckd46ewl672tyvhr87pdk"
+										onInit={(evt, editor) => (editorRef.current = "test")}
+										initialValue="<p>Write description here...</p>"
+										init={{
+											height: 200,
+											menubar: false,
+											plugins: [
+												"advlist",
+												"autolink",
+												"lists",
+												"link",
+												"image",
+												"charmap",
+												"preview",
+												"anchor",
+												"searchreplace",
+												"visualblocks",
+												"code",
+												"codesample",
+												"fullscreen",
+												"insertdatetime",
+												"media",
+												"table",
+												"code",
+												"help",
+											],
+											statusbar: false,
+											toolbar_location: "bottom",
+											toolbar:
+												" blocks " +
+												"bold italic underline forecolor  alignleft aligncenter alignright alignjustify " +
+												" link image media | | | code",
+											content_style:
+												"body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+										}}
 									/>
 								</StyledTextBox>
 							</CardContent>

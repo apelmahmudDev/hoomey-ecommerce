@@ -78,7 +78,6 @@
 		"next-redux-wrapper": "^7.0.5",
 		"prettier": "^2.7.1",
 		"react-apexcharts": "^1.4.0",
-		"react-quill": "^2.0.0",
 		"redux-logger": "^3.0.6",
 		"semantic-release": "^19.0.3",
 		"start-server-and-test": "^1.14.0",
