@@ -1,10 +1,26 @@
 import { Box, CardContent, IconButton, Typography } from "@mui/material";
-import { StyledCard } from "../../../components/styledComponents";
+import { DeleteRedSvg } from "../../../../icons";
+import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
 const Media = () => {
 	return (
 		<StyledCard>
 			<CardContent>
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
+					Options
+				</Typography>
+				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="medium">
+					Color
+				</Typography>
+				<Box
+					component="form"
+					sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25, mb: 1.25 }}
+				>
+					<StyledTextField size="small" placeholder="Pink" fullWidth required />
+					<IconButton>
+						<DeleteRedSvg />
+					</IconButton>
+				</Box>
 				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Media
 				</Typography>
