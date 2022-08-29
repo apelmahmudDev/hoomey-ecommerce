@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Skeleton, Typography } from "@mui/material";
 import CollectionCard from "../../common/CollectionCard";
 // import CollectionsGrid from "../../common/CollectionsGrid";
 
@@ -33,6 +33,13 @@ const Collections: FC = () => {
 		}
 	}, [isMore]);
 
+	// kept it just for checking loading sign
+	const [isLoading, setIsLoading] = useState(true);
+
+	setTimeout(() => {
+		setIsLoading(false);
+	}, 3000);
+
 	return (
 		<Box my={9.1}>
 			<Container maxWidth="lg">
@@ -41,13 +48,28 @@ const Collections: FC = () => {
 				</Typography>
 				<>
 					<Grid container spacing={{ xs: 2, md: 5 }}>
-						{presentCollection.map((item, idx) => (
+						{(isLoading ? Array.from(new Array(8)) : presentCollection).map((item, index) => (
+							<Grid key={index} item xs={6} sm={4} md={3}>
+								{item ? (
+									<Link href={item.link}>
+										<CollectionCard key={index} item={item} />
+									</Link>
+								) : (
+									<Skeleton
+										variant="rectangular"
+										sx={{ width: "100%", height: { xs: 180, sm: 250 } }}
+									/>
+								)}
+							</Grid>
+						))}
+
+						{/* {presentCollection.map((item, idx) => (
 							<Grid key={idx} item xs={6} sm={4} md={3}>
 								<Link href={item.link}>
 									<CollectionCard key={idx} item={item} />
 								</Link>
 							</Grid>
-						))}
+						))} */}
 					</Grid>
 				</>
 				<Box textAlign="center" sx={{ mt: 6.25 }}>
