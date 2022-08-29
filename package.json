@@ -39,6 +39,7 @@
 		"@reduxjs/toolkit": "^1.8.3",
 		"@tinymce/tinymce-react": "^4.2.0",
 		"clsx": "^1.1.1",
+		"country-region-data": "^2.6.0",
 		"dropzone": "^6.0.0-beta.2",
 		"jsondiffpatch": "^0.4.1",
 		"next": "^12.1.6",

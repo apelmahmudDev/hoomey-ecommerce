@@ -1,8 +1,15 @@
 import { Box, Button, CardContent, Grid, InputAdornment, Typography } from "@mui/material";
+import { useState } from "react";
+import ManageDialog from "./ManageDialog";
 import { DashboardDivider, RoundButton } from "../../../../styledComponents";
 import { StyledCard, StyledLabel, StyledTextField } from "../../../components/styledComponents";
 
 const Rates = () => {
+	const [isOpenManageDialog, setIsOpenManageDialog] = useState(false);
+
+	const handleManageDialog = (isToggle: boolean) => {
+		setIsOpenManageDialog(isToggle);
+	};
 	return (
 		<StyledCard>
 			<CardContent>
@@ -15,7 +22,7 @@ const Rates = () => {
 				{/* rate & price*/}
 				<Box>
 					<Box textAlign="right">
-						<Button variant="text" size="small">
+						<Button onClick={() => handleManageDialog(true)} variant="text" size="small">
 							Manage
 						</Button>
 					</Box>
@@ -46,7 +53,7 @@ const Rates = () => {
 				{/* rate & price*/}
 				<Box>
 					<Box textAlign="right">
-						<Button variant="text" size="small">
+						<Button onClick={() => handleManageDialog(true)} variant="text" size="small">
 							Manage
 						</Button>
 					</Box>
@@ -77,7 +84,7 @@ const Rates = () => {
 				{/* rate & price*/}
 				<Box>
 					<Box textAlign="right">
-						<Button variant="text" size="small">
+						<Button onClick={() => handleManageDialog(true)} variant="text" size="small">
 							Manage
 						</Button>
 					</Box>
@@ -111,6 +118,9 @@ const Rates = () => {
 					</RoundButton>
 				</Box>
 			</CardContent>
+
+			{/*  manage dialog  / popup*/}
+			<ManageDialog handleDialog={handleManageDialog} isOpen={isOpenManageDialog} />
 		</StyledCard>
 	);
 };

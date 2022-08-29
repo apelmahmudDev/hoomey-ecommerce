@@ -1,17 +1,29 @@
 import { Box, Container, Grid } from "@mui/material";
+import Rates from "./Rates";
+import TaxesDialog from "./TaxesDialog";
 import { BackIconButton } from "../../../ui";
+import RateStatusAndZone from "./RateStatusAndZone";
 import { RoundButton } from "../../../styledComponents";
 import { ITabChange } from "../../../../types/tab-change";
 import { SHIPPING_TABS } from "../../../../constants/tabs/shipping";
-import Rates from "./Rates";
-import RateStatusAndZone from "./RateStatusAndZone";
+import { useState } from "react";
 
 const AddShipping = ({ handleTabChange }: ITabChange) => {
+	const [isOpenTaxesDialog, setIsOpenTaxesDialog] = useState(false);
+
+	const handleTaxesDialog = (isToggle: boolean) => {
+		setIsOpenTaxesDialog(isToggle);
+	};
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5} display="flex" alignItems="center" justifyContent="space-between">
 				<BackIconButton onClick={() => handleTabChange(SHIPPING_TABS.ROOT)}>Add new</BackIconButton>
-				<RoundButton color="secondary" variant="contained" sx={{ px: 5 }}>
+				<RoundButton
+					onClick={() => handleTaxesDialog(true)}
+					color="secondary"
+					variant="contained"
+					sx={{ px: 5 }}
+				>
 					Taxes
 				</RoundButton>
 			</Box>
@@ -42,6 +54,9 @@ const AddShipping = ({ handleTabChange }: ITabChange) => {
 					</Box>
 				</Container>
 			</Box>
+
+			{/* Taxes dialog  / popup*/}
+			<TaxesDialog handleDialog={handleTaxesDialog} isOpen={isOpenTaxesDialog} />
 		</Box>
 	);
 };
