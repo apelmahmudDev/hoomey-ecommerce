@@ -9,7 +9,7 @@ const AppBanner = ({ image }: { image: StaticImageData | string }) => {
 		<Box mb={9.1}>
 			<Box sx={{ height: 597, position: "relative" }}>
 				<Box className={classes.banner}>
-					<Image src={image} alt="banner-hero" layout="fill" objectFit="cover" />
+					<Image src={image} alt="banner-hero" layout="fill" objectFit="cover" placeholder="blur" />
 				</Box>
 				<Box className={classes.content}>
 					<Typography variant="h5" sx={{ fontFamily: "Sedan" }}>
