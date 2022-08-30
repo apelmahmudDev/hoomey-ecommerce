@@ -12,10 +12,13 @@ import ProductTwoImg from "../assets/images/latestProducts/product2.png";
 import WhiteTshirtImg from "../assets/images/latestProducts/white-tshirt.png";
 
 // dashboard products
+import HoodieImg from "../assets/images/collections/hoodie.png";
+import HoodieCrossImg from "../assets/images/collections/hoodiecross.png";
+import JiaDoeImg from "../assets/images/collections/jiadoe.png";
+import SelectImgImg from "../assets/images/collections/selectimg.png";
 import FullcapImg from "../assets/images/dashboard-products/fullcap.png";
 import JeansJacketImg from "../assets/images/dashboard-products/jeans-jacket.png";
 import TshirtLevisImg from "../assets/images/dashboard-products/tshirt-levis.png";
-
 // collections - home
 
 import GymAndSportsImg from "../assets/images/collections/gym-sports.png";
@@ -154,7 +157,10 @@ export const IMAGES = {
 	HomeHero5lImg,
 	TshirtLevisImg,
 	JeansJacketImg,
+	HoodieCrossImg,
+	SelectImgImg,
 	FullcapImg,
+	HoodieImg,
 	MenSizeImg,
 	PopupImg,
 	AvatarImg,
@@ -252,4 +258,5 @@ export const IMAGES = {
 	KidsSowImg,
 	FlagImg,
 	CampaignImg,
+	JiaDoeImg,
 };
