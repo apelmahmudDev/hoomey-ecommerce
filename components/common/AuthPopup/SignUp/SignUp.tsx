@@ -25,12 +25,20 @@ import {
 	StyledBox,
 	StyledFooterBox,
 } from "../styledComponents";
-import { isEmailAddress, isStrongPassword } from "../../../../utils/validations";
+import { isStrongPassword } from "../../../../utils/validations";
 
-interface State {
+// react-hook-form
+import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../../../../utils/validations/regex";
+interface Inputs {
+	firstName: string;
+	lastName: string;
 	email: string;
 	password: string;
 	confirmPassword: string;
+}
+
+interface State {
 	showPassword: boolean;
 	showConfirmPassword: boolean;
 }
@@ -44,7 +52,13 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const SignUp: FC = () => {
-	const [isError, setIsError] = useState(false);
+	const {
+		watch,
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
 	const [isStrongPass, setIsStrongPass] = useState(false);
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
@@ -53,39 +67,28 @@ const SignUp: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
-		email: "",
-		password: "",
-		confirmPassword: "",
 		showPassword: false,
 		showConfirmPassword: false,
 	});
 
-	// email validation with regex 📧
-	useEffect(() => {
-		if (isEmailAddress(values.email)) {
-			setIsError(false);
-		} else {
-			setIsError(true);
-		}
-	}, [values]);
-
-	// password check 🔐
-
-	useEffect(() => {
-		if (isStrongPassword(values.password)) {
-			setIsStrongPass(true);
-		} else {
-			setIsStrongPass(false);
-		}
-	}, [values]);
-
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [prop]: event.target.value });
-	};
-
+	// handle password visibility
 	const handleClickShowPassword = (props: { key: string; value: boolean }) => {
 		setValues({ ...values, [props.key]: !props.value });
 	};
+
+	// password check 🔐
+	useEffect(() => {
+		if (watch("password")) {
+			if (isStrongPassword(watch("password"))) {
+				setIsStrongPass(true);
+			} else {
+				setIsStrongPass(false);
+			}
+		}
+	}, [watch("password")]);
+
+	//  handle form submit
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	return (
 		<Dialog
@@ -114,40 +117,53 @@ const SignUp: FC = () => {
 					<Divider>OR</Divider>
 
 					{/* sign up with email and password */}
-					<Box component="form" autoComplete="off">
+					<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+						{/* first name */}
 						<StyledBox>
 							<Label fontSize={18}>First Name</Label>
 							<StyedTextField
-								required
+								error={errors.firstName ? true : false}
+								{...register("firstName", { required: "First name is required." })}
+								helperText={errors.firstName && errors.firstName?.message}
 								InputProps={{ startAdornment: <FieldIcon icon={<PersonFillSvg />} /> }}
 							/>
 						</StyledBox>
+
+						{/* last name */}
 						<StyledBox>
 							<Label fontSize={18}>Last Name</Label>
 							<StyedTextField
-								required
+								error={errors.lastName ? true : false}
+								{...register("lastName", { required: "Last name is required." })}
+								helperText={errors.lastName && errors.lastName?.message}
 								InputProps={{ startAdornment: <FieldIcon icon={<PersonFillSvg />} /> }}
 							/>
 						</StyledBox>
+
+						{/* email address */}
 						<StyledBox>
 							<Label fontSize={18}>Email Address *</Label>
 							<StyedTextField
-								required
 								type="email"
-								error={isError}
-								onChange={handleChange("email")}
-								helperText={isError && "The email address must be valid and include @"}
+								error={errors.email ? true : false}
+								{...register("email", { required: true, pattern: regex.email })}
+								helperText={errors.email && "Enter a valid email address"}
 								InputProps={{ startAdornment: <FieldIcon icon={<MailFillSvg />} /> }}
 							/>
 						</StyledBox>
+
+						{/* password */}
 						<StyledBox>
 							<Label fontSize={18}>Password</Label>
 							<TextField
-								required
 								fullWidth
+								error={errors.password ? true : false}
+								{...register("password", {
+									required: "Password is required",
+									minLength: { value: 8, message: "Password must be at least 8 characters" },
+								})}
+								helperText={errors.password && errors.password.message}
 								type={values.showPassword ? "text" : "password"}
-								value={values.password}
-								onChange={handleChange("password")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
@@ -164,8 +180,9 @@ const SignUp: FC = () => {
 									),
 								}}
 							/>
+
 							{/* password label message */}
-							{values.password.length ? (
+							{watch("password")?.length ? (
 								<Box sx={{ width: "100%", mt: 1.25 }}>
 									<LinearProgress variant="determinate" value={isStrongPass ? 100 : 50} />
 									<Typography textAlign="right" variant="body2" color="primary">
@@ -174,14 +191,18 @@ const SignUp: FC = () => {
 								</Box>
 							) : null}
 						</StyledBox>
+
+						{/* confirm password */}
 						<StyledBox>
 							<Label fontSize={18}>Confirm Password *</Label>
 							<TextField
-								required
 								fullWidth
+								error={errors.confirmPassword ? true : false}
+								{...register("confirmPassword", {
+									required: "Please,  re-enter password & need to match",
+								})}
+								helperText={errors.confirmPassword && errors.confirmPassword.message}
 								type={values.showConfirmPassword ? "text" : "password"}
-								value={values.confirmPassword}
-								onChange={handleChange("confirmPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
@@ -200,6 +221,7 @@ const SignUp: FC = () => {
 							/>
 						</StyledBox>
 
+						{/* check terms of service */}
 						<FormControlLabel
 							sx={{ mb: 2.5 }}
 							control={<Checkbox defaultChecked />}
@@ -220,6 +242,8 @@ const SignUp: FC = () => {
 							Sign Up
 						</Button>
 					</Box>
+
+					{/* action for already sign in*/}
 					<StyledFooterBox>
 						<AuthFooterTitle>Already have an account?</AuthFooterTitle>{" "}
 						<Button sx={{ fontSize: 18 }}>Sign In</Button>
