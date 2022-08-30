@@ -64,7 +64,7 @@ const LongDescription = () => {
 					<StyledTextField size="small" placeholder="Image title png" fullWidth required />
 					<StyledButton
 						size="small"
-						sx={{ px: 2, minWidth: "132px" }}
+						sx={{ px: 2, minWidth: "132px", maxHeight: "40px" }}
 						type="submit"
 						variant="contained"
 						color="secondary"
