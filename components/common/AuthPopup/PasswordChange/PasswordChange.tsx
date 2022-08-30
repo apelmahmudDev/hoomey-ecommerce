@@ -1,18 +1,30 @@
+import { useEffect } from "react";
 import { FC, ReactNode, useState } from "react";
-import { Box, Button, IconButton, InputAdornment } from "@mui/material";
+import { Box, Button, InputAdornment } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { CloseIconButton } from "../../../ui";
-import Visibility from "@mui/icons-material/Visibility";
-import { EyeCloseSvg, LockFillSvg } from "../../../icons";
+import { CloseIconButton, InputAdornmentElPass } from "../../../ui";
+import { LockFillSvg } from "../../../icons";
 import { Label } from "../../../styledComponents";
 import { AuthDevider, AuthTitle, StyedTextField, StyledBox } from "../styledComponents";
 
-interface State {
+// react-hook-form
+import { useForm, SubmitHandler } from "react-hook-form";
+import { isStrongPassword } from "../../../../utils/validations";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
+
+interface Inputs {
 	currentPassword: string;
 	newPassword: string;
-	showPassword: boolean;
+	reEnterNewPassword: string;
+}
+
+interface State {
+	showCurrentPassword: boolean;
+	showNewPassword: boolean;
+	showReEnterPassword: boolean;
 }
 
 const FieldIcon = ({ icon }: { icon: ReactNode }) => {
@@ -24,6 +36,14 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const PasswordChange: FC = () => {
+	const {
+		watch,
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
+	const [isStrongPass, setIsStrongPass] = useState(false);
 	const [isPasswordOpen, setIsPasswordOpen] = useState(true);
 
 	const handleTogglePopup = (boolean: boolean) => {
@@ -31,36 +51,29 @@ const PasswordChange: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
-		currentPassword: "",
-		newPassword: "",
-		showPassword: false,
+		showCurrentPassword: false,
+		showNewPassword: false,
+		showReEnterPassword: false,
 	});
 
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [prop]: event.target.value });
+	// password visibility handler
+	const handleClickShowPassword = (props: { key: string; value: boolean }) => {
+		setValues({ ...values, [props.key]: !props.value });
 	};
 
-	const handleClickShowPassword = () => {
-		setValues({
-			...values,
-			showPassword: !values.showPassword,
-		});
-	};
+	// password strong label check 🔐
+	useEffect(() => {
+		if (watch("newPassword")) {
+			if (isStrongPassword(watch("newPassword"))) {
+				setIsStrongPass(true);
+			} else {
+				setIsStrongPass(false);
+			}
+		}
+	}, [watch("newPassword")]);
 
-	const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.preventDefault();
-	};
-
-	// common components
-	const InputAdornmentEl = () => {
-		return (
-			<InputAdornment position="end">
-				<IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-					{values.showPassword ? <Visibility /> : <EyeCloseSvg />}
-				</IconButton>
-			</InputAdornment>
-		);
-	};
+	// handle form submit
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	return (
 		<Dialog
@@ -77,51 +90,89 @@ const PasswordChange: FC = () => {
 					<AuthDevider />
 
 					{/* sign up with email and password */}
-					<Box component="form" autoComplete="off">
+					<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 						<StyledBox>
 							<Label fontSize={18}>Current Password</Label>
 							<StyedTextField
-								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
+								error={errors.currentPassword ? true : false}
+								{...register("currentPassword", { required: true })}
+								type={values.showCurrentPassword ? "text" : "password"}
+								helperText={errors.currentPassword && "Current password is required."}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
-										<InputAdornment position="start">
-											<InputAdornmentEl />
-										</InputAdornment>
+										<InputAdornmentElPass
+											isShowing={values.showCurrentPassword}
+											onClick={() =>
+												handleClickShowPassword({
+													key: Object.keys(values)[0],
+													value: values.showCurrentPassword,
+												})
+											}
+										/>
 									),
 								}}
 							/>
 						</StyledBox>
 						<StyledBox>
-							<Label fontSize={18}>New Password</Label>
-							<StyedTextField
-								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
-								InputProps={{
-									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
-									endAdornment: (
-										<InputAdornment position="start">
-											<InputAdornmentEl />
-										</InputAdornment>
-									),
-								}}
-							/>
+							<div>
+								<Label fontSize={18}>New Password</Label>
+								<StyedTextField
+									error={errors.newPassword ? true : false}
+									{...register("newPassword", {
+										required: "New Password is required",
+										minLength: { value: 8, message: "Password must be at least 8 characters" },
+									})}
+									helperText={errors.newPassword && errors.newPassword.message}
+									type={values.showNewPassword ? "text" : "password"}
+									InputProps={{
+										startAdornment: <FieldIcon icon={<LockFillSvg />} />,
+										endAdornment: (
+											<InputAdornmentElPass
+												isShowing={values.showNewPassword}
+												onClick={() =>
+													handleClickShowPassword({
+														key: Object.keys(values)[1],
+														value: values.showNewPassword,
+													})
+												}
+											/>
+										),
+									}}
+								/>
+							</div>
+							{/* password label message */}
+							{watch("newPassword")?.length ? (
+								<Box sx={{ width: "100%", mt: 1.25 }}>
+									<LinearProgress variant="determinate" value={isStrongPass ? 100 : 50} />
+									<Typography textAlign="right" variant="body2" color="primary">
+										{isStrongPass ? "Strong Password" : "Weak Password"}
+									</Typography>
+								</Box>
+							) : null}
 						</StyledBox>
 						<StyledBox>
 							<Label fontSize={18}>Re-Enter New Password</Label>
 							<StyedTextField
-								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
+								fullWidth
+								error={errors.reEnterNewPassword ? true : false}
+								{...register("reEnterNewPassword", {
+									required: "Please,  re-enter password & need to match",
+								})}
+								helperText={errors.reEnterNewPassword && errors.reEnterNewPassword.message}
+								type={values.showReEnterPassword ? "text" : "password"}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,
 									endAdornment: (
-										<InputAdornment position="start">
-											<InputAdornmentEl />
-										</InputAdornment>
+										<InputAdornmentElPass
+											isShowing={values.showReEnterPassword}
+											onClick={() =>
+												handleClickShowPassword({
+													key: Object.keys(values)[2],
+													value: values.showReEnterPassword,
+												})
+											}
+										/>
 									),
 								}}
 							/>
