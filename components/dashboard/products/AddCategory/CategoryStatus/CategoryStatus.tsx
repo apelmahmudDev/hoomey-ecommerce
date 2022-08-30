@@ -1,5 +1,6 @@
 import {
 	Box,
+	Button,
 	CardContent,
 	Checkbox,
 	Divider,
@@ -15,10 +16,25 @@ import { useStyles } from "../../AddProduct/styled";
 
 const CategoryStatus = () => {
 	const [filter, setFilter] = useState("10");
+	const [isTrackChecked, setIsTrackChecked] = useState(true);
+	const [selectChange, setSelectChange] = useState("Select All");
 
 	const classes = useStyles();
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
+	};
+	// handle track quantity check
+	const handleTrackCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setIsTrackChecked(event.target.checked);
+	};
+	const handleAllCheck = () => {
+		if (isTrackChecked === true) {
+			setIsTrackChecked(false);
+			setSelectChange("Select All");
+		} else if (isTrackChecked === false) {
+			setIsTrackChecked(true);
+			setSelectChange("Deselect All");
+		}
 	};
 
 	return (
@@ -54,14 +70,26 @@ const CategoryStatus = () => {
 					</StyledButton>
 				</Box>
 				<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px", mt: 2 }}>
-					Deselect all
+					<Button onClick={handleAllCheck}>{selectChange}</Button>
 				</Typography>
 				<Divider variant="middle" />
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
-					<FormControlLabel control={<Checkbox defaultChecked />} label="Trending" />
-					<FormControlLabel control={<Checkbox defaultChecked />} label="Discounts" />
-					<FormControlLabel control={<Checkbox defaultChecked />} label="Clothing" />
-					<FormControlLabel control={<Checkbox defaultChecked />} label="Gym" />
+					<FormControlLabel
+						control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
+						label="Trending"
+					/>
+					<FormControlLabel
+						control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
+						label="Discounts"
+					/>
+					<FormControlLabel
+						control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
+						label="Clothing"
+					/>
+					<FormControlLabel
+						control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
+						label="Gym"
+					/>
 				</Box>
 			</CardContent>
 		</StyledCard>

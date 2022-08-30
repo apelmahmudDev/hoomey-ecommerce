@@ -1,10 +1,12 @@
 import { Box, Button, CardContent, Checkbox, Divider, FormControlLabel, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { PRODUCTS_TABS } from "../..";
+import { ITabChange } from "../../../../../types/tab-change";
 import { IMAGES } from "../../../../../uiElements";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
-const Variants = () => {
+const Variants = ({ handleTabChange }: ITabChange) => {
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	// handle track quantity check
 	const handleTrackCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,10 +17,10 @@ const Variants = () => {
 		<StyledCard>
 			<CardContent>
 				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
-					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Variants
 					</Typography>
-					<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px" }} fontWeight="bold">
+					<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px" }} fontWeight="medium">
 						Add another Variant
 					</Typography>
 				</Box>
@@ -94,6 +96,7 @@ const Variants = () => {
 							fullWidth
 							variant="contained"
 							color="secondary"
+							onClick={() => handleTabChange(PRODUCTS_TABS.EDIT_VARIANT)}
 						>
 							Edit
 						</Button>{" "}
