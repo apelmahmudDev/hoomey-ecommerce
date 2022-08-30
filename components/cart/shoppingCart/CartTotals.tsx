@@ -146,7 +146,7 @@ const CartTotals = () => {
 							</FormControl>
 
 							{/* region / state select */}
-							<FormControl fullWidth size="small">
+							<FormControl fullWidth size="small" error={errors.region ? true : false}>
 								<Select
 									{...register("region", { required: true })}
 									defaultValue=""
@@ -154,7 +154,6 @@ const CartTotals = () => {
 									id="region-select"
 									value={region}
 									onChange={handleRegionChange}
-									error={errors.region ? true : false}
 								>
 									{regionData?.regions?.map((r) => {
 										return (
