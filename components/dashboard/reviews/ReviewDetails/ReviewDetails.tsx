@@ -126,7 +126,11 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 									</Box>
 								</Box>
 
-								<RoundButton variant="contained" onClick={() => handleEditReviewTogglePopup(true)}>
+								<RoundButton
+									variant="contained"
+									sx={{ maxHeight: "40px" }}
+									onClick={() => handleEditReviewTogglePopup(true)}
+								>
 									Edit Review
 								</RoundButton>
 							</Box>
@@ -221,7 +225,11 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 									</Box>
 								</Box>
 
-								<RoundButton variant="contained" onClick={() => handleEditReviewTogglePopup(true)}>
+								<RoundButton
+									sx={{ maxHeight: "40px" }}
+									variant="contained"
+									onClick={() => handleEditReviewTogglePopup(true)}
+								>
 									Edit Review
 								</RoundButton>
 							</Box>
@@ -303,7 +311,11 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 									</Box>
 								</Box>
 
-								<RoundButton variant="contained" onClick={() => handleEditReviewTogglePopup(true)}>
+								<RoundButton
+									sx={{ maxHeight: "40px" }}
+									variant="contained"
+									onClick={() => handleEditReviewTogglePopup(true)}
+								>
 									Edit Review
 								</RoundButton>
 							</Box>
@@ -344,7 +356,7 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 						</Box>
 					</CardContent>
 				</StyledCard>
-				<Popup isOpen={isEditReviewOpen} isNeedCloseBtn handleTogglePopup={handleEditReviewTogglePopup}>
+				<Popup isOpen={isEditReviewOpen} rounded isNeedCloseBtn handleTogglePopup={handleEditReviewTogglePopup}>
 					<EditReview handleTogglePopup={handleEditReviewTogglePopup} />
 				</Popup>
 			</Box>
