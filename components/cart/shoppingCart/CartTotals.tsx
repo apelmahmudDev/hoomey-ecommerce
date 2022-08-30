@@ -10,6 +10,7 @@ import {
 	Select,
 	TextField,
 	Button,
+	FormHelperText,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { HeadingText } from "../../styledComponents";
@@ -31,6 +32,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 interface Inputs {
 	city: string;
 	zip: string;
+	country: string;
+	region: string;
 }
 
 interface RegionSate {
@@ -119,6 +122,7 @@ const CartTotals = () => {
 							{/* country Select */}
 							<FormControl fullWidth size="small">
 								<Select
+									{...register("country", { required: true })}
 									labelId="country-select-label"
 									id="country-select"
 									value={country}
@@ -144,10 +148,13 @@ const CartTotals = () => {
 							{/* region / state select */}
 							<FormControl fullWidth size="small">
 								<Select
+									{...register("region", { required: true })}
+									defaultValue=""
 									labelId="region-select-label"
 									id="region-select"
 									value={region}
 									onChange={handleRegionChange}
+									error={errors.region ? true : false}
 								>
 									{regionData?.regions?.map((r) => {
 										return (
@@ -157,6 +164,7 @@ const CartTotals = () => {
 										);
 									})}
 								</Select>
+								<FormHelperText>{errors.region && "This field is required."}</FormHelperText>
 							</FormControl>
 
 							<TextField
