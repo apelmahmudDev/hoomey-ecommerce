@@ -163,7 +163,7 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 							</Grid>
 						</Grid>
 					</Grid>
-					<Grid item container xs={12} md={5}>
+					<Grid item xs={12} md={5}>
 						<Grid container spacing={2.5}>
 							<Grid item xs={12}>
 								<ProductStatus />
@@ -187,7 +187,7 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 					</Grid>
 				</Grid>
 				{/* Popup -> Import CSV */}
-				<Popup isOpen={isImportCSVOpen} isNeedCloseBtn handleTogglePopup={handleImportCSVTogglePopup}>
+				<Popup isOpen={isImportCSVOpen} rounded isNeedCloseBtn handleTogglePopup={handleImportCSVTogglePopup}>
 					<ImportCSV handleTogglePopup={handleImportCSVTogglePopup} />
 				</Popup>
 				{/* Popup -> SEO */}

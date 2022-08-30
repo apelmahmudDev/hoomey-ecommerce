@@ -13,7 +13,7 @@ const Pricing = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Pricing
 				</Typography>
 				<Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
@@ -40,7 +40,7 @@ const Pricing = () => {
 					control={<Checkbox checked={isDefaultChecked} onChange={handleDefaultCheckChange} />}
 				/>
 
-				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="medium">
 					Cost per item
 				</Typography>
 				<Box component="form" sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>

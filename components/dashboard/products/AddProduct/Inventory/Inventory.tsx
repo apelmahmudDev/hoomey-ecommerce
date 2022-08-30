@@ -35,7 +35,7 @@ const Inventory = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Inventory
 				</Typography>
 				<Box sx={{ minWidth: "135px", height: "45px" }}>
@@ -87,7 +87,7 @@ const Inventory = () => {
 					/>
 				</Box>
 
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Quantity
 				</Typography>
 				<Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>

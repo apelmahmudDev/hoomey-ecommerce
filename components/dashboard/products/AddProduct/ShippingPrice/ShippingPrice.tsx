@@ -5,10 +5,10 @@ const ShippingPrice = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Shipping Price
 				</Typography>
-				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="medium">
 					Rates
 				</Typography>
 

@@ -14,10 +14,10 @@ const Options = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Options
 				</Typography>
-				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="medium">
 					Option name
 				</Typography>
 				<Box sx={{ minWidth: "135px", height: "45px" }}>
@@ -34,7 +34,7 @@ const Options = () => {
 					</BorderFormControl>
 				</Box>
 
-				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="medium">
 					Option values
 				</Typography>
 

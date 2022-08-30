@@ -6,14 +6,14 @@ const SizeChart = () => {
 		<StyledCard>
 			<CardContent>
 				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
-					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Size Chart
 					</Typography>
 					<StyledButton sx={{ px: 2 }} type="submit" variant="contained" color="secondary">
 						Upload Image
 					</StyledButton>
 				</Box>
-				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="medium">
 					Upload Image
 				</Typography>
 
