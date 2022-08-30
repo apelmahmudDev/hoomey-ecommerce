@@ -5,6 +5,7 @@ import Image from "next/image";
 import { IMAGES } from "../uiElements";
 import { styled } from "@mui/material/styles";
 import { EmailFilledSvg, LockFilledSvg, LogoSvg } from "../components/icons";
+import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import {
 	Box,
 	Button,
@@ -23,6 +24,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "../components/ui";
 import AuthLayout from "../Layout/AuthLayout";
+
+// react-hook-form
+import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../utils/validations/regex";
 
 const StyledTextField = styled(TextField)({
 	"& .MuiInput-underline:after": {
@@ -55,6 +60,10 @@ const styles = {
 	top: "-5px",
 };
 
+interface Inputs {
+	email: string;
+	password: string;
+}
 interface State {
 	amount: string;
 	password: string;
@@ -64,6 +73,13 @@ interface State {
 }
 
 const Login: NextLayoutComponentType = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
+	const [isChecked, setIsChecked] = useState(true);
 	const [values, setValues] = useState<State>({
 		amount: "",
 		password: "",
@@ -86,11 +102,12 @@ const Login: NextLayoutComponentType = () => {
 		event.preventDefault();
 	};
 
-	const [isChecked, setIsChecked] = useState(true);
-
 	const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setIsChecked(event.target.checked);
 	};
+
+	// handle form submit
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	return (
 		<div>
@@ -142,7 +159,7 @@ const Login: NextLayoutComponentType = () => {
 									Please fill in your login details below
 								</Typography>
 
-								<Box component="form" sx={{}} autoComplete="off">
+								<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 									{/* email field */}
 									<Box my={3.8}>
 										<InputLabel sx={{ mb: 2.5, color: "common.white" }}>Email address</InputLabel>
@@ -155,7 +172,11 @@ const Login: NextLayoutComponentType = () => {
 											}}
 										>
 											<EmailFilledSvg sx={{ ...styles }} />
-											<StyledTextField fullWidth />
+											<StyledTextField
+												fullWidth
+												{...register("email", { required: true, pattern: regex.email })}
+												helperText={errors.email && "Enter your valid email address."}
+											/>
 										</Box>
 									</Box>
 
@@ -173,10 +194,10 @@ const Login: NextLayoutComponentType = () => {
 											<LockFilledSvg sx={{ ...styles }} />
 											<StyledTextField
 												fullWidth
+												{...register("password", { required: true })}
+												helperText={errors.password && "Enter your password"}
 												id="outlined-adornment-password"
 												type={values.showPassword ? "text" : "password"}
-												value={values.password}
-												onChange={handleChange("password")}
 												InputProps={{
 													endAdornment: (
 														<InputAdornment position="end">

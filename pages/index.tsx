@@ -1,5 +1,6 @@
 import type { NextLayoutComponentType } from "next";
 import Head from "next/head";
+import { SignUp } from "../components/common/AuthPopup";
 import { Hero, ForFemale, ForMen, ForKids, LatestProducts, ProvideQuality, Collections } from "../components/home";
 import FrontLayout from "../Layout/FrontLayout";
 
@@ -23,7 +24,7 @@ const Home: NextLayoutComponentType = () => {
 			</main>
 
 			{/* popup & others section area*/}
-			{/* <SignUp /> */}
+			<SignUp />
 			{/* <SignIn /> */}
 			{/* <PasswordChange /> */}
 			{/* <AbondonCart /> */}
