@@ -5,7 +5,6 @@ import Image from "next/image";
 import { IMAGES } from "../uiElements";
 import { styled } from "@mui/material/styles";
 import { EmailFilledSvg, LockFilledSvg, LogoSvg } from "../components/icons";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import {
 	Box,
 	Button,
@@ -87,9 +86,9 @@ const Login: NextLayoutComponentType = () => {
 		weightRange: "",
 		showPassword: false,
 	});
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [prop]: event.target.value });
-	};
+	// const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+	// 	setValues({ ...values, [prop]: event.target.value });
+	// };
 
 	const handleClickShowPassword = () => {
 		setValues({
