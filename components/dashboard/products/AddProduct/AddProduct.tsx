@@ -1,17 +1,12 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, CardContent, Typography } from "@mui/material";
+import { Box, Button, CardContent, Checkbox, Container, FormControlLabel, Grid, Typography } from "@mui/material";
 import { PRODUCTS_TABS } from "..";
 import { ITabChange } from "../../../../types/tab-change";
-
-import { Grid } from "@mui/material";
-import { CircleIconButton } from "../../../styledComponents";
-
-import { Button, Checkbox, Container, FormControlLabel } from "@mui/material";
+import { CircleIconButton, RoundButton } from "../../../styledComponents";
 import Media from "./Media";
 
 import { useState } from "react";
 import { Popup } from "../../../common";
-import { RoundButton } from "../../../styledComponents";
 import { StyledButton, StyledCard } from "../../components/styledComponents";
 import Category from "./Category";
 import ImportCSV from "./ImportCSV";

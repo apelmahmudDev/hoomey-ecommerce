@@ -21,8 +21,12 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AttachmentIcon from "@mui/icons-material/Attachment";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
 
 export {
+	Settings,
+	Logout,
 	KeyboardArrowDownIcon,
 	UnfoldMoreIcon,
 	KeyboardArrowRightIcon,

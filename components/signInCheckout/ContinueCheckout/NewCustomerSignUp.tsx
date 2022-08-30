@@ -24,7 +24,7 @@ const NewCustomerSignUp = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	// handle form
+	// handle form submit
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	// password check 🔐
@@ -81,7 +81,7 @@ const NewCustomerSignUp = () => {
 						type="email"
 						error={errors.email ? true : false}
 						{...register("email", { required: true, pattern: regex.email })}
-						helperText={errors.email && "Enter valid email address"}
+						helperText={errors.email && "Enter a valid email address"}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -128,7 +128,7 @@ const NewCustomerSignUp = () => {
 						fullWidth
 						error={errors.reEnterPassword ? true : false}
 						{...register("reEnterPassword", {
-							required: "Please,  re-enter password",
+							required: "Please,  re-enter password & need to match",
 						})}
 						helperText={errors.reEnterPassword && errors.reEnterPassword.message}
 						InputProps={{

@@ -4,15 +4,32 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { CardContent, SelectChangeEvent } from "@mui/material";
-import { StyledCard } from "../../../components/styledComponents";
+import {
+	CardContent,
+	DialogActions,
+	DialogContent,
+	InputAdornment,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+	Typography,
+} from "@mui/material";
+import {
+	StatusFormControl,
+	StyledCard,
+	StyledLabel,
+	StyledTextBox,
+	StyledTextField,
+} from "../../../components/styledComponents";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
-import { RoundButton } from "../../../../styledComponents";
+import { PopupDivider, RoundButton } from "../../../../styledComponents";
+import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
+import { Popup } from "../../../../common";
 
 export interface Data {
 	name: string;
@@ -32,24 +49,34 @@ function createData(name: string, date: string, amount: number, status: string):
 
 const rows = [
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 	createData("John Doe", "22-May-2022", 234, "Active"),
-	createData("John Doe", "22-May-2022", 150, "InActive"),
+	createData("John Doe", "22-May-2022", 150, "Inactive"),
 ];
 
 const ManageCouponTable = () => {
+	const [isOpenEditDialog, setIsOpenEditDialog] = useState(false);
 	const [orderBy, setOrderBy] = useState<keyof Data>("date");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
+	const [status, setStatus] = useState("Active");
 	const [page, setPage] = useState(0);
+
+	const handleEditDialog = (isToggle: boolean) => {
+		setIsOpenEditDialog(isToggle);
+	};
+
+	const handleStatusChange = (event: SelectChangeEvent<unknown>) => {
+		setStatus(event.target.value as string);
+	};
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -96,9 +123,29 @@ const ManageCouponTable = () => {
 												<TableCell align="center">{row.name}</TableCell>
 												<TableCell align="center">{row.date}</TableCell>
 												<TableCell align="center">${row.amount}</TableCell>
-												<TableCell align="center">{row.status}</TableCell>
+												{/* <TableCell align="center">{row.status}</TableCell> */}
+												<TableCell align="center">
+													<StatusFormControl status={row.status}>
+														<Select
+															size="small"
+															value={status}
+															id="demo-simple-select"
+															onChange={handleStatusChange}
+															labelId="demo-simple-select-label"
+															IconComponent={KeyboardArrowDownIcon}
+														>
+															<MenuItem value="Active">Active</MenuItem>
+															<MenuItem value="Inactive">Inactive</MenuItem>
+														</Select>
+													</StatusFormControl>
+												</TableCell>
 												<TableCell align="right">
-													<RoundButton size="small" color="secondary" variant="contained">
+													<RoundButton
+														onClick={() => handleEditDialog(true)}
+														size="small"
+														color="secondary"
+														variant="contained"
+													>
 														Edit
 													</RoundButton>
 												</TableCell>
@@ -131,6 +178,53 @@ const ManageCouponTable = () => {
 
 			{/* customized table pagination  */}
 			<TableCustomPagination handleChangeRowsPerPage={handleChangeRowsPerPage} rowsPerPage={rowsPerPage} />
+
+			{/* edit dialog */}
+			<Popup rounded isOpen={isOpenEditDialog} isNeedCloseBtn={true} handleTogglePopup={handleEditDialog}>
+				<DialogContent>
+					<Typography textAlign="center" variant="h5" fontWeight="medium">
+						Edit Coupon
+					</Typography>
+
+					<PopupDivider />
+
+					{/* form input */}
+					<Box component="form">
+						<StyledTextBox>
+							<StyledLabel fw="500">Coupon</StyledLabel>
+							<StyledTextField size="small" fullWidth defaultValue="HOOM123" />
+						</StyledTextBox>
+						<StyledTextBox>
+							<StyledLabel fw="500">Amount</StyledLabel>
+							<StyledTextField
+								size="small"
+								fullWidth
+								defaultValue="50"
+								InputProps={{
+									startAdornment: <InputAdornment position="start">$</InputAdornment>,
+								}}
+							/>
+						</StyledTextBox>
+						<StyledTextBox>
+							<StyledLabel fw="500">Coupon Expirey</StyledLabel>
+							<StyledTextField size="small" fullWidth defaultValue="mm/dd/yyyy" />
+						</StyledTextBox>
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<RoundButton fullWidth onClick={() => handleEditDialog(false)} variant="outlined" color="secondary">
+						Cancel
+					</RoundButton>
+					<RoundButton
+						fullWidth
+						onClick={() => handleEditDialog(false)}
+						variant="contained"
+						color="secondary"
+					>
+						Save
+					</RoundButton>
+				</DialogActions>
+			</Popup>
 		</Box>
 	);
 };

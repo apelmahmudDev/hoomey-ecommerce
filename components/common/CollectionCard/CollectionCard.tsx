@@ -21,6 +21,7 @@ const CollectionCard = ({ item }: { item: ICollection }) => {
 						width={264}
 						objectFit="cover"
 						layout="responsive"
+						placeholder="blur"
 					/>
 				</Box>
 				<Typography className={classes.content}>{item.content}</Typography>

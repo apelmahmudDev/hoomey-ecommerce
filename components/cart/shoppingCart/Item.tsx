@@ -34,7 +34,14 @@ const Item = () => {
 			<Box sx={{ display: "flex", justifyContent: "space-between" }}>
 				<Box sx={{ display: "flex", gap: 2.5 }}>
 					<Box component="div">
-						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={100} width={72} objectFit="cover" />
+						<Image
+							src={IMAGES.WhiteTshirtImg}
+							alt="Product"
+							height={100}
+							width={72}
+							objectFit="cover"
+							placeholder="blur"
+						/>
 					</Box>
 					<Box component="div">
 						<Typography variant="body2" sx={{ color: COLORS.GRANITE_GREY }}>

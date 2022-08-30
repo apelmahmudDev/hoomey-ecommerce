@@ -3,6 +3,7 @@ import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { StyledCard, StyledFormControl } from "../../../components/styledComponents";
+
 const Chart = dynamic(() => import("react-apexcharts"), {
 	ssr: false,
 });

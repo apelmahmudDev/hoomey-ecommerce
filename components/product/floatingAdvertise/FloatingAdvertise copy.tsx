@@ -80,6 +80,7 @@ export default function FloatingAdvertise() {
 											height={70}
 											width={50}
 											objectFit="cover"
+											placeholder="blur"
 										/>
 										<Typography variant="h6" sx={{ fontFamily: "Poppins" }}>
 											White Cotton Sweatshirt

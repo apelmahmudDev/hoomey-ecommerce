@@ -1,9 +1,7 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { PRODUCTS_TABS } from "..";
 import { ITabChange } from "../../../../types/tab-change";
-
-import { Grid } from "@mui/material";
 import { CircleIconButton } from "../../../styledComponents";
 
 import Media from "../AddProduct/Media";

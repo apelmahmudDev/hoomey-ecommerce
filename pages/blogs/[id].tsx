@@ -22,7 +22,12 @@ const BlogDetails: NextPage = () => {
 						</Typography>
 						<Box my={3}>
 							<Box sx={{ position: "relative", mb: 3 }}>
-								<Image src={IMAGES.BlogBanner1} alt="banner-hero" layout="responsive" />
+								<Image
+									src={IMAGES.BlogBanner1}
+									alt="banner-hero"
+									layout="responsive"
+									placeholder="blur"
+								/>
 							</Box>
 							<Typography variant="h6" fontWeight="medium">
 								Monthly Phone Wallpaper

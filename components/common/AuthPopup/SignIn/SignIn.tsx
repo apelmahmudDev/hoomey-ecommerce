@@ -17,9 +17,16 @@ import {
 	StyledFooterBox,
 } from "../styledComponents";
 
+// react hook form
+import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../../../../utils/validations/regex";
+
+interface Inputs {
+	email: string;
+	password: string;
+}
+
 interface State {
-	currentPassword: string;
-	newPassword: string;
 	showPassword: boolean;
 }
 
@@ -32,6 +39,12 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const SignIn: FC = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
+
 	const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
 	const handleTogglePopup = (boolean: boolean) => {
@@ -39,14 +52,8 @@ const SignIn: FC = () => {
 	};
 
 	const [values, setValues] = useState<State>({
-		currentPassword: "",
-		newPassword: "",
 		showPassword: false,
 	});
-
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [prop]: event.target.value });
-	};
 
 	const handleClickShowPassword = () => {
 		setValues({
@@ -70,6 +77,9 @@ const SignIn: FC = () => {
 		);
 	};
 
+	// handle form submit
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
 	return (
 		<Dialog
 			open={isSignUpOpen}
@@ -86,12 +96,14 @@ const SignIn: FC = () => {
 					<AuthSubtitle>Please fill in your login details below</AuthSubtitle>
 
 					{/* sign up with email and password */}
-					<Box component="form" autoComplete="off">
+					<Box component="form" onSubmit={handleSubmit(onSubmit)}>
 						<StyledBox>
 							<Label fontSize={18}>Email Address *</Label>
 							<StyedTextField
-								required
 								type="email"
+								error={errors.email ? true : false}
+								{...register("email", { required: true, pattern: regex.email })}
+								helperText={errors.email && "Enter a valid email address"}
 								InputProps={{ startAdornment: <FieldIcon icon={<MailFillSvg />} /> }}
 							/>
 						</StyledBox>
@@ -99,9 +111,13 @@ const SignIn: FC = () => {
 							<Label fontSize={18}>Password</Label>
 							<TextField
 								fullWidth
+								error={errors.password ? true : false}
+								{...register("password", {
+									required: "Password is required",
+									minLength: { value: 8, message: "Password must be at least 8 characters" },
+								})}
+								helperText={errors.password && errors.password.message}
 								type={values.showPassword ? "text" : "password"}
-								value={values.currentPassword}
-								onChange={handleChange("currentPassword")}
 								sx={{ "& .MuiOutlinedInput-root": { pl: 0 } }}
 								InputProps={{
 									startAdornment: <FieldIcon icon={<LockFillSvg />} />,

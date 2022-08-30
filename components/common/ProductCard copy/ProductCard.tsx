@@ -34,6 +34,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 							objectFit="cover"
 							layout="responsive"
 							className="swiper-lazy"
+							placeholder="blur"
 						/>
 
 						{/* hover view item  */}

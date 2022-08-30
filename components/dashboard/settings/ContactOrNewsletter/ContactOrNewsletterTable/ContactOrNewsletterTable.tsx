@@ -13,6 +13,7 @@ import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
 import { RoundButton } from "../../../../styledComponents";
+import ViewDialog from "./ViewDialog";
 
 export interface Data {
 	name: string;
@@ -42,10 +43,15 @@ const rows = [
 ];
 
 const ContactOrNewsletterTable = () => {
+	const [isOpenViewDialog, setIsOpenViewDialog] = useState(false);
 	const [orderBy, setOrderBy] = useState<keyof Data>("date");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
 	const [page, setPage] = useState(0);
+
+	const handleViewDialog = (isToggle: boolean) => {
+		setIsOpenViewDialog(isToggle);
+	};
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -93,7 +99,12 @@ const ContactOrNewsletterTable = () => {
 												<TableCell align="center">{row.date}</TableCell>
 												<TableCell align="center">{row.email}</TableCell>
 												<TableCell align="right">
-													<RoundButton size="small" color="secondary" variant="contained">
+													<RoundButton
+														onClick={() => handleViewDialog(true)}
+														size="small"
+														color="secondary"
+														variant="contained"
+													>
 														View
 													</RoundButton>
 												</TableCell>
@@ -126,6 +137,9 @@ const ContactOrNewsletterTable = () => {
 
 			{/* customized table pagination  */}
 			<TableCustomPagination handleChangeRowsPerPage={handleChangeRowsPerPage} rowsPerPage={rowsPerPage} />
+
+			{/* view dialog  / popup*/}
+			<ViewDialog handleViewDialog={handleViewDialog} isOpenViewDialog={isOpenViewDialog} />
 		</Box>
 	);
 };

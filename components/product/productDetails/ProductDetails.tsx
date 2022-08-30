@@ -35,6 +35,7 @@ const ProductDetails = () => {
 								// height={619}
 								objectFit="cover"
 								layout="responsive"
+								placeholder="blur"
 							/>
 						</Grid>
 					</Grid>

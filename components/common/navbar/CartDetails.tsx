@@ -74,7 +74,14 @@ const CartDetails: FC = () => {
 							<CloseIcon fontSize="small" />
 						</IconButton>
 						<Box sx={{ pt: 4, display: "flex", gap: 2, alignItems: "flex-start" }}>
-							<Image src={image} alt="Product" height={65} width={47} objectFit="cover" />
+							<Image
+								src={image}
+								alt="Product"
+								height={65}
+								width={47}
+								objectFit="cover"
+								placeholder="blur"
+							/>
 							<Box>
 								<Box sx={{ mb: 0.6, gap: 2, ...styles }}>
 									<Typography variant="body2" sx={{ fontWeight: 600 }}>

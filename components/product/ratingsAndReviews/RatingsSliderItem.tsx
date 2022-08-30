@@ -41,6 +41,7 @@ const RatingsSliderItem = ({ comment }: IProps) => {
 								width={84}
 								height={116}
 								objectFit="contain"
+								placeholder="blur"
 							/>
 						)}
 					</Box>

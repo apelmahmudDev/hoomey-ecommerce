@@ -38,7 +38,7 @@ const TableCustomPagination = ({ handleChangeRowsPerPage, rowsPerPage }: IProps)
 				{/* input provide to go spacing number of page*/}
 				<Stack direction="row" spacing={1.25} alignItems="center">
 					<Typography variant="body2">go to</Typography>
-					<SmallInput />
+					<SmallInput type="number" />
 				</Stack>
 			</Stack>
 		</Box>

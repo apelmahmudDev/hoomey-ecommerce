@@ -53,7 +53,14 @@ const CTAPopup = () => {
 				</Box>
 
 				<Box sx={{ mt: 2.5, display: "flex", gap: 2.5 }}>
-					<Image src={IMAGES.BlackTshirtImg} alt="product-image" width={126} height={173} objectFit="cover" />
+					<Image
+						src={IMAGES.BlackTshirtImg}
+						alt="product-image"
+						width={126}
+						height={173}
+						objectFit="cover"
+						placeholder="blur"
+					/>
 
 					<Box sx={{ display: "flex", flexDirection: "column" }}>
 						<Typography sx={{ mb: 1.25 }} fontWeight={500}>

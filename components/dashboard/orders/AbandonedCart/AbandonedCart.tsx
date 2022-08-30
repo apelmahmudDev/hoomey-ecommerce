@@ -13,7 +13,7 @@ const AbandonedCart = ({ handleTabChange }: ITabChange) => {
 			</Box>
 
 			{/* table section */}
-			<Table />
+			<Table handleTabChange={handleTabChange} />
 		</Box>
 	);
 };

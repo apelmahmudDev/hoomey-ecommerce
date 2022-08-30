@@ -17,7 +17,13 @@ const AboutUs: NextPage = () => {
 				<Container>
 					{/* banner */}
 					<Box mb={5}>
-						<Image src={IMAGES.AboutBanner} alt="banner" layout="responsive" objectFit="cover" />
+						<Image
+							src={IMAGES.AboutBanner}
+							alt="banner"
+							layout="responsive"
+							objectFit="cover"
+							placeholder="blur"
+						/>
 					</Box>
 					<Grid container spacing={5}>
 						<Grid item xs={12} sm={3} md={2}>

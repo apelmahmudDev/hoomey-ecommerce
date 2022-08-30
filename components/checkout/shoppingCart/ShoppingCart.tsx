@@ -77,7 +77,14 @@ const ShoppingCart = () => {
 				</Box>
 				<Box sx={{ display: "flex", gap: 1.3, width: "100%", my: 2.5 }}>
 					<Box component="div">
-						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={115} width={72} objectFit="cover" />
+						<Image
+							src={IMAGES.WhiteTshirtImg}
+							alt="Product"
+							height={115}
+							width={72}
+							objectFit="cover"
+							placeholder="blur"
+						/>
 					</Box>
 					<Box component="div" sx={{ width: "100%" }}>
 						<Box sx={{ ...styles.flexStack }}>
@@ -228,7 +235,6 @@ const ShoppingCart = () => {
 					{paymentMethods === "pay_with_card" && (
 						<>
 							<TextField
-								required
 								fullWidth
 								size="small"
 								inputMode="numeric"
@@ -246,9 +252,9 @@ const ShoppingCart = () => {
 								}}
 							/>
 							<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
-								<TextField required size="small" placeholder="MM" />
-								<TextField required size="small" placeholder="YYYY" />
-								<TextField required size="small" placeholder="CVV" />
+								<TextField size="small" placeholder="MM" />
+								<TextField size="small" placeholder="YYYY" />
+								<TextField size="small" placeholder="CVV" />
 							</Box>
 						</>
 					)}
