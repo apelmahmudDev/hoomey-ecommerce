@@ -3,7 +3,6 @@ import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { StyledCard, StyledFormControl } from "../../../components/styledComponents";
-import { useStyles } from "../styled";
 
 const Chart = dynamic(() => import("react-apexcharts"), {
 	ssr: false,
@@ -105,7 +104,6 @@ const series = [
 
 const Ratings = () => {
 	const [filter, setFilter] = useState("10");
-	const classes = useStyles();
 
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
