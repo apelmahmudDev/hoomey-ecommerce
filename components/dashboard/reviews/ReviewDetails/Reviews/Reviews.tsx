@@ -1,9 +1,8 @@
-import { Box, CardContent, Divider, MenuItem, Select, SelectChangeEvent, Stack, Typography } from "@mui/material";
+import { Box, CardContent, MenuItem, Select, SelectChangeEvent, Stack, Typography } from "@mui/material";
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { StyledCard, StyledFormControl } from "../../../components/styledComponents";
-
 const Chart = dynamic(() => import("react-apexcharts"), {
 	ssr: false,
 });
@@ -12,46 +11,20 @@ const Chart = dynamic(() => import("react-apexcharts"), {
 const options: ApexOptions = {
 	chart: {
 		height: "150px",
-		type: "bar",
+		type: "donut",
 		toolbar: {
 			show: false,
 		},
 		redrawOnParentResize: true,
-		foreColor: "rgba(0 0 0 / 50%)",
-	},
-	plotOptions: {
-		bar: {
-			borderRadius: 8,
-			horizontal: true,
-			columnWidth: "40%",
-			barHeight: "70%",
-		},
 	},
 
-	// fill: {
-	// 	colors: ["#E3E3E3", "#E3E3E3", "#546E7A", "#E3E3E3", "#E3E3E3"],
-	// 	//type: "gradient",
-	// 	// opacity: 0.5,
-	// 	type: "solid",
-	// 	// gradient: {
-	// 	// 	// shadeIntensity: 1,
-	// 	// 	// opacityFrom: 0,
-	// 	// 	// opacityTo: 0.9,
-	// 	// 	colorStops: [
-	// 	// 		{
-	// 	// 			offset: 20,
-	// 	// 			color: "#E3E3E3",
-	// 	// 			opacity: 1,
-	// 	// 		},
-	// 	// 		{
-	// 	// 			offset: 80,
-	// 	// 			color: "#E3E3E3",
-	// 	// 			opacity: 1,
-	// 	// 		},
-	// 	// 	],
-	// 	// },
-	// },
-	colors: ["#E3E3E3", "#E3E3E3", "#13d8aa", "#E3E3E3", "#E3E3E3"],
+	fill: {
+		colors: ["#FF3131", "#13d8aa"],
+
+		type: "solid",
+	},
+	labels: ["1-2 Stars", "3-5 Stars"],
+	colors: ["red", "#13d8aa"],
 	dataLabels: {
 		enabled: true,
 		style: {
@@ -59,31 +32,6 @@ const options: ApexOptions = {
 			fontFamily: "Helvetica, Arial, sans-serif",
 			fontWeight: "bold",
 			colors: undefined,
-		},
-	},
-	grid: {
-		show: false,
-		xaxis: {
-			lines: {
-				show: false,
-			},
-		},
-		yaxis: {
-			lines: {
-				show: false,
-			},
-		},
-	},
-	xaxis: {
-		categories: ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"],
-		labels: {
-			show: false,
-		},
-		axisBorder: {
-			show: false,
-		},
-		axisTicks: {
-			show: false,
 		},
 	},
 
@@ -95,14 +43,9 @@ const options: ApexOptions = {
 };
 
 // chart series
-const series = [
-	{
-		name: "Total Reviews",
-		data: [28, 18, 58, 19, 12],
-	},
-];
+const series = [25, 77];
 
-const Ratings = () => {
+const Reviews = () => {
 	const [filter, setFilter] = useState("10");
 
 	const handleFilter = (event: SelectChangeEvent) => {
@@ -115,7 +58,7 @@ const Ratings = () => {
 				<Stack direction="row" alignItems="center" spacing={1}>
 					<Box sx={{ flexGrow: 1, display: "flex", alignItems: "center", gap: 2.5 }}>
 						<Typography sx={{ flex: "1 1 100%", fontSize: "16px", fontWeight: "500" }} component="div">
-							Ratings
+							Reviews
 						</Typography>
 					</Box>
 					<Box sx={{ minWidth: "135px", height: "45px" }}>
@@ -135,13 +78,12 @@ const Ratings = () => {
 						</StyledFormControl>
 					</Box>
 				</Stack>
-				<Divider variant="middle" sx={{ mt: 1.25 }} />
 				{/* radialbars chart */}
 				<div id="chart">
-					<Chart options={options} series={series} type="bar" height={170} />
+					<Chart options={options} series={series} type="donut" height={190} />
 				</div>
 			</CardContent>
 		</StyledCard>
 	);
 };
-export default Ratings;
+export default Reviews;
