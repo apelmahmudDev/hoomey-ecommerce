@@ -4,10 +4,10 @@ import {
 	Accordion,
 	AccordionSummary,
 	AccordionDetails,
-	// SelectChangeEvent,
-	// MenuItem,
-	// FormControl,
-	// Select,
+	SelectChangeEvent,
+	MenuItem,
+	FormControl,
+	Select,
 	TextField,
 	Button,
 } from "@mui/material";
@@ -19,19 +19,33 @@ import { PaypalColorSvg, WhiteLockSvg } from "../../icons";
 import { PaymentSystemView, SecuredByNorton } from "../../common";
 import { EndIconButton } from "../../ui";
 import { ExpandMoreIcon, LocationOnIcon } from "../../../uiElements/icons";
-import { useState } from "react";
-// import { COUNTRIES } from "../../../assets/data/countries";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-// note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to
-// keep file size down
-import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+// import json -> country data
+import countryJson from "country-region-data/data.json";
 
+// react-hook-form
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface Inputs {
 	city: string;
 	zip: string;
+}
+
+interface RegionSate {
+	countryName: string;
+	countryShortCode: string;
+	regions: (
+		| {
+				name: string;
+				shortCode?: undefined;
+		  }
+		| {
+				name: string;
+				shortCode: string;
+		  }
+	)[];
 }
 
 const SmallText = styled(Typography)({
@@ -56,30 +70,26 @@ const CartTotals = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	// const [country, setCountry] = useState("United States");
-	// const [product, setProduct] = useState("10");
+	const [regionData, setRegionData] = useState<RegionSate>({} as RegionSate);
+	const [region, setRegion] = useState("");
+	const [country, setCountry] = useState("AU");
 
-	// const handleCountryChange = (event: SelectChangeEvent) => {
-	// 	setCountry(event.target.value as string);
-	// };
-	// const handleProductChange = (event: SelectChangeEvent) => {
-	// 	setProduct(event.target.value as string);
-	// };
-
-	const [country, setCountry] = useState({ country: "United States", region: "Washington" });
-
-	const handleCountrySelect = (val: string) => {
-		setCountry({ ...country, country: val });
+	const handleCountryChange = (event: SelectChangeEvent) => {
+		setCountry(event.target.value as string);
 	};
 
-	const handleRegionSelect = (val: string) => {
-		setCountry({ ...country, region: val });
+	const handleRegionChange = (event: SelectChangeEvent) => {
+		setRegion(event.target.value as string);
 	};
+
+	// region / state select
+	useEffect(() => {
+		const regionArr = countryJson.filter((c) => c.countryShortCode === country);
+		setRegionData(regionArr[0]);
+	}, [country]);
 
 	// handle form
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-	console.log(country);
 
 	return (
 		<div>
@@ -106,50 +116,48 @@ const CartTotals = () => {
 								"& .MuiTextField-root, & .MuiFormControl-root": { my: 0.5 },
 							}}
 						>
-							{/* <FormControl fullWidth>
+							{/* country Select */}
+							<FormControl fullWidth size="small">
 								<Select
-									size="small"
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
+									labelId="country-select-label"
+									id="country-select"
 									value={country}
 									onChange={handleCountryChange}
 								>
-									{COUNTRIES.map((option) => (
-										<MenuItem key={option.name} value={option.name}>
-											{option.name}
+									{countryJson.map((country) => (
+										<MenuItem key={country.countryShortCode} value={country.countryShortCode}>
+											<Box sx={{ "& > img": { mr: 2, flexShrink: 0 } }}>
+												<img
+													loading="lazy"
+													width="20"
+													src={`https://flagcdn.com/w20/${country.countryShortCode.toLowerCase()}.png`}
+													srcSet={`https://flagcdn.com/w40/${country.countryShortCode.toLowerCase()}.png 2x`}
+													alt=""
+												/>
+												{country.countryName} ({country.countryShortCode})
+											</Box>
 										</MenuItem>
 									))}
 								</Select>
-							</FormControl> */}
+							</FormControl>
 
-							{/* select country */}
-							<CountryDropdown
-								classes="country_dropdown"
-								value={country.country}
-								onChange={(val) => handleCountrySelect(val)}
-							/>
-
-							{/* select region */}
-							<RegionDropdown
-								classes="country_dropdown"
-								country={country.country}
-								value={country.region}
-								onChange={(val) => handleRegionSelect(val)}
-							/>
-
-							{/* <FormControl fullWidth>
+							{/* region / state select */}
+							<FormControl fullWidth size="small">
 								<Select
-									size="small"
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
-									value={product}
-									onChange={handleProductChange}
+									labelId="region-select-label"
+									id="region-select"
+									value={region}
+									onChange={handleRegionChange}
 								>
-									<MenuItem value={10}>New Jersey</MenuItem>
-									<MenuItem value={20}>New Jersey</MenuItem>
-									<MenuItem value={30}>New Jersey</MenuItem>
+									{regionData?.regions?.map((r) => {
+										return (
+											<MenuItem key={r.name} value={r.name}>
+												{r.name}
+											</MenuItem>
+										);
+									})}
 								</Select>
-							</FormControl> */}
+							</FormControl>
 
 							<TextField
 								fullWidth
