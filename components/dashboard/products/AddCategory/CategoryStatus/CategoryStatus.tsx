@@ -14,7 +14,7 @@ import { useState } from "react";
 import { BorderFormControl, StyledButton, StyledCard } from "../../../components/styledComponents";
 import { useStyles } from "../../AddProduct/styled";
 
-const CategoryStatus = () => {
+const CategoryStatus = ({ handleTogglePopup }: { handleTogglePopup: (toggle: boolean) => void }) => {
 	const [filter, setFilter] = useState("10");
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	const [selectChange, setSelectChange] = useState("Select All");
@@ -65,7 +65,12 @@ const CategoryStatus = () => {
 					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Sub-Categories
 					</Typography>
-					<StyledButton sx={{ px: 2 }} type="submit" variant="contained" color="secondary">
+					<StyledButton
+						sx={{ px: 2 }}
+						onClick={() => handleTogglePopup(true)}
+						variant="contained"
+						color="secondary"
+					>
 						Add Sub-Category
 					</StyledButton>
 				</Box>
