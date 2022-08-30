@@ -37,9 +37,6 @@ const NewCustomerSignUp = () => {
 		}
 	}, [watch("password")]);
 
-	console.log(watch("password"));
-	console.log(watch("reEnterPassword"));
-
 	return (
 		<Box sx={{ p: 2.5, ...styles.b, ...styles.bg }}>
 			<Typography sx={{ fontWeight: 600 }}>New Customer</Typography>

@@ -75,3 +75,7 @@ input {
 .box-shadow-2 {
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
 }
+
+.MuiFormHelperText-root {
+	margin-left: 0;
+}

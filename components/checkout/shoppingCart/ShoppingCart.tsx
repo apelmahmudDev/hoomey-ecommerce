@@ -228,7 +228,6 @@ const ShoppingCart = () => {
 					{paymentMethods === "pay_with_card" && (
 						<>
 							<TextField
-								required
 								fullWidth
 								size="small"
 								inputMode="numeric"
@@ -246,9 +245,9 @@ const ShoppingCart = () => {
 								}}
 							/>
 							<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
-								<TextField required size="small" placeholder="MM" />
-								<TextField required size="small" placeholder="YYYY" />
-								<TextField required size="small" placeholder="CVV" />
+								<TextField size="small" placeholder="MM" />
+								<TextField size="small" placeholder="YYYY" />
+								<TextField size="small" placeholder="CVV" />
 							</Box>
 						</>
 					)}
