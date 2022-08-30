@@ -6,13 +6,6 @@ import { IMAGES } from "../../../../../uiElements";
 import { AppDivider, ProductCircularColor } from "../../../../styledComponents";
 import { StyledCard } from "../../../components/styledComponents";
 
-const CalcFlexStack = styled("div")({
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-	gap: 2.5,
-	margin: "16px 0",
-});
 const FlexStack = styled("div")({
 	display: "flex",
 	alignItems: "center",
@@ -40,7 +33,14 @@ const Checkout = () => {
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
 					{/* product image */}
 
-					<Image src={IMAGES.WhiteTshirtImg} alt="product name" height={196} width={154} objectFit="cover" />
+					<Image
+						src={IMAGES.WhiteTshirtImg}
+						alt="product name"
+						height={196}
+						width={154}
+						objectFit="cover"
+						placeholder="blur"
+					/>
 
 					{/* product details twice content */}
 					<Box sx={{ width: "100%" }}>

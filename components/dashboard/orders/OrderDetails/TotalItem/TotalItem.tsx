@@ -41,6 +41,7 @@ const TotalItem = () => {
 									height={196}
 									width={154}
 									objectFit="cover"
+									placeholder="blur"
 								/>
 
 								{/* product details twice content */}

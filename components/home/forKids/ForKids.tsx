@@ -32,6 +32,7 @@ const ForKids: FC = () => {
 								// height={458}
 								objectFit="cover"
 								layout="responsive"
+								placeholder="blur"
 							/>
 						)}
 					</Grid>

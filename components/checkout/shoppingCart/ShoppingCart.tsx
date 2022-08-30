@@ -77,7 +77,14 @@ const ShoppingCart = () => {
 				</Box>
 				<Box sx={{ display: "flex", gap: 1.3, width: "100%", my: 2.5 }}>
 					<Box component="div">
-						<Image src={IMAGES.WhiteTshirtImg} alt="Product" height={115} width={72} objectFit="cover" />
+						<Image
+							src={IMAGES.WhiteTshirtImg}
+							alt="Product"
+							height={115}
+							width={72}
+							objectFit="cover"
+							placeholder="blur"
+						/>
 					</Box>
 					<Box component="div" sx={{ width: "100%" }}>
 						<Box sx={{ ...styles.flexStack }}>

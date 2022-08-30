@@ -60,6 +60,7 @@ const ForMen: FC = () => {
 								// height={650}
 								objectFit="cover"
 								layout="responsive"
+								placeholder="blur"
 							/>
 						)}
 					</Grid>

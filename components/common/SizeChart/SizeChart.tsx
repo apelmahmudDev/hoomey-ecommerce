@@ -38,7 +38,7 @@ const SizeChart = ({ isOpen, handleToggle }: IProps) => {
 
 				<Grid container spacing={5}>
 					<Grid item xs={12} md={5}>
-						<Image src={IMAGES.MenSizeImg} alt="product size" layout="responsive" />
+						<Image src={IMAGES.MenSizeImg} alt="product size" layout="responsive" placeholder="blur" />
 					</Grid>
 
 					<Grid item xs={12} md={7}>

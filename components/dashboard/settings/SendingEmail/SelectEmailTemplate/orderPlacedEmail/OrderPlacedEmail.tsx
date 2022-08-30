@@ -38,7 +38,14 @@ const OrderPlacedEmail = () => {
 
 					<Box sx={{ display: "flex", gap: 3 }}>
 						<div>
-							<Image src={IMAGES.WhiteTshirtImg} alt="product" height={75} width={65} objectFit="cover" />
+							<Image
+								src={IMAGES.WhiteTshirtImg}
+								alt="product"
+								height={75}
+								width={65}
+								objectFit="cover"
+								placeholder="blur"
+							/>
 						</div>
 						<Box sx={{ width: "100%" }}>
 							<FlexStack>

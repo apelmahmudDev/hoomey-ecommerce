@@ -39,7 +39,13 @@ const OrderDetails = () => {
 				{[...Array(2)].map((item, idx) => (
 					<div key={idx}>
 						<Box sx={{ my: 2.5, display: "flex", gap: 3.7 }}>
-							<Image src={IMAGES.WhiteTshirtImg} alt="product-image" height={196} width={154} />
+							<Image
+								src={IMAGES.WhiteTshirtImg}
+								alt="product-image"
+								height={196}
+								width={154}
+								placeholder="blur"
+							/>
 							<Box sx={{ width: "100%" }}>
 								<FlexStack my={2.5}>
 									<HeadingText>White Cotton Sweatshirt</HeadingText>

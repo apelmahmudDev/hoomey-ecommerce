@@ -47,7 +47,13 @@ const Contact = () => {
 				{/* banner */}
 				<Box sx={{ height: 343, position: "relative" }}>
 					<Box className={classes.darkBanner}>
-						<Image src={IMAGES.ContactBanner} alt="banner-hero" layout="fill" objectFit="cover" />
+						<Image
+							src={IMAGES.ContactBanner}
+							alt="banner-hero"
+							layout="fill"
+							objectFit="cover"
+							placeholder="blur"
+						/>
 					</Box>
 					<Box className={classes.darkBannerContent}>
 						<Typography variant="h3" gutterBottom sx={{ fontWeight: 600 }}>

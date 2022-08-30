@@ -55,6 +55,7 @@ const Orders = () => {
 													height={250}
 													width={199}
 													objectFit="cover"
+													placeholder="blur"
 												/>
 											</Box>
 											<Typography fontWeight="600">White Cotton Sweatshirt </Typography>
@@ -124,6 +125,7 @@ const Orders = () => {
 													height={250}
 													width={199}
 													objectFit="cover"
+													placeholder="blur"
 												/>
 											</Box>
 											<Typography fontWeight="600">White Cotton Sweatshirt </Typography>

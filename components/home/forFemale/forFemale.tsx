@@ -33,6 +33,7 @@ const ForFemale: FC = () => {
 								// height={471}
 								objectFit="cover"
 								layout="responsive"
+								placeholder="blur"
 							/>
 						)}
 					</Grid>

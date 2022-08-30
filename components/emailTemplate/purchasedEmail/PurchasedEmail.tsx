@@ -39,6 +39,7 @@ const PurchasedEmail = () => {
 									height={65}
 									width={65}
 									objectFit="cover"
+									placeholder="blur"
 								/>
 								<Box sx={{ width: "100%" }}>
 									<FlexStack>
