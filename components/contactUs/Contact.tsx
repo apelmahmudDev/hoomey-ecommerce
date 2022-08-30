@@ -7,6 +7,7 @@ import { useGlobalJSStyles } from "../../styles/styled";
 
 // react-hook-form
 import { useForm, SubmitHandler } from "react-hook-form";
+import { regex } from "../../utils/validations/regex";
 
 export const Label = styled(Typography)({
 	marginBottom: "13px",
@@ -76,7 +77,7 @@ const Contact = () => {
 									fullWidth
 									type="email"
 									error={errors.email ? true : false}
-									{...register("email", { required: true })}
+									{...register("email", { required: true, pattern: regex.email })}
 									helperText={errors.email && "Enter your valid email address."}
 								/>
 							</Box>
