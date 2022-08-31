@@ -35,9 +35,31 @@ const SingleNotification = ({ data }: { data: DataProps }) => {
 						flexWrap: "wrap",
 					}}
 				>
-					<RoundButton variant="contained" sx={{ backgroundColor: `${data.color}`, color: "white" }}>
-						{data.type}
-					</RoundButton>
+					<Box
+						sx={{
+							display: "flex",
+
+							gap: 1.25,
+							justifyContent: "flex-start",
+							flexWrap: "wrap",
+						}}
+					>
+						{data.new && (
+							<Box
+								sx={{
+									width: "8px",
+									height: "8px",
+									mt: 1.75,
+									borderRadius: "100%",
+									backgroundColor: "#FF0303",
+									marginLeft: "-15px",
+								}}
+							/>
+						)}
+						<RoundButton variant="contained" sx={{ backgroundColor: `${data.color}`, color: "white" }}>
+							{data.type}
+						</RoundButton>
+					</Box>
 					<Box
 						sx={{
 							display: "flex",
