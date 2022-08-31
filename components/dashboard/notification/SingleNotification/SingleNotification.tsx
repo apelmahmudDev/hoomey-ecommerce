@@ -4,7 +4,15 @@ import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { RoundButton } from "../../../styledComponents";
 
-const SingleNotification = () => {
+interface DataProps {
+	type: string;
+	text: string;
+	name: string;
+	color: string;
+	new: boolean;
+}
+
+const SingleNotification = ({ data }: { data: DataProps }) => {
 	return (
 		<div>
 			{" "}
@@ -27,7 +35,9 @@ const SingleNotification = () => {
 						flexWrap: "wrap",
 					}}
 				>
-					<RoundButton variant="contained">Edit Review</RoundButton>
+					<RoundButton variant="contained" sx={{ backgroundColor: `${data.color}`, color: "white" }}>
+						{data.type}
+					</RoundButton>
 					<Box
 						sx={{
 							display: "flex",
@@ -46,8 +56,8 @@ const SingleNotification = () => {
 						</Typography>
 					</Box>
 				</Box>
-				<Typography sx={{ mt: 2 }} variant="h6" fontWeight={600}>
-					Notifications & Recent Activity
+				<Typography sx={{ fontSize: "16px" }} fontWeight={500}>
+					{data.text} : {data.name}
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={8}>
@@ -61,7 +71,7 @@ const SingleNotification = () => {
 						</Typography>
 					</Grid>
 					<Grid item xs={3} />
-					<Grid item xs={1}>
+					<Grid item xs={1} sx={{ display: "flex", justifyContent: "flex-end" }}>
 						<CancelIcon />
 					</Grid>
 				</Grid>
