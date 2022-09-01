@@ -97,12 +97,12 @@ const Dashboard = () => {
 				<Box my={3.5} component="section">
 					<Grid container spacing={2.5}>
 						{/* Earning Revenue */}
-						<Grid item xs={12} lg={6}>
+						<Grid item xs={12} md={6} lg={5} xl={6}>
 							<EarningRevenueChart />
 						</Grid>
 
 						{/* Top Sales */}
-						<Grid item xs={12} lg={3}>
+						<Grid item xs={12} md={6} lg={4} xl={3}>
 							<TopSalesChart />
 						</Grid>
 

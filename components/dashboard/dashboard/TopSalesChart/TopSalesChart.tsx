@@ -66,7 +66,7 @@ const TopSalesChart = () => {
 
 				<AppDivider />
 				<Box sx={{ mt: 2.5 }}>
-					<Stack direction="row" spacing={3.5}>
+					<Stack direction="row" spacing={3.5} flexWrap="wrap">
 						<VariantListItem category={"Electronics"}>Electronics</VariantListItem>
 						<VariantListItem category={"Women"}>Women</VariantListItem>
 						<VariantListItem category={"Men"}>Men</VariantListItem>
