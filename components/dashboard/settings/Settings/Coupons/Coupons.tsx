@@ -1,4 +1,4 @@
-import { CardContent, Typography, InputAdornment, Grid, Button, Box } from "@mui/material";
+import { CardContent, Typography, InputAdornment, Grid, Button, Box, FormControlLabel, Checkbox } from "@mui/material";
 import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
 import { useAppDispatch } from "../../../../../store/hooks";
 import { tabSwitch } from "../../../../../store/slices/settingsSlice";
@@ -6,6 +6,7 @@ import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../.
 
 const Coupons = () => {
 	const dispatch = useAppDispatch();
+
 	return (
 		<StyledCard>
 			<CardContent>
@@ -50,6 +51,10 @@ const Coupons = () => {
 							</Button>
 						</Grid>
 					</Grid>
+				</StyledTextBox>
+
+				<StyledTextBox>
+					<FormControlLabel control={<Checkbox defaultChecked />} label="Get one 50% off" />
 				</StyledTextBox>
 			</CardContent>
 		</StyledCard>
