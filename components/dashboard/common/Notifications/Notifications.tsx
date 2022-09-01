@@ -1,15 +1,9 @@
 import { Box, List, Stack, Button, ListItem, Popover, Typography, ListItemButton } from "@mui/material";
+import { MenuFilterProps } from "../../../../types/menu-filter";
 import { DashboardDivider } from "../../../styledComponents";
 import styles from "../styles";
 
-interface MenuProps {
-	// eslint-disable-next-line @rushstack/no-new-null
-	anchorEl: HTMLElement | null;
-	isOpen: boolean;
-	handleClose: () => void;
-}
-
-const Notifications = ({ anchorEl, isOpen, handleClose }: MenuProps) => {
+const Notifications = ({ anchorEl, isOpen, handleClose }: MenuFilterProps) => {
 	return (
 		<Popover
 			id="notifications-menu"
