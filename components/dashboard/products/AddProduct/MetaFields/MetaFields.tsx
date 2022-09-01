@@ -5,7 +5,7 @@ const MetaFields = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Metafields
 				</Typography>
 

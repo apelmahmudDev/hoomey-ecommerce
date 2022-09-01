@@ -5,10 +5,10 @@ const Taxes = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Taxes
 				</Typography>
-				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25 }} fontWeight="medium">
 					Tax (%)
 				</Typography>
 

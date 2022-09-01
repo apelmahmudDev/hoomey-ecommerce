@@ -34,7 +34,7 @@ const Shipping = () => {
 	return (
 		<StyledCard>
 			<CardContent>
-				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 					Shipping
 				</Typography>
 				<FormControlLabel
@@ -43,14 +43,14 @@ const Shipping = () => {
 						<Checkbox checked={isPhysicalProductChecked} onChange={handlePhysicalProductCheckChange} />
 					}
 				/>
-				<Typography sx={{ fontSize: 18, mb: 1.25, mt: 2 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25, mt: 2 }} fontWeight="medium">
 					Weight
 				</Typography>
 
 				<Typography sx={{ color: "#8B8B8B", fontWeight: "400", fontSize: "14px", mt: 1.25 }} fontWeight="light">
 					Used to calculate shipping rates at checkout and label prices
 				</Typography>
-				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="medium">
 					Weight
 				</Typography>
 				<Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mb: 1.25 }}>
@@ -71,7 +71,7 @@ const Shipping = () => {
 						</SmallFormControl>
 					</Box>
 				</Box>
-				<Typography sx={{ fontSize: 18, mb: 1.25, mt: 2 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 18, mb: 1.25, mt: 2 }} fontWeight="medium">
 					Customs information
 				</Typography>
 
@@ -79,7 +79,7 @@ const Shipping = () => {
 					Customs authorities use the information to calculate duties when shipping internationally. Shown on
 					printed customs forms.
 				</Typography>
-				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="medium">
 					Country/Region of Origin
 				</Typography>
 				<Box sx={{ minWidth: "135px", height: "45px", mt: 0.75 }}>
@@ -99,7 +99,7 @@ const Shipping = () => {
 				<Typography sx={{ color: "#8B8B8B", fontWeight: "400", fontSize: "14px", mt: 1.25 }} fontWeight="light">
 					In most cases, where the product is manufactured.
 				</Typography>
-				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="bold">
+				<Typography sx={{ fontSize: 14, mb: 1.25, mt: 2 }} fontWeight="medium">
 					Harmonized System code
 				</Typography>
 				<Box component="form" sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>
