@@ -19,7 +19,12 @@ const SizeChart = () => {
 
 				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25 }}>
 					<StyledTextField size="small" placeholder="Image title png" fullWidth required />
-					<StyledButton sx={{ px: 2, minWidth: "132px" }} type="submit" variant="contained" color="secondary">
+					<StyledButton
+						sx={{ px: 2, minWidth: "132px", maxHeight: "40px" }}
+						type="submit"
+						variant="contained"
+						color="secondary"
+					>
 						Upload Image
 					</StyledButton>
 				</Box>
