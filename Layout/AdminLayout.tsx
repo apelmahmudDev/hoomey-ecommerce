@@ -18,18 +18,18 @@ import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } fro
 
 // icons
 import {
-	AppIconSvg,
 	BarSvg,
-	CheckCartSvg,
-	CustomersSvg,
-	DashboardBagSvg,
-	DashboardMenuSvg,
-	DeliveryCarSvg,
-	GraySearchIcon,
-	NavNotificationsSvg,
-	NotificationsSvg,
+	AppIconSvg,
 	ReviewsSvg,
 	SettingsSvg,
+	CustomersSvg,
+	CheckCartSvg,
+	GraySearchIcon,
+	DeliveryCarSvg,
+	DashboardMenuSvg,
+	DashboardBagSvg,
+	NotificationsSvg,
+	NavNotificationsSvg,
 } from "../components/icons";
 
 import { Link } from "../components/ui";
@@ -40,6 +40,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import { Logout, Settings } from "../uiElements/icons";
+import { Notifications } from "../components/dashboard/common";
+import styles from "../components/dashboard/common/styles";
 
 const drawerWidth = 120;
 
@@ -57,16 +59,35 @@ const drawerItem = [
 
 const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 	const [isMobileOpen, setIsMobileOpen] = useState(false);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [notificationAnchorEl, setNotificationAnchorEl] = useState<null | HTMLElement>(null);
 
+	// handle dashboard drawer of menu
 	const handleDrawerToggle = () => {
 		setIsMobileOpen(!isMobileOpen);
 	};
 
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	// user profile
 	const isOpen = Boolean(anchorEl);
+	// notification
+	const isNotificationOpen = Boolean(notificationAnchorEl);
+
+	// handle user profile
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
+
+	// handle notification
+	const handleNotificationClick = (event: React.MouseEvent<HTMLElement>) => {
+		setNotificationAnchorEl(event.currentTarget);
+	};
+
+	// handle notification closer
+	const handleNotificationClose = () => {
+		setNotificationAnchorEl(null);
+	};
+
+	// handle user profile closer
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
@@ -152,22 +173,38 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 									<StyledInputBase placeholder="Search" inputProps={{ "aria-label": "search" }} />
 								</Search>
 
-								<IconButton aria-label="cart">
-									<Badge badgeContent={1} color="error">
-										<NavNotificationsSvg />
-									</Badge>
-								</IconButton>
+								{/* notifications */}
+								<div>
+									<IconButton
+										aria-haspopup="true"
+										aria-label="notificatins"
+										onClick={handleNotificationClick}
+										aria-expanded={isNotificationOpen ? "true" : undefined}
+										aria-controls={isNotificationOpen ? "notifications-menu" : undefined}
+									>
+										<Badge badgeContent={1} color="error">
+											<NavNotificationsSvg />
+										</Badge>
+									</IconButton>
+
+									{/* notifications menu popover */}
+									<Notifications
+										anchorEl={notificationAnchorEl}
+										isOpen={isNotificationOpen}
+										handleClose={handleNotificationClose}
+									/>
+								</div>
 
 								{/* user actions */}
 								<div>
 									<Tooltip title="Account settings">
 										<IconButton
-											onClick={handleClick}
 											size="small"
 											sx={{ ml: 2 }}
-											aria-controls={isOpen ? "account-menu" : undefined}
 											aria-haspopup="true"
+											onClick={handleClick}
 											aria-expanded={isOpen ? "true" : undefined}
+											aria-controls={isOpen ? "account-menu" : undefined}
 										>
 											{/* <Avatar sx={{ width: 40, height: 40 }} src={IMAGES.AvatarImg} /> */}
 
@@ -191,30 +228,7 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 										onClick={handleClose}
 										PaperProps={{
 											elevation: 0,
-											sx: {
-												borderRadius: 1,
-												overflow: "visible",
-												filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-												mt: 1.5,
-												// "& .MuiAvatar-root": {
-												// 	width: 32,
-												// 	height: 32,
-												// 	ml: -0.5,
-												// 	mr: 1,
-												// },
-												"&:before": {
-													content: '""',
-													display: "block",
-													position: "absolute",
-													top: 0,
-													right: 14,
-													width: 10,
-													height: 10,
-													bgcolor: "background.paper",
-													transform: "translateY(-50%) rotate(45deg)",
-													zIndex: 0,
-												},
-											},
+											sx: { ...styles.menu },
 										}}
 										transformOrigin={{ horizontal: "right", vertical: "top" }}
 										anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
