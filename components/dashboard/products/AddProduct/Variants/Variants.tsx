@@ -1,5 +1,5 @@
 import { Box, Button, CardContent, Checkbox, Divider, FormControlLabel, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { PRODUCTS_TABS } from "../..";
 import { ITabChange } from "../../../../../types/tab-change";
@@ -8,9 +8,19 @@ import { StyledCard, StyledTextField } from "../../../components/styledComponent
 
 const Variants = ({ handleTabChange }: ITabChange) => {
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
+	const [variants, setVariants] = useState([
+		IMAGES.TshirtLevisImg,
+		IMAGES.JeansJacketImg,
+		IMAGES.TshirtLevisImg,
+		IMAGES.JeansJacketImg,
+	]);
 	// handle track quantity check
 	const handleTrackCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setIsTrackChecked(event.target.checked);
+	};
+
+	const addAnotherVariant = (variant: StaticImageData) => {
+		setVariants((variants) => [...variants, variant]);
 	};
 
 	return (
@@ -20,9 +30,9 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Variants
 					</Typography>
-					<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px" }} fontWeight="medium">
+					<Button sx={{ display: "flex", mt: 1.25 }} onClick={() => addAnotherVariant(IMAGES.JeansJacketImg)}>
 						Add another Variant
-					</Typography>
+					</Button>
 				</Box>
 
 				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25 }}>
@@ -53,7 +63,61 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 						fontWeight="semibold"
 					/>
 				</Box>
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 2 }}>
+
+				{variants.map((variant, idx) => (
+					<>
+						<Divider variant="middle" />
+						<Box
+							component="form"
+							key={idx}
+							sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 2 }}
+						>
+							<Box sx={{ mt: 1.25, minWidth: "3%" }}>
+								<FormControlLabel
+									control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
+									label={undefined}
+								/>
+							</Box>
+							<Box sx={{ mb: 1.25, minWidth: "26%" }}>
+								<Stack direction="row" spacing={1}>
+									<Image src={variant} height={65} width={65} objectFit="cover" placeholder="blur" />
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "column",
+											justifyContent: "space-around",
+										}}
+									>
+										<Typography sx={{ fontWeight: "400", fontSize: 14 }}>Lorem Ipsum</Typography>
+									</Box>
+								</Stack>
+							</Box>
+							<Box sx={{ mt: 1.25, minWidth: "16%" }}>
+								<StyledTextField size="small" required placeholder="$   38.99" />
+							</Box>
+							<Box sx={{ mt: 1.25, minWidth: "16%" }}>
+								<StyledTextField size="small" required placeholder=" 50" />
+							</Box>
+							<Box sx={{ mt: 1.25, minWidth: "16%" }}>
+								<StyledTextField size="small" required placeholder="DTO-M-XS" />
+							</Box>
+							<Box sx={{ mt: 1.25, maxWidth: "20%", minWidth: "15%" }}>
+								<Button
+									sx={{ borderRadius: "5px" }}
+									size="medium"
+									fullWidth
+									variant="contained"
+									color="secondary"
+									onClick={() => handleTabChange(PRODUCTS_TABS.EDIT_VARIANT)}
+								>
+									Edit
+								</Button>{" "}
+							</Box>
+						</Box>
+					</>
+				))}
+
+				{/* <Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 2 }}>
 					<Box sx={{ mt: 1.25, minWidth: "3%" }}>
 						<FormControlLabel
 							control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
@@ -101,9 +165,9 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 							Edit
 						</Button>{" "}
 					</Box>
-				</Box>
-				<Divider variant="middle" />
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 2 }}>
+				</Box> */}
+
+				{/* <Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 2 }}>
 					<Box sx={{ mt: 1.25, minWidth: "3%" }}>
 						<FormControlLabel
 							control={<Checkbox checked={isTrackChecked} onChange={handleTrackCheckChange} />}
@@ -248,7 +312,7 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 							Edit
 						</Button>{" "}
 					</Box>
-				</Box>
+				</Box> */}
 			</CardContent>
 		</StyledCard>
 	);

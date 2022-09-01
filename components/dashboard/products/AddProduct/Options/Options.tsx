@@ -1,16 +1,28 @@
-import { Box, CardContent, IconButton, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { Box, Button, CardContent, IconButton, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
 import { useState } from "react";
-import { DeleteRedSvg } from "../../../../icons";
+import { RemoveIcon } from "../../../components/icons";
 import { BorderFormControl, StyledButton, StyledCard, StyledTextField } from "../../../components/styledComponents";
 import { useStyles } from "../styled";
 
 const Options = () => {
 	const [filter, setFilter] = useState("10");
+	const [options, setOptions] = useState(["Grey Ice Kettle", "Pink", "Blue Ice Kettle", "White"]);
 
 	const classes = useStyles();
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
 	};
+
+	const removeOption = (option: string) => {
+		const filteredOptions = options.filter(function (value: string) {
+			return value !== option;
+		});
+		setOptions(filteredOptions);
+	};
+	const addOption = (option: string) => {
+		setOptions((options) => [...options, option]);
+	};
+
 	return (
 		<StyledCard>
 			<CardContent>
@@ -37,49 +49,29 @@ const Options = () => {
 				<Typography sx={{ fontSize: 12, mb: 1.25 }} fontWeight="medium">
 					Option values
 				</Typography>
-
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25 }}>
-					<StyledTextField size="small" placeholder="Grey Ice Kettle" fullWidth required />
-					<IconButton>
-						<DeleteRedSvg />
-					</IconButton>
-				</Box>
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25 }}>
-					<StyledTextField size="small" placeholder="Pink" fullWidth required />
-					<IconButton>
-						<DeleteRedSvg />
-					</IconButton>
-				</Box>
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25 }}>
-					<StyledTextField size="small" placeholder="Blue Ice Kettle" fullWidth required />
-					<IconButton>
-						<DeleteRedSvg />
-					</IconButton>
-				</Box>
-				<Box
-					component="form"
-					sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25, mb: 1.25 }}
+				{options.map((option) => (
+					<Box
+						component="form"
+						key={option}
+						sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25 }}
+					>
+						<StyledTextField size="small" placeholder={option} fullWidth required />
+						<IconButton onClick={() => removeOption(option)}>
+							<RemoveIcon />
+						</IconButton>
+					</Box>
+				))}
+				<StyledButton
+					sx={{ px: 2, minWidth: "132px", mt: 1.25 }}
+					type="submit"
+					variant="contained"
+					color="secondary"
 				>
-					<StyledTextField size="small" placeholder="White" fullWidth required />
-					<IconButton>
-						<DeleteRedSvg />
-					</IconButton>
-				</Box>
-				<Box
-					component="form"
-					sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25, mb: 1.25 }}
-				>
-					<StyledTextField size="small" placeholder="Add another vale" fullWidth required />
-					<IconButton sx={{ visibility: "hidden" }} disabled>
-						<DeleteRedSvg />
-					</IconButton>
-				</Box>
-				<StyledButton sx={{ px: 2, minWidth: "132px" }} type="submit" variant="contained" color="secondary">
 					Done
 				</StyledButton>
-				<Typography sx={{ color: "#E2BC82", fontWeight: "600", fontSize: "14px", mt: 2 }}>
+				<Button sx={{ display: "flex", mt: 1.25 }} onClick={() => addOption("Add another value")}>
 					Add option
-				</Typography>
+				</Button>
 			</CardContent>
 		</StyledCard>
 	);
