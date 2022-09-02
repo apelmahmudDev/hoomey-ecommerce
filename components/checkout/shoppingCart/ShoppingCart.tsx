@@ -10,6 +10,7 @@ import {
 	FormControl,
 	TextField,
 	InputAdornment,
+	FormHelperText,
 	Button,
 } from "@mui/material";
 import Image from "next/image";
@@ -21,9 +22,11 @@ import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
 import { ColorPalette, PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
 import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg, PaypalColorSvg } from "../../icons";
+import { FieldErrorsImpl, UseFormRegister, UseFormWatch } from "react-hook-form";
 
 import { ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
+import { Inputs } from "../combineCheckout/CombineCheckout";
 
 // styles
 const styles = {
@@ -35,7 +38,15 @@ const styles = {
 	},
 };
 
-const ShoppingCart = () => {
+const ShoppingCart = ({
+	watch,
+	register,
+	errors,
+}: {
+	watch: UseFormWatch<Inputs>;
+	register: UseFormRegister<Inputs>;
+	errors: FieldErrorsImpl<Inputs>;
+}) => {
 	const [paymentMethods, setPaymentMethods] = useState("cash_on_delivery");
 	const color = useAppSelector((state: RootState) => state.color);
 
@@ -261,16 +272,27 @@ const ShoppingCart = () => {
 				</FormControl>
 			</Box>
 
-			<FormControlLabel
-				sx={{ mb: 2.5, "& .MuiTypography-root": { fontSize: 10 } }}
-				control={<Checkbox size="small" />}
-				label={
-					<Typography>
-						I have read and agree to the website{" "}
-						<span style={{ color: "#E2BC82" }}>terms and conditions</span>
-					</Typography>
-				}
-			/>
+			{/* agreement checkbox */}
+			<FormControl
+				sx={{ my: 2.5 }}
+				required
+				error={errors.agree ? true : false}
+				component="fieldset"
+				variant="standard"
+			>
+				<FormControlLabel
+					sx={{ "& .MuiTypography-root": { fontSize: 10 } }}
+					control={<Checkbox size="small" {...register("agree", { required: true })} />}
+					label={
+						<Typography>
+							I have read and agree to the website{" "}
+							<span style={{ color: "#E2BC82" }}>terms and conditions</span>
+						</Typography>
+					}
+				/>
+				<FormHelperText>{errors.agree && "Checkbox is required."}</FormHelperText>
+			</FormControl>
+
 			<EndIconButton type="submit" endIcon={<WhiteLockSvg />}>
 				Checkout
 			</EndIconButton>
