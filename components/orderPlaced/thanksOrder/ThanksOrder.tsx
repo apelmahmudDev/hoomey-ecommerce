@@ -18,7 +18,6 @@ const ThanksOrder = () => {
 	return (
 		<Box mb={2.5}>
 			<Container>
-				<HeadingText>Order Placed</HeadingText>
 				<Container maxWidth="md">
 					<Box sx={{ background: COLORS.OFF_WHITE, py: 2.5, px: 5, textAlign: "center" }}>
 						{/* <CheckSvg sx={{ height: 70, width: 70 }} /> */}
