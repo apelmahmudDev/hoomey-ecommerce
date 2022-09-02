@@ -32,10 +32,10 @@ const Hero: FC = () => {
 					pagination={{
 						clickable: true,
 					}}
-					// autoplay={{
-					// 	delay: 5000,
-					// 	disableOnInteraction: false,
-					// }}
+					autoplay={{
+						delay: 5000,
+						disableOnInteraction: false,
+					}}
 				>
 					{heroData.map((data, idx) => (
 						<SwiperSlide key={idx}>
