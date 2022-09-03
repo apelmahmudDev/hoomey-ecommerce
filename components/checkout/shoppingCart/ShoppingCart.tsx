@@ -262,10 +262,21 @@ const ShoppingCart = ({
 									endAdornment: (
 										<InputAdornment position="end">
 											<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
-												{watch("payWithCard.cardNumber").indexOf("4") ? <VisaSvg /> : null}
-												{watch("payWithCard.cardNumber").indexOf("51") ? (
-													<MasterCardSvg />
-												) : null}
+												{watch("payWithCard.cardNumber") ? (
+													<>
+														{watch("payWithCard.cardNumber")?.indexOf("4") ? (
+															<VisaSvg />
+														) : null}
+														{watch("payWithCard.cardNumber")?.indexOf("51") ? (
+															<MasterCardSvg />
+														) : null}
+													</>
+												) : (
+													<>
+														<VisaSvg />
+														<MasterCardSvg />
+													</>
+												)}
 											</Box>
 										</InputAdornment>
 									),
