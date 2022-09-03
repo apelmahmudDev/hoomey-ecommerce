@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { Link, TableCustomPagination } from "../../../../ui";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 
 export interface Data {
 	orderNo: number;
@@ -125,7 +126,11 @@ const OrdersTable = () => {
 											<TableRow hover tabIndex={-1} key={row.orderNo}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<Link href={`order/details/${row.orderNo}`}>{row.orderNo}</Link>
+													<Link
+														href={`${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.DETAILS}/${row.orderNo}`}
+													>
+														{row.orderNo}
+													</Link>
 												</TableCell>
 												<TableCell align="center">{row.date}</TableCell>
 												<TableCell align="center">{row.time}</TableCell>

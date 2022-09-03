@@ -42,12 +42,17 @@ import Tooltip from "@mui/material/Tooltip";
 import { Logout, Settings } from "../uiElements/icons";
 import { Notifications } from "../components/dashboard/common";
 import styles from "../components/dashboard/common/styles";
+import { ROUTING_TREE } from "../constants/siteUrls";
 
 const drawerWidth = 120;
 
 const drawerItem = [
-	{ icon: <DashboardMenuSvg />, text: "Dashboard", link: "/dashboard" },
-	{ icon: <CheckCartSvg />, text: "Orders", link: "/dashboard/order" },
+	{ icon: <DashboardMenuSvg />, text: "Dashboard", link: ROUTING_TREE.DASHBOARD.ROOT },
+	{
+		icon: <CheckCartSvg />,
+		text: "Orders",
+		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}`,
+	},
 	{ icon: <DashboardBagSvg />, text: "Products", link: "/dashboard/products" },
 	{ icon: <CustomersSvg />, text: "Customers", link: "/dashboard/customers" },
 	{ icon: <ReviewsSvg />, text: "Reviews", link: "/dashboard/reviews" },

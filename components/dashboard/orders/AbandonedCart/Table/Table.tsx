@@ -12,6 +12,7 @@ import TableToolbar from "./TableToolbar";
 import { Order } from "../../../../../types/order";
 import { Link, TableCustomPagination } from "../../../../ui";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 
 export interface Data {
 	orderNo: number;
@@ -105,7 +106,9 @@ const OrdersTable = () => {
 											<TableRow hover tabIndex={-1} key={row.orderNo}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<Link href={`abandoned-cart/details/${row.orderNo}`}>
+													<Link
+														href={`${ROUTING_TREE.DASHBOARD.ORDERS.ABANDONED_CART}/${ROUTING_TREE.DASHBOARD.ORDERS.DETAILS}/${row.orderNo}`}
+													>
 														{row.orderNo}
 													</Link>
 												</TableCell>

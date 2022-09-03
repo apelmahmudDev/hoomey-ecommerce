@@ -20,4 +20,14 @@ export const ROUTING_TREE = {
 
 	PRIVACY_POLICY: "privacy-policy",
 	TERMS_OF_SERVICE: "terms-of-service",
+
+	DASHBOARD: {
+		ROOT: "/dashboard",
+		ORDERS: {
+			ROOT: "orders",
+			DETAILS: "details",
+			ABANDONED_CART: "abandoned-cart",
+			CREATE: "create",
+		},
+	},
 };

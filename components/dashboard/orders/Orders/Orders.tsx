@@ -1,9 +1,10 @@
-import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
-import { CartText, RoundButton } from "../../../styledComponents";
 import { Link } from "../../../ui";
-import { ArrowDownIcon, ArrowUpIcon, BarIndicatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
-import { StyledCard } from "../../components/styledComponents";
 import OrdersTable from "./OrdersTable";
+import { CartText, RoundButton } from "../../../styledComponents";
+import { StyledCard } from "../../components/styledComponents";
+import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
+import { ArrowDownIcon, ArrowUpIcon, BarIndicatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
 const historyItems = [
 	{
@@ -52,10 +53,12 @@ const Orders = () => {
 				</Typography>
 
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<Link href={`order/abandoned-cart`}>
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.ABANDONED_CART}`}
+					>
 						<RoundButton variant="contained">Abandoned Cart</RoundButton>
 					</Link>
-					<Link href={`order/create`}>
+					<Link href={`${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.CREATE}`}>
 						<RoundButton variant="contained" color="secondary">
 							Create Order
 						</RoundButton>
