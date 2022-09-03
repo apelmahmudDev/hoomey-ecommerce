@@ -371,7 +371,10 @@ const Navbar: FC = () => {
 					maxWidth="lg"
 					sx={{
 						"& .MuiDialog-container": { pt: 10, alignItems: "flex-start" },
-						"& .MuiPaper-root": { width: "auto", boxShadow: 0 },
+						"& .MuiPaper-root": {
+							//  width: "auto",
+							boxShadow: 0,
+						},
 					}}
 					open={isOpenSearch}
 					onClose={handleSearchClose}
