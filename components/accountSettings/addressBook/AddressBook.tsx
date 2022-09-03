@@ -13,6 +13,7 @@ import {
 	SelectChangeEvent,
 	Select,
 	MenuItem,
+	Skeleton,
 } from "@mui/material";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 import { AddressBookSvg, EditSvg, DeleteSvg } from "../../icons";
@@ -50,6 +51,13 @@ const AddressBook = () => {
 		setIsNewChecked(event.target.checked);
 	};
 
+	// kept it just for checking loading sign
+	const [isLoading, setIsLoading] = useState(true);
+
+	setTimeout(() => {
+		setIsLoading(false);
+	}, 2000);
+
 	return (
 		<Box>
 			<Box sx={{ display: "flex", alignItems: "center", gap: 2, justifyContent: "space-between" }}>
@@ -64,78 +72,92 @@ const AddressBook = () => {
 
 			<SettingsDivider />
 
-			<Grid container spacing={2.5}>
-				{/* default address */}
-				<Grid item xs={12} md={6}>
-					<Box
-						sx={{
-							position: "relative",
-							border: "1px solid #D9D9D9",
-							p: 2.5,
-							bgcolor: isDefaultChecked ? "#FFF9F0" : "common.white",
-						}}
-					>
-						<Box sx={{ maxWidth: "75%" }}>
-							<Typography fontWeight="medium" lineHeight="30px">
-								2442 N Virginia Av, Chicago, IL 60610 United States
-							</Typography>
-							<FormControlLabel
-								sx={{ mt: 2 }}
-								label="Default Address"
-								control={<Checkbox checked={isDefaultChecked} onChange={handleDefaultCheckChange} />}
-							/>
-						</Box>
-						{/* action on right corner */}
-						<Box sx={{ position: "absolute", top: 20, right: 20 }}>
-							<Box>
-								<IconButton onClick={() => handleEditTogglePopup(true)}>
-									<EditSvg />
-								</IconButton>
-							</Box>
-							<Box>
-								<IconButton>
-									<DeleteSvg />
-								</IconButton>
-							</Box>
-						</Box>
-					</Box>
+			{isLoading ? (
+				// skeleton
+				<Grid container spacing={2.5}>
+					<Grid item xs={12} md={6}>
+						<Skeleton variant="rectangular" sx={{ width: "100%", height: 168 }} />
+					</Grid>
+					<Grid item xs={12} md={6}>
+						<Skeleton variant="rectangular" sx={{ width: "100%", height: 168 }} />
+					</Grid>
 				</Grid>
+			) : (
+				<Grid container spacing={2.5}>
+					{/* default address */}
+					<Grid item xs={12} md={6}>
+						<Box
+							sx={{
+								position: "relative",
+								border: "1px solid #D9D9D9",
+								p: 2.5,
+								bgcolor: isDefaultChecked ? "#FFF9F0" : "common.white",
+							}}
+						>
+							<Box sx={{ maxWidth: "75%" }}>
+								<Typography fontWeight="medium" lineHeight="30px">
+									2442 N Virginia Av, Chicago, IL 60610 United States
+								</Typography>
+								<FormControlLabel
+									sx={{ mt: 2 }}
+									label="Default Address"
+									control={
+										<Checkbox checked={isDefaultChecked} onChange={handleDefaultCheckChange} />
+									}
+								/>
+							</Box>
+							{/* action on right corner */}
+							<Box sx={{ position: "absolute", top: 20, right: 20 }}>
+								<Box>
+									<IconButton onClick={() => handleEditTogglePopup(true)}>
+										<EditSvg />
+									</IconButton>
+								</Box>
+								<Box>
+									<IconButton>
+										<DeleteSvg />
+									</IconButton>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
 
-				<Grid item xs={12} md={6}>
-					<Box
-						sx={{
-							position: "relative",
-							border: "1px solid #D9D9D9",
-							p: 2.5,
-							bgcolor: isNewChecked ? "#FFF9F0" : "common.white",
-						}}
-					>
-						<Box sx={{ maxWidth: "75%" }}>
-							<Typography fontWeight="medium" lineHeight="30px">
-								2442 N Virginia Av, Chicago, IL 60610 United States
-							</Typography>
-							<FormControlLabel
-								sx={{ mt: 2 }}
-								label="New Address"
-								control={<Checkbox checked={isNewChecked} onChange={handleNewCheckChange} />}
-							/>
-						</Box>
-						{/* action on right corner */}
-						<Box sx={{ position: "absolute", top: 20, right: 20 }}>
-							<Box>
-								<IconButton onClick={() => handleEditTogglePopup(true)}>
-									<EditSvg />
-								</IconButton>
+					<Grid item xs={12} md={6}>
+						<Box
+							sx={{
+								position: "relative",
+								border: "1px solid #D9D9D9",
+								p: 2.5,
+								bgcolor: isNewChecked ? "#FFF9F0" : "common.white",
+							}}
+						>
+							<Box sx={{ maxWidth: "75%" }}>
+								<Typography fontWeight="medium" lineHeight="30px">
+									2442 N Virginia Av, Chicago, IL 60610 United States
+								</Typography>
+								<FormControlLabel
+									sx={{ mt: 2 }}
+									label="New Address"
+									control={<Checkbox checked={isNewChecked} onChange={handleNewCheckChange} />}
+								/>
 							</Box>
-							<Box>
-								<IconButton>
-									<DeleteSvg />
-								</IconButton>
+							{/* action on right corner */}
+							<Box sx={{ position: "absolute", top: 20, right: 20 }}>
+								<Box>
+									<IconButton onClick={() => handleEditTogglePopup(true)}>
+										<EditSvg />
+									</IconButton>
+								</Box>
+								<Box>
+									<IconButton>
+										<DeleteSvg />
+									</IconButton>
+								</Box>
 							</Box>
 						</Box>
-					</Box>
+					</Grid>
 				</Grid>
-			</Grid>
+			)}
 
 			{/* Popup -> add new */}
 			<Popup isOpen={isAddNewOpen} handleTogglePopup={handleAddNewTogglePopup}>
