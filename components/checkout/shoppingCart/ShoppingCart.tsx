@@ -27,6 +27,7 @@ import { FieldErrorsImpl, UseFormRegister, UseFormWatch } from "react-hook-form"
 import { ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
 import { Inputs } from "../combineCheckout/CombineCheckout";
+import { regex } from "../../../utils/validations/regex";
 
 // styles
 const styles = {
@@ -249,6 +250,7 @@ const ShoppingCart = ({
 								error={errors.payWithCard?.cardNumber ? true : false}
 								{...register("payWithCard.cardNumber", {
 									required: true,
+									pattern: regex.credit_card,
 								})}
 								helperText={errors.payWithCard?.cardNumber && "Card Number is required"}
 								fullWidth
@@ -260,8 +262,10 @@ const ShoppingCart = ({
 									endAdornment: (
 										<InputAdornment position="end">
 											<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
-												<VisaSvg />
-												<MasterCardSvg />
+												{watch("payWithCard.cardNumber").indexOf("4") ? <VisaSvg /> : null}
+												{watch("payWithCard.cardNumber").indexOf("51") ? (
+													<MasterCardSvg />
+												) : null}
 											</Box>
 										</InputAdornment>
 									),

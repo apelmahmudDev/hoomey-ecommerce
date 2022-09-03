@@ -22,7 +22,7 @@ export interface Inputs {
 	zip: string | number;
 	companyName?: string;
 	payWithCard: {
-		cardNumber: number | string;
+		cardNumber: string;
 		month: string;
 		year: string;
 		cvv: number | string;
