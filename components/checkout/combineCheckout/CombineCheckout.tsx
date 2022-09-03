@@ -21,6 +21,12 @@ export interface Inputs {
 	apartment?: string;
 	zip: string | number;
 	companyName?: string;
+	payWithCard: {
+		cardNumber: number | string;
+		month: string;
+		year: string;
+		cvv: number | string;
+	};
 	agree: boolean;
 }
 

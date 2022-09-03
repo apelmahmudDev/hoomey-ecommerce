@@ -246,6 +246,11 @@ const ShoppingCart = ({
 					{paymentMethods === "pay_with_card" && (
 						<>
 							<TextField
+								error={errors.payWithCard?.cardNumber ? true : false}
+								{...register("payWithCard.cardNumber", {
+									required: true,
+								})}
+								helperText={errors.payWithCard?.cardNumber && "Card Number is required"}
 								fullWidth
 								size="small"
 								inputMode="numeric"
@@ -263,9 +268,33 @@ const ShoppingCart = ({
 								}}
 							/>
 							<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
-								<TextField size="small" placeholder="MM" />
-								<TextField size="small" placeholder="YYYY" />
-								<TextField size="small" placeholder="CVV" />
+								<TextField
+									size="small"
+									placeholder="MM"
+									error={errors.payWithCard?.month ? true : false}
+									{...register("payWithCard.month", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.month && "Month is required"}
+								/>
+								<TextField
+									size="small"
+									placeholder="YYYY"
+									error={errors.payWithCard?.year ? true : false}
+									{...register("payWithCard.year", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.year && "Year is required"}
+								/>
+								<TextField
+									size="small"
+									placeholder="CVV"
+									error={errors.payWithCard?.cvv ? true : false}
+									{...register("payWithCard.cvv", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.cvv && "CVV is required"}
+								/>
 							</Box>
 						</>
 					)}
