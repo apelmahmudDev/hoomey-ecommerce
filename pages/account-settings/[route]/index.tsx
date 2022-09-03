@@ -2,7 +2,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { AccountSettingsLayout } from "../../../components/common";
-import { AddressBook, ChangePassword, MyWishlist, MyOrders, PaymentMethods } from "../../../components/accountSettings";
+import {
+	AddressBook,
+	ChangePassword,
+	MyWishlist,
+	MyOrders,
+	PaymentMethods,
+	OrderDetails,
+} from "../../../components/accountSettings";
 
 const AddressBookView: NextPage = () => {
 	const router = useRouter();
@@ -23,6 +30,8 @@ const AddressBookView: NextPage = () => {
 					<AddressBook />
 				) : query === "my-orders" ? (
 					<MyOrders />
+				) : query === "order-details" ? (
+					<OrderDetails />
 				) : query === "my-wishlist" ? (
 					<MyWishlist />
 				) : query === "payment-methods" ? (

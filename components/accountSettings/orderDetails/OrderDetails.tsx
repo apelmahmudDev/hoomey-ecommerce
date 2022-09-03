@@ -2,13 +2,10 @@ import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { IMAGES } from "../../../uiElements";
 import { ColorShoppingBagSvg } from "../../icons";
-import { StatusText } from "../../styledComponents";
+import { ProductCircularColor } from "../../styledComponents";
 import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
-import { useRouter } from "next/router";
 
-const MyOrders = () => {
-	const router = useRouter();
-
+const OrderDetails = () => {
 	return (
 		<Box>
 			<TitleFlexStack>
@@ -18,7 +15,14 @@ const MyOrders = () => {
 
 			<SettingsDivider />
 
-			{[...Array(3)].map((item, idx) => (
+			<div>
+				<Typography fontWeight="bold" gutterBottom>
+					Order Details:
+				</Typography>
+				<Typography fontWeight="medium">Total (2 Items) $100</Typography>
+			</div>
+
+			{[...Array(2)].map((item, idx) => (
 				<Box
 					key={idx}
 					sx={{
@@ -39,32 +43,27 @@ const MyOrders = () => {
 					<Box width="100%">
 						<FlexStack sx={{ flexWrap: "wrap", mb: 2 }}>
 							<Typography fontWeight="600">White Cotton Sweatshirt </Typography>
-							<Button onClick={() => router.push("order-details")} variant="outlined" color="secondary">
-								View Order
-							</Button>
+							<Typography fontWeight="400" fontSize={18}>
+								$50.00
+							</Typography>
 						</FlexStack>
 						<FlexStack>
 							<Typography variant="body2">Quantity</Typography>
 							<Typography variant="body2">1</Typography>
 						</FlexStack>
 						<FlexStack>
-							<Typography variant="body2">Order Number</Typography>
-							<Typography variant="body2">1234546</Typography>
+							<Typography variant="body2">Color</Typography>
+							<ProductCircularColor color="#ddd" />
 						</FlexStack>
 						<FlexStack>
-							<Typography variant="body2">Shipped Date</Typography>
-							<Typography variant="body2">22 March 2022</Typography>
+							<Typography variant="body2">Size</Typography>
+							<Typography variant="body2">M</Typography>
 						</FlexStack>
-						<FlexStack>
-							<Typography variant="body2">Total Amount</Typography>
-							<Typography variant="body2">$300.00</Typography>
-						</FlexStack>
-						<FlexStack>
-							<Typography variant="body2">Status</Typography>
-							<StatusText status="delivered" variant="body2">
-								Delivered
-							</StatusText>
-						</FlexStack>
+						<Box textAlign="right">
+							<Button sx={{ px: 2.5, py: 1, height: 30 }} variant="outlined" color="secondary">
+								Review
+							</Button>
+						</Box>
 					</Box>
 				</Box>
 			))}
@@ -72,4 +71,4 @@ const MyOrders = () => {
 	);
 };
 
-export default MyOrders;
+export default OrderDetails;
