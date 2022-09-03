@@ -11,9 +11,7 @@ import TableToolbar from "./TableToolbar";
 import { useState } from "react";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
-import { TableCustomPagination } from "../../../../ui";
-import { ITabChange } from "../../../../../types/tab-change";
-import { ORDER_TABS } from "../..";
+import { Link, TableCustomPagination } from "../../../../ui";
 
 export interface Data {
 	orderNo: number;
@@ -78,7 +76,7 @@ const rows = [
 	createData(12343, "22-May-2022", "12:15 pm", "John Doe", 1000, "Paid", "Fulfilled", 2, "Shipping", "Clothes"),
 ];
 
-const OrdersTable = ({ handleTabChange }: ITabChange) => {
+const OrdersTable = () => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("orderNo");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -127,12 +125,7 @@ const OrdersTable = ({ handleTabChange }: ITabChange) => {
 											<TableRow hover tabIndex={-1} key={row.orderNo}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<span
-														onClick={() => handleTabChange(ORDER_TABS.ORDER_DETAILS)}
-														style={{ cursor: "pointer" }}
-													>
-														{row.orderNo}
-													</span>
+													<Link href={`order/details/${row.orderNo}`}>{row.orderNo}</Link>
 												</TableCell>
 												<TableCell align="center">{row.date}</TableCell>
 												<TableCell align="center">{row.time}</TableCell>
