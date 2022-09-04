@@ -55,7 +55,11 @@ const drawerItem = [
 		text: "Orders",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}`,
 	},
-	{ icon: <DashboardBagSvg />, text: "Products", link: "/dashboard/products" },
+	{
+		icon: <DashboardBagSvg />,
+		text: "Products",
+		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.ROOT}`,
+	},
 	{
 		icon: <CustomersSvg />,
 		text: "Customers",

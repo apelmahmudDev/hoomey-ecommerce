@@ -1,17 +1,15 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import { useState } from "react";
-import { PRODUCTS_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-import { CircleIconButton } from "../../../styledComponents";
-
 import { Popup } from "../../../common";
 import Media from "../AddProduct/Media";
 import AddSubCategory from "./AddSubCategory";
 import CategoryStatus from "./CategoryStatus";
 import Title from "./Title";
+import { BackIconButton } from "../../../ui";
+import { useRouter } from "next/router";
 
-const AddCategory = ({ handleTabChange }: ITabChange) => {
+const AddCategory = () => {
+	const router = useRouter();
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
 
 	const handleAddSubCategoryTogglePopup = (boolean: boolean) => {
@@ -30,24 +28,8 @@ const AddCategory = ({ handleTabChange }: ITabChange) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
-					<CircleIconButton
-						sx={{ minWidth: "6px", padding: "2px" }}
-						onClick={() => handleTabChange(PRODUCTS_TABS.CATEGORIES)}
-					>
-						<ArrowBackIcon />
-					</CircleIconButton>
-					<Typography
-						sx={{
-							fontWeight: "500",
-							fontSize: "18px",
-							marginY: "auto",
-						}}
-						align="center"
-					>
-						Add Category
-					</Typography>
-				</Box>
+				<BackIconButton onClick={() => router.back()}>Add Category</BackIconButton>
+
 				<Grid container spacing={2.5}>
 					<Grid item xs={12} md={7}>
 						<Grid container spacing={2.5}>

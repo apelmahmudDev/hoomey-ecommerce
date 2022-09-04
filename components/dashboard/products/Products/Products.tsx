@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import { PRODUCTS_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 import { RoundButton } from "../../../styledComponents";
 import ProductsTable from "./ProductsTable";
+import { Link } from "../../../ui";
 
-const Products = ({ handleTabChange }: ITabChange) => {
+const Products = () => {
 	return (
 		<div>
 			<Box
@@ -24,16 +23,17 @@ const Products = ({ handleTabChange }: ITabChange) => {
 				</Typography>
 
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton variant="contained" onClick={() => handleTabChange(PRODUCTS_TABS.CATEGORIES)}>
-						Categories
-					</RoundButton>
-					<RoundButton
-						variant="contained"
-						color="secondary"
-						onClick={() => handleTabChange(PRODUCTS_TABS.ADD_PRODUCT)}
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.PRODUCTS.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.CATEGORY.ROOT}`}
 					>
-						Add Product
-					</RoundButton>
+						<RoundButton variant="contained">Categories</RoundButton>
+					</Link>
+
+					<Link href={`${ROUTING_TREE.DASHBOARD.PRODUCTS.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.ADD.ROOT}`}>
+						<RoundButton variant="contained" color="secondary">
+							Add Product
+						</RoundButton>
+					</Link>
 				</Box>
 			</Box>
 

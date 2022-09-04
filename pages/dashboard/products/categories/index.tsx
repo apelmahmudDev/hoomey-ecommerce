@@ -1,10 +1,9 @@
-import React from "react";
 import { NextLayoutComponentType } from "next";
-import { OrderDetails } from "../../../../components/dashboard/orders";
+import { Categories } from "../../../../components/dashboard/products";
 import AdminLayout from "../../../../Layout/AdminLayout";
 
 const DashboardHome: NextLayoutComponentType = () => {
-	return <OrderDetails />;
+	return <Categories />;
 };
 
 DashboardHome.PageLayout = AdminLayout;

@@ -1,9 +1,6 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { PRODUCTS_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-
-import { CircleIconButton } from "../../../styledComponents";
+import { Box, Button, Grid } from "@mui/material";
+import { useRouter } from "next/router";
+import { BackIconButton } from "../../../ui";
 import CurrentVariants from "./CurrentVariants";
 import Inventory from "./Inventory";
 import Options from "./Options";
@@ -11,7 +8,9 @@ import Pricing from "./Pricing";
 import Shipping from "./Shipping";
 import TitleCard from "./TitleCard";
 
-const EditVariant = ({ handleTabChange }: ITabChange) => {
+const EditVariant = () => {
+	const router = useRouter();
+
 	return (
 		<div>
 			<Box
@@ -25,24 +24,8 @@ const EditVariant = ({ handleTabChange }: ITabChange) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
-					<CircleIconButton
-						sx={{ minWidth: "6px", padding: "2px" }}
-						onClick={() => handleTabChange(PRODUCTS_TABS.ADD_PRODUCT)}
-					>
-						<ArrowBackIcon />
-					</CircleIconButton>
-					<Typography
-						sx={{
-							fontWeight: "500",
-							fontSize: "18px",
-							marginY: "auto",
-						}}
-						align="center"
-					>
-						Variant
-					</Typography>
-				</Box>
+				<BackIconButton onClick={() => router.back()}>Variant</BackIconButton>
+
 				<Grid container spacing={2.5}>
 					<Grid item xs={12} md={4}>
 						<Grid container spacing={2.5}>

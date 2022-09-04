@@ -1,12 +1,13 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Typography } from "@mui/material";
-import { PRODUCTS_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-
-import { CircleIconButton, RoundButton } from "../../../styledComponents";
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
+import { RoundButton } from "../../../styledComponents";
+import { BackIconButton, Link } from "../../../ui";
 import CategoryTable from "./CategoryTable";
 
-const Categories = ({ handleTabChange }: ITabChange) => {
+const Categories = () => {
+	const router = useRouter();
+
 	return (
 		<div>
 			<Box
@@ -20,32 +21,16 @@ const Categories = ({ handleTabChange }: ITabChange) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
-					<CircleIconButton
-						sx={{ minWidth: "6px", padding: "2px" }}
-						onClick={() => handleTabChange(PRODUCTS_TABS.ROOT)}
-					>
-						<ArrowBackIcon />
-					</CircleIconButton>
-					<Typography
-						sx={{
-							fontWeight: "500",
-							fontSize: "18px",
-							marginY: "auto",
-						}}
-						align="center"
-					>
-						Category
-					</Typography>
-				</Box>
+				<BackIconButton onClick={() => router.back()}>Category</BackIconButton>
+
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton
-						variant="contained"
-						color="secondary"
-						onClick={() => handleTabChange(PRODUCTS_TABS.ADD_CATEGORY)}
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.PRODUCTS.CATEGORY.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.CATEGORY.ADD}`}
 					>
-						Add Category
-					</RoundButton>
+						<RoundButton variant="contained" color="secondary">
+							Add Category
+						</RoundButton>
+					</Link>
 				</Box>
 			</Box>
 			{/* table section */}

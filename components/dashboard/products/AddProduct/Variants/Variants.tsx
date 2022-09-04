@@ -1,12 +1,12 @@
 import { Box, Button, CardContent, Checkbox, Divider, FormControlLabel, Stack, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import { PRODUCTS_TABS } from "../..";
-import { ITabChange } from "../../../../../types/tab-change";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 import { IMAGES } from "../../../../../uiElements";
+import { Link } from "../../../../ui";
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
 
-const Variants = ({ handleTabChange }: ITabChange) => {
+const Variants = () => {
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	const [variants, setVariants] = useState([
 		IMAGES.TshirtLevisImg,
@@ -102,16 +102,19 @@ const Variants = ({ handleTabChange }: ITabChange) => {
 								<StyledTextField size="small" required placeholder="DTO-M-XS" />
 							</Box>
 							<Box sx={{ mt: 1.25, maxWidth: "20%", minWidth: "15%" }}>
-								<Button
-									sx={{ borderRadius: "5px" }}
-									size="medium"
-									fullWidth
-									variant="contained"
-									color="secondary"
-									onClick={() => handleTabChange(PRODUCTS_TABS.EDIT_VARIANT)}
+								<Link
+									href={`${ROUTING_TREE.DASHBOARD.PRODUCTS.ADD.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.ADD.EDIT_VARIANT}`}
 								>
-									Edit
-								</Button>{" "}
+									<Button
+										sx={{ borderRadius: "5px" }}
+										size="medium"
+										fullWidth
+										variant="contained"
+										color="secondary"
+									>
+										Edit
+									</Button>
+								</Link>
 							</Box>
 						</Box>
 					</>
