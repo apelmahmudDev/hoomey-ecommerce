@@ -53,6 +53,10 @@ export const ROUTING_TREE = {
 			ROOT: "shipping",
 			ADD_NEW: "add-new",
 		},
+		ANALYTICS: {
+			ROOT: "analytics",
+			REPORTINGS: "reportings",
+		},
 		SETTINGS: {
 			ROOT: "settings",
 			MEGA_MENU: "mega-menu",

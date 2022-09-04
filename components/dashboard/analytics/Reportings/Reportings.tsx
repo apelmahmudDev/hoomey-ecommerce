@@ -1,4 +1,6 @@
 import { Box, Grid } from "@mui/material";
+import { useRouter } from "next/router";
+import { BackIconButton } from "../../../ui";
 import ReportCard from "./ReportCard";
 
 const reportData = {
@@ -41,8 +43,12 @@ const reportData = {
 };
 
 const Reportings = () => {
+	const router = useRouter();
 	return (
 		<div>
+			<Box mt={3}>
+				<BackIconButton onClick={() => router.back()}>Reportings</BackIconButton>
+			</Box>
 			<Box my={3.8}>
 				{/* Reporting Cards*/}
 				<Box my={3.5} component="section">
