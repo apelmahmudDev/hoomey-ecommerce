@@ -45,54 +45,64 @@ import { Logout, Settings } from "../uiElements/icons";
 import { Notifications } from "../components/dashboard/common";
 import styles from "../components/dashboard/common/styles";
 import { ROUTING_TREE } from "../constants/siteUrls";
+import { useRouter } from "next/router";
 
 const drawerWidth = 120;
 
 const drawerItem = [
-	{ icon: <DashboardMenuSvg />, text: "Dashboard", link: ROUTING_TREE.DASHBOARD.ROOT },
+	{ icon: <DashboardMenuSvg />, text: "Dashboard", pathname: "/dashboard", link: ROUTING_TREE.DASHBOARD.ROOT },
 	{
 		icon: <CheckCartSvg />,
 		text: "Orders",
+		pathname: "/dashboard/orders",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}`,
 	},
 	{
 		icon: <DashboardBagSvg />,
 		text: "Products",
+		pathname: "/dashboard/products",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.PRODUCTS.ROOT}`,
 	},
 	{
 		icon: <CustomersSvg />,
 		text: "Customers",
+		pathname: "/dashboard/customers",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}`,
 	},
 	{
 		icon: <ReviewsSvg />,
 		text: "Reviews",
+		pathname: "/dashboard/reviews",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.REVIEWS.ROOT}`,
 	},
 	{
 		icon: <DeliveryCarSvg />,
 		text: "Shipping",
+		pathname: "/dashboard/shipping",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.SHIPPING.ROOT}`,
 	},
 	{
 		icon: <BarSvg />,
 		text: "Analytics",
+		pathname: "/dashboard/analytics",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.ANALYTICS.ROOT}`,
 	},
 	{
 		icon: <NotificationsSvg />,
 		text: "Notification",
+		pathname: "/dashboard/notification",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.NOTIFICATION}`,
 	},
 	{
 		icon: <SettingsSvg />,
 		text: "Settings",
+		pathname: "/dashboard/settings",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}`,
 	},
 ];
 
 const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
+	const router = useRouter();
 	const [isMobileOpen, setIsMobileOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [notificationAnchorEl, setNotificationAnchorEl] = useState<null | HTMLElement>(null);
@@ -145,6 +155,8 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 									px: 1,
 									width: "inherit",
 									flexDirection: "column",
+									bgcolor: router.pathname === item.pathname ? "primary.main" : "transparent",
+									color: router.pathname === item.pathname ? "text.primary" : "common.white",
 									"&:hover": { bgcolor: "primary.main", color: "text.primary" },
 								}}
 							>
