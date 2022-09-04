@@ -29,5 +29,10 @@ export const ROUTING_TREE = {
 			ABANDONED_CART: "abandoned-cart",
 			CREATE: "create",
 		},
+		CUSTOMERS: {
+			ROOT: "customers",
+			DETAILS: "details",
+			ADD: "add",
+		},
 	},
 };

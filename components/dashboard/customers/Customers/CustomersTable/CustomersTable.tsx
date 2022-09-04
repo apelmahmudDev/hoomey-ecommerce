@@ -7,14 +7,13 @@ import TableRow from "@mui/material/TableRow";
 import { CardContent, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { StatusFormControl, StyledCard } from "../../../components/styledComponents";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
-import { ITabChange } from "../../../../../types/tab-change";
-import { TableCustomPagination } from "../../../../ui";
+import { Link, TableCustomPagination } from "../../../../ui";
 import { Order } from "../../../../../types/order";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
-import { CUSTOMER_TABS } from "../..";
 import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 
 export interface Data {
 	customer: string;
@@ -45,7 +44,7 @@ const rows = [
 	createData("Mariah Betts", "Inactive", "United States", 0, 500),
 ];
 
-const CustomersTable = ({ handleTabChange }: ITabChange) => {
+const CustomersTable = () => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("customer");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -99,12 +98,11 @@ const CustomersTable = ({ handleTabChange }: ITabChange) => {
 											<TableRow hover tabIndex={-1} key={index}>
 												<TableCell padding="checkbox">{index + 1}</TableCell>
 												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<span
-														onClick={() => handleTabChange(CUSTOMER_TABS.CUSTOMER_DETAILS)}
-														style={{ cursor: "pointer" }}
+													<Link
+														href={`${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.DETAILS}/${index}`}
 													>
 														{row.customer}
-													</span>
+													</Link>
 												</TableCell>
 												<TableCell align="center">
 													<StatusFormControl status={row.status}>

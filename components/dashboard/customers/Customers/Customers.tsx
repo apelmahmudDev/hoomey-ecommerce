@@ -1,11 +1,11 @@
 import { Typography, Box } from "@mui/material";
-import { CUSTOMER_TABS } from "..";
 import React from "react";
 import CustomersTable from "./CustomersTable";
 import { RoundButton } from "../../../styledComponents";
-import { ITabChange } from "../../../../types/tab-change";
+import { Link } from "../../../ui";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
-const Customers = ({ handleTabChange }: ITabChange) => {
+const Customers = () => {
 	return (
 		<div>
 			{/* top part of orders */}
@@ -24,18 +24,16 @@ const Customers = ({ handleTabChange }: ITabChange) => {
 					Customers
 				</Typography>
 
-				<RoundButton
-					onClick={() => handleTabChange(CUSTOMER_TABS.ADD_CUSTOMER)}
-					color="secondary"
-					variant="contained"
-				>
-					Add Customer
-				</RoundButton>
+				<Link href={`${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.ADD}`}>
+					<RoundButton color="secondary" variant="contained">
+						Add Customer
+					</RoundButton>
+				</Link>
 			</Box>
 
 			{/* table section */}
 			<Box my={2.5}>
-				<CustomersTable handleTabChange={handleTabChange} />
+				<CustomersTable />
 			</Box>
 		</div>
 	);

@@ -1,9 +1,9 @@
 import { NextLayoutComponentType } from "next";
-import { Customers } from "../../components/dashboard";
-import AdminLayout from "../../Layout/AdminLayout";
+import { CustomerDetails } from "../../../../components/dashboard/customers";
+import AdminLayout from "../../../../Layout/AdminLayout";
 
 const DashboardHome: NextLayoutComponentType = () => {
-	return <Customers />;
+	return <CustomerDetails />;
 };
 
 DashboardHome.PageLayout = AdminLayout;

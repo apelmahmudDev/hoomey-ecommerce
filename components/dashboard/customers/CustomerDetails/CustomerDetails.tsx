@@ -1,7 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import { CUSTOMER_TABS } from "..";
 import { BackIconButton } from "../../../ui";
-import { ITabChange } from "../../../../types/tab-change";
 import Notes from "./Notes";
 import Address from "./Address";
 import Timeline from "./Timeline";
@@ -9,12 +7,15 @@ import ExtraForm from "./ExtraForm";
 import LastOrder from "./LastOrder";
 import UserProfile from "./UserProfile";
 import { OrangeButton } from "../../components/styledComponents";
+import { useRouter } from "next/router";
 
-const CustomerDetails = ({ handleTabChange }: ITabChange) => {
+const CustomerDetails = () => {
+	const router = useRouter();
+
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5} display="flex" alignItems="center" justifyContent="space-between">
-				<BackIconButton onClick={() => handleTabChange(CUSTOMER_TABS.ROOT)}>Customer Details</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Customer Details</BackIconButton>
 				<OrangeButton>Delete Customer</OrangeButton>
 			</Box>
 
