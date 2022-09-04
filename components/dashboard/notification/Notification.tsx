@@ -1,9 +1,11 @@
-import { Box, CardContent, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { Box, CardContent, SelectChangeEvent, Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState } from "react";
 import { RoundButton } from "../../styledComponents";
 import { TableCustomPagination } from "../../ui";
-import { StyledCard, StyledFormControl } from "../components/styledComponents";
+import { StyledCard } from "../components/styledComponents";
+import FilterMenu from "./FilterMenu";
 import SingleNotification from "./SingleNotification";
 
 const data = [
@@ -15,13 +17,22 @@ const data = [
 ];
 
 const Notification = () => {
-	const [filter, setFilter] = useState("10");
+	const [anchorFilterEl, setAnchorFilterEl] = useState<null | HTMLElement>(null);
+	const isFilterMenuOpen = Boolean(anchorFilterEl);
+
+	// handle filter
+	const handleFilterMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorFilterEl(event.currentTarget);
+	};
+
+	// handle filter closer
+	const handleFilterMenuClose = () => {
+		setAnchorFilterEl(null);
+	};
+
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [, setPage] = useState(0);
 
-	const handleFilter = (event: SelectChangeEvent) => {
-		setFilter(event.target.value as string);
-	};
 	const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
@@ -45,20 +56,28 @@ const Notification = () => {
 				}}
 			>
 				<Box sx={{ minWidth: "135px", height: "45px" }}>
-					<StyledFormControl fullWidth size="small">
-						<Select
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
-							value={filter}
-							onChange={handleFilter}
+					<div>
+						<RoundButton
+							fullWidth
+							startIcon={<FilterListIcon />}
+							color="secondary"
+							variant="contained"
+							aria-haspopup="true"
+							aria-label="filter-menu"
+							onClick={handleFilterMenuClick}
+							aria-expanded={isFilterMenuOpen ? "true" : undefined}
+							aria-controls={isFilterMenuOpen ? "filter-menu" : undefined}
 						>
-							<MenuItem value={10}>Registration</MenuItem>
-							<MenuItem value={20}>Order Confirmed</MenuItem>
-							<MenuItem value={30}>Abandoned Cart </MenuItem>
-							<MenuItem value={40}>Review</MenuItem>
-							<MenuItem value={50}>Out of Stock</MenuItem>
-						</Select>
-					</StyledFormControl>
+							Filter
+						</RoundButton>
+
+						{/* filter menu popover */}
+						<FilterMenu
+							anchorEl={anchorFilterEl}
+							isOpen={isFilterMenuOpen}
+							handleClose={handleFilterMenuClose}
+						/>
+					</div>
 				</Box>
 
 				<RoundButton sx={{ backgroundColor: "#ECECEC", color: "black" }} variant="contained">
