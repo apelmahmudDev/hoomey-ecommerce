@@ -38,5 +38,12 @@ export const ROUTING_TREE = {
 			ROOT: "shipping",
 			ADD_NEW: "add-new",
 		},
+		SETTINGS: {
+			ROOT: "settings",
+			EMAIL: { ROOT: "email", SEND: "send" },
+			BLOGS: { ROOT: "blogs", ADD: "add" },
+			CONTACT_OR_NEWSLETTER: "contact-or-newsletter",
+			MANAGE_COUPON: "manage-coupon",
+		},
 	},
 };

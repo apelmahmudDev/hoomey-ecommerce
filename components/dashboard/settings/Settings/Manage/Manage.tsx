@@ -1,9 +1,8 @@
 import { CardContent, Typography, Box, Button } from "@mui/material";
 import { StyledCard } from "../../../components/styledComponents";
 import { styled } from "@mui/material/styles";
-import { useAppDispatch } from "../../../../../store/hooks";
-import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
-import { tabSwitch } from "../../../../../store/slices/settingsSlice";
+import { Link } from "../../../../ui";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 
 const FlexStack = styled(Box)({
 	gap: 20,
@@ -13,8 +12,6 @@ const FlexStack = styled(Box)({
 });
 
 const Manage = () => {
-	const dispatch = useAppDispatch();
-
 	return (
 		<StyledCard>
 			<CardContent>
@@ -24,15 +21,29 @@ const Manage = () => {
 
 				<FlexStack>
 					<Typography variant="body2">Sending Email</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.SENDING_EMAIL))}>Manage</Button>
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.EMAIL.ROOT}`}
+					>
+						<Button>Manage</Button>
+					</Link>
 				</FlexStack>
 				<FlexStack>
 					<Typography variant="body2">Blogs</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.BLOGS))}>Manage</Button>
+					{/* blogs */}
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.BLOGS.ROOT}`}
+					>
+						<Button>Manage</Button>
+					</Link>
 				</FlexStack>
 				<FlexStack>
 					<Typography variant="body2">Contact Us / Newsletter</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.CONTACT_OR_NEWSLETTER))}>Manage</Button>
+					{/* contact / newsletter */}
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.CONTACT_OR_NEWSLETTER}`}
+					>
+						<Button>Manage</Button>
+					</Link>
 				</FlexStack>
 			</CardContent>
 		</StyledCard>

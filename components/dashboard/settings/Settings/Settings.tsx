@@ -1,10 +1,10 @@
 import { Typography, Box, Grid } from "@mui/material";
-import Coupons from "./Coupons";
 import Manage from "./Manage";
+import Coupons from "./Coupons";
 import MegaMenu from "./MegaMenu";
-import PaymentMethod from "./PaymentMethod";
 import PromoBar from "./PromoBar";
 import UserProfile from "./UserProfile";
+import PaymentMethod from "./PaymentMethod";
 
 const Settings = () => {
 	return (

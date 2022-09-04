@@ -1,12 +1,9 @@
 import { CardContent, Typography, InputAdornment, Grid, Button, Box, FormControlLabel, Checkbox } from "@mui/material";
-import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../../store/hooks";
-import { tabSwitch } from "../../../../../store/slices/settingsSlice";
 import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../../components/styledComponents";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
+import { Link } from "../../../../ui";
 
 const Coupons = () => {
-	const dispatch = useAppDispatch();
-
 	return (
 		<StyledCard>
 			<CardContent>
@@ -14,7 +11,11 @@ const Coupons = () => {
 					<Typography gutterBottom fontWeight="medium">
 						Coupons
 					</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MANAGE_COUPON))}>Manage Coupon</Button>
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.MANAGE_COUPON}`}
+					>
+						<Button>Manage Coupon</Button>
+					</Link>
 				</Box>
 
 				{/* form input */}
