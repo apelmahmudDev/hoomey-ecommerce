@@ -45,6 +45,10 @@ export const ROUTING_TREE = {
 			DETAILS: "details",
 			ADD: "add",
 		},
+		REVIEWS: {
+			ROOT: "reviews",
+			DETAILS: "details",
+		},
 		SHIPPING: {
 			ROOT: "shipping",
 			ADD_NEW: "add-new",

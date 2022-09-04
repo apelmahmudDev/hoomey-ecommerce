@@ -1,10 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
-
-import { ITabChange } from "../../../../types/tab-change";
 import SwitchIcon from "../../../common/SwitchIcon";
 import ReviewTable from "./ReviewTable";
 
-const Reviews = ({ handleTabChange }: ITabChange) => {
+const Reviews = () => {
 	return (
 		<div>
 			<Box
@@ -30,7 +28,7 @@ const Reviews = ({ handleTabChange }: ITabChange) => {
 			</Box>
 			{/* table section */}
 			<Box my={2.5}>
-				<ReviewTable handleTabChange={handleTabChange} />
+				<ReviewTable />
 			</Box>
 		</div>
 	);
