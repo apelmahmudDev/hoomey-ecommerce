@@ -40,6 +40,7 @@ export const ROUTING_TREE = {
 		},
 		SETTINGS: {
 			ROOT: "settings",
+			MEGA_MENU: "mega-menu",
 			EMAIL: { ROOT: "email", SEND: "send" },
 			BLOGS: { ROOT: "blogs", ADD: "add" },
 			CONTACT_OR_NEWSLETTER: "contact-or-newsletter",
