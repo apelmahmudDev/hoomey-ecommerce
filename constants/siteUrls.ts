@@ -34,5 +34,9 @@ export const ROUTING_TREE = {
 			DETAILS: "details",
 			ADD: "add",
 		},
+		SHIPPING: {
+			ROOT: "shipping",
+			ADD_NEW: "add-new",
+		},
 	},
 };

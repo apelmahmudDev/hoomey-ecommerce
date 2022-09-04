@@ -60,7 +60,11 @@ const drawerItem = [
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}`,
 	},
 	{ icon: <ReviewsSvg />, text: "Reviews", link: "/dashboard/reviews" },
-	{ icon: <DeliveryCarSvg />, text: "Shipping", link: "/dashboard/shipping" },
+	{
+		icon: <DeliveryCarSvg />,
+		text: "Shipping",
+		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.SHIPPING.ROOT}`,
+	},
 	{ icon: <BarSvg />, text: "Analytics", link: "/dashboard/analytics" },
 	{ icon: <NotificationsSvg />, text: "Notification", link: "/dashboard/notification" },
 	{ icon: <SettingsSvg />, text: "Settings", link: "/dashboard/settings" },

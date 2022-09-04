@@ -4,20 +4,22 @@ import TaxesDialog from "./TaxesDialog";
 import { BackIconButton } from "../../../ui";
 import RateStatusAndZone from "./RateStatusAndZone";
 import { RoundButton } from "../../../styledComponents";
-import { ITabChange } from "../../../../types/tab-change";
-import { SHIPPING_TABS } from "../../../../constants/tabs/shipping";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-const AddShipping = ({ handleTabChange }: ITabChange) => {
+const AddShipping = () => {
+	const router = useRouter();
+
 	const [isOpenTaxesDialog, setIsOpenTaxesDialog] = useState(false);
 
 	const handleTaxesDialog = (isToggle: boolean) => {
 		setIsOpenTaxesDialog(isToggle);
 	};
+
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5} display="flex" alignItems="center" justifyContent="space-between">
-				<BackIconButton onClick={() => handleTabChange(SHIPPING_TABS.ROOT)}>Add new</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Add new</BackIconButton>
 				<RoundButton
 					onClick={() => handleTaxesDialog(true)}
 					color="secondary"

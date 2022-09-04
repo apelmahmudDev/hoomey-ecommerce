@@ -1,6 +1,6 @@
 import { NextLayoutComponentType } from "next";
-import { Shipping } from "../../components/dashboard";
-import AdminLayout from "../../Layout/AdminLayout";
+import AdminLayout from "../../../Layout/AdminLayout";
+import { Shipping } from "../../../components/dashboard/shipping";
 
 const DashboardHome: NextLayoutComponentType = () => {
 	return <Shipping />;
