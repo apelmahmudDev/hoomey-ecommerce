@@ -57,6 +57,7 @@ export const ROUTING_TREE = {
 			ROOT: "analytics",
 			REPORTINGS: "reportings",
 		},
+		NOTIFICATION: "notification",
 		SETTINGS: {
 			ROOT: "settings",
 			MEGA_MENU: "mega-menu",

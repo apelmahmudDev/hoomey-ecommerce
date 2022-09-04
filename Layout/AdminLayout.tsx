@@ -80,7 +80,11 @@ const drawerItem = [
 		text: "Analytics",
 		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.ANALYTICS.ROOT}`,
 	},
-	{ icon: <NotificationsSvg />, text: "Notification", link: "/dashboard/notification" },
+	{
+		icon: <NotificationsSvg />,
+		text: "Notification",
+		link: `${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.NOTIFICATION}`,
+	},
 	{
 		icon: <SettingsSvg />,
 		text: "Settings",
