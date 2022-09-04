@@ -7,12 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Image from "next/image";
 import { useState } from "react";
-import { REVIEW_TABS } from "../..";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 import { Order } from "../../../../../types/order";
-import { ITabChange } from "../../../../../types/tab-change";
 import { IMAGES } from "../../../../../uiElements";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
-import { TableCustomPagination } from "../../../../ui";
+import { Link, TableCustomPagination } from "../../../../ui";
 import { StyledButton, StyledCard } from "../../../components/styledComponents";
 import EnhancedTableHead from "./EnhancedTableHead";
 import TableToolbar from "./TableToolbar";
@@ -47,7 +46,7 @@ const rows = [
 	createData("Ol", "Fullcap", 7, 1, "view details"),
 ];
 
-const ReviewTable = ({ handleTabChange }: ITabChange) => {
+const ReviewTable = () => {
 	const [order, setOrder] = useState<Order>("asc");
 	const [orderBy, setOrderBy] = useState<keyof Data>("product");
 
@@ -141,14 +140,19 @@ const ReviewTable = ({ handleTabChange }: ITabChange) => {
 												<TableCell align="center">{row.avgRating}</TableCell>
 
 												<TableCell align="center">
-													<StyledButton
-														sx={{ px: 2, minWidth: "132px" }}
-														variant="contained"
-														color="secondary"
-														onClick={() => handleTabChange(REVIEW_TABS.REVIEW_DETAILS)}
+													<Link
+														href={`${ROUTING_TREE.DASHBOARD.REVIEWS.ROOT}/${
+															ROUTING_TREE.DASHBOARD.REVIEWS.DETAILS
+														}/${index + 1}`}
 													>
-														View Details
-													</StyledButton>
+														<StyledButton
+															sx={{ px: 2, minWidth: "132px" }}
+															variant="contained"
+															color="secondary"
+														>
+															View Details
+														</StyledButton>
+													</Link>
 												</TableCell>
 											</TableRow>
 										);

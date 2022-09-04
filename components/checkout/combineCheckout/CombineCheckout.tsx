@@ -21,6 +21,13 @@ export interface Inputs {
 	apartment?: string;
 	zip: string | number;
 	companyName?: string;
+	payWithCard: {
+		cardNumber: string;
+		month: string;
+		year: string;
+		cvv: number | string;
+	};
+	agree: boolean;
 }
 
 const CombineCheckout = () => {
@@ -53,7 +60,7 @@ const CombineCheckout = () => {
 							<Billingdetails register={register} errors={errors} watch={watch} />
 						</Grid>
 						<Grid item xs={12} sm={6} md={4}>
-							<ShoppingCart />
+							<ShoppingCart register={register} errors={errors} watch={watch} />
 						</Grid>
 					</Grid>
 				</Box>

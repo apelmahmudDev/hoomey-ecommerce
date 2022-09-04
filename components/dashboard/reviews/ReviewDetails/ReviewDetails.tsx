@@ -1,11 +1,6 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, CardContent, Grid, Typography } from "@mui/material";
-import { REVIEW_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-
-import { CircleIconButton, RoundButton } from "../../../styledComponents";
+import { RoundButton } from "../../../styledComponents";
 import { StyledButton, StyledCard, StyledTextField } from "../../components/styledComponents";
-
 import Rating from "@mui/material/Rating";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,8 +10,11 @@ import EditReview from "./EditReview";
 import PhotoCard from "./PhotoCard";
 import Ratings from "./Ratings";
 import Reviews from "./Reviews";
+import { BackIconButton } from "../../../ui";
+import { useRouter } from "next/router";
 
-const ReviewDetails = ({ handleTabChange }: ITabChange) => {
+const ReviewDetails = () => {
+	const router = useRouter();
 	const [isEditReviewOpen, setIsEditReviewOpen] = useState(false);
 	const handleEditReviewTogglePopup = (boolean: boolean) => {
 		setIsEditReviewOpen(boolean);
@@ -34,24 +32,7 @@ const ReviewDetails = ({ handleTabChange }: ITabChange) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
-					<CircleIconButton
-						sx={{ minWidth: "6px", padding: "2px" }}
-						onClick={() => handleTabChange(REVIEW_TABS.ROOT)}
-					>
-						<ArrowBackIcon />
-					</CircleIconButton>
-					<Typography
-						sx={{
-							fontWeight: "500",
-							fontSize: "18px",
-							marginY: "auto",
-						}}
-						align="center"
-					>
-						Review Details
-					</Typography>
-				</Box>
+				<BackIconButton onClick={() => router.back()}>Review Details</BackIconButton>
 				<Grid container spacing={2.5}>
 					<Grid item xs={12} md={4}>
 						<PhotoCard />

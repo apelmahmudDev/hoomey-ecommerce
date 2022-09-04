@@ -10,6 +10,7 @@ import {
 	FormControl,
 	TextField,
 	InputAdornment,
+	FormHelperText,
 	Button,
 } from "@mui/material";
 import Image from "next/image";
@@ -21,9 +22,12 @@ import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
 import { ColorPalette, PaymentSystemView, ProductSizeSelect, SecuredByNorton } from "../../common";
 import { CashOnDeliverySvg, WhiteLockSvg, PayWithCardSvg, VisaSvg, MasterCardSvg, PaypalColorSvg } from "../../icons";
+import { FieldErrorsImpl, UseFormRegister, UseFormWatch } from "react-hook-form";
 
 import { ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
+import { Inputs } from "../combineCheckout/CombineCheckout";
+import { regex } from "../../../utils/validations/regex";
 
 // styles
 const styles = {
@@ -35,7 +39,15 @@ const styles = {
 	},
 };
 
-const ShoppingCart = () => {
+const ShoppingCart = ({
+	watch,
+	register,
+	errors,
+}: {
+	watch: UseFormWatch<Inputs>;
+	register: UseFormRegister<Inputs>;
+	errors: FieldErrorsImpl<Inputs>;
+}) => {
 	const [paymentMethods, setPaymentMethods] = useState("cash_on_delivery");
 	const color = useAppSelector((state: RootState) => state.color);
 
@@ -235,6 +247,12 @@ const ShoppingCart = () => {
 					{paymentMethods === "pay_with_card" && (
 						<>
 							<TextField
+								error={errors.payWithCard?.cardNumber ? true : false}
+								{...register("payWithCard.cardNumber", {
+									required: true,
+									pattern: regex.credit_card,
+								})}
+								helperText={errors.payWithCard?.cardNumber && "Card Number is required"}
 								fullWidth
 								size="small"
 								inputMode="numeric"
@@ -244,33 +262,81 @@ const ShoppingCart = () => {
 									endAdornment: (
 										<InputAdornment position="end">
 											<Box component="span" sx={{ display: "flex", gap: 0.5 }}>
-												<VisaSvg />
-												<MasterCardSvg />
+												{watch("payWithCard.cardNumber") ? (
+													<>
+														{watch("payWithCard.cardNumber")?.indexOf("4") ? (
+															<VisaSvg />
+														) : null}
+														{watch("payWithCard.cardNumber")?.indexOf("51") ? (
+															<MasterCardSvg />
+														) : null}
+													</>
+												) : (
+													<>
+														<VisaSvg />
+														<MasterCardSvg />
+													</>
+												)}
 											</Box>
 										</InputAdornment>
 									),
 								}}
 							/>
 							<Box mt={1.3} sx={{ display: "flex", gap: 1.3 }}>
-								<TextField size="small" placeholder="MM" />
-								<TextField size="small" placeholder="YYYY" />
-								<TextField size="small" placeholder="CVV" />
+								<TextField
+									size="small"
+									placeholder="MM"
+									error={errors.payWithCard?.month ? true : false}
+									{...register("payWithCard.month", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.month && "Month is required"}
+								/>
+								<TextField
+									size="small"
+									placeholder="YYYY"
+									error={errors.payWithCard?.year ? true : false}
+									{...register("payWithCard.year", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.year && "Year is required"}
+								/>
+								<TextField
+									size="small"
+									placeholder="CVV"
+									error={errors.payWithCard?.cvv ? true : false}
+									{...register("payWithCard.cvv", {
+										required: true,
+									})}
+									helperText={errors.payWithCard?.cvv && "CVV is required"}
+								/>
 							</Box>
 						</>
 					)}
 				</FormControl>
 			</Box>
 
-			<FormControlLabel
-				sx={{ mb: 2.5, "& .MuiTypography-root": { fontSize: 10 } }}
-				control={<Checkbox size="small" />}
-				label={
-					<Typography>
-						I have read and agree to the website{" "}
-						<span style={{ color: "#E2BC82" }}>terms and conditions</span>
-					</Typography>
-				}
-			/>
+			{/* agreement checkbox */}
+			<FormControl
+				sx={{ my: 2.5 }}
+				required
+				error={errors.agree ? true : false}
+				component="fieldset"
+				variant="standard"
+			>
+				<FormControlLabel
+					sx={{ "& .MuiTypography-root": { fontSize: 10 } }}
+					control={<Checkbox size="small" {...register("agree", { required: true })} />}
+					label={
+						<Typography>
+							I have read and agree to the website{" "}
+							<span style={{ color: "#E2BC82" }}>terms and conditions</span>
+						</Typography>
+					}
+				/>
+				<FormHelperText>{errors.agree && "Checkbox is required."}</FormHelperText>
+			</FormControl>
+
 			<EndIconButton type="submit" endIcon={<WhiteLockSvg />}>
 				Checkout
 			</EndIconButton>

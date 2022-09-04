@@ -28,6 +28,7 @@ import countryJson from "country-region-data/data.json";
 
 // react-hook-form
 import { useForm, SubmitHandler } from "react-hook-form";
+import InputLabel from "@mui/material/InputLabel";
 
 interface Inputs {
 	city: string;
@@ -121,11 +122,13 @@ const CartTotals = () => {
 						>
 							{/* country Select */}
 							<FormControl fullWidth size="small">
+								<InputLabel id="country-select-label">Select Country</InputLabel>
 								<Select
 									{...register("country", { required: true })}
 									labelId="country-select-label"
 									id="country-select"
 									value={country}
+									label="Select Country"
 									onChange={handleCountryChange}
 								>
 									{countryJson.map((country) => (
@@ -147,12 +150,14 @@ const CartTotals = () => {
 
 							{/* region / state select */}
 							<FormControl fullWidth size="small" error={errors.region ? true : false}>
+								<InputLabel id="region-select-label">Select Region</InputLabel>
 								<Select
 									{...register("region", { required: true })}
 									defaultValue=""
 									labelId="region-select-label"
 									id="region-select"
 									value={region}
+									label="Select Region"
 									onChange={handleRegionChange}
 								>
 									{regionData?.regions?.map((r) => {

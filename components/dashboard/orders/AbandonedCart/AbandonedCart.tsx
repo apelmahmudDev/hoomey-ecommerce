@@ -1,19 +1,18 @@
-import { Box } from "@mui/material";
-
-import { ITabChange } from "../../../../types/tab-change";
+import { useRouter } from "next/router";
 import Table from "./Table";
-import { ORDER_TABS } from "..";
+import { Box } from "@mui/material";
 import { BackIconButton } from "../../../ui";
 
-const AbandonedCart = ({ handleTabChange }: ITabChange) => {
+const AbandonedCart = () => {
+	const router = useRouter();
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ROOT)}>Abondoned Cart</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Abondoned Cart</BackIconButton>
 			</Box>
 
 			{/* table section */}
-			<Table handleTabChange={handleTabChange} />
+			<Table />
 		</Box>
 	);
 };

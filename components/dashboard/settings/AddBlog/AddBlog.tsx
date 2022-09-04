@@ -1,20 +1,18 @@
 import { Box, Grid, Container, CardContent, Typography } from "@mui/material";
-import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
-import { tabSwitch } from "../../../../store/slices/settingsSlice";
 import { DashboardDivider, RoundButton } from "../../../styledComponents";
 import { AppDropzone, BackIconButton } from "../../../ui";
 import { StyledCard, StyledLabel, StyledTextBox, StyledTextField } from "../../components/styledComponents";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useRouter } from "next/router";
 
 const Blogs = () => {
-	const dispatch = useAppDispatch();
+	const router = useRouter();
 	const editorRef = useRef("test");
 
 	return (
 		<Box my={2.5}>
-			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.BLOGS))}>Add Blog</BackIconButton>
+			<BackIconButton onClick={() => router.back()}>Add Blog</BackIconButton>
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">

@@ -1,18 +1,14 @@
 import { Box } from "@mui/material";
-import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../store/hooks";
-import { tabSwitch } from "../../../../store/slices/settingsSlice";
+import { useRouter } from "next/router";
 import { BackIconButton } from "../../../ui";
 import ContactOrNewsletterTable from "./ContactOrNewsletterTable";
 
 const ContactOrNewsletter = () => {
-	const dispatch = useAppDispatch();
+	const router = useRouter();
 
 	return (
 		<Box my={2.5}>
-			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ROOT))}>
-				Manage Contact Us / Newsletter
-			</BackIconButton>
+			<BackIconButton onClick={() => router.back()}>Manage Contact Us / Newsletter</BackIconButton>
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">

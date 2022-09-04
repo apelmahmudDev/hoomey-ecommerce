@@ -1,21 +1,20 @@
-import { ORDER_TABS } from "..";
-import { BackIconButton } from "../../../ui";
-import { Box, Typography, Grid } from "@mui/material";
-import { ITabChange } from "../../../../types/tab-change";
 import { StatusText } from "../../components/styledComponents";
+import { Box, Typography, Grid } from "@mui/material";
+import { BackIconButton } from "../../../ui";
 import EmailSent from "./EmailSent";
 import Checkout from "./Checkout";
 import Customer from "./Customer";
 import Additional from "./Additional";
+import { useRouter } from "next/router";
 
-const AbandonedCartDetails = ({ handleTabChange }: ITabChange) => {
+const AbandonedCartDetails = () => {
+	const router = useRouter();
+
 	return (
 		<Box my={2.5}>
 			{/* back to order tab */}
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ABANDONED_CART)}>
-					Abondoned Cart
-				</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Abondoned Cart</BackIconButton>
 			</Box>
 
 			<Box component="section">

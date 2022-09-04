@@ -1,11 +1,11 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
-import { SHIPPING_TABS } from "../../../../constants/tabs/shipping";
-import { ITabChange } from "../../../../types/tab-change";
-import { RoundButton } from "../../../styledComponents";
 import ShippingTable from "./ShippingTable";
+import { Box, Typography } from "@mui/material";
+import { RoundButton } from "../../../styledComponents";
+import { Link } from "../../../ui";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
-const Shipping = ({ handleTabChange }: ITabChange) => {
+const Shipping = () => {
 	return (
 		<div>
 			{/* top part of shipping */}
@@ -24,13 +24,13 @@ const Shipping = ({ handleTabChange }: ITabChange) => {
 					Shipping
 				</Typography>
 
-				<RoundButton
-					color="secondary"
-					variant="contained"
-					onClick={() => handleTabChange(SHIPPING_TABS.ADD_SHIPPING)}
+				<Link
+					href={`${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.SHIPPING.ROOT}/${ROUTING_TREE.DASHBOARD.SHIPPING.ADD_NEW}`}
 				>
-					Add New
-				</RoundButton>
+					<RoundButton color="secondary" variant="contained">
+						Add New
+					</RoundButton>
+				</Link>
 			</Box>
 
 			{/* table section */}

@@ -1,13 +1,12 @@
 import { Box } from "@mui/material";
-import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../store/hooks";
-import { tabSwitch } from "../../../../store/slices/settingsSlice";
+import { useRouter } from "next/router";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 import { RoundButton } from "../../../styledComponents";
-import { BackIconButton } from "../../../ui";
+import { BackIconButton, Link } from "../../../ui";
 import BlogsTable from "./BlogsTable";
 
 const Blogs = () => {
-	const dispatch = useAppDispatch();
+	const router = useRouter();
 
 	return (
 		<Box my={2.5}>
@@ -19,16 +18,15 @@ const Blogs = () => {
 					gap: 2.5,
 				}}
 			>
-				<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ROOT))}>Blogs</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Blogs</BackIconButton>
 
-				<RoundButton
-					sx={{ minWidth: 150 }}
-					onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ADD_BLOG))}
-					variant="contained"
-					color="secondary"
+				<Link
+					href={`${ROUTING_TREE.DASHBOARD.SETTINGS.BLOGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.BLOGS.ADD}`}
 				>
-					Add Blog
-				</RoundButton>
+					<RoundButton sx={{ minWidth: 150 }} variant="contained" color="secondary">
+						Add Blog
+					</RoundButton>
+				</Link>
 			</Box>
 
 			{/* others sections */}

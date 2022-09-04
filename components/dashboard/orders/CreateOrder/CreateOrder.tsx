@@ -1,19 +1,19 @@
-import { ITabChange } from "../../../../types/tab-change";
 import { Box, Grid, Button, Container } from "@mui/material";
-import { ORDER_TABS } from "..";
 import Products from "./Products";
 import Customer from "./Customer";
 import Payments from "./Payments";
 import Notes from "./Notes";
 import Tags from "./Tags";
 import { BackIconButton } from "../../../ui";
+import { useRouter } from "next/router";
 
-function CreateOrder({ handleTabChange }: ITabChange) {
+function CreateOrder() {
+	const router = useRouter();
 	return (
 		<Box my={2.5}>
 			{/* back to order tab */}
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ROOT)}>Create Order</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Create Order</BackIconButton>
 			</Box>
 
 			{/*  products & customer */}

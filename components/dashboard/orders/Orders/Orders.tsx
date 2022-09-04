@@ -1,11 +1,10 @@
-import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
-import { ORDER_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-
-import { CartText, RoundButton } from "../../../styledComponents";
-import { ArrowDownIcon, ArrowUpIcon, BarIndicatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
-import { StyledCard } from "../../components/styledComponents";
+import { Link } from "../../../ui";
 import OrdersTable from "./OrdersTable";
+import { CartText, RoundButton } from "../../../styledComponents";
+import { StyledCard } from "../../components/styledComponents";
+import { CardContent, Typography, Stack, Box, Grid } from "@mui/material";
+import { ArrowDownIcon, ArrowUpIcon, BarIndicatorIcon, NoteIcon, PeopleIcon } from "../../components/icons";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
 const historyItems = [
 	{
@@ -34,7 +33,7 @@ const historyItems = [
 	},
 ];
 
-const Orders = ({ handleTabChange }: ITabChange) => {
+const Orders = () => {
 	return (
 		<div>
 			{/* top part of orders */}
@@ -54,16 +53,16 @@ const Orders = ({ handleTabChange }: ITabChange) => {
 				</Typography>
 
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-					<RoundButton onClick={() => handleTabChange(ORDER_TABS.ABANDONED_CART)} variant="contained">
-						Abandoned Cart
-					</RoundButton>
-					<RoundButton
-						onClick={() => handleTabChange(ORDER_TABS.CREATE_ORDER)}
-						variant="contained"
-						color="secondary"
+					<Link
+						href={`${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.ABANDONED_CART}`}
 					>
-						Create Order
-					</RoundButton>
+						<RoundButton variant="contained">Abandoned Cart</RoundButton>
+					</Link>
+					<Link href={`${ROUTING_TREE.DASHBOARD.ORDERS.ROOT}/${ROUTING_TREE.DASHBOARD.ORDERS.CREATE}`}>
+						<RoundButton variant="contained" color="secondary">
+							Create Order
+						</RoundButton>
+					</Link>
 				</Box>
 			</Box>
 
@@ -96,7 +95,7 @@ const Orders = ({ handleTabChange }: ITabChange) => {
 
 			{/* table section */}
 			<Box my={2.5}>
-				<OrdersTable handleTabChange={handleTabChange} />
+				<OrdersTable />
 			</Box>
 		</div>
 	);

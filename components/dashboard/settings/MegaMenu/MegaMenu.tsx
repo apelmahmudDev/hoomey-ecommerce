@@ -1,19 +1,15 @@
 import { BackIconButton } from "../../../ui";
 import { Box, Grid } from "@mui/material";
-import { useAppDispatch } from "../../../../store/hooks";
-import { tabSwitch } from "../../../../store/slices/settingsSlice";
-import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
 import Menu from "./Menu";
 import AddItem from "./AddItem";
+import { useRouter } from "next/router";
 
 const MegaMenu = () => {
-	const dispatch = useAppDispatch();
+	const router = useRouter();
 
 	return (
 		<Box my={2.5}>
-			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ROOT))}>
-				Men Mega Menu Settings
-			</BackIconButton>
+			<BackIconButton onClick={() => router.back()}>Men Mega Menu Settings</BackIconButton>
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">

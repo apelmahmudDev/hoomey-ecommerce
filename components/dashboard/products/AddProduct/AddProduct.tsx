@@ -1,10 +1,6 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Button, CardContent, Checkbox, Container, FormControlLabel, Grid, Typography } from "@mui/material";
-import { PRODUCTS_TABS } from "..";
-import { ITabChange } from "../../../../types/tab-change";
-import { CircleIconButton, RoundButton } from "../../../styledComponents";
+import { RoundButton } from "../../../styledComponents";
 import Media from "./Media";
-
 import { useState } from "react";
 import { Popup } from "../../../common";
 import { StyledButton, StyledCard } from "../../components/styledComponents";
@@ -25,8 +21,11 @@ import ShortDescription from "./ShortDescription";
 import SizeChart from "./SizeChart";
 import Taxes from "./Taxes";
 import Variants from "./Variants";
+import { BackIconButton } from "../../../ui";
+import { useRouter } from "next/router";
 
-const AddProduct = ({ handleTabChange }: ITabChange) => {
+const AddProduct = () => {
+	const router = useRouter();
 	const [isImportCSVOpen, setIsImportCSVOpen] = useState(false);
 	const [isSEOOpen, setIsSEOOpen] = useState(false);
 
@@ -50,24 +49,10 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: 2.5 }}>
-					<CircleIconButton
-						sx={{ minWidth: "6px", padding: "2px" }}
-						onClick={() => handleTabChange(PRODUCTS_TABS.ROOT)}
-					>
-						<ArrowBackIcon />
-					</CircleIconButton>
-					<Typography
-						sx={{
-							fontWeight: "500",
-							fontSize: "18px",
-							marginY: "auto",
-						}}
-						align="center"
-					>
-						Add Product
-					</Typography>
+				<Box my={1.25}>
+					<BackIconButton onClick={() => router.back()}>Add Product</BackIconButton>
 				</Box>
+
 				<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
 					<RoundButton variant="contained" color="secondary" onClick={() => handleImportCSVTogglePopup(true)}>
 						Import Product by CSV
@@ -99,7 +84,7 @@ const AddProduct = ({ handleTabChange }: ITabChange) => {
 								<Options />
 							</Grid>
 							<Grid item xs={12}>
-								<Variants handleTabChange={handleTabChange} />
+								<Variants />
 							</Grid>
 							<Grid item xs={12}>
 								<Shipping />

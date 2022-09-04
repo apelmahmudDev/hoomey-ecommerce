@@ -1,7 +1,9 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Grid, Typography } from "@mui/material";
 import { useState } from "react";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 import { CircleIconButton, RoundButton } from "../../styledComponents";
+import { Link } from "../../ui";
 import { ArrowDownIcon, ArrowUpIcon } from "../components/icons";
 import AvgOrderValueChart from "./AvgOrderValueChart";
 import CustomerRateChart from "./CustomerRateChart";
@@ -117,9 +119,11 @@ const Analytics = () => {
 						</Typography>
 
 						<Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
-							<RoundButton variant="contained" onClick={() => setState("reportings")}>
-								Reportings
-							</RoundButton>
+							<Link
+								href={`${ROUTING_TREE.DASHBOARD.ANALYTICS.ROOT}/${ROUTING_TREE.DASHBOARD.ANALYTICS.REPORTINGS}`}
+							>
+								<RoundButton variant="contained">Reportings</RoundButton>
+							</Link>
 						</Box>
 					</Box>
 

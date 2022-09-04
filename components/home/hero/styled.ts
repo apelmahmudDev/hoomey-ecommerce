@@ -8,9 +8,12 @@ export const useStyles = makeStyles((theme) => ({
 			backgroundSize: "cover",
 			backgroundColor: "#c4c4c4",
 			backgroundRepeat: "no-repeat",
-			backgroundPosition: "center center",
+			backgroundPosition: "center top",
 
-			height: "100vh",
+			// height: "100vh",
+			// height: `calc(100vh - 103.5px)`,
+			height: `calc(100vh - 103.5px)`,
+
 			padding: theme.spacing(0, 2),
 
 			[theme.breakpoints.down("md")]: {

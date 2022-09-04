@@ -1,9 +1,8 @@
 import { CardContent, Typography, Box, Button } from "@mui/material";
 import { StyledCard } from "../../../components/styledComponents";
+import { ROUTING_TREE } from "../../../../../constants/siteUrls";
 import { styled } from "@mui/material/styles";
-import { tabSwitch } from "../../../../../store/slices/settingsSlice";
-import { SETTINGS_TABS } from "../../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../../store/hooks";
+import { Link } from "../../../../ui";
 
 const FlexStack = styled(Box)({
 	gap: 20,
@@ -12,9 +11,13 @@ const FlexStack = styled(Box)({
 	justifyContent: "space-between",
 });
 
-const MegaMenu = () => {
-	const dispatch = useAppDispatch();
+const megaMenu: { id: string; item: string }[] = [
+	{ id: "men", item: "Men" },
+	{ id: "women", item: "Women" },
+	{ id: "kids", item: "Kids" },
+];
 
+const MegaMenu = () => {
 	return (
 		<StyledCard>
 			<CardContent>
@@ -22,18 +25,16 @@ const MegaMenu = () => {
 					Mega Menu
 				</Typography>
 
-				<FlexStack>
-					<Typography variant="body2">Men</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
-				</FlexStack>
-				<FlexStack>
-					<Typography variant="body2">Women</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
-				</FlexStack>
-				<FlexStack>
-					<Typography variant="body2">Kids</Typography>
-					<Button onClick={() => dispatch(tabSwitch(SETTINGS_TABS.MEGA_MENU))}>Customize</Button>
-				</FlexStack>
+				{megaMenu.map((menu) => (
+					<FlexStack key={menu.id}>
+						<Typography variant="body2">{menu.item}</Typography>
+						<Link
+							href={`${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.MEGA_MENU}/${menu.id}`}
+						>
+							<Button>Customize</Button>
+						</Link>
+					</FlexStack>
+				))}
 			</CardContent>
 		</StyledCard>
 	);

@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { Badge, Box, List, ListItemIcon, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Badge, Box, List, ListItemIcon, ListItem, ListItemButton, ListItemText, Collapse } from "@mui/material";
 import { paperPropsStyles, useStyles } from "./styled";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -96,6 +96,12 @@ const Navbar: FC = () => {
 
 	const handleTogglePopup = (boolean: boolean) => {
 		setIsTrackOrderOpen(boolean);
+	};
+
+	const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+	const handleMenu = () => {
+		setIsOpenMenu((prev) => !prev);
 	};
 
 	return (
@@ -329,6 +335,7 @@ const Navbar: FC = () => {
 						</Select>
 					</FormControl>
 				</Box>
+
 				<List
 					sx={{
 						"& .MuiListItemButton-root": {
@@ -338,11 +345,41 @@ const Navbar: FC = () => {
 				>
 					<Link href="/men">
 						<ListItem disablePadding>
-							<ListItemButton>
+							<ListItemButton onClick={handleMenu}>
 								<ListItemText sx={{ textAlign: "center" }} primary={"Men"} />
 							</ListItemButton>
 						</ListItem>
 					</Link>
+
+					{/* dropdown menu */}
+					<Collapse in={isOpenMenu}>
+						<List
+							sx={{
+								borderRadius: 0.5,
+								border: "1px solid #5B5B5B",
+								"& .MuiListItemButton-root": {
+									my: 0,
+								},
+							}}
+						>
+							{[
+								"Clothing",
+								"Shoes",
+								"Accessories",
+								"Face + Body",
+								"Topman",
+								"Back in Stock",
+								"Outlet",
+								"Trending",
+							].map((item, idx) => (
+								<ListItem key={idx} disablePadding>
+									<ListItemButton>
+										<ListItemText primary={item} />
+									</ListItemButton>
+								</ListItem>
+							))}
+						</List>
+					</Collapse>
 
 					{pages.map((page, index) => (
 						<Link key={index} href={page.link}>
@@ -371,7 +408,10 @@ const Navbar: FC = () => {
 					maxWidth="lg"
 					sx={{
 						"& .MuiDialog-container": { pt: 10, alignItems: "flex-start" },
-						"& .MuiPaper-root": { width: "auto", boxShadow: 0 },
+						"& .MuiPaper-root": {
+							//  width: "auto",
+							boxShadow: 0,
+						},
 					}}
 					open={isOpenSearch}
 					onClose={handleSearchClose}

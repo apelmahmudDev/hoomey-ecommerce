@@ -1,15 +1,14 @@
 import { Box, FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import { SETTINGS_TABS } from "../../../../constants/tabs/settings";
-import { useAppDispatch } from "../../../../store/hooks";
-import { tabSwitch } from "../../../../store/slices/settingsSlice";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 import { RoundButton } from "../../../styledComponents";
 import { BackIconButton } from "../../../ui";
 import SelectEmailTemplate from "./SelectEmailTemplate";
 import WriteYourself from "./WriteYourself";
 
 const SendingEmail = () => {
-	const dispatch = useAppDispatch();
+	const router = useRouter();
 
 	const [value, setValue] = useState("email_template");
 
@@ -19,7 +18,7 @@ const SendingEmail = () => {
 
 	return (
 		<Box my={2.5}>
-			<BackIconButton onClick={() => dispatch(tabSwitch(SETTINGS_TABS.ROOT))}>Sending Email</BackIconButton>
+			<BackIconButton onClick={() => router.back()}>Sending Email</BackIconButton>
 
 			{/* others sections */}
 			<Box mt={3.75} component="section">
@@ -38,7 +37,11 @@ const SendingEmail = () => {
 			{/* next button */}
 			<Box sx={{ mt: 6, textAlign: "center" }}>
 				<RoundButton
-					onClick={() => dispatch(tabSwitch(SETTINGS_TABS.SENDING_EMAIL_SELECT_USERS))}
+					onClick={() =>
+						router.push(
+							`${ROUTING_TREE.DASHBOARD.SETTINGS.EMAIL.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.EMAIL.SEND}`,
+						)
+					}
 					sx={{ minWidth: 300 }}
 					variant="contained"
 					color="secondary"

@@ -1,18 +1,19 @@
-import { ORDER_TABS } from "..";
 import { BackIconButton } from "../../../ui";
 import { Box, Typography, Grid, Stack } from "@mui/material";
-import { ITabChange } from "../../../../types/tab-change";
 import TotalItem from "./TotalItem";
 import DeliveryDetails from "./DeliveryDetails";
 import PaymentDetails from "./PaymentDetails";
 import { StatusText } from "../../components/styledComponents";
+import { useRouter } from "next/router";
 
-const OrderDetails = ({ handleTabChange }: ITabChange) => {
+const OrderDetails = () => {
+	const router = useRouter();
+
 	return (
 		<Box my={2.5}>
 			{/* back to order tab */}
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(ORDER_TABS.ROOT)}>Order Details</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Order Details</BackIconButton>
 			</Box>
 
 			<Box component="section">

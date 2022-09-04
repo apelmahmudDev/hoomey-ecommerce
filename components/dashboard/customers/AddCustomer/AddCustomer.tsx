@@ -1,18 +1,18 @@
 import { Box, Button, Container, Grid } from "@mui/material";
-import { CUSTOMER_TABS } from "..";
 import { BackIconButton } from "../../../ui";
-import { ITabChange } from "../../../../types/tab-change";
 import CustomerOverview from "./CustomerOverview";
 import Address from "./Address";
 import Tags from "./Tags";
 import TaxExemption from "./TaxExemption";
 import Notes from "./Notes";
+import { useRouter } from "next/router";
 
-const AddCustomer = ({ handleTabChange }: ITabChange) => {
+const AddCustomer = () => {
+	const router = useRouter();
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5}>
-				<BackIconButton onClick={() => handleTabChange(CUSTOMER_TABS.ROOT)}>Add Customer</BackIconButton>
+				<BackIconButton onClick={() => router.back()}>Add Customer</BackIconButton>
 			</Box>
 
 			{/* others section */}

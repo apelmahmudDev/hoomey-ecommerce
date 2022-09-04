@@ -20,4 +20,51 @@ export const ROUTING_TREE = {
 
 	PRIVACY_POLICY: "privacy-policy",
 	TERMS_OF_SERVICE: "terms-of-service",
+
+	DASHBOARD: {
+		ROOT: "/dashboard",
+		ORDERS: {
+			ROOT: "orders",
+			DETAILS: "details",
+			ABANDONED_CART: "abandoned-cart",
+			CREATE: "create",
+		},
+		PRODUCTS: {
+			ROOT: "products",
+			ADD: {
+				ROOT: "add",
+				EDIT_VARIANT: "edit-variant",
+			},
+			CATEGORY: {
+				ROOT: "categories",
+				ADD: "add",
+			},
+		},
+		CUSTOMERS: {
+			ROOT: "customers",
+			DETAILS: "details",
+			ADD: "add",
+		},
+		REVIEWS: {
+			ROOT: "reviews",
+			DETAILS: "details",
+		},
+		SHIPPING: {
+			ROOT: "shipping",
+			ADD_NEW: "add-new",
+		},
+		ANALYTICS: {
+			ROOT: "analytics",
+			REPORTINGS: "reportings",
+		},
+		NOTIFICATION: "notification",
+		SETTINGS: {
+			ROOT: "settings",
+			MEGA_MENU: "mega-menu",
+			EMAIL: { ROOT: "email", SEND: "send" },
+			BLOGS: { ROOT: "blogs", ADD: "add" },
+			CONTACT_OR_NEWSLETTER: "contact-or-newsletter",
+			MANAGE_COUPON: "manage-coupon",
+		},
+	},
 };
