@@ -6,8 +6,8 @@ import { regex } from "../../../utils/validations/regex";
 import { useEffect, useState } from "react";
 import { isStrongPassword } from "../../../utils/validations";
 import { useCreateUserMutation } from "../../../store/api/authApi";
-// import { useAppDispatch } from "../../../store/hooks";
-// import { toggleToastify } from "../../../store/slices/toastifySlice";
+import { useAppDispatch } from "../../../store/hooks";
+import { useToastify } from "../../../store/slices/toastifySlice";
 
 interface Inputs {
 	firstName: string;
@@ -18,8 +18,8 @@ interface Inputs {
 }
 
 const NewCustomerSignUp = () => {
-	// const dispatch = useAppDispatch();
-	const [createUser, { data, isLoading }] = useCreateUserMutation();
+	const dispatch = useAppDispatch();
+	const [createUser, { data, isLoading, error }] = useCreateUserMutation();
 	const [isStrongPass, setIsStrongPass] = useState(false);
 
 	const {
@@ -43,12 +43,14 @@ const NewCustomerSignUp = () => {
 		});
 	};
 
-	console.log(data);
+	// console.log(data);
+	// console.log(Boolean(error));
 
-	// notifications
-	// useEffect(() => {
-	// 	dispatch(toggleToastify({ desc: "User Create successful", severity: "success" }));
-	// }, [dispatch]);
+	//  notifications
+	useEffect(() => {
+		if (error) dispatch(useToastify({ desc: "User create failed.", severity: "error" }));
+		if (data) dispatch(useToastify({ desc: "User create successful.", severity: "success" }));
+	}, [dispatch, error, data]);
 
 	// password visual label check 🔐
 	useEffect(() => {

@@ -1,5 +1,7 @@
 import { Box, Divider, Paper, Slide, Typography } from "@mui/material";
+import { goneToastify } from "../../../store/slices/toastifySlice";
 import { ErrorSvg, InfoSvg, SuccessSvg } from "../../icons";
+import { useAppDispatch } from "../../../store/hooks";
 
 // types
 export interface IToastify {
@@ -13,6 +15,12 @@ const error = { title: `Uh oh, something went wrong`, desc: `Sorry! their was a 
 const info = { title: `Did you know?`, desc: `Here’s something that you might like to know.` };
 
 const Toastify = ({ severity, isToastify, desc }: IToastify) => {
+	const dispatch = useAppDispatch();
+
+	setTimeout(() => {
+		dispatch(goneToastify(false));
+	}, 5000);
+
 	return (
 		<Slide direction="left" in={isToastify} mountOnEnter unmountOnExit>
 			<Paper

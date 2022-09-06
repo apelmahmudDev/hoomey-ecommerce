@@ -11,7 +11,7 @@ export const toastifySlice = createSlice({
 	name: "toastify",
 	initialState: initialState as IToastify,
 	reducers: {
-		toggleToastify: (
+		useToastify: (
 			state: IToastify,
 			action: PayloadAction<{ desc: string; severity: "success" | "info" | "error" }>,
 		) => {
@@ -20,14 +20,14 @@ export const toastifySlice = createSlice({
 			state.isToastify = true;
 			state.desc = desc;
 			state.severity = severity;
+		},
 
-			setTimeout(() => {
-				state.isToastify = false;
-			}, 3000);
+		goneToastify: (state: IToastify, action: PayloadAction<boolean>) => {
+			state.isToastify = action.payload;
 		},
 	},
 });
 
-export const { toggleToastify } = toastifySlice.actions;
+export const { useToastify, goneToastify } = toastifySlice.actions;
 
 export default toastifySlice.reducer;

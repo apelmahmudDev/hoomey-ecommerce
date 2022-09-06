@@ -41,8 +41,6 @@ function MyApp(props: ComponentWithLayoutProps) {
 		}, 1500);
 	}, []);
 
-	console.log(toastify);
-
 	// @ts-ignore
 	return (
 		<CacheProvider value={emotionCache}>
