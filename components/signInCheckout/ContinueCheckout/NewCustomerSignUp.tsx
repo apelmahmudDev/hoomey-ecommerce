@@ -43,12 +43,14 @@ const NewCustomerSignUp = () => {
 		});
 	};
 
-	console.log(data);
+	// console.log(data);
+	// console.log(Boolean(error));
 
-	// notifications
-	// useEffect(() => {
-	// 	dispatch(useToastify({ desc: "User Create successful", severity: "success" }));
-	// }, []);
+	//  notifications
+	useEffect(() => {
+		if (error) dispatch(useToastify({ desc: "User create failed.", severity: "error" }));
+		if (data) dispatch(useToastify({ desc: "User create successful.", severity: "success" }));
+	}, [dispatch, error, data]);
 
 	// password visual label check 🔐
 	useEffect(() => {

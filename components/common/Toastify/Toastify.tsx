@@ -1,8 +1,7 @@
 import { Box, Divider, Paper, Slide, Typography } from "@mui/material";
-import { useEffect } from "react";
-import { useAppDispatch } from "../../../store/hooks";
 import { goneToastify } from "../../../store/slices/toastifySlice";
 import { ErrorSvg, InfoSvg, SuccessSvg } from "../../icons";
+import { useAppDispatch } from "../../../store/hooks";
 
 // types
 export interface IToastify {
