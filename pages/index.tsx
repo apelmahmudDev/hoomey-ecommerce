@@ -27,7 +27,6 @@ const Home: NextLayoutComponentType = () => {
 			{/* <SignIn /> */}
 			{/* <PasswordChange /> */}
 			{/* <AbondonCart /> */}
-			{/* email-template */}
 
 			{/*EMAIL TEMPLATE*/}
 			{/* <AdminEmail /> */}

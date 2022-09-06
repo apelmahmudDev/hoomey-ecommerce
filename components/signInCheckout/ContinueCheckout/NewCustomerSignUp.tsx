@@ -5,6 +5,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { regex } from "../../../utils/validations/regex";
 import { useEffect, useState } from "react";
 import { isStrongPassword } from "../../../utils/validations";
+import { useCreateUserMutation } from "../../../store/api/authApi";
+// import { useAppDispatch } from "../../../store/hooks";
+// import { toggleToastify } from "../../../store/slices/toastifySlice";
 
 interface Inputs {
 	firstName: string;
@@ -15,6 +18,8 @@ interface Inputs {
 }
 
 const NewCustomerSignUp = () => {
+	// const dispatch = useAppDispatch();
+	const [createUser, { data, isLoading }] = useCreateUserMutation();
 	const [isStrongPass, setIsStrongPass] = useState(false);
 
 	const {
@@ -24,11 +29,28 @@ const NewCustomerSignUp = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	// handle form submit
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	// handle form submit & user creation
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		const { firstName, lastName, email, password, reEnterPassword } = data;
 
-	// password check 🔐
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
+		createUser({
+			name: `${firstName} ${lastName}`,
+			email: email,
+			username: `${firstName}`,
+			password: password,
+			passwordConfirmation: reEnterPassword,
+		});
+	};
 
+	console.log(data);
+
+	// notifications
+	// useEffect(() => {
+	// 	dispatch(toggleToastify({ desc: "User Create successful", severity: "success" }));
+	// }, [dispatch]);
+
+	// password visual label check 🔐
 	useEffect(() => {
 		if (isStrongPassword(watch("password"))) {
 			setIsStrongPass(true);
@@ -141,7 +163,7 @@ const NewCustomerSignUp = () => {
 					/>
 				</Box>
 				<Button type="submit" variant="contained" color="secondary" fullWidth size="large">
-					Sign Up
+					{isLoading ? "Please wait..." : "Sign Up"}
 				</Button>
 			</Box>
 		</Box>
