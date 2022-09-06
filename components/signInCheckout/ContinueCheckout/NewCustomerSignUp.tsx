@@ -6,6 +6,8 @@ import { regex } from "../../../utils/validations/regex";
 import { useEffect, useState } from "react";
 import { isStrongPassword } from "../../../utils/validations";
 import { useCreateUserMutation } from "../../../store/api/authApi";
+// import { useAppDispatch } from "../../../store/hooks";
+// import { toggleToastify } from "../../../store/slices/toastifySlice";
 
 interface Inputs {
 	firstName: string;
@@ -16,6 +18,7 @@ interface Inputs {
 }
 
 const NewCustomerSignUp = () => {
+	// const dispatch = useAppDispatch();
 	const [createUser, { data, isLoading }] = useCreateUserMutation();
 	const [isStrongPass, setIsStrongPass] = useState(false);
 
@@ -41,6 +44,11 @@ const NewCustomerSignUp = () => {
 	};
 
 	console.log(data);
+
+	// notifications
+	// useEffect(() => {
+	// 	dispatch(toggleToastify({ desc: "User Create successful", severity: "success" }));
+	// }, [dispatch]);
 
 	// password visual label check 🔐
 	useEffect(() => {

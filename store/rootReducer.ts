@@ -4,6 +4,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { cartSlice } from "./slices/cartSlice";
 import { countSlice } from "./slices/countSlice";
 import { colorSlice } from "./slices/colorSlice";
+import { toastifySlice } from "./slices/toastifySlice";
 
 // api
 import { authApi } from "./api/authApi";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
 	[countSlice.name]: countSlice.reducer,
 	[cartSlice.name]: cartSlice.reducer,
 	[colorSlice.name]: colorSlice.reducer,
+	[toastifySlice.name]: toastifySlice.reducer,
 });
 
 export default rootReducer;
