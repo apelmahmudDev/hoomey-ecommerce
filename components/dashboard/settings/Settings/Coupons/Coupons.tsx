@@ -55,7 +55,7 @@ const Coupons = () => {
 				</StyledTextBox>
 
 				<StyledTextBox>
-					<FormControlLabel control={<Checkbox defaultChecked />} label="Get one 50% off" />
+					<FormControlLabel control={<Checkbox defaultChecked />} label="Buy one, get one 50% off" />
 				</StyledTextBox>
 			</CardContent>
 		</StyledCard>
