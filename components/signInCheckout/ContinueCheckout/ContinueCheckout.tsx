@@ -1,14 +1,17 @@
-import { Box, Button, Container, Grid, TextField, Typography, InputAdornment } from "@mui/material";
-import { AppDivider, HeadingText } from "../../styledComponents";
-import { LockForInputSvg, MailSvg } from "../../icons";
+import { Box, Button, Container, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import { COLORS } from "../../../theme/colors";
-import NewCustomerSignUp from "./NewCustomerSignUp";
 import { useRouter } from "next/router";
-import { ForgetPassword } from "../../common/AuthPopup";
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useUserLogInMutation } from "../../../store/api/authApi";
+import { useAppDispatch } from "../../../store/hooks";
+import { useToastify } from "../../../store/slices/toastifySlice";
+import { COLORS } from "../../../theme/colors";
 import { regex } from "../../../utils/validations/regex";
+import { ForgetPassword } from "../../common/AuthPopup";
+import { LockForInputSvg, MailSvg } from "../../icons";
+import { AppDivider, HeadingText } from "../../styledComponents";
+import NewCustomerSignUp from "./NewCustomerSignUp";
 
 interface Inputs {
 	email: string;
@@ -24,7 +27,9 @@ export const Label = styled(Typography)({
 export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#FAFAFA" } };
 
 const ContinueCheckout = () => {
+	const dispatch = useAppDispatch();
 	const router = useRouter();
+	const [userLogIn, { data, isLoading, error }] = useUserLogInMutation();
 
 	const {
 		register,
@@ -39,7 +44,24 @@ const ContinueCheckout = () => {
 	};
 
 	// handle form
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		const { email, password } = data;
+
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
+		userLogIn({
+			email: email,
+			password: password,
+		});
+	};
+
+	console.log("cn", data);
+	console.log("cn2", Boolean(error));
+
+	//  notifications
+	useEffect(() => {
+		if (error) dispatch(useToastify({ desc: "User log in failed.", severity: "error" }));
+		if (data) dispatch(useToastify({ desc: "User log in successful.", severity: "success" }));
+	}, [dispatch, error, data]);
 
 	return (
 		<Box mb={9.1}>
@@ -117,7 +139,7 @@ const ContinueCheckout = () => {
 									Forgot password?
 								</Typography>
 								<Button type="submit" variant="contained" color="secondary" fullWidth size="large">
-									Sign In
+									{isLoading ? "Please wait..." : "Sign In"}
 								</Button>
 							</Box>
 						</Box>
