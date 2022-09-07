@@ -1,8 +1,7 @@
 import { CardContent, Typography, Box, Grid, Select, MenuItem, SelectChangeEvent, InputAdornment } from "@mui/material";
 import { useState } from "react";
+import { COUNTRIES } from "../../../../../assets/data/countries";
 import { KeyboardArrowDownIcon } from "../../../../../uiElements/icons";
-import { ArabicFlagSvg } from "../../../../icons";
-import UsaFlag from "../../../../icons/UsaFlag";
 import {
 	SelectFormControl,
 	StyledCard,
@@ -12,10 +11,10 @@ import {
 } from "../../../components/styledComponents";
 
 const Address = () => {
-	const [language, setLanguage] = useState("10");
+	const [countryMobileCode, setCountryMobileCode] = useState("+93");
 
-	const handleChange = (event: SelectChangeEvent) => {
-		setLanguage(event.target.value as string);
+	const handleCountryMobileCodeChange = (event: SelectChangeEvent) => {
+		setCountryMobileCode(event.target.value as string);
 	};
 	return (
 		<StyledCard>
@@ -83,41 +82,34 @@ const Address = () => {
 							size="small"
 							fullWidth
 							InputProps={{
-								startAdornment: <InputAdornment position="start">+61</InputAdornment>,
+								startAdornment: <InputAdornment position="start">{countryMobileCode}</InputAdornment>,
 							}}
 						/>
 					</Box>
 					<div>
-						<SelectFormControl
-							//  className={classes.languageSelect}
-							size="small"
-						>
+						{/* country Select */}
+						<SelectFormControl size="small">
 							<Select
 								IconComponent={KeyboardArrowDownIcon}
-								labelId="demo-simple-select-label"
-								id="demo-simple-select"
-								value={language}
-								onChange={handleChange}
-								// startAdornment={
-								// 	<InputAdornment position="start">
-								// 		<Image src={Flag} height={26} width={36} />
-								// 	</InputAdornment>
-								// }
+								labelId="country-select-label"
+								id="country-select"
+								value={countryMobileCode}
+								onChange={handleCountryMobileCodeChange}
 							>
-								<MenuItem
-									//  className={classes.menuItem}
-									value={10}
-								>
-									<UsaFlag />
-									USA
-								</MenuItem>
-								<MenuItem
-									//  className={classes.menuItem}
-									value={20}
-								>
-									<ArabicFlagSvg />
-									Arab
-								</MenuItem>
+								{COUNTRIES.map((country) => (
+									<MenuItem key={country.name} value={country.mobileCode}>
+										<Box sx={{ "& > img": { mr: 2, flexShrink: 0 } }}>
+											<img
+												loading="lazy"
+												width="20"
+												src={`https://flagcdn.com/w20/${country.code.toLowerCase()}.png`}
+												srcSet={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png 2x`}
+												alt=""
+											/>
+											{country.code}
+										</Box>
+									</MenuItem>
+								))}
 							</Select>
 						</SelectFormControl>
 					</div>
