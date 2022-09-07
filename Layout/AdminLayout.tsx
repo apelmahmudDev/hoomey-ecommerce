@@ -46,6 +46,8 @@ import { Notifications } from "../components/dashboard/common";
 import styles from "../components/dashboard/common/styles";
 import { ROUTING_TREE } from "../constants/siteUrls";
 import { useRouter } from "next/router";
+import { useAppDispatch } from "../store/hooks";
+import { useWarningPopup } from "../store/slices/warningSlice";
 
 const drawerWidth = 120;
 
@@ -103,6 +105,7 @@ const drawerItem = [
 
 const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 	const router = useRouter();
+	const dispatch = useAppDispatch();
 	const [isMobileOpen, setIsMobileOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [notificationAnchorEl, setNotificationAnchorEl] = useState<null | HTMLElement>(null);
@@ -290,7 +293,15 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 												Settings
 											</MenuItem>
 										</Link>
-										<MenuItem>
+										<MenuItem
+											onClick={() =>
+												dispatch(
+													useWarningPopup(
+														"Are you sure you want to logout from your account ? ",
+													),
+												)
+											}
+										>
 											<ListItemIcon>
 												<Logout fontSize="small" />
 											</ListItemIcon>

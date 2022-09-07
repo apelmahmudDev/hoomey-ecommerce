@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { appTheme } from "../theme/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import { StylesProvider, createGenerateClassName } from "@mui/styles";
 import createEmotionCache from "../theme/createEmotionCache";
-import { appTheme } from "../theme/theme";
+import { StylesProvider, createGenerateClassName } from "@mui/styles";
 
 import "../styles/globals.css";
 // Import Swiper styles
@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 
-import { PageLoading, Toastify } from "../components/common";
+import { PageLoading, Toastify, WarningPopup } from "../components/common";
 import { wrapper } from "../store";
 import { ComponentWithLayoutProps } from "../types/page";
 import FrontLayout from "../Layout/FrontLayout";
@@ -51,6 +51,9 @@ function MyApp(props: ComponentWithLayoutProps) {
 				<ThemeProvider theme={appTheme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
+					{/* warning popup  */}
+					<WarningPopup />
+					{/* notifications after any action occuring*/}
 					<Toastify isToastify={toastify.isToastify} severity={toastify.severity} desc={toastify.desc} />
 
 					{isLoading ? (

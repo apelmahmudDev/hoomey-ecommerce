@@ -28,3 +28,4 @@ export { default as Switch } from "./SwitchIcon";
 export { default as Toastify } from "./Toastify";
 export { default as TopHeader } from "./TopHeader";
 export { default as TrackOrder } from "./TrackOrder";
+export { default as WarningPopup } from "./WarningPopup";
