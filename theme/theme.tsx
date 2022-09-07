@@ -72,6 +72,7 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+
 		MuiFilledInput: {
 			styleOverrides: {
 				root: {

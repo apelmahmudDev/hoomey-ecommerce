@@ -12,6 +12,8 @@ import { Order } from "../../../../../types/order";
 import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
+import { useWarningPopup } from "../../../../../store/slices/warningSlice";
+import { useAppDispatch } from "../../../../../store/hooks";
 
 export interface Data {
 	zone: string;
@@ -43,6 +45,7 @@ const rows = [
 ];
 
 const ShippingTable = () => {
+	const dispatch = useAppDispatch();
 	const [orderBy, setOrderBy] = useState<keyof Data>("zone");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -97,7 +100,17 @@ const ShippingTable = () => {
 												<TableCell align="center">{row.type}</TableCell>
 												<TableCell align="center">${row.price}</TableCell>
 												<TableCell align="right">
-													<OrangeButton sx={{ px: 3 }} size="small">
+													<OrangeButton
+														onClick={() =>
+															dispatch(
+																useWarningPopup(
+																	"Are you sure you want to delete this item?",
+																),
+															)
+														}
+														sx={{ px: 3 }}
+														size="small"
+													>
 														Delete
 													</OrangeButton>
 												</TableCell>

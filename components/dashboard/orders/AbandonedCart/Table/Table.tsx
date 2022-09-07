@@ -94,7 +94,7 @@ const OrdersTable = () => {
 					<TableContainer>
 						<Table sx={{ minWidth: 950 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
-							<TableBody>
+							<TableBody sx={{ "& > a": { display: "contents" } }}>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
                                 rows.slice().sort(getComparator(order, orderBy)) */}
 								{stableSort(rows, getComparator(order, orderBy))
@@ -103,29 +103,32 @@ const OrdersTable = () => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={row.orderNo}>
-												<TableCell padding="checkbox">{index + 1}</TableCell>
-												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<Link
-														href={`${ROUTING_TREE.DASHBOARD.ORDERS.ABANDONED_CART}/${ROUTING_TREE.DASHBOARD.ORDERS.DETAILS}/${row.orderNo}`}
-													>
+											<Link
+												key={row.orderNo}
+												href={`${ROUTING_TREE.DASHBOARD.ORDERS.ABANDONED_CART}/${ROUTING_TREE.DASHBOARD.ORDERS.DETAILS}/${row.orderNo}`}
+											>
+												<TableRow hover tabIndex={-1}>
+													<TableCell padding="checkbox">{index + 1}</TableCell>
+													<TableCell component="th" id={labelId} scope="row" padding="none">
 														{row.orderNo}
-													</Link>
-												</TableCell>
-												<TableCell align="center">{row.date}</TableCell>
-												<TableCell align="center">{row.time}</TableCell>
-												<TableCell align="center">{row.customer}</TableCell>
+													</TableCell>
+													<TableCell align="center">{row.date}</TableCell>
+													<TableCell align="center">{row.time}</TableCell>
+													<TableCell align="center">{row.customer}</TableCell>
 
-												<TableCell align="center">
-													<StatusChip status={row.emailStatus}>{row.emailStatus}</StatusChip>
-												</TableCell>
-												<TableCell align="center">
-													<StatusChip status={row.recoveryStatus}>
-														{row.recoveryStatus}
-													</StatusChip>
-												</TableCell>
-												<TableCell align="right">${row.total}</TableCell>
-											</TableRow>
+													<TableCell align="center">
+														<StatusChip status={row.emailStatus}>
+															{row.emailStatus}
+														</StatusChip>
+													</TableCell>
+													<TableCell align="center">
+														<StatusChip status={row.recoveryStatus}>
+															{row.recoveryStatus}
+														</StatusChip>
+													</TableCell>
+													<TableCell align="right">${row.total}</TableCell>
+												</TableRow>
+											</Link>
 										);
 									})}
 								{emptyRows > 0 && (
