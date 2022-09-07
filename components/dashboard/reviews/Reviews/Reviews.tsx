@@ -23,7 +23,7 @@ const Reviews = () => {
 					<Typography sx={{ fontSize: 12 }} fontWeight="medium">
 						Review approval
 					</Typography>
-					<SwitchIcon inputProps={{ "aria-label": "ant design" }} />
+					<SwitchIcon inputProps={{ "aria-label": "swiper" }} />
 				</Stack>
 			</Box>
 			{/* table section */}
