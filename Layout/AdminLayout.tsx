@@ -280,12 +280,16 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 										transformOrigin={{ horizontal: "right", vertical: "top" }}
 										anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 									>
-										<MenuItem>
-											<ListItemIcon>
-												<Settings fontSize="small" />
-											</ListItemIcon>
-											Settings
-										</MenuItem>
+										<Link
+											href={`${ROUTING_TREE.DASHBOARD.ROOT}/${ROUTING_TREE.DASHBOARD.SETTINGS.ROOT}`}
+										>
+											<MenuItem>
+												<ListItemIcon>
+													<Settings fontSize="small" />
+												</ListItemIcon>
+												Settings
+											</MenuItem>
+										</Link>
 										<MenuItem>
 											<ListItemIcon>
 												<Logout fontSize="small" />

@@ -29,7 +29,7 @@ const TopSalesChart = () => {
 	};
 
 	return (
-		<StyledCard>
+		<StyledCard sx={{ height: "100%" }}>
 			<CardContent>
 				{/* enhanced toolbar */}
 				<Toolbar
@@ -66,7 +66,7 @@ const TopSalesChart = () => {
 
 				<AppDivider />
 				<Box sx={{ mt: 2.5 }}>
-					<Stack direction="row" spacing={3.5} flexWrap="wrap">
+					<Stack direction="row" spacing={3.5} flexWrap="wrap" justifyContent="center">
 						<VariantListItem category={"Electronics"}>Electronics</VariantListItem>
 						<VariantListItem category={"Women"}>Women</VariantListItem>
 						<VariantListItem category={"Men"}>Men</VariantListItem>
