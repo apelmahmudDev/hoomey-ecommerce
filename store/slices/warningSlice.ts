@@ -18,6 +18,7 @@ export const warningSlice = createSlice({
 	reducers: {
 		useWarningPopup: (state: InitialState, action: PayloadAction<string>) => {
 			state.isOpen = true;
+			state.isConfirm = false;
 			state.message = action.payload;
 		},
 
