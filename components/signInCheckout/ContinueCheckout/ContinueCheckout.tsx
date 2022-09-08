@@ -54,8 +54,8 @@ const ContinueCheckout = () => {
 		});
 	};
 
-	console.log("cn", data);
-	console.log("cn2", Boolean(error));
+	// console.log("cn", data);
+	// console.log("cn2", Boolean(error));
 
 	//  notifications
 	useEffect(() => {

@@ -1,12 +1,19 @@
 import { Box, Button, Grid } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Popup } from "../../../common";
+import { BackIconButton } from "../../../ui";
 import Media from "../AddProduct/Media";
 import AddSubCategory from "./AddSubCategory";
 import CategoryStatus from "./CategoryStatus";
 import Title from "./Title";
-import { BackIconButton } from "../../../ui";
-import { useRouter } from "next/router";
+
+interface Inputs {
+	name: string;
+	slug: string;
+	description: string;
+	status: boolean;
+}
 
 const AddCategory = () => {
 	const router = useRouter();
