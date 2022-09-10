@@ -8,16 +8,16 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 				url: "categories",
 			}),
 		}),
+		getSingleCategory: build.query<IGetCategories, { id: string }>({
+			query: (id) => ({
+				url: `categories/${id}`,
+			}),
+		}),
 		createCategories: build.mutation<IPostCategories, IPostCategories>({
 			query: (body) => ({
 				url: "categories",
 				method: "POST",
 				body,
-			}),
-		}),
-		getSingleCategory: build.query<IGetCategories, { id: string }>({
-			query: (id) => ({
-				url: `categories/${id}`,
 			}),
 		}),
 		updateCategory: build.mutation<IGetCategories, { id: string; body: UpdateCategories }>({
@@ -37,4 +37,10 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 	overrideExisting: false,
 });
 
-export const { useGetCategoriesQuery, useCreateCategoriesMutation } = categoryApi;
+export const {
+	useGetCategoriesQuery,
+	useGetSingleCategoryQuery,
+	useCreateCategoriesMutation,
+	useUpdateCategoryMutation,
+	useDeleteCategoryMutation,
+} = categoryApi;
