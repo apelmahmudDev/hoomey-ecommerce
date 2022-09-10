@@ -86,7 +86,7 @@ const CustomersTable = () => {
 					<TableContainer>
 						<Table sx={{ minWidth: 650 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
-							<TableBody>
+							<TableBody sx={{ "& > a": { display: "contents" } }}>
 								{/* if you don't need to support IE11, you can replace the `stableSort` call with:
                                 rows.slice().sort(getComparator(order, orderBy)) */}
 								{stableSort(rows, getComparator(order, orderBy))
@@ -95,34 +95,35 @@ const CustomersTable = () => {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow hover tabIndex={-1} key={index}>
-												<TableCell padding="checkbox">{index + 1}</TableCell>
-												<TableCell component="th" id={labelId} scope="row" padding="none">
-													<Link
-														href={`${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.DETAILS}/${index}`}
-													>
+											<Link
+												key={index}
+												href={`${ROUTING_TREE.DASHBOARD.CUSTOMERS.ROOT}/${ROUTING_TREE.DASHBOARD.CUSTOMERS.DETAILS}/${index}`}
+											>
+												<TableRow hover tabIndex={-1}>
+													<TableCell padding="checkbox">{index + 1}</TableCell>
+													<TableCell component="th" id={labelId} scope="row" padding="none">
 														{row.customer}
-													</Link>
-												</TableCell>
-												<TableCell align="center">
-													<StatusFormControl status={row.status}>
-														<Select
-															size="small"
-															value={status}
-															id="demo-simple-select"
-															onChange={handleStatusChange}
-															labelId="demo-simple-select-label"
-															IconComponent={KeyboardArrowDownIcon}
-														>
-															<MenuItem value="Active">Active</MenuItem>
-															<MenuItem value="Inactive">Inactive</MenuItem>
-														</Select>
-													</StatusFormControl>
-												</TableCell>
-												<TableCell align="center">{row.location}</TableCell>
-												<TableCell align="center">{row.orders} Orders</TableCell>
-												<TableCell align="right">${row.spent}</TableCell>
-											</TableRow>
+													</TableCell>
+													<TableCell align="center">
+														<StatusFormControl status={row.status}>
+															<Select
+																size="small"
+																value={status}
+																id="demo-simple-select"
+																onChange={handleStatusChange}
+																labelId="demo-simple-select-label"
+																IconComponent={KeyboardArrowDownIcon}
+															>
+																<MenuItem value="Active">Active</MenuItem>
+																<MenuItem value="Inactive">Inactive</MenuItem>
+															</Select>
+														</StatusFormControl>
+													</TableCell>
+													<TableCell align="center">{row.location}</TableCell>
+													<TableCell align="center">{row.orders} Orders</TableCell>
+													<TableCell align="right">${row.spent}</TableCell>
+												</TableRow>
+											</Link>
 										);
 									})}
 								{emptyRows > 0 && (

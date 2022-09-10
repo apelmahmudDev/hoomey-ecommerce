@@ -18,7 +18,7 @@ const TextSamll = styled(Typography)({
 
 const OrderPlacedEmail = () => {
 	return (
-		<Box sx={{ bgcolor: "background.paper" }}>
+		<Box sx={{ bgcolor: "background.paper", maxWidth: 350 }}>
 			<Header />
 			<Box sx={{ border: 1, borderColor: "#B0B0B0", p: 3 }}>
 				<Typography variant="body2">

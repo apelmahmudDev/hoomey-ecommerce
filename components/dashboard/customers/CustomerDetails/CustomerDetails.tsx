@@ -8,15 +8,22 @@ import LastOrder from "./LastOrder";
 import UserProfile from "./UserProfile";
 import { OrangeButton } from "../../components/styledComponents";
 import { useRouter } from "next/router";
+import { useWarningPopup } from "../../../../store/slices/warningSlice";
+import { useAppDispatch } from "../../../../store/hooks";
 
 const CustomerDetails = () => {
 	const router = useRouter();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Box my={2.5}>
 			<Box mb={3.5} display="flex" alignItems="center" justifyContent="space-between">
 				<BackIconButton onClick={() => router.back()}>Customer Details</BackIconButton>
-				<OrangeButton>Delete Customer</OrangeButton>
+				<OrangeButton
+					onClick={() => dispatch(useWarningPopup("Are you sure you want to delete this customer?"))}
+				>
+					Delete Customer
+				</OrangeButton>
 			</Box>
 
 			{/* ---------other section ---------*/}

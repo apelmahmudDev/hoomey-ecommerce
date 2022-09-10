@@ -21,11 +21,11 @@ const rows = [
 
 const UsersTable = () => {
 	return (
-		<StyledCard>
+		<StyledCard sx={{ height: "100%" }}>
 			<CardContent>
 				<EnhancedTableToolbar />
 				<TableContainer>
-					<Table sx={{ minWidth: 450 }} aria-label="simple table">
+					<Table sx={{ minWidth: 430 }} aria-label="simple table">
 						<TableHead>
 							<TableRow>
 								<TableCell>#</TableCell>

@@ -1,7 +1,9 @@
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { Grid, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useAppDispatch } from "../../../../store/hooks";
+import { useWarningPopup } from "../../../../store/slices/warningSlice";
 import { RoundButton } from "../../../styledComponents";
 
 interface DataProps {
@@ -13,6 +15,7 @@ interface DataProps {
 }
 
 const SingleNotification = ({ data }: { data: DataProps }) => {
+	const dispatch = useAppDispatch();
 	return (
 		<div>
 			{" "}
@@ -94,7 +97,13 @@ const SingleNotification = ({ data }: { data: DataProps }) => {
 					</Grid>
 					<Grid item xs={3} />
 					<Grid item xs={1} sx={{ display: "flex", justifyContent: "flex-end" }}>
-						<CancelIcon />
+						<div>
+							<IconButton
+								onClick={() => dispatch(useWarningPopup("Are you sure you want to remove this item?"))}
+							>
+								<CancelIcon />
+							</IconButton>
+						</div>
 					</Grid>
 				</Grid>
 			</Box>

@@ -79,7 +79,7 @@ const TopSalesChart = () => {
 	};
 
 	return (
-		<StyledCard>
+		<StyledCard sx={{ height: "100%" }}>
 			<CardContent>
 				{/* enhanced toolbar */}
 				<Toolbar

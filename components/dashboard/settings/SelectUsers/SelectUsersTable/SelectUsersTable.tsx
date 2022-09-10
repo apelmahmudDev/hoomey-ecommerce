@@ -139,8 +139,8 @@ export default function SelectUsersTable() {
 			<StyledCard>
 				<CardContent>
 					<SelectToolbar numSelected={selected.length} />
-					<TableContainer>
-						<Table sx={{ minWidth: 650 }} aria-labelledby="tableTitle" size="medium">
+					<TableContainer sx={{ overflowX: { sm: "auto", md: "hidden" } }}>
+						<Table sx={{ minWidth: 450 }} aria-labelledby="tableTitle" size="medium">
 							<TableHeader
 								numSelected={selected.length}
 								order={order}
