@@ -8,9 +8,11 @@ import { warningSlice } from "./slices/warningSlice";
 
 // api
 import { authApi } from "./api/authApi";
+import { categoryApi } from "./api/categoryApi";
 
 const rootReducer = combineReducers({
 	[authApi.reducerPath]: authApi.reducer,
+	[categoryApi.reducerPath]: categoryApi.reducer,
 
 	// slices
 	[cartSlice.name]: cartSlice.reducer,
