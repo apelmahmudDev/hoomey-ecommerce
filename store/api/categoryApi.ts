@@ -3,7 +3,7 @@ import { emptySplitApi } from "./base";
 
 export const categoryApi = emptySplitApi.injectEndpoints({
 	endpoints: (build) => ({
-		getCategories: build.query<IGetCategories, void>({
+		getCategories: build.query<IGetCategories[], void>({
 			query: () => ({
 				url: "categories",
 			}),
@@ -13,6 +13,11 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 				url: "categories",
 				method: "POST",
 				body,
+			}),
+		}),
+		getSingleCategory: build.query<IGetCategories, { id: string }>({
+			query: ({ id }) => ({
+				url: `categories/${id}`,
 			}),
 		}),
 	}),
