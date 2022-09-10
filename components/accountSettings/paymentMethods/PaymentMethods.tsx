@@ -1,4 +1,4 @@
-import { Box, Button, Typography, IconButton, FormControlLabel, Checkbox, Skeleton } from "@mui/material";
+import { Box, Button, Typography, IconButton, FormControlLabel, Checkbox } from "@mui/material";
 import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 import { PaymentMethodsSvg, DeleteSvg, MasterCardSvg, VisaSvg } from "../../icons";
 import PaymentPopup from "./PaymentPopup";
