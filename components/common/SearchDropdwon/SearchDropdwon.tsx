@@ -67,7 +67,7 @@ const SearchDropdwon = () => {
 						))}
 					</Box>
 					{/* Products */}
-					<Box>
+					<Box width="100%">
 						<SearchTitle>Products</SearchTitle>
 						<Grid container spacing={2}>
 							{productData.map((product, idx) => (
