@@ -16,7 +16,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Head from "next/head";
 import { FC, useState } from "react";
-import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } from "../components/styledComponents";
+import { AppAvatar, AppDivider } from "../components/styledComponents";
 
 // icons
 import {
@@ -26,7 +26,6 @@ import {
 	SettingsSvg,
 	CustomersSvg,
 	CheckCartSvg,
-	GraySearchIcon,
 	DeliveryCarSvg,
 	DashboardMenuSvg,
 	DashboardBagSvg,
