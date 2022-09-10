@@ -9,14 +9,14 @@ export const authApi = emptySplitApi.injectEndpoints({
 	endpoints: (build) => ({
 		createUser: build.mutation<unknown, unknown>({
 			query: (body) => ({
-				url: "/api/v1/users",
+				url: "users",
 				method: "POST",
 				body,
 			}),
 		}),
 		userLogIn: build.mutation<unknown, unknown>({
 			query: (body) => ({
-				url: "/api/v1/auth/login",
+				url: "auth/login",
 				method: "POST",
 				body,
 			}),
