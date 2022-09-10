@@ -1,4 +1,4 @@
-import { IGetCategories, IPostCategories } from "../../types/api/categories";
+import { IGetCategories, IPostCategories, UpdateCategories } from "../../types/api/categories";
 import { emptySplitApi } from "./base";
 
 export const categoryApi = emptySplitApi.injectEndpoints({
@@ -18,6 +18,13 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 		getSingleCategory: build.query<IGetCategories, { id: string }>({
 			query: ({ id }) => ({
 				url: `categories/${id}`,
+			}),
+		}),
+		updateCategory: build.mutation<IGetCategories, { id: string; body: UpdateCategories }>({
+			query: ({ id, body }) => ({
+				url: `categories/${id}`,
+				method: "PUT",
+				body,
 			}),
 		}),
 	}),

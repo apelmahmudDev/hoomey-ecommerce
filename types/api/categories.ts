@@ -10,3 +10,5 @@ export interface IGetCategories extends IPostCategories {
 	createdAt: string;
 	updatedAt: string;
 }
+
+export interface UpdateCategories extends IPostCategories {}
