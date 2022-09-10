@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Skeleton } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { IMAGES } from "../../../uiElements";
 import { ColorShoppingBagSvg } from "../../icons";
@@ -6,6 +6,7 @@ import { StatusText } from "../../styledComponents";
 import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { MyOrdersSkeleton } from "../../skeleton";
 
 const MyOrders = () => {
 	const router = useRouter();
@@ -25,12 +26,8 @@ const MyOrders = () => {
 			</TitleFlexStack>
 
 			<SettingsDivider />
-
 			{isLoading ? (
-				<div>
-					<Skeleton variant="rectangular" sx={{ my: 2.5, width: "100%", height: 168 }} />
-					<Skeleton variant="rectangular" sx={{ my: 2.5, width: "100%", height: 168 }} />
-				</div>
+				<MyOrdersSkeleton />
 			) : (
 				<>
 					{[...Array(3)].map((item, idx) => (

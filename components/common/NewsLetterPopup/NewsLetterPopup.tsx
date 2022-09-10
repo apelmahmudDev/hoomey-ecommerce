@@ -3,12 +3,14 @@ import Image from "next/image";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { IMAGES } from "../../../uiElements";
 import Logo from "../../icons/Logo";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { CloseIconButton } from "../../ui";
 
 const NewsLetterPopup: FC = () => {
+	const isWidth = useMediaQuery("(min-width:506px)");
 	const [isNewsLetterOpen, setIsNewsLetterOpen] = useState(false);
 
 	const handleTogglePopup = (boolean: boolean) => {
@@ -32,24 +34,26 @@ const NewsLetterPopup: FC = () => {
 			<DialogContent sx={{ p: 0 }}>
 				<CloseIconButton onClick={() => handleTogglePopup(false)} />
 
-				<Box sx={{ display: "flex" }}>
+				<Box sx={{ display: "flex", flexDirection: isWidth ? "row" : "column" }}>
 					<Box
 						sx={{
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
-							width: "50%",
+							width: isWidth ? "50%" : "100%",
 							position: "relative",
 						}}
 					>
-						<Image src={IMAGES.PopupImg} alt="image" />
+						<Box sx={{ height: isWidth ? "auto" : 150, "& > span": { position: "inherit !important" } }}>
+							<Image src={IMAGES.PopupImg} alt="image" objectFit="cover" />
+						</Box>
 						<Box sx={{ position: "absolute" }}>
 							<Logo />
 						</Box>
 					</Box>
 					<Box
 						sx={{
-							width: "50%",
+							width: isWidth ? "50%" : "100%",
 							textAlign: "center",
 							display: "flex",
 							flexDirection: "column",

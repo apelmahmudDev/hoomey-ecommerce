@@ -2,7 +2,7 @@ import { Box, Button, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useCreateCategoryMutation } from "../../../../store/api/categoryApi";
+import { useCreateCategoriesMutation } from "../../../../store/api/categoryApi";
 import { useAppDispatch } from "../../../../store/hooks";
 import { useToastify } from "../../../../store/slices/toastifySlice";
 import { Popup } from "../../../common";
@@ -22,7 +22,7 @@ interface Inputs {
 const AddCategory = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const [createCategory, { data, isLoading, error }] = useCreateCategoryMutation();
+	const [createCategory, { data, isLoading, error }] = useCreateCategoriesMutation();
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
 
 	const { register, handleSubmit } = useForm<Inputs>();

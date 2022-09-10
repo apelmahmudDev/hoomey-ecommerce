@@ -13,7 +13,6 @@ import {
 	SelectChangeEvent,
 	Select,
 	MenuItem,
-	Skeleton,
 } from "@mui/material";
 import { Label, SettingsDivider, TitleFlexStack, TitleText } from "../styledComponents";
 import { AddressBookSvg, EditSvg, DeleteSvg } from "../../icons";
@@ -21,6 +20,7 @@ import { Popup } from "../../common";
 import { useState } from "react";
 import { PopupDivider } from "../../styledComponents";
 import EditAddress from "./EditAddress";
+import { AddressBookSkeleton } from "../../skeleton";
 
 const AddressBook = () => {
 	const [isEditOpen, setIsEditOpen] = useState(false);
@@ -56,7 +56,7 @@ const AddressBook = () => {
 
 	setTimeout(() => {
 		setIsLoading(false);
-	}, 2000);
+	}, 1500);
 
 	return (
 		<Box>
@@ -69,18 +69,15 @@ const AddressBook = () => {
 					Add New
 				</Button>
 			</Box>
-
 			<SettingsDivider />
 
 			{isLoading ? (
-				// skeleton
 				<Grid container spacing={2.5}>
-					<Grid item xs={12} md={6}>
-						<Skeleton variant="rectangular" sx={{ width: "100%", height: 168 }} />
-					</Grid>
-					<Grid item xs={12} md={6}>
-						<Skeleton variant="rectangular" sx={{ width: "100%", height: 168 }} />
-					</Grid>
+					{[...Array(2)].map((_, idx) => (
+						<Grid item key={idx} xs={12} sm={6}>
+							<AddressBookSkeleton />
+						</Grid>
+					))}
 				</Grid>
 			) : (
 				<Grid container spacing={2.5}>
@@ -158,7 +155,6 @@ const AddressBook = () => {
 					</Grid>
 				</Grid>
 			)}
-
 			{/* Popup -> add new */}
 			<Popup isOpen={isAddNewOpen} handleTogglePopup={handleAddNewTogglePopup}>
 				<DialogContent>
@@ -235,7 +231,6 @@ const AddressBook = () => {
 					</Button>
 				</DialogActions>
 			</Popup>
-
 			{/* Popup -> edit */}
 			<Popup isOpen={isEditOpen} handleTogglePopup={handleEditTogglePopup}>
 				<EditAddress handleTogglePopup={handleEditTogglePopup} />

@@ -16,7 +16,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Head from "next/head";
 import { FC, useState } from "react";
-import { AppAvatar, AppDivider, Search, SearchIconWrapper, StyledInputBase } from "../components/styledComponents";
+import { AppAvatar, AppDivider } from "../components/styledComponents";
 
 // icons
 import {
@@ -26,7 +26,6 @@ import {
 	SettingsSvg,
 	CustomersSvg,
 	CheckCartSvg,
-	GraySearchIcon,
 	DeliveryCarSvg,
 	DashboardMenuSvg,
 	DashboardBagSvg,
@@ -42,7 +41,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import { Logout, Settings } from "../uiElements/icons";
-import { Notifications } from "../components/dashboard/common";
+import { Notifications, SearchInput } from "../components/dashboard/common";
 import styles from "../components/dashboard/common/styles";
 import { ROUTING_TREE } from "../constants/siteUrls";
 import { useRouter } from "next/router";
@@ -216,12 +215,15 @@ const AdminLayout: FC<AdminLayoutProps> = ({ children, window }) => {
 							</Toolbar>
 
 							<Box sx={{ p: 2, display: "flex", alignItems: "center", gap: 4 }}>
-								<Search>
+								{/* previous search input */}
+								{/* <Search>
 									<SearchIconWrapper>
 										<GraySearchIcon sx={{ fontSize: 20 }} />
 									</SearchIconWrapper>
 									<StyledInputBase placeholder="Search" inputProps={{ "aria-label": "search" }} />
-								</Search>
+								</Search> */}
+
+								<SearchInput />
 
 								{/* notifications */}
 								<div>
