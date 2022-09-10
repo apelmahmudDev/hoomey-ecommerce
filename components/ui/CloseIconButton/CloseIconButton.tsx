@@ -15,6 +15,7 @@ const CloseIconButton = ({ onClick }: IProps) => {
 				position: "absolute",
 				right: 8,
 				top: 8,
+				zIndex: 5,
 			}}
 		>
 			<CloseIcon />
