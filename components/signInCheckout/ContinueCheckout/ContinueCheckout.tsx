@@ -14,7 +14,7 @@ import { AppDivider, HeadingText } from "../../styledComponents";
 import NewCustomerSignUp from "./NewCustomerSignUp";
 
 interface Inputs {
-	email: string;
+	username: string;
 	password: string;
 }
 
@@ -45,11 +45,11 @@ const ContinueCheckout = () => {
 
 	// handle form
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		const { email, password } = data;
+		const { username, password } = data;
 
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises
 		userLogIn({
-			email: email,
+			username: username,
 			password: password,
 		});
 	};
@@ -95,9 +95,9 @@ const ContinueCheckout = () => {
 									<TextField
 										fullWidth
 										type="email"
-										error={errors.email ? true : false}
-										{...register("email", { required: true, pattern: regex.email })}
-										helperText={errors.email && "The email address must be valid and include @"}
+										error={errors.username ? true : false}
+										{...register("username", { required: true, pattern: regex.email })}
+										helperText={errors.username && "The email address must be valid and include @"}
 										InputProps={{
 											startAdornment: (
 												<InputAdornment position="start">
