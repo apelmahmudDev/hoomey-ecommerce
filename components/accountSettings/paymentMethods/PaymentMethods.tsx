@@ -3,6 +3,7 @@ import { FlexStack, SettingsDivider, TitleFlexStack, TitleText } from "../styled
 import { PaymentMethodsSvg, DeleteSvg, MasterCardSvg, VisaSvg } from "../../icons";
 import PaymentPopup from "./PaymentPopup";
 import { useState } from "react";
+import { PaymentMethodSkeleton } from "../../skeleton";
 
 const AddressBook = () => {
 	const [isPaymentMethodOpen, setIsPaymentMethodOpen] = useState(false);
@@ -41,10 +42,7 @@ const AddressBook = () => {
 			<SettingsDivider />
 
 			{isLoading ? (
-				<div>
-					<Skeleton variant="rectangular" sx={{ my: 2.5, width: "100%", height: 168 }} />
-					<Skeleton variant="rectangular" sx={{ my: 2.5, width: "100%", height: 168 }} />
-				</div>
+				<PaymentMethodSkeleton />
 			) : (
 				<>
 					{[
