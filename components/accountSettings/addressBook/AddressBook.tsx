@@ -72,6 +72,20 @@ const AddressBook = () => {
 
 			<SettingsDivider />
 
+			<Box sx={{ maxWidth: 380, display: "flex", alignItems: "center", gap: 2.5 }}>
+				<Box sx={{ width: "100%" }}>
+					{/* <Skeleton width="70%" />
+					<Skeleton width="50%" /> */}
+					{/* <Skeleton variant="rectangular" sx={{ width: "100%", height: 100 }} /> */}
+					{/* <Skeleton width="50%" /> */}
+				</Box>
+
+				{/* <Stack spacing={1.25}>
+					<Skeleton variant="rectangular" sx={{ width: 35, height: 35 }} />
+					<Skeleton variant="rectangular" sx={{ width: 35, height: 35 }} />
+				</Stack> */}
+			</Box>
+
 			{isLoading ? (
 				// skeleton
 				<Grid container spacing={2.5}>
