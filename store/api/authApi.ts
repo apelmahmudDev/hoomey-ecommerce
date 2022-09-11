@@ -1,3 +1,4 @@
+import { ICreateUser } from "../../types/api/auth";
 import { emptySplitApi } from "./base";
 
 export interface User {
@@ -7,7 +8,7 @@ export interface User {
 
 export const authApi = emptySplitApi.injectEndpoints({
 	endpoints: (build) => ({
-		createUser: build.mutation<unknown, unknown>({
+		createUser: build.mutation<unknown, ICreateUser>({
 			query: (body) => ({
 				url: "users",
 				method: "POST",

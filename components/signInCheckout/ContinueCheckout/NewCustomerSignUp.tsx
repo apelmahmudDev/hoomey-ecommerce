@@ -43,9 +43,6 @@ const NewCustomerSignUp = () => {
 		});
 	};
 
-	// console.log(data);
-	// console.log(Boolean(error));
-
 	//  notifications
 	useEffect(() => {
 		if (error) dispatch(useToastify({ desc: "User create failed.", severity: "error" }));
