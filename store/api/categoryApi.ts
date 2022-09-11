@@ -8,7 +8,7 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 				url: "categories",
 			}),
 		}),
-		getSingleCategory: build.query<IGetCategories, { id: string }>({
+		getSingleCategory: build.query<IGetCategories, string>({
 			query: (id) => ({
 				url: `categories/${id}`,
 			}),

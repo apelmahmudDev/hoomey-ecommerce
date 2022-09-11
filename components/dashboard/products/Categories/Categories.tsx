@@ -43,7 +43,7 @@ const Categories = () => {
 			</Box>
 			{/* table section */}
 			<Box my={2.5}>
-				<CategoryTable data={data} />
+				<CategoryTable categoriesData={data} />
 			</Box>
 		</div>
 	);

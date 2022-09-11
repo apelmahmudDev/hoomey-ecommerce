@@ -6,6 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
+import { useGetSingleCategoryQuery } from "../../../../../store/api/categoryApi";
 import { IGetCategories } from "../../../../../types/api/categories";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
@@ -57,7 +58,7 @@ const rows = [
 	createData(9, "Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
 ];
 
-const CategoryTable = ({ data }: { data: IGetCategories[] }) => {
+const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] }) => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("category");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -65,6 +66,8 @@ const CategoryTable = ({ data }: { data: IGetCategories[] }) => {
 	const [filter, setFilter] = useState("10");
 	const [actionFilter, setActionFilter] = useState("10");
 	const classes = useStyles();
+	const x = categoriesData[0]._id;
+	const { data = [], isLoading, isFetching, isError } = useGetSingleCategoryQuery(x);
 
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
