@@ -6,6 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
+import { IGetCategories } from "../../../../../types/api/categories";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
@@ -56,7 +57,7 @@ const rows = [
 	createData(9, "Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
 ];
 
-const OrdersTable = () => {
+const CategoryTable = ({ data }: { data: IGetCategories[] }) => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("category");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -214,4 +215,4 @@ const OrdersTable = () => {
 	);
 };
 
-export default OrdersTable;
+export default CategoryTable;
