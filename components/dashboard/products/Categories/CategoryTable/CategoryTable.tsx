@@ -6,7 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
-import { useGetSingleCategoryQuery } from "../../../../../store/api/categoryApi";
+import { useDeleteCategoryMutation } from "../../../../../store/api/categoryApi";
 import { IGetCategories } from "../../../../../types/api/categories";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
@@ -67,7 +67,8 @@ const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] })
 	const [actionFilter, setActionFilter] = useState("10");
 	const classes = useStyles();
 	const x = categoriesData[0]._id;
-	const { data = [], isLoading, isFetching, isError } = useGetSingleCategoryQuery(x);
+	//const { data = [], isLoading, isFetching, isError } = useGetSingleCategoryQuery(x);
+	const [deletePost, { isLoading: isDeleting }] = useDeleteCategoryMutation();
 
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
@@ -83,9 +84,10 @@ const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] })
 		setOrderBy(property);
 	};
 
-	const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
+	const handleChangeRowsPerPage = async (event: SelectChangeEvent) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
+		//await deletePost("631ee75155afb9a4ded91394");
 	};
 
 	// const handleChangePage = (event: unknown, newPage: number) => {

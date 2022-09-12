@@ -27,7 +27,7 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 				body,
 			}),
 		}),
-		deleteCategory: build.mutation<IGetCategories, { id: string }>({
+		deleteCategory: build.mutation<IGetCategories, string>({
 			query: (id) => ({
 				url: `categories/${id}`,
 				method: "DELETE",
