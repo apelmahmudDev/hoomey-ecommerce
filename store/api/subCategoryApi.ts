@@ -22,10 +22,10 @@ export const SubcategoryApi = emptySplitApi.injectEndpoints({
 			}),
 		}),
 		updateSubCategory: build.mutation<IGetSubCategories, { id: string; body: UpdateSubCategories }>({
-			query: ({ id, body }) => ({
+			query: ({ id, ...body }) => ({
 				url: `sub-categories/${id}`,
-				method: "PUT",
-				body,
+				method: "PATCH",
+				...body,
 			}),
 		}),
 		deleteSubCategory: build.mutation<IGetSubCategories, string>({
