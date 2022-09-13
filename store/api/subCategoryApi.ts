@@ -3,9 +3,10 @@ import { emptySplitApi } from "./base";
 
 export const SubcategoryApi = emptySplitApi.injectEndpoints({
 	endpoints: (build) => ({
-		getSubCategories: build.query<IGetSubCategories[], void>({
-			query: () => ({
+		getSubCategories: build.query<IGetSubCategories[], string>({
+			query: (id) => ({
 				url: "sub-categories",
+				params: { id },
 			}),
 		}),
 		getSingleSubCategory: build.query<IGetSubCategories, { id: string }>({
