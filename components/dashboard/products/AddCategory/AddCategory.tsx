@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreateCategoriesMutation } from "../../../../store/api/categoryApi";
-import { useGetSubCategoriesQuery } from "../../../../store/api/subCategoryApi";
+import { useGetSingleSubCategoryQuery, useGetSubCategoriesQuery } from "../../../../store/api/subCategoryApi";
 import { useAppDispatch } from "../../../../store/hooks";
 import { useToastify } from "../../../../store/slices/toastifySlice";
 import { Popup } from "../../../common";
@@ -30,8 +30,14 @@ const AddCategory = () => {
 		isFetching,
 		isError,
 	} = useGetSubCategoriesQuery("63180b2dc7f5456c34159dc8");
+	const {
+		data: ssData = [],
+		isLoading: isIssLoading,
+		isFetching: isSFetching,
+		isError: isSError,
+	} = useGetSingleSubCategoryQuery("631f40fa04a45b4a89185819");
 
-	console.log("ss", sData);
+	console.log("ss", sData, ssData);
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
 
 	const { register, handleSubmit } = useForm<Inputs>();

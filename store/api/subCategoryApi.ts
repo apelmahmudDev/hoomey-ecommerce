@@ -9,7 +9,7 @@ export const SubcategoryApi = emptySplitApi.injectEndpoints({
 				params: { id },
 			}),
 		}),
-		getSingleSubCategory: build.query<IGetSubCategories, { id: string }>({
+		getSingleSubCategory: build.query<IGetSubCategories, string>({
 			query: (id) => ({
 				url: `sub-categories/${id}`,
 			}),
