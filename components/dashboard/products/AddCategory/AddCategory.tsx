@@ -23,6 +23,7 @@ interface Inputs {
 const AddCategory = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
+	//const [deletePost, { isLoading: isDeleting }] = useDeleteSubCategoryMutation();
 	const [createCategory, { data, isLoading, error }] = useCreateCategoriesMutation();
 	const {
 		data: sData = [],
@@ -53,6 +54,7 @@ const AddCategory = () => {
 			description: description,
 			status: isStatus === "Active" ? true : false,
 		});
+		//await deletePost("631f406904a45b4a89185815");
 	};
 
 	const handleAddSubCategoryTogglePopup = (boolean: boolean) => {

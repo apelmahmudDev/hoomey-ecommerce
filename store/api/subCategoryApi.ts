@@ -28,7 +28,7 @@ export const SubcategoryApi = emptySplitApi.injectEndpoints({
 				body,
 			}),
 		}),
-		deleteSubCategory: build.mutation<IGetSubCategories, { id: string }>({
+		deleteSubCategory: build.mutation<IGetSubCategories, string>({
 			query: (id) => ({
 				url: `sub-categories/${id}`,
 				method: "DELETE",
