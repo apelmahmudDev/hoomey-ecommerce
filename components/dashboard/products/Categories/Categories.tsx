@@ -5,8 +5,16 @@ import { RoundButton } from "../../../styledComponents";
 import { BackIconButton, Link } from "../../../ui";
 import CategoryTable from "./CategoryTable";
 
+import { useGetCategoriesQuery } from "../../../../store/api/categoryApi";
+
 const Categories = () => {
+	const { data = [], isLoading, isFetching, isError } = useGetCategoriesQuery();
 	const router = useRouter();
+
+	if (isError) return <div>An error has occurred!</div>;
+	if (isFetching) return <div>Fetching data</div>;
+
+	if (isLoading) return <div>Loading</div>;
 
 	return (
 		<div>
@@ -35,7 +43,7 @@ const Categories = () => {
 			</Box>
 			{/* table section */}
 			<Box my={2.5}>
-				<CategoryTable />
+				<CategoryTable categoriesData={data} />
 			</Box>
 		</div>
 	);

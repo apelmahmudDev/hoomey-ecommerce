@@ -6,6 +6,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import { useUpdateCategoryMutation } from "../../../../../store/api/categoryApi";
+import { IGetCategories } from "../../../../../types/api/categories";
 import { Order } from "../../../../../types/order";
 import { getComparator, stableSort } from "../../../../../utils/helper/table-sort";
 import { TableCustomPagination } from "../../../../ui";
@@ -44,6 +47,13 @@ function createData(
 	};
 }
 
+interface Inputs {
+	name: string;
+	slug: string;
+	description: string;
+	isStatus: string;
+}
+
 const rows = [
 	createData(1, "Men", "22-May-2022", 6, 4, "Active", "Active"),
 	createData(2, "Kids", "22-May-2022", 4, 5, "Draft", "Inactive"),
@@ -56,7 +66,7 @@ const rows = [
 	createData(9, "Women", "22-May-2022", 1, 6, "Draft", "Inactive"),
 ];
 
-const OrdersTable = () => {
+const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] }) => {
 	const [orderBy, setOrderBy] = useState<keyof Data>("category");
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [order, setOrder] = useState<Order>("asc");
@@ -64,6 +74,10 @@ const OrdersTable = () => {
 	const [filter, setFilter] = useState("10");
 	const [actionFilter, setActionFilter] = useState("10");
 	const classes = useStyles();
+	const x = categoriesData[0]._id;
+	//const { data = [], isLoading, isFetching, isError } = useGetSingleCategoryQuery(x);
+	//const [deletePost, { isLoading: isDeleting }] = useDeleteCategoryMutation();
+	const [updateCategory, { data, isLoading, error }] = useUpdateCategoryMutation();
 
 	const handleFilter = (event: SelectChangeEvent) => {
 		setFilter(event.target.value as string);
@@ -79,9 +93,32 @@ const OrdersTable = () => {
 		setOrderBy(property);
 	};
 
+	const update: SubmitHandler<Inputs> = (data) => {
+		const { name, description, isStatus } = data;
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
+		updateCategory({
+			id: "631f05780fbff6eb47182203",
+			body: {
+				name: name,
+				slug: "update",
+				description: description,
+				status: isStatus === "true" ? true : false,
+			},
+		});
+	};
+	const dataUpdate: Inputs = {
+		name: "Update",
+		slug: "update",
+		description: "update",
+		isStatus: "false",
+	};
+
 	const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
+		//await deletePost("631f03050fbff6eb471821f3");
+		update(dataUpdate);
+		console.log("ee", error, data, isLoading);
 	};
 
 	// const handleChangePage = (event: unknown, newPage: number) => {
@@ -214,4 +251,4 @@ const OrdersTable = () => {
 	);
 };
 
-export default OrdersTable;
+export default CategoryTable;
