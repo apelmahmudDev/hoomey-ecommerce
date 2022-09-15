@@ -15,3 +15,5 @@ export interface IGetProducts extends IPostProduct {
 	createdAt: string;
 	updatedAt: string;
 }
+
+export interface UpdateProduct extends IPostProduct {}

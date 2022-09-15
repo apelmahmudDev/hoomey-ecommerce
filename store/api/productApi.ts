@@ -1,4 +1,4 @@
-import { IGetProducts, IPostProduct } from "../../types/api/products";
+import { IGetProducts, IPostProduct, UpdateProduct } from "../../types/api/products";
 import { emptySplitApi } from "./base";
 
 export const productApi = emptySplitApi.injectEndpoints({
@@ -18,6 +18,13 @@ export const productApi = emptySplitApi.injectEndpoints({
 				url: "products",
 				method: "POST",
 				body,
+			}),
+		}),
+		updateProduct: build.mutation<IGetProducts, { id: string; body: UpdateProduct }>({
+			query: ({ id, ...body }) => ({
+				url: `categories/${id}`,
+				method: "PATCH",
+				...body,
 			}),
 		}),
 	}),
