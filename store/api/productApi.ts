@@ -27,6 +27,12 @@ export const productApi = emptySplitApi.injectEndpoints({
 				...body,
 			}),
 		}),
+		deleteProduct: build.mutation<IGetProducts, string>({
+			query: (id) => ({
+				url: `products/${id}`,
+				method: "DELETE",
+			}),
+		}),
 	}),
 	overrideExisting: false,
 });
