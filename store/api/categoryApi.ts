@@ -8,7 +8,7 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 				url: "categories",
 			}),
 		}),
-		getSingleCategory: build.query<IGetCategories, { id: string }>({
+		getSingleCategory: build.query<IGetCategories, string>({
 			query: (id) => ({
 				url: `categories/${id}`,
 			}),
@@ -21,13 +21,13 @@ export const categoryApi = emptySplitApi.injectEndpoints({
 			}),
 		}),
 		updateCategory: build.mutation<IGetCategories, { id: string; body: UpdateCategories }>({
-			query: ({ id, body }) => ({
+			query: ({ id, ...body }) => ({
 				url: `categories/${id}`,
-				method: "PUT",
-				body,
+				method: "PATCH",
+				...body,
 			}),
 		}),
-		deleteCategory: build.mutation<IGetCategories, { id: string }>({
+		deleteCategory: build.mutation<IGetCategories, string>({
 			query: (id) => ({
 				url: `categories/${id}`,
 				method: "DELETE",

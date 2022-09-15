@@ -11,10 +11,23 @@ import {
 	Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { UseFormRegister } from "react-hook-form";
 import { BorderFormControl, StyledButton, StyledCard } from "../../../components/styledComponents";
 import { useStyles } from "../../AddProduct/styled";
 
-const CategoryStatus = ({ handleTogglePopup }: { handleTogglePopup: (toggle: boolean) => void }) => {
+interface Inputs {
+	name: string;
+	slug: string;
+	description: string;
+	isStatus: string;
+}
+
+interface MyProps {
+	register: UseFormRegister<Inputs>;
+	handleTogglePopup: (toggle: boolean) => void;
+}
+
+const CategoryStatus = ({ handleTogglePopup, register }: MyProps) => {
 	const [filter, setFilter] = useState("10");
 	const [isTrackChecked, setIsTrackChecked] = useState(true);
 	const [selectChange, setSelectChange] = useState("Select All");
@@ -50,6 +63,7 @@ const CategoryStatus = ({ handleTogglePopup }: { handleTogglePopup: (toggle: boo
 							labelId="demo-simple-select-label"
 							id="demo-simple-select"
 							value={filter}
+							{...register("isStatus")}
 							onChange={handleFilter}
 						>
 							<MenuItem value={10}>Draft</MenuItem>
