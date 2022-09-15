@@ -8,6 +8,11 @@ export const productApi = emptySplitApi.injectEndpoints({
 				url: "products",
 			}),
 		}),
+		getSingleProduct: build.query<IGetProducts, string>({
+			query: (id) => ({
+				url: `products/${id}`,
+			}),
+		}),
 		createProduct: build.mutation<IPostProduct, IPostProduct>({
 			query: (body) => ({
 				url: "products",
