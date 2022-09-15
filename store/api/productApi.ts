@@ -37,4 +37,10 @@ export const productApi = emptySplitApi.injectEndpoints({
 	overrideExisting: false,
 });
 
-export const { useCreateProductMutation } = productApi;
+export const {
+	useGetProductsQuery,
+	useGetSingleProductQuery,
+	useCreateProductMutation,
+	useUpdateProductMutation,
+	useDeleteProductMutation,
+} = productApi;
