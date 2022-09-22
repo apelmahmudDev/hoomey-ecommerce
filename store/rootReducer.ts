@@ -11,12 +11,14 @@ import { authApi } from "./api/authApi";
 import { categoryApi } from "./api/categoryApi";
 import { productApi } from "./api/productApi";
 import { tagApi } from "./api/tagApi";
+import { typeApi } from "./api/typeApi";
 
 const rootReducer = combineReducers({
 	[authApi.reducerPath]: authApi.reducer,
 	[categoryApi.reducerPath]: categoryApi.reducer,
 	[productApi.reducerPath]: productApi.reducer,
 	[tagApi.reducerPath]: tagApi.reducer,
+	[typeApi.reducerPath]: typeApi.reducer,
 
 	// slices
 	[cartSlice.name]: cartSlice.reducer,

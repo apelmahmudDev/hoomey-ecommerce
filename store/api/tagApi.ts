@@ -3,7 +3,7 @@ import { emptySplitApi } from "./base";
 
 export const tagApi = emptySplitApi.injectEndpoints({
 	endpoints: (build) => ({
-		getTags: build.query<IGetTag, void>({
+		getTags: build.query<IGetTag[], void>({
 			query: () => ({
 				url: "tags",
 			}),
@@ -21,7 +21,7 @@ export const tagApi = emptySplitApi.injectEndpoints({
 			}),
 		}),
 		updateTag: build.mutation<void, { id: string; body: IPostTag }>({
-			query: ({ id, ...body }) => ({
+			query: ({ id, body }) => ({
 				url: `tags/${id}`,
 				method: "PATCH",
 				body,
