@@ -37,4 +37,10 @@ export const tagApi = emptySplitApi.injectEndpoints({
 	overrideExisting: false,
 });
 
-export const { useCreateTagMutation } = tagApi;
+export const {
+	useGetTagsQuery,
+	useGetSingleTagQuery,
+	useCreateTagMutation,
+	useUpdateTagMutation,
+	useDeleteTagMutation,
+} = tagApi;
