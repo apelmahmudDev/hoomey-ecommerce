@@ -3,11 +3,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreateCategoriesMutation } from "../../../../store/api/categoryApi";
-import {
-	useGetSingleSubCategoryQuery,
-	useGetSubCategoriesQuery,
-	useUpdateSubCategoryMutation,
-} from "../../../../store/api/subCategoryApi";
 import { useAppDispatch } from "../../../../store/hooks";
 import { useToastify } from "../../../../store/slices/toastifySlice";
 import { Popup } from "../../../common";
@@ -27,27 +22,10 @@ interface Inputs {
 const AddCategory = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
-	//const [deletePost, { isLoading: isDeleting }] = useDeleteSubCategoryMutation();
-	//const [updateSubCategory, { data: updateSubData, isLoading: isUpdateSubLoading, error: updateSubError }] =
-	useUpdateSubCategoryMutation();
+
 	const [createCategory, { data, isLoading, error }] = useCreateCategoriesMutation();
 
-	const {
-		data: sData = [],
-		isLoading: isIsLoading,
-		isFetching,
-		isError,
-	} = useGetSubCategoriesQuery("63180b2dc7f5456c34159dc8");
-	const {
-		data: ssData = [],
-		isLoading: isIssLoading,
-		isFetching: isSFetching,
-		isError: isSError,
-	} = useGetSingleSubCategoryQuery("631f40fa04a45b4a89185819");
-
-	console.log("ss", sData, ssData);
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
-
 	const { register, handleSubmit } = useForm<Inputs>();
 
 	// handle form submit & user creation
@@ -61,26 +39,11 @@ const AddCategory = () => {
 			description: description,
 			status: isStatus === "Active" ? true : false,
 		});
-
-		// await updateSubCategory({
-		// 	id: "631f40fa04a45b4a89185819",
-		// 	body: {
-		// 		name: "upSub",
-		// 		slug: "update",
-		// 		description: description,
-		// 		categoryId: "63180b2dc7f5456c34159dc8",
-		// 		status: isStatus === "true" ? true : false,
-		// 	},
-		// });
-		//await deletePost("631f406904a45b4a89185815");
 	};
 
 	const handleAddSubCategoryTogglePopup = (boolean: boolean) => {
 		setIsAddSubCategoryOpen(boolean);
 	};
-
-	//console.log("category", data);
-	// console.log(Boolean(error));
 
 	//  notifications
 	useEffect(() => {

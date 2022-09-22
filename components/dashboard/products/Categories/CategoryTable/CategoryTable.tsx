@@ -74,7 +74,7 @@ const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] })
 	const [filter, setFilter] = useState("10");
 	const [actionFilter, setActionFilter] = useState("10");
 	const classes = useStyles();
-	const x = categoriesData[0]._id;
+	// const x = categoriesData[0]._id;
 	//const { data = [], isLoading, isFetching, isError } = useGetSingleCategoryQuery(x);
 	//const [deletePost, { isLoading: isDeleting }] = useDeleteCategoryMutation();
 	const [updateCategory, { data, isLoading, error }] = useUpdateCategoryMutation();
