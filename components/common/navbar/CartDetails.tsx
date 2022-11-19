@@ -16,9 +16,10 @@ import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 import ProductSizeSelect from "../ProductSizeSelect";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import ColorPalette from "../ColorPalette";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/types";
+import { RootState } from "../../../store";
 import { quantityIncrement, quantityDecrement, removeFromCart } from "../../../store/slices/cartSlice";
+import { useAppDispatch } from "../../../store";
+import { useSelector } from "react-redux";
 
 const styles = {
 	display: "flex",
@@ -32,8 +33,8 @@ const CartDetails: FC = () => {
 	const dispatch = useAppDispatch();
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-	const color = useAppSelector((state: RootState) => state.color);
-	const cart = useAppSelector((state: RootState) => state.cart);
+	const color = useSelector((state: RootState) => state.color);
+	const cart = useSelector((state: RootState) => state.cart);
 
 	const [size, setSize] = useState("10");
 	// const [quantity, setQuantity] = useState(1);

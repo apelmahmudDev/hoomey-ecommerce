@@ -1,7 +1,7 @@
 import { IGetTag, IPostTag } from "../../types/api/tags";
-import { emptySplitApi } from "./base";
+import { baseApiSlice } from "./base";
 
-export const tagApi = emptySplitApi.injectEndpoints({
+export const tagApi = baseApiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getTags: build.query<IGetTag[], void>({
 			query: () => ({

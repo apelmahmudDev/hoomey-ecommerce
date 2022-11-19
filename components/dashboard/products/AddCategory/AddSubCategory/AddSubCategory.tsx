@@ -2,7 +2,7 @@ import { Box, Button, DialogActions, DialogContent, Typography } from "@mui/mate
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreateSubCategoriesMutation } from "../../../../../store/api/subCategoryApi";
-import { useAppDispatch } from "../../../../../store/hooks";
+import { useAppDispatch } from "../../../../../store";
 import { useToastify } from "../../../../../store/slices/toastifySlice";
 import { IPostSubCategories } from "../../../../../types/api/sub-categories";
 import { PopupDivider } from "../../../../styledComponents";

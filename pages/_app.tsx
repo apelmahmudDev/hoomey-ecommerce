@@ -16,11 +16,9 @@ import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 
 import { PageLoading, Toastify, WarningPopup } from "../components/common";
-import { wrapper } from "../store";
 import { ComponentWithLayoutProps } from "../types/page";
 import FrontLayout from "../Layout/FrontLayout";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/types";
+import { RootState, useAppSelector, wrapper } from "../store";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -30,7 +28,7 @@ const generateClassName = createGenerateClassName({
 });
 
 function MyApp(props: ComponentWithLayoutProps) {
-	const toastify = useSelector((state: RootState) => state.toastify);
+	const toastify = useAppSelector((state: RootState) => state.toastify);
 
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 	const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +46,7 @@ function MyApp(props: ComponentWithLayoutProps) {
 				<Head>
 					<meta name="viewport" content="initial-scale=1, width=device-width" />
 				</Head>
+
 				<ThemeProvider theme={appTheme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />

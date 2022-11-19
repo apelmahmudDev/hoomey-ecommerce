@@ -1,23 +1,32 @@
 import { ICreateUser } from "../../types/api/auth";
-import { emptySplitApi } from "./base";
+import { baseApiSlice } from "./base";
 
 export interface User {
 	id: number;
 	name: string;
 }
 
-export const authApi = emptySplitApi.injectEndpoints({
+export const authApi = baseApiSlice.injectEndpoints({
 	endpoints: (build) => ({
-		createUser: build.mutation<unknown, ICreateUser>({
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		createUser: build.mutation<any, ICreateUser>({
 			query: (body) => ({
-				url: "users",
+				url: "auth/add-user",
 				method: "POST",
 				body,
 			}),
 		}),
-		userLogIn: build.mutation<unknown, unknown>({
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		userLogIn: build.mutation<any, { email: string; password: string }>({
 			query: (body) => ({
 				url: "auth/login",
+				method: "POST",
+				body,
+			}),
+		}),
+		requestTResetPassword: build.mutation<any, { email: string }>({
+			query: (body) => ({
+				url: "auth/req-reset-password",
 				method: "POST",
 				body,
 			}),
@@ -30,4 +39,5 @@ export const authApi = emptySplitApi.injectEndpoints({
 	overrideExisting: false,
 });
 
-export const { useCreateUserMutation, useUserLogInMutation, useGetLogedInUserQuery } = authApi;
+export const { useCreateUserMutation, useUserLogInMutation, useRequestTResetPasswordMutation, useGetLogedInUserQuery } =
+	authApi;

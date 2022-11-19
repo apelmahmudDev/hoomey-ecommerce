@@ -13,7 +13,7 @@ import TableHeader from "./TableHeader";
 import TableToolbar from "./TableToolbar";
 import { useState } from "react";
 import { useWarningPopup } from "../../../../../store/slices/warningSlice";
-import { useAppDispatch } from "../../../../../store/hooks";
+import { useAppDispatch } from "../../../../../store";
 
 export interface Data {
 	zone: string;

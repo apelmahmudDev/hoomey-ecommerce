@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUserLogInMutation } from "../../../store/api/authApi";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch } from "../../../store";
 import { useToastify } from "../../../store/slices/toastifySlice";
 import { COLORS } from "../../../theme/colors";
 import { regex } from "../../../utils/validations/regex";
@@ -14,7 +14,7 @@ import { AppDivider, HeadingText } from "../../styledComponents";
 import NewCustomerSignUp from "./NewCustomerSignUp";
 
 interface Inputs {
-	username: string;
+	email: string;
 	password: string;
 }
 
@@ -29,7 +29,7 @@ export const styles = { b: { border: "1px solid #D6D4D4" }, bg: { background: "#
 const ContinueCheckout = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const [userLogIn, { data, isLoading, error }] = useUserLogInMutation();
+	const [userLogIn, { data, isLoading, isError }] = useUserLogInMutation();
 
 	const {
 		register,
@@ -45,23 +45,21 @@ const ContinueCheckout = () => {
 
 	// handle form
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		const { username, password } = data;
+		const { email, password } = data;
 
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises
 		userLogIn({
-			username: username,
+			email: email,
 			password: password,
 		});
 	};
 
-	// console.log("cn", data);
-	// console.log("cn2", Boolean(error));
-
 	//  notifications
 	useEffect(() => {
-		if (error) dispatch(useToastify({ desc: "User log in failed.", severity: "error" }));
-		if (data) dispatch(useToastify({ desc: "User log in successful.", severity: "success" }));
-	}, [dispatch, error, data]);
+		if (isError) dispatch(useToastify({ desc: "User log in failed.", severity: "error" }));
+		if (data?.error) dispatch(useToastify({ desc: data.error, severity: "error" }));
+		if (data?.msg) dispatch(useToastify({ desc: data.msg, severity: "success" }));
+	}, [dispatch, isError, data]);
 
 	return (
 		<Box mb={9.1}>
@@ -95,9 +93,9 @@ const ContinueCheckout = () => {
 									<TextField
 										fullWidth
 										type="email"
-										error={errors.username ? true : false}
-										{...register("username", { required: true, pattern: regex.email })}
-										helperText={errors.username && "The email address must be valid and include @"}
+										error={errors.email ? true : false}
+										{...register("email", { required: true, pattern: regex.email })}
+										helperText={errors.email && "The email address must be valid and include @"}
 										InputProps={{
 											startAdornment: (
 												<InputAdornment position="start">

@@ -75,7 +75,7 @@ const CategoryStatus = ({ handleTogglePopup, register }: MyProps) => {
 					This category will be hidden from all sales channels.
 				</Typography>
 				<Divider variant="middle" />
-				<Box component="form" sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25 }}>
+				<Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.25, mt: 1.25 }}>
 					<Typography sx={{ fontSize: 18, mb: 1.25 }} fontWeight="medium">
 						Sub-Categories
 					</Typography>

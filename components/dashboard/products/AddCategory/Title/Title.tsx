@@ -1,6 +1,5 @@
 import { Box, CardContent, Typography } from "@mui/material";
 import { Editor } from "@tinymce/tinymce-react";
-import { useRef } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 import { StyledCard, StyledTextField } from "../../../components/styledComponents";
@@ -17,7 +16,10 @@ interface MyProps {
 }
 
 const Title = ({ register }: MyProps) => {
-	const editorRef = useRef("test");
+	const handleEditorChange = (content: string) => {
+		console.log(content);
+	};
+
 	return (
 		<StyledCard>
 			<CardContent>
@@ -25,13 +27,12 @@ const Title = ({ register }: MyProps) => {
 					Title
 				</Typography>
 
-				<Box component="form" sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>
+				<Box sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>
 					<StyledTextField
-						size="small"
-						{...register("name", { required: "This field is required" })}
 						fullWidth
-						required
+						size="small"
 						placeholder="Men"
+						{...register("name", { required: true })}
 					/>
 				</Box>
 				<Typography sx={{ fontSize: 18, mt: 1.25, mb: 1.25 }} fontWeight="medium">
@@ -42,9 +43,7 @@ const Title = ({ register }: MyProps) => {
 					<>
 						<Editor
 							apiKey={process.env.NEXT_PUBLIC_TEXT_EDITOR_API_KEY}
-							onInit={(evt, editor) => (editorRef.current = "test")}
-							initialValue="<p>Write description here...</p>"
-							{...register("description")}
+							initialValue="<p>Write description here</p>"
 							init={{
 								height: 200,
 								menubar: false,
@@ -76,6 +75,7 @@ const Title = ({ register }: MyProps) => {
 									" link image media | | | code",
 								content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
 							}}
+							onEditorChange={handleEditorChange}
 						/>
 					</>
 				</Box>

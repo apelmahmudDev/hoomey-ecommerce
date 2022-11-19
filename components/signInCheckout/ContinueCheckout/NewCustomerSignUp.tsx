@@ -6,7 +6,7 @@ import { regex } from "../../../utils/validations/regex";
 import { useEffect, useState } from "react";
 import { isStrongPassword } from "../../../utils/validations";
 import { useCreateUserMutation } from "../../../store/api/authApi";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch } from "../../../store";
 import { useToastify } from "../../../store/slices/toastifySlice";
 
 interface Inputs {
@@ -19,7 +19,7 @@ interface Inputs {
 
 const NewCustomerSignUp = () => {
 	const dispatch = useAppDispatch();
-	const [createUser, { data, isLoading, error }] = useCreateUserMutation();
+	const [createUser, { data, isLoading, isError }] = useCreateUserMutation();
 	const [isStrongPass, setIsStrongPass] = useState(false);
 
 	const {
@@ -31,7 +31,7 @@ const NewCustomerSignUp = () => {
 
 	// handle form submit & user creation
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		const { firstName, lastName, email, password, reEnterPassword } = data;
+		const { firstName, lastName, email, password } = data;
 
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises
 		createUser({
@@ -39,15 +39,15 @@ const NewCustomerSignUp = () => {
 			email: email,
 			username: `${firstName}`,
 			password: password,
-			passwordConfirmation: reEnterPassword,
 		});
 	};
 
 	//  notifications
 	useEffect(() => {
-		if (error) dispatch(useToastify({ desc: "User create failed.", severity: "error" }));
-		if (data) dispatch(useToastify({ desc: "User create successful.", severity: "success" }));
-	}, [dispatch, error, data]);
+		if (isError) dispatch(useToastify({ desc: "User create failed.", severity: "error" }));
+		if (data?.error) dispatch(useToastify({ desc: data.error, severity: "error" }));
+		if (data?.msg) dispatch(useToastify({ desc: data.msg, severity: "success" }));
+	}, [dispatch, data, isError]);
 
 	// password visual label check 🔐
 	useEffect(() => {

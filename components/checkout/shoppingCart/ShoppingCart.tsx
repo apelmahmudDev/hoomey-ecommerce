@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store/types";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
@@ -28,6 +27,7 @@ import { ProductCircularColor, SmallText } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, EndIconButton } from "../../ui";
 import { Inputs } from "../combineCheckout/CombineCheckout";
 import { regex } from "../../../utils/validations/regex";
+import { useSelector } from "react-redux";
 
 // styles
 const styles = {
@@ -49,7 +49,7 @@ const ShoppingCart = ({
 	errors: FieldErrorsImpl<Inputs>;
 }) => {
 	const [paymentMethods, setPaymentMethods] = useState("cash_on_delivery");
-	const color = useAppSelector((state: RootState) => state.color);
+	const color = useSelector((state: RootState) => state.color);
 
 	const handlePaymetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPaymentMethods((event.target as HTMLInputElement).value);

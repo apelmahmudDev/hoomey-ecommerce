@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { Box, Button, InputAdornment } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
@@ -8,6 +8,11 @@ import { MailFillSvg } from "../../../icons";
 import { Label } from "../../../styledComponents";
 import { AuthDevider, AuthSubtitle, AuthTitle, StyedTextField, StyledBox } from "../styledComponents";
 import { IPopup } from "../../../../types/popup";
+import { useRequestTResetPasswordMutation } from "../../../../store/api/authApi";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { regex } from "../../../../utils/validations/regex";
+import { useAppDispatch } from "../../../../store";
+import { useToastify } from "../../../../store/slices/toastifySlice";
 
 const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 	return (
@@ -18,6 +23,26 @@ const FieldIcon = ({ icon }: { icon: ReactNode }) => {
 };
 
 const PasswordChange = ({ isOpen, handleTogglePopup }: IPopup) => {
+	const dispatch = useAppDispatch();
+	const [requestResetPassword, { data, isError }] = useRequestTResetPasswordMutation();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<{ email: string }>();
+
+	const onSubmit: SubmitHandler<{ email: string }> = ({ email }) => {
+		requestResetPassword({ email });
+	};
+
+	//  notifications
+	useEffect(() => {
+		if (isError) dispatch(useToastify({ desc: "Something went wrong", severity: "error" }));
+		if (data?.error) dispatch(useToastify({ desc: data.error, severity: "error" }));
+		if (data?.msg) dispatch(useToastify({ desc: data.msg, severity: "success" }));
+	}, [dispatch, isError, data]);
+
 	return (
 		<Dialog
 			open={isOpen}
@@ -34,12 +59,15 @@ const PasswordChange = ({ isOpen, handleTogglePopup }: IPopup) => {
 					<AuthSubtitle>Please enter your email address</AuthSubtitle>
 
 					{/* sign up with email and password */}
-					<Box component="form" autoComplete="off">
+					<Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 						<StyledBox>
 							<Label fontSize={18}>Email Address *</Label>
 							<StyedTextField
 								required
 								type="email"
+								error={errors.email ? true : false}
+								{...register("email", { required: true, pattern: regex.email })}
+								helperText={errors.email && "Enter a valid email address"}
 								InputProps={{ startAdornment: <FieldIcon icon={<MailFillSvg />} /> }}
 							/>
 						</StyledBox>

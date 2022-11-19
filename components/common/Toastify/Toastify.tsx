@@ -1,7 +1,7 @@
 import { Box, Divider, Paper, Slide, Typography } from "@mui/material";
 import { goneToastify } from "../../../store/slices/toastifySlice";
 import { ErrorSvg, InfoSvg, SuccessSvg } from "../../icons";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch } from "../../../store";
 
 // types
 export interface IToastify {

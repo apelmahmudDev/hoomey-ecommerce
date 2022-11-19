@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/types";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch } from "../../../store";
 import { closeWarningPopup, confirmWarningPopup } from "../../../store/slices/warningSlice";
 
 const WarningPopup = () => {

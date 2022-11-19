@@ -8,9 +8,9 @@ import { COLORS } from "../../../theme/colors";
 import { Link, PriceTypography } from "../../ui";
 import { BagSvg, FavoriteFillSvg, FavoriteOutlineSvg } from "../../icons";
 
-import { useAppDispatch } from "../../../store/hooks";
 import { addToCart } from "../../../store/slices/cartSlice";
 import { useState } from "react";
+import { useAppDispatch } from "../../../store";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
 	const classes = useStyles();

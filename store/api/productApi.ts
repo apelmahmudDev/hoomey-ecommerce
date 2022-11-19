@@ -1,7 +1,7 @@
 import { IGetProducts, IPostProduct, UpdateProduct } from "../../types/api/products";
-import { emptySplitApi } from "./base";
+import { baseApiSlice } from "./base";
 
-export const productApi = emptySplitApi.injectEndpoints({
+export const productApi = baseApiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getProducts: build.query<IGetProducts[], void>({
 			query: () => ({

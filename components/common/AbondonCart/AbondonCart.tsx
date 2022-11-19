@@ -11,8 +11,8 @@ import { CloseIcon } from "../../../uiElements/icons";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import { ArrowLeftIconButton, ArrowRightIconButton, Link } from "../../ui";
 import { CartDivider, ProductCircularColor, SmallText } from "../../styledComponents";
-import { useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const styles = {
 	display: "flex",
@@ -26,7 +26,7 @@ const styles = {
 // }
 
 const AbondonCart = () => {
-	const color = useAppSelector((state: RootState) => state.color);
+	const color = useSelector((state: RootState) => state.color);
 
 	const [size, setSize] = useState("10");
 	const [isOpen, setIsOpen] = useState(true);

@@ -1,7 +1,7 @@
 import { IGetSubCategories, IPostSubCategories, UpdateSubCategories } from "../../types/api/sub-categories";
-import { emptySplitApi } from "./base";
+import { baseApiSlice } from "./base";
 
-export const SubcategoryApi = emptySplitApi.injectEndpoints({
+export const SubcategoryApi = baseApiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getSubCategories: build.query<IGetSubCategories[], string>({
 			query: (id) => ({

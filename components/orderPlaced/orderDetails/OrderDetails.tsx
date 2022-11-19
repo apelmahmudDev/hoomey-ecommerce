@@ -5,9 +5,9 @@ import { styled } from "@mui/system";
 import { IMAGES } from "../../../uiElements";
 import { HeadingText, ProductCircularColor, SmallText } from "../../styledComponents";
 // import { ColorPalette } from "../../common";
-import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store/types";
 import { Link } from "../../ui";
+import { useSelector } from "react-redux";
 
 const FlexStack = styled(Box)((theme) => ({
 	display: "flex",
@@ -22,7 +22,7 @@ const Text = styled(Typography)((theme) => ({
 
 const OrderDetails = () => {
 	// const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
-	const color = useAppSelector((state: RootState) => state.color);
+	const color = useSelector((state: RootState) => state.color);
 
 	// color palette handler
 	// const handleOpenColorPalette = (event: React.MouseEvent<HTMLButtonElement>) => {

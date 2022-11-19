@@ -29,10 +29,10 @@ import HoverMenu from "./HoverMenu";
 import SearchDropdwon from "../SearchDropdwon";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import TrackOrder from "../TrackOrder";
-import { useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/types";
+import { RootState } from "../../../store";
 import NotFound from "../NotFound";
 import TopHeader from "../TopHeader";
+import { useSelector } from "react-redux";
 
 const menuItems = [
 	{ currency: "USD", value: 1 },
@@ -53,7 +53,7 @@ const Navbar: FC = () => {
 	const classes = useStyles();
 	const router = useRouter();
 
-	const cart = useAppSelector((state: RootState) => state.cart);
+	const cart = useSelector((state: RootState) => state.cart);
 
 	const [currency, setCurrency] = useState("1");
 	const [isOpenSearch, setIsOpenSearch] = useState(false);

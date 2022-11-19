@@ -1,7 +1,7 @@
 import { IGetType, IPostType } from "../../types/api/types";
-import { emptySplitApi } from "./base";
+import { baseApiSlice } from "./base";
 
-export const typeApi = emptySplitApi.injectEndpoints({
+export const typeApi = baseApiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getTypes: build.query<IGetType[], void>({
 			query: () => ({

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreateCategoriesMutation } from "../../../../store/api/categoryApi";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch } from "../../../../store";
 import { useToastify } from "../../../../store/slices/toastifySlice";
 import { Popup } from "../../../common";
 import { BackIconButton } from "../../../ui";
@@ -23,7 +23,7 @@ const AddCategory = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 
-	const [createCategory, { data, isLoading, error }] = useCreateCategoriesMutation();
+	const [createCategory, { isLoading, isError, isSuccess }] = useCreateCategoriesMutation();
 
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
 	const { register, handleSubmit } = useForm<Inputs>();
@@ -31,14 +31,15 @@ const AddCategory = () => {
 	// handle form submit & user creation
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
 		const { name, description, isStatus } = data;
+		console.log(data);
 
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises
-		createCategory({
-			name: name,
-			slug: `${name.toLowerCase()}`,
-			description: description,
-			status: isStatus === "Active" ? true : false,
-		});
+		// createCategory({
+		// 	name: name,
+		// 	slug: `${name.toLowerCase()}`,
+		// 	description: description,
+		// 	status: isStatus === "Active" ? true : false,
+		// });
 	};
 
 	const handleAddSubCategoryTogglePopup = (boolean: boolean) => {
@@ -47,9 +48,9 @@ const AddCategory = () => {
 
 	//  notifications
 	useEffect(() => {
-		if (error) dispatch(useToastify({ desc: "Category create failed.", severity: "error" }));
-		if (data) dispatch(useToastify({ desc: "Category create successful.", severity: "success" }));
-	}, [dispatch, error, data]);
+		if (isError) dispatch(useToastify({ desc: "Category create failed.", severity: "error" }));
+		if (isSuccess) dispatch(useToastify({ desc: "Category creates successful.", severity: "success" }));
+	}, [dispatch, isSuccess, isError]);
 
 	return (
 		<div>

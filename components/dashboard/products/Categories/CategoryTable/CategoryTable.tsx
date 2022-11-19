@@ -116,9 +116,7 @@ const CategoryTable = ({ categoriesData }: { categoriesData: IGetCategories[] })
 	const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
-		//await deletePost("631f03050fbff6eb471821f3");
 		update(dataUpdate);
-		console.log("ee", error, data, isLoading);
 	};
 
 	// const handleChangePage = (event: unknown, newPage: number) => {

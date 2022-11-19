@@ -1,24 +1,29 @@
-import { configureStore, Middleware } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import { createLogger } from "redux-logger";
+import { configureStore } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { baseApiSlice } from "./api/base";
+import { cartSlice } from "./slices/cartSlice";
+import { colorSlice } from "./slices/colorSlice";
+import { toastifySlice } from "./slices/toastifySlice";
+import { warningSlice } from "./slices/warningSlice";
 
-import rootReducer from "./rootReducer";
+const store = configureStore({
+	reducer: {
+		[baseApiSlice.reducerPath]: baseApiSlice.reducer,
 
-const middleware: Middleware[] = [];
+		[cartSlice.name]: cartSlice.reducer,
+		[colorSlice.name]: colorSlice.reducer,
+		[toastifySlice.name]: toastifySlice.reducer,
+		[warningSlice.name]: warningSlice.reducer,
+	},
 
-if (process.env.NODE_ENV === "development") {
-	const logger = createLogger({
-		collapsed: true,
-		duration: true,
-	});
-	middleware.push(logger);
-}
-
-export const store = configureStore({
-	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
-	devTools: process.env.NODE_ENV === "development", // Show devTools only in development
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApiSlice.middleware),
 });
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export type RootState = ReturnType<typeof store.getState>;
 
 export const wrapperStore = () => store;
 

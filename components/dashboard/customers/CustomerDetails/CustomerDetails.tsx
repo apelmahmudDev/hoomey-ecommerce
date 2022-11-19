@@ -9,7 +9,7 @@ import UserProfile from "./UserProfile";
 import { OrangeButton } from "../../components/styledComponents";
 import { useRouter } from "next/router";
 import { useWarningPopup } from "../../../../store/slices/warningSlice";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch } from "../../../../store";
 
 const CustomerDetails = () => {
 	const router = useRouter();

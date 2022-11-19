@@ -4,7 +4,8 @@ import Checkbox from "@mui/material/Checkbox";
 import CheckIcon from "@mui/icons-material/Check";
 import { styled } from "@mui/system";
 import { colorHandler } from "../../../store/slices/colorSlice";
-import { useAppDispatch } from "../../../store/hooks";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../store";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

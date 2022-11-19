@@ -45,7 +45,7 @@ import { Notifications, SearchInput } from "../components/dashboard/common";
 import styles from "../components/dashboard/common/styles";
 import { ROUTING_TREE } from "../constants/siteUrls";
 import { useRouter } from "next/router";
-import { useAppDispatch } from "../store/hooks";
+import { useAppDispatch } from "../store";
 import { useWarningPopup } from "../store/slices/warningSlice";
 
 const drawerWidth = 120;

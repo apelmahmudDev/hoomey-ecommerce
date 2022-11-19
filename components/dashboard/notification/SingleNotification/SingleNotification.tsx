@@ -2,7 +2,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Grid, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch } from "../../../../store";
 import { useWarningPopup } from "../../../../store/slices/warningSlice";
 import { RoundButton } from "../../../styledComponents";
 

@@ -3,7 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { makeStyles } from "@mui/styles";
@@ -11,6 +10,7 @@ import { CloseIcon } from "../../../uiElements/icons";
 import { ColorPalette, ProductSizeSelect } from "../../common";
 import { ProductCircularColor } from "../../styledComponents";
 import { ArrowLeftIconButton, ArrowRightIconButton, PriceTypography } from "../../ui";
+import { useSelector } from "react-redux";
 
 const styles = {
 	display: "flex",
@@ -40,7 +40,7 @@ export default function FloatingAdvertise() {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-	const color = useAppSelector((state) => state.color);
+	const color = useSelector((state) => state.color);
 
 	const handleSizeChange = (event: SelectChangeEvent) => {
 		setSize(event.target.value as string);

@@ -1,8 +1,8 @@
 import { Box, Button, Divider, Grid, IconButton, SelectChangeEvent, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 import { COLORS } from "../../../theme/colors";
 import { IMAGES } from "../../../uiElements";
 import { CloseIcon } from "../../../uiElements/icons";
@@ -13,7 +13,7 @@ import { ArrowLeftIconButton, ArrowRightIconButton } from "../../ui";
 const styles = { flexStack: { my: 0.5, display: "flex", alignItems: "center", justifyContent: "space-between" } };
 
 const Item = () => {
-	const color = useAppSelector((state: RootState) => state.color);
+	const color = useSelector((state: RootState) => state.color);
 
 	const [size, setSize] = useState("10");
 	const [colorPaletteAnchorEl, setColorPaletteAnchorElAnchorEl] = useState<HTMLButtonElement | null>(null);
