@@ -4,9 +4,9 @@ import AppBreadcrumb from "../components/common/AppBreadcrumb";
 import Commitment from "../components/common/Commitment";
 import Footer from "../components/common/footer";
 import Navbar from "../components/common/navbar";
-import NewsLetter from "../components/common/newsLetter";
+// import NewsLetter from "../components/common/newsLetter";
 import { FrontLayoutProps } from "../types/page";
-import { CTAPopup, NewsLetterPopup } from "../components/common";
+import { NewsLetterPopup } from "../components/common";
 
 const FrontLayout: FC<FrontLayoutProps> = ({ children }) => {
 	const router = useRouter();
@@ -22,8 +22,8 @@ const FrontLayout: FC<FrontLayoutProps> = ({ children }) => {
 				{children}
 				{/* popup - they are showing itself any time & any where on the whole applications*/}
 				<NewsLetterPopup />
-				<CTAPopup />
-				<NewsLetter />
+				{/* <CTAPopup />
+				<NewsLetter /> */}
 				<Commitment />
 			</main>
 

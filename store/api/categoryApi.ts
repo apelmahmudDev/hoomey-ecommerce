@@ -15,7 +15,7 @@ export const categoryApi = baseApiSlice.injectEndpoints({
 		}),
 		createCategories: build.mutation<IPostCategories, IPostCategories>({
 			query: (body) => ({
-				url: "categories",
+				url: "category/add-category",
 				method: "POST",
 				body,
 			}),

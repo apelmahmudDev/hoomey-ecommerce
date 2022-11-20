@@ -1,4 +1,5 @@
 import { ICreateUser } from "../../types/api/auth";
+import { userLoggedIn } from "../slices/authSlice";
 import { baseApiSlice } from "./base";
 
 export interface User {
@@ -23,7 +24,13 @@ export const authApi = baseApiSlice.injectEndpoints({
 				method: "POST",
 				body,
 			}),
+			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+				const result = await queryFulfilled;
+				localStorage.setItem("accessToken", JSON.stringify(result.data.token));
+				dispatch(userLoggedIn(result.data.token));
+			},
 		}),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		requestTResetPassword: build.mutation<any, { email: string }>({
 			query: (body) => ({
 				url: "auth/req-reset-password",
@@ -31,13 +38,13 @@ export const authApi = baseApiSlice.injectEndpoints({
 				body,
 			}),
 		}),
-		getLogedInUser: build.query<User, number>({
-			query: () => "users",
+		getUserProfile: build.query<User, void>({
+			query: () => "auth/profile",
 			//providesTags: (result, error, id) => [{ type: 'User', id }],
 		}),
 	}),
 	overrideExisting: false,
 });
 
-export const { useCreateUserMutation, useUserLogInMutation, useRequestTResetPasswordMutation, useGetLogedInUserQuery } =
+export const { useCreateUserMutation, useUserLogInMutation, useRequestTResetPasswordMutation, useGetUserProfileQuery } =
 	authApi;

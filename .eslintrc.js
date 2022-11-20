@@ -42,5 +42,6 @@ module.exports = {
 		"react/jsx-no-bind": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/typedef": "off",
 	},
 };

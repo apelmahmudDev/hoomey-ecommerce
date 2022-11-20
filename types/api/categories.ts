@@ -1,8 +1,7 @@
 export interface IPostCategories {
 	name: string;
-	slug: string;
-	description: string;
-	status: boolean;
+	img: string;
+	description?: string;
 }
 
 export interface IGetCategories extends IPostCategories {

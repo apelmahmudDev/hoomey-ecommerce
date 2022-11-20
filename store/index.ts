@@ -6,6 +6,7 @@ import { cartSlice } from "./slices/cartSlice";
 import { colorSlice } from "./slices/colorSlice";
 import { toastifySlice } from "./slices/toastifySlice";
 import { warningSlice } from "./slices/warningSlice";
+import { authSlice } from "./slices/authSlice";
 
 const store = configureStore({
 	reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
 		[colorSlice.name]: colorSlice.reducer,
 		[toastifySlice.name]: toastifySlice.reducer,
 		[warningSlice.name]: warningSlice.reducer,
+		[authSlice.name]: authSlice.reducer,
 	},
 
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApiSlice.middleware),

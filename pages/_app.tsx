@@ -19,6 +19,7 @@ import { PageLoading, Toastify, WarningPopup } from "../components/common";
 import { ComponentWithLayoutProps } from "../types/page";
 import FrontLayout from "../Layout/FrontLayout";
 import { RootState, useAppSelector, wrapper } from "../store";
+import useAuthCheck from "../hooks/useAuthCheck";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -28,6 +29,7 @@ const generateClassName = createGenerateClassName({
 });
 
 function MyApp(props: ComponentWithLayoutProps) {
+	const isAuthCheck = useAuthCheck();
 	const toastify = useAppSelector((state: RootState) => state.toastify);
 
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -40,7 +42,10 @@ function MyApp(props: ComponentWithLayoutProps) {
 	}, []);
 
 	// @ts-ignore
-	return (
+
+	return !isAuthCheck ? (
+		<PageLoading />
+	) : (
 		<CacheProvider value={emotionCache}>
 			<StylesProvider generateClassName={generateClassName}>
 				<Head>

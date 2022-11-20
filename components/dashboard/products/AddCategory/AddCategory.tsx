@@ -28,18 +28,16 @@ const AddCategory = () => {
 	const [isAddSubCategoryOpen, setIsAddSubCategoryOpen] = useState(false);
 	const { register, handleSubmit } = useForm<Inputs>();
 
-	// handle form submit & user creation
+	// handle form submit & create category
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		const { name, description, isStatus } = data;
+		const { name, description } = data;
 		console.log(data);
 
-		// eslint-disable-next-line @typescript-eslint/no-floating-promises
-		// createCategory({
-		// 	name: name,
-		// 	slug: `${name.toLowerCase()}`,
-		// 	description: description,
-		// 	status: isStatus === "Active" ? true : false,
-		// });
+		createCategory({
+			name: name,
+			description: description,
+			img: "",
+		});
 	};
 
 	const handleAddSubCategoryTogglePopup = (boolean: boolean) => {
